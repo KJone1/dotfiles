@@ -15,4 +15,5 @@ style = { blinking = "On" }
 [keyboard]
 bindings = [
 { key = "F11", action = "ToggleFullscreen" },
+{ key = "F2", action = "CreateNewWindow" },
 ]
