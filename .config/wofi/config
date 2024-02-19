@@ -1,0 +1,12 @@
+show=drun
+width=500
+height=500
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
+insensitive=true
+prompt=Search...
+term=alacritty
+allow_images=true
+image_size=24
