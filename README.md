@@ -6,4 +6,4 @@
 
 ## Init
 
-``` stow . -t $HOME ```
+RUN ``` ./install.sh ``` from project root
