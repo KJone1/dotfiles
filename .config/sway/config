@@ -108,6 +108,23 @@ input type:touchpad {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # exit mode
+    set $exit "exit: [s]leep, [p]oweroff, [r]eboot, [l]ogout, [w]indows"
+    mode $exit {
+        bindsym --to-code {
+            s exec systemctl suspend, mode "default"
+            p exec systemctl poweroff
+            r exec systemctl reboot
+            l exec swaymsg exit
+
+            Return mode "default"
+            Escape mode "default"
+            $mod+x mode "default"
+        }
+    }
+
+    bindsym --to-code $mod+x mode $exit
 #
 # Moving around:
 #
