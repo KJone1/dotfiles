@@ -6,8 +6,8 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
+    // "modules-center": ["sway/window"],
+    "modules-right": ["tray","mpd", "pulseaudio", "network", "cpu", "memory", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -31,7 +31,7 @@
         "format": "{name} {icon}",
         "format-icons": {
             "locked": "",
-            "unlocked": ""
+            "unlocked": " "
         }
     },
     "sway/mode": {
