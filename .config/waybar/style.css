@@ -8,6 +8,7 @@
 /* main waybar */
 window#waybar {
 	background: rgba(26, 27, 38, 0);
+	background-color: transparent;
 }
 
 /* when hovering over modules */
@@ -87,5 +88,14 @@ window#waybar.empty #window {
 /* close left side of bar */
 #battery {
 	border-radius: 0 12px 12px 0;
+}
+#cpu {
+	background-color: transparent;
+}
+#memory {
+	background-color: transparent;
+}
+#clock {
+	background-color: transparent;
 }
 
