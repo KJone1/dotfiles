@@ -36,11 +36,14 @@ M.text = {
 
   },
   i = {
+    ['<A-UP>'] = {'<C-o>:m .-2<CR>==gi','Move one line up' },
+    ['<A-DOWN>'] = {'<C-o>:m .+1<CR>==gi','Move one line down' },
     ['<C-z>'] = {'<C-o>u', 'Undo' },
     ['<C-y>'] = {'<C-o>:redo<CR>', 'Redo' },
     ['<C-x>'] = {'<C-o>dd', 'Cut' },
     ['<C-s>'] = {'<C-o>:w<CR>', 'Save' },
-    ['<S-Tab>'] = {'<C-d>', 'Outdent' },
+    ['<Tab>'] = {'<C-t>', 'Indent line' },
+    ['<S-Tab>'] = {'<C-d>', 'Outdent line' },
     ['<S-A-DOWN>'] = {'<C-o>:t.<CR><C-o>==', 'Duplicate line' },
   }
 }
