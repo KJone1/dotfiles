@@ -4,9 +4,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-export KUBECONFIG="/home/kj/.kube/config"
-export PATH="$PATH:/home/kj/.local/bin:/opt:/home/kj/.local/bin/go/bin/:/var/lib/k0s/bin"
-
+export KUBECONFIG="$HOME/.kube/config"
+export PATH="$PATH:$HOME/.local/bin:/opt:$HOME/.local/bin/go/bin/:/var/lib/k0s/bin"
+# Set grim/grimshot screenshot output location
+export XDG_SCREENSHOTS_DIR="$HOME/Pictures/screenshots"
 # K9S defualt editor
 export EDITOR=nvim
 export K9S_EDITOR=nvim
