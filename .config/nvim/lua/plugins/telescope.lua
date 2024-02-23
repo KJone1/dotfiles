@@ -34,19 +34,6 @@ return {
             prompt_prefix = "  ",
             selection_caret = " ",
             file_ignore_patterns = {".git"},
-            -- layout_config = {
-            --   prompt_position = "bottom",
-            --   horizontal = {
-            --     width_padding = 0.04,
-            --     height_padding = 0.1,
-            --     preview_width = 0.5,
-            --   },
-            --   vertical = {
-            --     width_padding = 0.05,
-            --     height_padding = 1,
-            --     preview_height = 0.5,
-            --   },
-            -- },
             mappings = {
               i = {
                 ['<C-u>'] = false,
