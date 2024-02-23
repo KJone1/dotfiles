@@ -16,6 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 set $browser firefox
+set $explorer dolphin
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -81,6 +82,8 @@ input type:touchpad {
     # Start a terminal
     bindsym $mod+return exec $term
     bindsym $mod+b exec $browser
+    bindsym $mod+f exec $explorer
+
 
     # Kill focused window
     bindsym $mod+q kill
@@ -123,8 +126,17 @@ input type:touchpad {
             $mod+x mode "default"
         }
     }
-
     bindsym --to-code $mod+x mode $exit
+
+    bindsym {
+        # Capture the currently active output
+        Print       exec grimshot save output
+        # Capture the currently active window
+        Alt+Print   exec grimshot save active
+        # Select and capture a custom rectangular area
+        Ctrl+Print  exec grimshot save area
+    }
+
 #
 # Moving around:
 #
@@ -191,7 +203,7 @@ input type:touchpad {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym F11 fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
