@@ -74,6 +74,7 @@ window#waybar.empty #window {
 #tray {
 	border-radius: 12px;
 	margin-right: 4px;
+	background-color: transparent;
 }
 
 #window {
