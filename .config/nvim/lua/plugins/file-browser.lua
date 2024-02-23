@@ -7,6 +7,7 @@ return {
             file_browser = {
               hijack_netrw = true,
               grouped = true,
+              auto_depth = true,
               prompt_path = true,
               select_buffer = true,
               display_stat = false,
