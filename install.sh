@@ -2,4 +2,4 @@
 
 set -e
 
-stow . -t $HOME
+stow . -t $HOME --ignore=install.sh
