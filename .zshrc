@@ -1,16 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-export KUBECONFIG="$HOME/.kube/config"
 export PATH="$PATH:$HOME/.local/bin:/opt:$HOME/.local/bin/go/bin/:/var/lib/k0s/bin"
-# Set grim/grimshot screenshot output location
-export XDG_SCREENSHOTS_DIR="$HOME/Pictures/screenshots"
-# K9S defualt editor
-export EDITOR=nvim
-export K9S_EDITOR=nvim
 
 # --- Set up aliass here ---
 alias k="kubectl"
