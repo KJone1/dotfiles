@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-export PATH="$PATH:$HOME/.local/bin:/opt:$HOME/.local/bin/go/bin/:/var/lib/k0s/bin"
-
 # --- Set up aliass here ---
 alias k="kubectl"
 alias uu="sudo dnf upgrade -y && sudo flatpak update -y"
