@@ -35,7 +35,10 @@
         }
     },
     "sway/language": {
-      "format": " {short} "
+      "format": " {short} ",
+      "tooltip": true,
+      "tooltip-format": "{long}",
+      "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
