@@ -36,8 +36,8 @@ M.text = {
 
   },
   i = {
-    ['<A-UP>'] = {'<C-o>:m .-2<CR>==gi','Move one line up' },
-    ['<A-DOWN>'] = {'<C-o>:m .+1<CR>==gi','Move one line down' },
+    ['<A-UP>'] = {'<C-o>:m .-2<CR>','Move one line up' },
+    ['<A-DOWN>'] = {'<C-o>:m .+1<CR>','Move one line down' },
     ['<C-z>'] = {'<C-o>u', 'Undo' },
     ['<C-y>'] = {'<C-o>:redo<CR>', 'Redo' },
     ['<C-x>'] = {'<C-o>dd', 'Cut' },
