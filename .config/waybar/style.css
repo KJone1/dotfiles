@@ -92,9 +92,19 @@ window#waybar.empty #window {
 }
 #cpu {
 	background-color: transparent;
+	padding: 0 5px;
 }
 #memory {
 	background-color: transparent;
+	padding: 0 20px 0 5px;
+}
+#backlight {
+	background-color: transparent;
+	padding: 0 5px 0 0;
+}
+#pulseaudio {
+	background-color: transparent;
+	padding: 0;
 }
 #clock {
 	background-color: transparent;
