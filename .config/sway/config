@@ -83,6 +83,7 @@ input type:touchpad {
     bindsym $mod+return exec $term
     bindsym $mod+b exec $browser
     bindsym $mod+f exec $explorer
+    bindsym $mod+n exec $term -e nvim
 
 
     # Kill focused window
