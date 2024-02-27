@@ -1,14 +1,15 @@
-image=~/Pictures/Wallpapers/castle.jpg
-clock
+image=/home/kj/wallpapers/woman.jpg
 ignore-empty-password
 font=JetBrains Mono
-indicator
-indicator-radius=140
-indicator-thickness=10
-effect-blur=4x2
-effect-vignette=0.6:0.6
-ring-color=7aa2f7
+indicator-radius=100
+indicator-thickness=12
+ring-color=394b70
 line-color=1a1b26
 key-hl-color=c0caf5
 inside-color=1a1b26cc
-text-color=c0caf5
+text-color=24283b
+inside-ver-color=1a1b26cc
+text-ver-color=c0caf5
+ring-ver-color=394b70
+ring-wrong-color=c53b53
+inside-wrong-color=c53b53
