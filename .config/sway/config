@@ -22,7 +22,7 @@ set $menu wofi | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg /home/kj/Pictures/Wallpapers/abstract.png fill
+output * bg /home/kj/wallpapers/abstract.png fill
 
 default_border pixel 2
 default_floating_border pixel 2
