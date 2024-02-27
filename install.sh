@@ -18,5 +18,5 @@ while getopts "d" opt; do
   esac
 done
 
-stow . -vv $OPTIONS -t $HOME --ignore=install.sh
+stow . -vv $OPTIONS -t $HOME --ignore=install.sh --ignore=assets
 
