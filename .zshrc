@@ -2,6 +2,7 @@
 alias k="kubectl"
 alias uu="sudo dnf upgrade -y && sudo flatpak update -y"
 alias vim="nvim"
+alias vi="nvim"
 alias k0s="sudo k0s"
 alias nerd="sudo nerdctl"
 alias t="terraform"
