@@ -3,7 +3,6 @@ local M = {}
 M.general = {
   n = { -- Normal mode mappings
     ['pt'] = {':Twilight<CR>','Twilight Mode' },
-    ['pp'] = {':Telescope whaler<cr>','open projects' },
     ["<leader>sr"] = {':Spectre<CR>', 'Search and Replace (Spectre)' },
   },
   i = { -- Insert mode mappings

@@ -4,8 +4,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-project.nvim',
-    'SalOrak/whaler',
-    -- Fuzzy Finder Algorithm which requires local dependencies to be built.
     -- Only load if `make` is available. Make sure you have the system
     -- requirements installed.
     {
@@ -19,13 +17,6 @@ return {
       config = function()
         require('telescope').setup {
           extensions = {
-            whaler = {
-              oneoff_directories = {
-                "~/DEV/dotfiles"
-              },
-              file_explorer = "telescope_file_browser",
-              hidden = true,
-            }
           },
           defaults = {
             theme = "center",
@@ -44,7 +35,6 @@ return {
         }
       -- Enable telescope fzf native, if installed
       pcall(require('telescope').load_extension,'fzf')
-      pcall(require('telescope').load_extension,'whaler')
       end
     },
   },
