@@ -1,31 +1,15 @@
-# kickstart.nvim
+# Neovim
 
-forked from kickstart.nvim
+## Install Instructions
 
-### Introduction
+> Install requires Neovim 0.9+. Always review the code before installing a configuration.
 
-Requirements:
-* Make sure to review the readmes of the plugins if you are experiencing errors. In particular:
-  * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) is required for multiple [telescope](https://github.com/nvim-telescope/telescope.nvim#suggested-dependencies) pickers.
-* See [Windows Installation](#Windows-Installation) if you have trouble with `telescope-fzf-native`
-
-Neovim's configurations are located under the following paths, depending on your OS:
-
-| OS | PATH |
-| :- | :--- |
-| Linux | `$XDG_CONFIG_HOME/nvim`, `~/.config/nvim` |
-| MacOS | `$XDG_CONFIG_HOME/nvim`, '~/.config/nvim` |
-| Windows | `%userprofile%\AppData\Local\nvim\` |
-
-Clone kickstart.nvim:
+Clone the repository and install the plugins:
 
 ```sh
 # on Linux and Mac
 git clone git@github.com:KJone1/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-# on Windows
-git clone git@github.com:KJone1/nvim.git %userprofile%\AppData\Local\nvim\ 
 ```
-
 ### Post Installation
 
 Run the following command and then **you are ready to go**!
@@ -34,107 +18,54 @@ Run the following command and then **you are ready to go**!
 nvim --headless "+Lazy! sync" +qa
 ```
 
-### Recommended Steps
+## 📦 Package manager
 
-[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repo (so that you have your own copy that you can modify) and then installing you can install to your machine using the methods above.
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
 
-> **NOTE**  
-> Your fork's url will be something like this: `https://github.com/<your_github_username>/kickstart.nvim.git`
+## 🔌 Plugins
 
-### Configuration And Extension
-
-* Inside of your copy, feel free to modify any file you like! It's your copy!
-* Feel free to change any of the default options in `init.lua` to better suit your needs.
-* For adding plugins, there are 3 primary options:
-  * Add new configuration in `lua/custom/plugins/*` files, which will be auto sourced using `lazy.nvim` (uncomment the line importing the `custom/plugins` directory in the `init.lua` file to enable this)
-  * Modify `init.lua` with additional plugins.
-  * Include the `lua/kickstart/plugins/*` files in your configuration.
-
-You can also merge updates/changes from the repo back into your fork, to keep up-to-date with any changes for the default configuration.
-
-#### Example: Adding an autopairs plugin
-
-In the file: `lua/custom/plugins/autopairs.lua`, add:
-
-```lua
--- File: lua/custom/plugins/autopairs.lua
-
-return {
-  "windwp/nvim-autopairs",
-  -- Optional dependency
-  dependencies = { 'hrsh7th/nvim-cmp' },
-  config = function()
-    require("nvim-autopairs").setup {}
-    -- If you want to automatically add `(` after selecting a function or method
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on(
-      'confirm_done',
-      cmp_autopairs.on_confirm_done()
-    )
-  end,
-}
-```
-
-
-This will automatically install [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) and enable it on startup. For more information, see documentation for [lazy.nvim](https://github.com/folke/lazy.nvim).
-
-#### Example: Adding a file tree plugin
-
-In the file: `lua/custom/plugins/filetree.lua`, add:
-
-```lua
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-
-return {
-  "nvim-neo-tree/neo-tree.nvim",
-  version = "*",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-  },
-  config = function ()
-    require('neo-tree').setup {}
-  end,
-}
-```
-
-This will install the tree plugin and add the command `:Neotree` for you. You can explore the documentation at [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) for more information.
-
-### Contribution
-
-Pull-requests are welcome. The goal of this repo is not to create a Neovim configuration framework, but to offer a starting template that shows, by example, available features in Neovim. Some things that will not be included:
-
-* Custom language server configuration (null-ls templates)
-* Theming beyond a default colorscheme necessary for LSP highlight groups
-
-Each PR, especially those which increase the line count, should have a description as to why the PR is necessary.
-
-### FAQ
-
-* What should I do if I already have a pre-existing neovim configuration?
-  * You should back it up, then delete all files associated with it.
-  * This includes your existing init.lua and the neovim files in `~/.local` which can be deleted with `rm -rf ~/.local/share/nvim/`
-  * You may also want to look at the [migration guide for lazy.nvim](https://github.com/folke/lazy.nvim#-migration-guide)
-* What if I want to "uninstall" this configuration:
-  * See [lazy.nvim uninstall](https://github.com/folke/lazy.nvim#-uninstalling) information
-* Are there any cool videos about this plugin?
-  * Current iteration of kickstart (coming soon)
-  * Here is one about the previous iteration of kickstart: [video introduction to Kickstart.nvim](https://youtu.be/stqUbv-5u2s). Note the install via init.lua no longer works as specified. Please follow the install instructions in this file instead as they're up to date.
-
-### Windows Installation
-
-Installation may require installing build tools, and updating the run command for `telescope-fzf-native`
-
-See `telescope-fzf-native` documentation for [more details](https://github.com/nvim-telescope/telescope-fzf-native.nvim#installation)
-
-This requires:
-
-- Install CMake, and the Microsoft C++ Build Tools on Windows
-
-```lua
-{'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-```
-
+### colorschemes
+- [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim)
+- [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+- [oh-lucy.nvim](https://github.com/Yazeed1s/oh-lucy.nvim)
+- [omni](https://github.com/getomni/neovim)
+### comments
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+### ui
+- [dressing.nvim](https://github.com/stevearc/dressing.nvim)
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [twilight.nvim](https://github.com/folke/twilight.nvim)
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
+### git
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
+### etc
+- [auto-save.nvim](https://github.com/okuuva/auto-save.nvim)
+- [better-escape.nvim](https://github.com/max397574/better-escape.nvim)
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim)
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [lsp-lens.nvim](https://github.com/VidocqH/lsp-lens.nvim)
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+- [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
+- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
+- [mason.nvim](https://github.com/williamboman/mason.nvim)
+- [neodev.nvim](https://github.com/folke/neodev.nvim)
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- [spaceport.nvim](https://github.com/CWood-sdf/spaceport.nvim)
+- [telescope-project.nvim](https://github.com/nvim-telescope/telescope-project.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
+- [vim-sleuth](https://github.com/tpope/vim-sleuth)
+- [which-key.nvim](https://github.com/folke/which-key.nvim)
