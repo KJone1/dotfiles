@@ -1,14 +1,14 @@
 * {
-	font-family: JetBrains Mono;
+	font-family: JetBrainsMono Nerd Font Mono Medium;
 	font-weight: 600;
 	font-size: 13.5pt;
 	color: #c0caf5;
+	background-color: transparent;
 }
 
 /* main waybar */
 window#waybar {
 	background: rgba(26, 27, 38, 0);
-	background-color: transparent;
 }
 
 /* when hovering over modules */
@@ -18,7 +18,9 @@ tooltip {
 }
 
 #workspaces button {
-	padding: 2px;
+	padding: 2px 5px 2px 5px;
+	font-weight: bold;
+	border-radius: 4px;
 }
 
 /* Sets active workspace to have a solid line on the bottom */
@@ -43,6 +45,13 @@ tooltip {
 	color: #cdd6f4;
 }
 
+/* Hide window module when not focused on window or empty workspace */
+window#waybar.empty #window {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
 /* Sets background, padding, margins, and borders for (all) modules */
 #workspaces,
 #clock,
@@ -54,59 +63,9 @@ tooltip {
 #tray,
 #battery {
 	background: rgba(26, 27, 38, 0.4);
-	padding: 0 10px;
 	border: 0;
-}
-
-#workspaces {
-	padding-right: 0px;
-}
-
-/* Hide window module when not focused on window or empty workspace */
-window#waybar.empty #window {
-	padding: 0px;
-	margin: 0px;
-	border: 0px;
 	background-color: transparent;
-}
-
-/* Set up rounding to make these modules look like separate pills */
-#tray {
-	border-radius: 12px;
-	margin-right: 4px;
-	background-color: transparent;
-}
-
-#window {
-	border-radius: 12px;
-}
-
-/* close right side of bar */
-#temperature {
-	border-radius: 12px 0 0 12px;
-}
-
-/* close left side of bar */
-#battery {
-	border-radius: 0 12px 12px 0;
-}
-#cpu {
-	background-color: transparent;
-	padding: 0 5px;
-}
-#memory {
-	background-color: transparent;
-	padding: 0 20px 0 5px;
-}
-#backlight {
-	background-color: transparent;
-	padding: 0 5px 0 0;
-}
-#pulseaudio {
-	background-color: transparent;
-	padding: 0;
 }
 #clock {
-	background-color: transparent;
+	padding-right: 10px;
 }
-
