@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -39,8 +35,6 @@ default_floating_border pixel 2
 
 ### Idle configuration
 #
-# Example configuration:
-#
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -51,15 +45,6 @@ exec swayidle -w \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -94,9 +79,7 @@ input type:touchpad {
     # Change brightness 
     bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
     bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
-    # bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    # bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    # Change volume
     bindsym XF86AudioMute exec $HOME/.config/sway/pavolume.pl toggle
     bindsym XF86AudioRaiseVolume exec $HOME/.config/sway/pavolume.pl +5%
     bindsym XF86AudioLowerVolume exec $HOME/.config/sway/pavolume.pl -5%
@@ -109,9 +92,6 @@ input type:touchpad {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # exit mode
     set $exit "   exit: [s]leep, [p]oweroff, [r]eboot, [l]ogout"
@@ -254,20 +234,6 @@ bindsym $mod+r mode "resize"
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position bottom
-#
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
 bar {
      swaybar_command waybar
 }
