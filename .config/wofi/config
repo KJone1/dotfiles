@@ -10,3 +10,4 @@ prompt=Search...
 term=alacritty
 allow_images=true
 image_size=24
+no_actions=true
