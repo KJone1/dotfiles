@@ -19,16 +19,20 @@ tooltip {
 #workspaces button {
 	padding: 2px 5px 2px 5px;
 	font-weight: bold;
-	border-radius: 4px;
+	border-radius: 10%;
 }
 
-/* Sets active workspace to have a solid line on the bottom */
-#workspaces button.active {
-	border-bottom: 3px solid #7aa2f7;
+/* Sets active workspace to have a solid line at the top */
+#workspaces button.visible {
+	border-top: 2px solid #7aa2f7;
+	padding: 0px 5px 2px 5px;
 	border-radius: 0;
-	margin-top: 3px;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.3s ease-out;
 }
+/* Change button text color */
+/* #workspaces button.focused label { */
+/* 	color: #7aa2f7; */
+/* } */
 
 /* More workspace stuff for highlighting on hover */
 #workspaces button.focused {
