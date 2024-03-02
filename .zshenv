@@ -17,3 +17,4 @@ export EDITOR=nvim
 export K9S_EDITOR=nvim
 # Enable wayland support for firefox | not needed after version 121 of firefox
 export MOZ_ENABLE_WAYLAND=1
+export BROWSER=firefox
