@@ -115,7 +115,7 @@ input type:touchpad {
         # Capture the currently active window
         Alt+Print   exec grimshot save active
         # Select and capture a custom rectangular area
-        Ctrl+Print  exec grimshot save area
+        Ctrl+Print  exec wl-copy < $(grimshot save area)
     }
 
 #
