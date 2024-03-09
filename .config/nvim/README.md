@@ -39,9 +39,13 @@ nvim --headless "+Lazy! sync" +qa
 - [noice.nvim](https://github.com/folke/noice.nvim)
 - [twilight.nvim](https://github.com/folke/twilight.nvim)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate)
+- [neoscroll](https://github.com/karb94/neoscroll.nvim)
 ### git
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
+### Search and Replace
+- [ssr](https://github.com/cshuaimin/ssr.nvim)
+- [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
 ### etc
 - [auto-save.nvim](https://github.com/okuuva/auto-save.nvim)
 - [better-escape.nvim](https://github.com/max397574/better-escape.nvim)
@@ -60,7 +64,6 @@ nvim --headless "+Lazy! sync" +qa
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
-- [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [spaceport.nvim](https://github.com/CWood-sdf/spaceport.nvim)
