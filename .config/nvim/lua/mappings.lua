@@ -3,7 +3,6 @@ local M = {}
 M.general = {
   n = { -- Normal mode mappings
     ['pt'] = {':Twilight<CR>','Twilight Mode' },
-    ["<leader>sr"] = {':Spectre<CR>', 'Search and Replace (Spectre)' },
   },
   i = { -- Insert mode mappings
   },
@@ -15,6 +14,13 @@ M.git = {
   n = {
     ['lg'] = {':LazyGit<CR>', 'Lazy Git' },
   },
+}
+
+M.ssr = {
+  n = {
+    ["<leader>sr"] = {':Spectre<CR>', 'Search and Replace (Spectre)' },
+    ["<leader>ss"] = { function() require("ssr").open() end , 'Search and Replace current buffer (ssr)' }
+  }
 }
 
 M.text = {
