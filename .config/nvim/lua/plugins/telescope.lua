@@ -21,8 +21,8 @@ return {
           defaults = {
             theme = "center",
             sorting_strategy = "ascending",
-            results_title = "false",
-            prompt_prefix = "  ",
+            results_title = false,
+            prompt_prefix = "  ",
             selection_caret = " ",
             file_ignore_patterns = {".git"},
             mappings = {
