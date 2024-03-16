@@ -4,7 +4,7 @@ dynamic_title = false
 title = ""
 decorations_theme_variant = "Dark"
 [font]
-size = 14
+size = 16
 normal = { family="JetBrainsMono Nerd Font Mono",style="Medium" }
 [selection]
 save_to_clipboard = true
