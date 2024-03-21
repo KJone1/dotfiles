@@ -25,7 +25,7 @@ local themes = {
     event = "User ColorSchemeLoad",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("oh-lucy-evening")
+      vim.cmd.colorscheme("oh-lucy")
     end,
   },
 }
