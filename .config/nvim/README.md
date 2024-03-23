@@ -44,7 +44,6 @@ nvim --headless "+Lazy! sync" +qa
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
 ### search and replace
-- [ssr](https://github.com/cshuaimin/ssr.nvim)
 - [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
 ### etc
 - [auto-save.nvim](https://github.com/okuuva/auto-save.nvim)

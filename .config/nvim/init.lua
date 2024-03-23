@@ -105,6 +105,9 @@ local opts = {}
 
 require('lazy').setup(plugins, opts)
 
+-- Load custom.lua file
+require('custom')
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
