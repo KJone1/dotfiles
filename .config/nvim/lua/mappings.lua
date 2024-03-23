@@ -19,8 +19,8 @@ M.git = {
 M.ssr = {
   n = {
     ["<leader>sr"] = {':Spectre<CR>', 'Search and Replace (Spectre)' },
-    ["<leader>ss"] = { function() require("custom").ssr() end , 'Search and Replace in line' },
-    ["<leader>sa"] = { function() require("custom").ssr_all() end , 'Search and Replace in current buffer' }
+    ["<leader>ss"] = { function() require("custom").ssr_line() end , 'Search and Replace in line' },
+    ["<leader>sa"] = { function() require("custom").ssr_buffer() end , 'Search and Replace in current buffer' }
   }
 }
 

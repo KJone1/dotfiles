@@ -1,6 +1,6 @@
 local M = {}
 
-function M.ssr()
+function M.ssr_line()
 
   local search = vim.fn.input("Search: ")
 
@@ -32,7 +32,7 @@ function M.ssr()
   vim.cmd('highlight clear Search')
   vim.cmd(string.format('s/%s/%s/g', search, replace))
 end
-function M.ssr_all()
+function M.ssr_buffer()
 
   local search = vim.fn.input("Search: ")
 
@@ -45,7 +45,7 @@ function M.ssr_all()
   local matches = vim.fn.search(escaped_search)
 
   if matches == 0 then
-    vim.notify(string.format('Pattern "%s" not found in buffer',search), vim.log.levels.ERROR)
+    vim.notify(string.format('Pattern "%s" not found in buffer',escaped_search), vim.log.levels.ERROR)
     return
   end
 
