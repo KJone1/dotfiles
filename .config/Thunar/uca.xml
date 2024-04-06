@@ -17,7 +17,7 @@
 	<name>Edit file</name>
 	<submenu></submenu>
 	<unique-id>1640175617623905-4</unique-id>
-	<command>alacritty -e nvim %f</command>
+	<command>alacritty -o font.size=20 -e nvim %f</command>
 	<description></description>
 	<range></range>
 	<patterns>*;*.sh</patterns>
