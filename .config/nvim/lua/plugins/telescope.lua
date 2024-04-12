@@ -24,7 +24,7 @@ return {
             results_title = false,
             prompt_prefix = "  ",
             selection_caret = " ",
-            file_ignore_patterns = {".git"},
+            file_ignore_patterns = {".git$"},
             mappings = {
               i = {
                 ['<C-u>'] = false,
