@@ -48,7 +48,7 @@ M.text = {
     ['<C-y>'] = {'<C-o>:redo<CR>', 'Redo' },
     ['<C-x>'] = {'<C-o>dd', 'Cut' },
     ['<C-s>'] = {'<C-o>:w<CR>', 'Save' },
-    ['<C-v>'] = {'<C-o>p', 'paste' },
+    ['<C-v>'] = {'<C-R>+', 'paste' },
     ['<Tab>'] = {'<C-t>', 'Indent line' },
     ['<S-Tab>'] = {'<C-d>', 'Outdent line' },
     ['<S-A-DOWN>'] = {'<C-o>:t.<CR><C-o>==', 'Duplicate line' },
