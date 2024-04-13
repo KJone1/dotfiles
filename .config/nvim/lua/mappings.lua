@@ -64,6 +64,7 @@ M.telescope = {
     ['<leader>sd']      = { require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' },
     ['<leader>so']      = { require('telescope.builtin').oldfiles, 'Find recently opened files' },
     ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
+    ['<leader>q']       = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
     ['<leader>f'] = { function()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
