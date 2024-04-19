@@ -7,6 +7,7 @@ M.general = {
   i = { -- Insert mode mappings
   },
   v = { -- Visual mode mappings
+    ['xa'] = { function() require'align'.align_to_char({length = 1}) end ,'Align to char' },
   },
 }
 
@@ -18,8 +19,8 @@ M.git = {
 
 M.harpoon = {
   n = {
-    ['<leader>hh']       = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
-    ['<leader>ha']       = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
+    ['<leader>hh'] = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
+    ['<leader>ha'] = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
   },
 }
 
@@ -33,31 +34,31 @@ M.ssr = {
 
 M.text = {
   n = {
-    ['pm'] = {':MarkdownPreview<CR>','Open Markdown Preview' },
-    ['<A-UP>'] = {':m .-2<CR>==','Move one line up' },
-    ['<A-DOWN>'] = {':m .+1<CR>==','Move one line down' },
-    ['<leader>/'] = {'<Cmd>lua require("Comment.api").toggle.linewise.current()<CR>', 'Comment linewise' },
+    ['pm']         = {':MarkdownPreview<CR>','Open Markdown Preview' },
+    ['<A-UP>']     = {':m .-2<CR>==','Move one line up' },
+    ['<A-DOWN>']   = {':m .+1<CR>==','Move one line down' },
+    ['<leader>/']  = {'<Cmd>lua require("Comment.api").toggle.linewise.current()<CR>', 'Comment linewise' },
     ['<S-A-DOWN>'] = {':t.<CR>', 'Duplicate line' },
   },
   v = {
-    ['<A-UP>'] = {":m '<-2<CR>gv=gv",'Move selected lines up' },
-    ['<A-DOWN>'] = {":m '>+1<CR>gv=gv",'Move selected lines down' },
-    ['<leader>/'] = {'<ESC><Cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', 'Comment linewise selected text' },
+    ['<A-UP>']     = {":m '<-2<CR>gv=gv",'Move selected lines up' },
+    ['<A-DOWN>']   = {":m '>+1<CR>gv=gv",'Move selected lines down' },
+    ['<leader>/']  = {'<ESC><Cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', 'Comment linewise selected text' },
     ['<S-A-DOWN>'] = {":t'>\\<CR>gv=gv", 'Duplicate line' },
-    ['<Tab>'] = {">gv", 'Indent' },
-    ['<S-Tab>'] = {"<gv", 'Outdent' },
+    ['<Tab>']      = {">gv", 'Indent' },
+    ['<S-Tab>']    = {"<gv", 'Outdent' },
 
   },
   i = {
-    ['<A-UP>'] = {'<C-o>:m .-2<CR>','Move one line up' },
-    ['<A-DOWN>'] = {'<C-o>:m .+1<CR>','Move one line down' },
-    ['<C-z>'] = {'<C-o>u', 'Undo' },
-    ['<C-y>'] = {'<C-o>:redo<CR>', 'Redo' },
-    ['<C-x>'] = {'<C-o>dd', 'Cut' },
-    ['<C-s>'] = {'<C-o>:w<CR>', 'Save' },
-    ['<C-v>'] = {'<C-R>+', 'paste' },
-    ['<Tab>'] = {'<C-t>', 'Indent line' },
-    ['<S-Tab>'] = {'<C-d>', 'Outdent line' },
+    ['<A-UP>']     = {'<C-o>:m .-2<CR>','Move one line up' },
+    ['<A-DOWN>']   = {'<C-o>:m .+1<CR>','Move one line down' },
+    ['<C-z>']      = {'<C-o>u', 'Undo' },
+    ['<C-y>']      = {'<C-o>:redo<CR>', 'Redo' },
+    ['<C-x>']      = {'<C-o>dd', 'Cut' },
+    ['<C-s>']      = {'<C-o>:w<CR>', 'Save' },
+    ['<C-v>']      = {'<C-R>+', 'paste' },
+    ['<Tab>']      = {'<C-t>', 'Indent line' },
+    ['<S-Tab>']    = {'<C-d>', 'Outdent line' },
     ['<S-A-DOWN>'] = {'<C-o>:t.<CR><C-o>==', 'Duplicate line' },
   }
 }
@@ -73,9 +74,8 @@ M.telescope = {
     ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
     ['<leader>f'] = { function()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
+        winblend  = 10,
         previewer = false,
-        wrap_results = true,
       })
       end, '[/] Fuzzily search in current buffer' },
     ['<leader>cs'] = {
