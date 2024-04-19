@@ -66,12 +66,10 @@ M.telescope = {
   n = {
     ['<leader>p']       = { ":lua require'telescope'.extensions.project.project{display_type = 'full'}<CR>", 'Open Saved Projects' },
     ['<leader>t']       = { ":TodoTelescope keywords=TODO,FIX<CR>", 'List TODOs' },
-    -- ['<leader>e']       = { require('telescope.builtin').find_files, 'Explore Files in current dir' },
     ['<leader>e']       = { ':Telescope file_browser cwd=%:p:h<CR>', 'Explore Files in current dir' },
     ['<leader>sd']      = { require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' },
     ['<leader>so']      = { require('telescope.builtin').oldfiles, 'Find recently opened files' },
     ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
-    ['<leader>q']       = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
     ['<leader>f'] = { function()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
