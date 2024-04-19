@@ -16,6 +16,13 @@ M.git = {
   },
 }
 
+M.harpoon = {
+  n = {
+    ['<leader>hh']       = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
+    ['<leader>ha']       = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
+  },
+}
+
 M.ssr = {
   n = {
     ["<leader>sr"] = {':Spectre<CR>', 'Search and Replace (Spectre)' },
