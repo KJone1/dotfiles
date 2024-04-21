@@ -69,5 +69,26 @@ function M.ssr_buffer()
   vim.cmd(string.format('%%s/%s/%s/g', escaped_search, replace))
 end
 
+
+function M.harpoon_component()
+
+  local harpoon = require("harpoon.mark")
+
+  local total_marks = harpoon.get_length()
+
+  if total_marks == 0 then
+    return ""
+  end
+
+  local current_mark = "—"
+
+  local mark_idx = harpoon.get_current_index()
+  if mark_idx ~= nil then
+    current_mark = tostring(mark_idx)
+  end
+
+  return string.format("󱡅 %s/%d", current_mark, total_marks)
+end
+
 return M
 
