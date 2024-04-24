@@ -90,5 +90,18 @@ function M.harpoon_component()
   return string.format("󱡅 %s/%d", current_mark, total_marks)
 end
 
+function M.current_file_component()
+
+    local full_path = vim.fn.expand('%:p') -- Get the full path of the current file
+    local components = vim.split(full_path, '/') -- Split the path into directory components
+
+    local shortened = components[#components]  -- Last component (filename)
+    if #components > 1 then
+      shortened = components[#components - 1] .. '/' .. shortened -- Add the parent directory
+    end
+
+    return string.format(" %s",shortened)
+end
+
 return M
 
