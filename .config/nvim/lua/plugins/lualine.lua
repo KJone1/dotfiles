@@ -3,38 +3,58 @@ return {
   opts = {
       options = {
         icons_enabled = true,
-        component_separators = '|',
-        section_separators = '',
+        component_separators = '',
+        section_separators = ' ',
       },
       sections = {
           lualine_a = {
             { 'mode',right_padding = 2 },
           },
           lualine_b = {
-            {'branch',color = { gui = 'bold' }},
-            harpoon_component,
-            {'diff',
+            {
+              require("custom").current_file_component,
+              color = {
+                bg  = "NONE",
+                fg  = "white",
+                gui = "bold"
+              }
+            },
+            {
+              'branch',
+              color = {
+                bg  = "NONE",
+                fg  = "white",
+                gui = "bold"
+              }
+            },
+            {
+              'diff',
               symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+              color = {
+                bg  = "NONE",
+                fg  = "white",
+                gui = "bold"
+              },
               diff_color = {
-                added = { fg = '#98be65' },
+                added    = { fg = '#98be65' },
                 modified = { fg = '#FF8800' },
-                removed = { fg = '#ec5f67' },
+                removed  = { fg = '#ec5f67' },
               },
             },
           },
           lualine_c = {
            {
               'diagnostics',
-              source = { 'nvim' },
-              sections = { 'error' },
-              separator = { left = '|'},
+              source            = { 'nvim' },
+              sections          = { 'error' },
+              separator         = { left = ' ' },
               diagnostics_color = { error = { bg = '#ca1243', fg = '#f3f3f3' } },
             },
             {
               'diagnostics',
-              source = { 'nvim' },
-              sections = { 'warn' },
-              separator = { left = ' '},
+              source            = { 'nvim' },
+              sections          = { 'warn' },
+              separator         = { left = ' '},
               diagnostics_color = { warn = { bg = '#fe8019', fg = '#f3f3f3' } },
             },
             {
@@ -56,11 +76,39 @@ return {
               end,
             },
           },
-          lualine_x = {},
+          lualine_x = {
+            {
+              require("custom").harpoon_component,
+              color = {
+                bg = "NONE",
+                fg = "white"
+              }
+            }
+          },
           lualine_y = {
-            {'filetype'},
-            {'encoding',fmt = string.upper,},
-            {'fileformat',fmt = string.upper,icons_enabled = false,},
+            {
+              'filetype',
+              color = {
+                bg = "NONE",
+                fg = "white",
+              }
+            },
+            {
+              'encoding',
+              fmt = string.upper,
+              color = {
+                bg = "NONE",
+                fg = "white",
+              }
+            },
+            {
+              'fileformat',
+              fmt = string.upper,icons_enabled = false,
+              color = {
+                bg = "NONE",
+                fg = "white",
+              }
+            }
           },
           lualine_z = {},
       },
