@@ -18,7 +18,6 @@
       "memory",
       "pulseaudio",
       "backlight",
-      "keyboard-state",
       "network",
       "sway/language",
       "battery",
@@ -43,15 +42,6 @@
     //         "default": " "
     //     }
     // },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": " "
-        }
-    },
     "sway/language": {
       "format": " {short} ",
       "tooltip": true,
