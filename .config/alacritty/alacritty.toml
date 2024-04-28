@@ -5,7 +5,7 @@ title = ""
 decorations_theme_variant = "Dark"
 [font]
 size = 16
-normal = { family="JetBrainsMono Nerd Font Mono",style="Medium" }
+normal = { family="JetBrainsMono Nerd Font",style="Medium" }
 [selection]
 save_to_clipboard = true
 [mouse]
