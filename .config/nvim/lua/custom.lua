@@ -100,7 +100,7 @@ function M.current_file_component()
       shortened = components[#components - 1] .. '/' .. shortened -- Add the parent directory
     end
 
-    return string.format(" %s",shortened)
+    return string.format(" %s",shortened)
 end
 
 return M
