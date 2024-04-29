@@ -3,7 +3,6 @@ return {
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope-project.nvim',
     "nvim-telescope/telescope-file-browser.nvim",
     -- Only load if `make` is available. Make sure you have the system requirements installed.
     {
@@ -71,6 +70,7 @@ return {
         }
       -- Enable telescope extensions, if installed
       pcall(require("telescope").load_extension,"harpoon")
+      pcall(require("telescope").load_extension,"spaceport")
       pcall(require("telescope").load_extension,"file_browser")
       pcall(require('telescope').load_extension,'fzf')
       end
