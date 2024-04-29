@@ -2,7 +2,6 @@ local M = {}
 
 M.general = {
   n = { -- Normal mode mappings
-    ['pt'] = {':Twilight<CR>','Twilight Mode' },
   },
   i = { -- Insert mode mappings
   },
@@ -19,10 +18,10 @@ M.git = {
 
 M.harpoon = {
   n = {
-    ['<leader>hh'] = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
-    ['<leader>ha'] = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
-    ['<leader>hn'] = { ':lua require("harpoon.ui").nav_next()<CR>', 'Navigate to next harpooned file' },
-    ['<leader>hb'] = { ':lua require("harpoon.ui").nav_prev()<CR>', 'Navigate to previous harpooned file' },
+    ['hh'] = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
+    ['ha'] = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
+    ['hn'] = { ':lua require("harpoon.ui").nav_next()<CR>', 'Navigate to next harpooned file' },
+    ['hb'] = { ':lua require("harpoon.ui").nav_prev()<CR>', 'Navigate to previous harpooned file' },
   },
 }
 
@@ -36,7 +35,7 @@ M.ssr = {
 
 M.text = {
   n = {
-    ['pm']         = {':MarkdownPreview<CR>','Open Markdown Preview' },
+    ['<leader>md']         = {':MarkdownPreview<CR>','Open Markdown Preview' },
     ['<A-UP>']     = {':m .-2<CR>==','Move one line up' },
     ['<A-DOWN>']   = {':m .+1<CR>==','Move one line down' },
     ['<leader>/']  = {'<Cmd>lua require("Comment.api").toggle.linewise.current()<CR>', 'Comment linewise' },
@@ -67,7 +66,7 @@ M.text = {
 
 M.telescope = {
   n = {
-    ['<leader>p']       = { ":lua require'telescope'.extensions.project.project{display_type = 'full'}<CR>", 'Open Saved Projects' },
+    ['<leader>p']       = { function() require('telescope').extensions.spaceport.projects() end , 'Open Saved Projects' },
     ['<leader>t']       = { ":TodoTelescope keywords=TODO,FIX<CR>", 'List TODOs' },
     ['<leader>e']       = { ':Telescope file_browser cwd=%:p:h<CR>', 'Explore Files in current dir' },
     ['<leader>g']       = {':Telescope live_grep theme=dropdown layout_config={width=0.8}<CR>','live grep'},
