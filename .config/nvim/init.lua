@@ -32,7 +32,7 @@ vim.opt.wrap = false
 
 -- Make line numbers default
 vim.wo.number = true
-
+vim.opt.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
