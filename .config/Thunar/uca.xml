@@ -22,6 +22,7 @@
 	<range></range>
 	<patterns>*;*.sh</patterns>
 	<text-files/>
+  <other-files/>
 </action>
 <action>
 	<icon>hashit</icon>
