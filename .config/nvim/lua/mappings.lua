@@ -66,10 +66,10 @@ M.text = {
 
 M.telescope = {
   n = {
-    ['<leader>p']       = { function() require('telescope').extensions.spaceport.projects() end , 'Open Saved Projects' },
-    ['<leader>t']       = { ":TodoTelescope keywords=TODO,FIX<CR>", 'List TODOs' },
+    ['<leader>p']       = { ':CdProject<CR>', 'Open Saved Projects' },
+    ['<leader>t']       = { ':TodoTelescope keywords=TODO,FIX<CR>', 'List TODOs' },
     ['<leader>e']       = { ':Telescope file_browser cwd=%:p:h<CR>', 'Explore Files in current dir' },
-    ['<leader>g']       = {':Telescope live_grep theme=dropdown layout_config={width=0.8}<CR>','live grep'},
+    ['<leader>g']       = { ':Telescope live_grep theme=dropdown layout_config={width=0.8}<CR>','live grep'},
     ['<leader>sd']      = { require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' },
     ['<leader>so']      = { require('telescope.builtin').oldfiles, 'Find recently opened files' },
     ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
