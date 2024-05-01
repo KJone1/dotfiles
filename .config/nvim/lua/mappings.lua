@@ -35,7 +35,7 @@ M.ssr = {
 
 M.text = {
   n = {
-    ['<leader>md']         = {':MarkdownPreview<CR>','Open Markdown Preview' },
+    ['<leader>md'] = {':MarkdownPreview<CR>','Open Markdown Preview' },
     ['<A-UP>']     = {':m .-2<CR>==','Move one line up' },
     ['<A-DOWN>']   = {':m .+1<CR>==','Move one line down' },
     ['<leader>/']  = {'<Cmd>lua require("Comment.api").toggle.linewise.current()<CR>', 'Comment linewise' },
