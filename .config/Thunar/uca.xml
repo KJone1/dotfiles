@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
-	<submenu></submenu>
-	<unique-id>1708688811626091-1</unique-id>
-	<command>alacritty --working-directory=%f</command>
-	<description>Open terminal</description>
-	<range></range>
-	<patterns>*</patterns>
-	<startup-notify/>
-	<directories/>
+  <icon>utilities-terminal</icon>
+  <name>Open Terminal Here</name>
+  <submenu></submenu>
+  <unique-id>1708688811626091-1</unique-id>
+  <command>alacritty --working-directory=%f</command>
+  <description>Open terminal</description>
+  <range></range>
+  <patterns>*</patterns>
+  <startup-notify/>
+  <directories/>
 </action>
 <action>
-	<icon>nvim</icon>
-	<name>Edit file</name>
-	<submenu></submenu>
-	<unique-id>1640175617623905-4</unique-id>
-	<command>alacritty -o font.size=18 -e nvim %f</command>
-	<description></description>
-	<range></range>
-	<patterns>*;*.sh</patterns>
-	<text-files/>
+  <icon>nvim</icon>
+  <name>Edit file</name>
+  <submenu></submenu>
+  <unique-id>1640175617623905-4</unique-id>
+  <command>alacritty -o font.size=18 -e nvim %f</command>
+  <description></description>
+  <range></range>
+  <patterns>*;*.sh</patterns>
+  <text-files/>
   <other-files/>
 </action>
 <action>
-	<icon>hashit</icon>
-	<name>Check sha1sum</name>
-	<submenu></submenu>
-	<unique-id>1526633271260079-26</unique-id>
-	<command>zenity --info --title=&quot;Check sha1 for %n&quot; --text=&quot;$(sha1sum)&quot;</command>
-	<description>Check sha1sum</description>
-	<range></range>
-	<patterns>*</patterns>
-	<other-files/>
-	<text-files/>
+  <icon>hashit</icon>
+  <name>Check sha1sum</name>
+  <submenu></submenu>
+  <unique-id>1526633271260079-26</unique-id>
+  <command>zenity --info --title=&quot;Check sha1 for %n&quot; --text=&quot;$(sha1sum)&quot;</command>
+  <description>Check sha1sum</description>
+  <range></range>
+  <patterns>*</patterns>
+  <other-files/>
+  <text-files/>
 </action>
 <action>
-	<icon>hashit</icon>
-	<name>Check sha256sum</name>
-	<submenu></submenu>
-	<unique-id>1577688162350307-1</unique-id>
-	<command>zenity --info --title=&quot;Check sha256 for %n&quot; --text=&quot;$(sha256sum)&quot;</command>
-	<description>Check sha256sum</description>
-	<range></range>
-	<patterns>*</patterns>
-	<other-files/>
-	<text-files/>
+  <icon>hashit</icon>
+  <name>Check sha256sum</name>
+  <submenu></submenu>
+  <unique-id>1577688162350307-1</unique-id>
+  <command>zenity --info --title=&quot;Check sha256 for %n&quot; --text=&quot;$(sha256sum)&quot;</command>
+  <description>Check sha256sum</description>
+  <range></range>
+  <patterns>*</patterns>
+  <other-files/>
+  <text-files/>
 </action>
 <action>
-	<icon>hashit</icon>
-	<name>Check md5sum</name>
-	<submenu></submenu>
-	<unique-id>1526736788575383-2</unique-id>
-	<command>zenity --info --title=&quot;Check md5 for %n&quot; --text=&quot;$(md5sum)&quot;</command>
-	<description>Check md5sum</description>
-	<range></range>
-	<patterns>*</patterns>
-	<other-files/>
-	<text-files/>
+  <icon>hashit</icon>
+  <name>Check md5sum</name>
+  <submenu></submenu>
+  <unique-id>1526736788575383-2</unique-id>
+  <command>zenity --info --title=&quot;Check md5 for %n&quot; --text=&quot;$(md5sum)&quot;</command>
+  <description>Check md5sum</description>
+  <range></range>
+  <patterns>*</patterns>
+  <other-files/>
+  <text-files/>
 </action>
 <action>
-	<icon>clipboard</icon>
-	<name>Copy File / Folder Path</name>
-	<submenu></submenu>
-	<unique-id>1653335357081852-1</unique-id>
-	<command>echo -n &apos;%f&apos; | wl-copy</command>
-	<description></description>
-	<range></range>
-	<patterns>*</patterns>
-	<directories/>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
+  <icon>clipboard</icon>
+  <name>Copy File / Folder Path</name>
+  <submenu></submenu>
+  <unique-id>1653335357081852-1</unique-id>
+  <command>echo -n &apos;%f&apos; | wl-copy</command>
+  <description></description>
+  <range></range>
+  <patterns>*</patterns>
+  <directories/>
+  <audio-files/>
+  <image-files/>
+  <other-files/>
+  <text-files/>
+  <video-files/>
 </action>
 </actions>
