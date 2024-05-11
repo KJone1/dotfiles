@@ -18,7 +18,7 @@ M.git = {
 
 M.harpoon = {
   n = {
-    ['hh'] = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
+    ['<leader>h'] = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
     ['ha'] = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
     ['hn'] = { ':lua require("harpoon.ui").nav_next()<CR>', 'Navigate to next harpooned file' },
     ['hb'] = { ':lua require("harpoon.ui").nav_prev()<CR>', 'Navigate to previous harpooned file' },
@@ -72,13 +72,15 @@ M.telescope = {
     ['<leader>g']       = { ':Telescope live_grep theme=dropdown layout_config={width=0.8}<CR>','live grep'},
     ['<leader>sd']      = { require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' },
     ['<leader>so']      = { require('telescope.builtin').oldfiles, 'Find recently opened files' },
-    ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
-    ['<leader>f'] = { function()
-      require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend  = 10,
-        previewer = false,
-      })
-      end, '[/] Fuzzily search in current buffer' },
+    -- ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
+    -- ['<leader>f'] = { function()
+    --   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    --     winblend  = 10,
+    --     previewer = false,
+    --   })
+    --   end, '[/] Fuzzily search in current buffer' },
+    --
+    ['<leader>f'] = { ':Telescope current_buffer_fuzzy_find theme=dropdown layout_config={width=0.8}<CR>','[/] Fuzzily search in current buffer' },
     ['<leader>cs'] = {
       function()
         vim.api.nvim_exec_autocmds("User", { pattern = "ColorSchemeLoad" })
