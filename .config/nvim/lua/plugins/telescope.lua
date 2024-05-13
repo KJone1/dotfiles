@@ -19,7 +19,6 @@ return {
             results_title        = false,
             prompt_prefix        = "  ",
             selection_caret      = " ",
-            file_ignore_patterns = {".git/",".git$"},
             mappings = {
               i = {
                 ['<C-u>'] = false,
@@ -55,7 +54,6 @@ return {
               select_buffer     = true,
               display_stat      = false,
               dir_icon          = " ",
-              respect_gitignore = false,
               git_status        = true,
               hidden = {
                 file_browser   = true,
