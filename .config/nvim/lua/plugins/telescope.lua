@@ -61,8 +61,13 @@ return {
               },
               mappings = {
                 ["i"] = {
-                  ["<bs>"]     = false  -- disable <bs> from going back to parent dir.
+                  ["<bs>"]     = false,  -- disable <bs> from going back to parent dir.
+                  ["<del>"]    = require "telescope".extensions.file_browser.actions.goto_parent_dir
                 },
+                ["n"] = {
+                  ["<del>"] = require "telescope".extensions.file_browser.actions.goto_parent_dir,
+                  ["g"]     = require "telescope".extensions.file_browser.actions.toggle_respect_gitignore
+                }
               },
             },
           },
