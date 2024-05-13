@@ -9,7 +9,7 @@ while getopts "d" opt; do
   case $opt in
     d)
       # If the -d (debug) flag is present, pass -n to stow
-      OPTIONS="-n"
+      OPTIONS="--verbose=2 -n"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -18,5 +18,5 @@ while getopts "d" opt; do
   esac
 done
 
-stow . --verbose=2 $OPTIONS -t $HOME --ignore=install.sh --ignore=assets --ignore=.editorconfig
+stow . $OPTIONS -t $HOME --ignore=install.sh --ignore=assets --ignore=.editorconfig
 
