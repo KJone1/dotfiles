@@ -8,13 +8,7 @@ return {
   opts = {},
   config = function()
       local wk = require("which-key")
-      local mappings = require("mappings") -- Ensure this matches the file name of your mappings
-
-      -- local setupMappings = function()
-      --   for mode, mapping in pairs(mappings.general) do
-      --     wk.register(mapping, { mode = mode })
-      --   end
-      -- end
+      local mappings = require("mappings")
 
       local setupMappings = function()
           for _, contextMappings in pairs(mappings) do
