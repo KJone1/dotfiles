@@ -19,9 +19,9 @@ M.git = {
 M.harpoon = {
   n = {
     ['<leader>h'] = { ':lua require("harpoon.ui").toggle_quick_menu()<CR>', 'Browse harpooned files' },
-    ['ha'] = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
-    ['hn'] = { ':lua require("harpoon.ui").nav_next()<CR>', 'Navigate to next harpooned file' },
-    ['hb'] = { ':lua require("harpoon.ui").nav_prev()<CR>', 'Navigate to previous harpooned file' },
+    ['ha']        = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
+    ['hn']        = { ':lua require("harpoon.ui").nav_next()<CR>', 'Navigate to next harpooned file' },
+    ['hb']        = { ':lua require("harpoon.ui").nav_prev()<CR>', 'Navigate to previous harpooned file' },
   },
 }
 
