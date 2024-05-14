@@ -2,6 +2,8 @@ local M = {}
 
 M.general = {
   n = { -- Normal mode mappings
+    ['[d']        = { vim.diagnostic.goto_prev,'Go to previous diagnostic message' },
+    [']d']        = { vim.diagnostic.goto_next, 'Go to next diagnostic message' },
   },
   i = { -- Insert mode mappings
   },
