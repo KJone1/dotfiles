@@ -18,7 +18,7 @@ M.git = {
 
 M.harpoon = {
   n = {
-    ['<leader>h'] = { ':Telescope harpoon marks<CR>', 'Browse harpooned files' },
+    ['<leader>h'] = { ':lua require("harpoon.ui").toggle_quick_menu()<CR>', 'Browse harpooned files' },
     ['ha'] = { ':lua require("harpoon.mark").add_file()<CR>', 'Harpoon file' },
     ['hn'] = { ':lua require("harpoon.ui").nav_next()<CR>', 'Navigate to next harpooned file' },
     ['hb'] = { ':lua require("harpoon.ui").nav_prev()<CR>', 'Navigate to previous harpooned file' },
@@ -68,8 +68,9 @@ M.telescope = {
   n = {
     ['<leader>p']       = { ':CdProject<CR>', 'Open Saved Projects' },
     ['<leader>t']       = { ':TodoTelescope keywords=TODO,FIX<CR>', 'List TODOs' },
-    ['<leader>e']       = { ':Telescope file_browser cwd=%:p:h<CR>', 'Explore Files in current dir' },
-    ['<leader>g']       = { ':Telescope live_grep theme=dropdown layout_config={width=0.8}<CR>','live grep'},
+    -- ['<leader>e']       = { ':Telescope file_browser cwd=%:p:h<CR>', 'Explore Files in current dir' },
+    ['<leader>e']       = { ':Neotree<CR>', 'Explore Files in current dir' },
+    ['<leader>g']       = { ':Telescope live_grep theme=ivy layout_config={height=0.55,width=0.8}<CR>','live grep'},
     ['<leader>sd']      = { require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' },
     ['<leader>so']      = { require('telescope.builtin').oldfiles, 'Find recently opened files' },
     -- ['<leader><space>'] = { require('telescope.builtin').buffers, 'Find open buffers' },
@@ -80,7 +81,7 @@ M.telescope = {
     --   })
     --   end, '[/] Fuzzily search in current buffer' },
     --
-    ['<leader>f'] = { ':Telescope current_buffer_fuzzy_find theme=dropdown layout_config={width=0.8}<CR>','[/] Fuzzily search in current buffer' },
+    ['<leader>f'] = { ':Telescope current_buffer_fuzzy_find theme=ivy layout_config={height=0.55}<CR>','[/] Fuzzily search in current buffer' },
     ['<leader>cs'] = {
       function()
         vim.api.nvim_exec_autocmds("User", { pattern = "ColorSchemeLoad" })
