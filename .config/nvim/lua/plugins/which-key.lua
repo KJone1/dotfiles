@@ -8,7 +8,7 @@ return {
   opts = {},
   config = function()
       local wk = require("which-key")
-      local mappings = require("mappings")
+      local mappings = require("keymaps")
 
       local setupMappings = function()
           for _, contextMappings in pairs(mappings) do
