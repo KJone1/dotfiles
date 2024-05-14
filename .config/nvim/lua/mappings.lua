@@ -12,7 +12,7 @@ M.general = {
 
 M.git = {
   n = {
-    ['lg'] = {':LazyGit<cr>', 'Open LazyGit' },
+    ['<leader>l'] = {':LazyGit<cr>', 'Open LazyGit' },
   },
 }
 
