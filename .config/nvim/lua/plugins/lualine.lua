@@ -84,6 +84,7 @@ return {
           lualine_y = {
             {
               'filetype',
+              icons_enabled = false,
               color = {
                 bg = "NONE",
               }
