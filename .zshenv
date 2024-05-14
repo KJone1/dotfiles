@@ -5,10 +5,12 @@ export ZSH="$HOME/.oh-my-zsh"
 typeset -aU path
 path=($HOME/.local/bin
       $HOME/.local/bin/go/bin/
+      $HOME/bin
       /var/lib/k0s/bin
       /opt
       $path)
 export PATH
+
 export KUBECONFIG="$HOME/.kube/config"
 # Set grim/grimshot screenshot output location
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/screenshots"
