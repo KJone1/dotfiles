@@ -3,7 +3,6 @@ return {
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    "nvim-telescope/telescope-file-browser.nvim",
     -- Only load if `make` is available. Make sure you have the system requirements installed.
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -41,41 +40,10 @@ return {
               },
             },
           },
-          extensions = {
-            file_browser = {
-              layout_config = {
-                width = 0.65,
-              },
-              previewer         = false,
-              hijack_netrw      = true,
-              grouped           = true,
-              auto_depth        = true,
-              prompt_path       = true,
-              select_buffer     = true,
-              display_stat      = false,
-              dir_icon          = " ",
-              git_status        = true,
-              hidden = {
-                file_browser   = true,
-                folder_browser = false,
-              },
-              mappings = {
-                ["i"] = {
-                  ["<bs>"]     = false,  -- disable <bs> from going back to parent dir.
-                  ["<del>"]    = require "telescope".extensions.file_browser.actions.goto_parent_dir
-                },
-                ["n"] = {
-                  ["<del>"] = require "telescope".extensions.file_browser.actions.goto_parent_dir,
-                  ["g"]     = require "telescope".extensions.file_browser.actions.toggle_respect_gitignore
-                }
-              },
-            },
-          },
         }
       -- Enable telescope extensions, if installed
       pcall(require("telescope").load_extension,"harpoon")
       pcall(require("telescope").load_extension,"spaceport")
-      pcall(require("telescope").load_extension,"file_browser")
       pcall(require('telescope').load_extension,'fzf')
       end
     },
