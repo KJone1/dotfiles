@@ -1,3 +1,5 @@
+[shell]
+program = "/bin/zsh"
 [window]
 startup_mode = "Windowed"
 dynamic_title = false
