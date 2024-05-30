@@ -26,6 +26,8 @@ output * bg /home/kj/wallpapers/abstract.png fill
 
 default_border pixel 2
 default_floating_border pixel 2
+titlebar_border_thickness 0
+titlebar_padding 0
 #
 # Example configuration:
 #
@@ -35,10 +37,8 @@ default_floating_border pixel 2
 
 ### Idle configuration
 #
-exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f -c 000000'
+# exec swayidle -w \
+#     before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -180,7 +180,7 @@ input type:touchpad {
 
     # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking
-    # bindsym $mod+w layout tabbed
+    bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
