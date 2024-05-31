@@ -18,5 +18,7 @@ while getopts "d" opt; do
   esac
 done
 
-stow . $OPTIONS -t $HOME --ignore=install.sh --ignore=assets --ignore=.editorconfig
-
+stow . $OPTIONS \
+  -t $HOME \
+  --ignore=install.sh --ignore=assets --ignore=.editorconfig \
+  --no-folding --dotfiles
