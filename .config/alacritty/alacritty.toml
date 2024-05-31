@@ -3,7 +3,7 @@ program = "/bin/zsh"
 [window]
 startup_mode = "Windowed"
 dynamic_title = false
-title = ""
+title = "Shell"
 decorations_theme_variant = "Dark"
 [font]
 size = 16
