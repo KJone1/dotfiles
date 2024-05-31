@@ -24,10 +24,13 @@ set $menu wofi | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
 output * bg /home/kj/wallpapers/abstract.png fill
 
-default_border pixel 2
-default_floating_border pixel 2
+workspace_layout tabbed
+
+default_border pixel 1
+default_floating_border pixel 1
 titlebar_border_thickness 0
 titlebar_padding 0
+hide_edge_borders --i3 none
 #
 # Example configuration:
 #
@@ -68,7 +71,7 @@ input type:touchpad {
     bindsym $mod+return exec $term
     bindsym $mod+b exec $browser
     bindsym $mod+f exec $explorer
-    bindsym $mod+n exec $term -o font.size=18 -e nvim
+    bindsym $mod+n exec $term -o font.size=18 -o window.title="'neovim'" -e nvim
 
 
     # Kill focused window
