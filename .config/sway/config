@@ -25,11 +25,13 @@ set $menu wofi | xargs swaymsg exec --
 output * bg /home/kj/wallpapers/abstract.png fill
 
 workspace_layout tabbed
+title_align center
+smart_borders on
 
 default_border pixel 1
 default_floating_border pixel 1
-titlebar_border_thickness 0
-titlebar_padding 0
+titlebar_border_thickness 1
+titlebar_padding 1
 hide_edge_borders --i3 none
 #
 # Example configuration:
