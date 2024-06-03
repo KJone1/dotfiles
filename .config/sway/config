@@ -55,7 +55,7 @@ input type:keyboard {
     xkb_layout "il,us"
     xkb_switch_layout next
     xkb_numlock enabled
-    xkb_options "grp:win_space_toggle"
+    xkb_options "grp:win_space_toggle,caps:escape"
 }
 input type:touchpad {
     dwt enabled
