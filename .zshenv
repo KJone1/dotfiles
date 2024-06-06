@@ -5,6 +5,8 @@ export ZSH="$HOME/.oh-my-zsh"
 typeset -aU path
 path=($HOME/.local/bin
       $HOME/.local/bin/go/bin/
+      /usr/local/go/bin
+      /home/kj/go/bin
       $HOME/bin
       /var/lib/k0s/bin
       /opt
