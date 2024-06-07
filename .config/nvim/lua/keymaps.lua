@@ -7,6 +7,7 @@ M.general = {
     ['<F1>'] = { '<ESC>', 'Remap F1 as escape' },
   },
   i = { -- Insert mode mappings
+    ['<F1>'] = { '<ESC>', 'Remap F1 as escape' },
   },
   v = { -- Visual mode mappings
     ['xa'] = { function() require'align'.align_to_char({length = 1}) end ,'Align to char' },
