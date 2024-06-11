@@ -4,7 +4,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Keep entries in path array unique
 typeset -aU path
 path=($HOME/.local/bin
-      $HOME/.local/bin/go/bin/
+      $HOME/.local/bin/go/bin
+      $HOME/.local/bin/google-cloud-sdk/bin
       /usr/local/go/bin
       /home/kj/go/bin
       $HOME/bin
@@ -22,3 +23,4 @@ export K9S_EDITOR=nvim
 # Enable wayland support for firefox | not needed after version 121 of firefox
 export MOZ_ENABLE_WAYLAND=1
 export BROWSER=firefox
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-sway}"
