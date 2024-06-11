@@ -21,6 +21,7 @@ alias docker="nerd"
 alias k9="k9s"
 alias m="make"
 alias lg="lazygit"
+alias task="go-task"
 # ---
 
 # Uncomment the following line to use case-sensitive completion.
