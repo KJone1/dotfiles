@@ -116,9 +116,9 @@ input type:touchpad {
 
     bindsym {
         # Capture the currently active output
-        Print       exec grimshot save output
+        Print       exec wl-copy < $(grimshot save output)
         # Capture the currently active window
-        Alt+Print   exec grimshot save active
+        Alt+Print   exec wl-copy < $(grimshot save active)
         # Select and capture a custom rectangular area
         Ctrl+Print  exec wl-copy < $(grimshot save area)
     }
