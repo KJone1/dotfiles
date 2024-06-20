@@ -55,6 +55,9 @@ window#waybar.empty #window {
 	border: 0px;
 }
 
+#language {
+  min-width: 25px; /* Minimum width to prevent shifting */
+}
 /* Sets background, padding, margins, and borders for (all) modules */
 #workspaces,
 #clock,
