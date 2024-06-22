@@ -54,8 +54,7 @@ hide_edge_borders --i3 none
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 input type:keyboard {
-    xkb_layout "il,us"
-    xkb_switch_layout next
+    xkb_layout "us,il"
     xkb_numlock enabled
     xkb_options "grp:win_space_toggle,caps:escape"
 }
