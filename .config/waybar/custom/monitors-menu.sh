@@ -15,19 +15,18 @@ while true; do
   fi
 
   if echo "${active_outputs}" | grep -q "${chosen_output}"; then
-    status="Active"
     msg="Disable ${chosen_output}?"
+    # Confirmation dialog
+    confirmation=$(echo -e "${msg}\nUpdate Resolution\nBack\nCancel" | wofi --dmenu --prompt="${chosen_output} is Active: ")
   elif echo "${inactive_outputs}" | grep -q "${chosen_output}"; then
-    status="Inactive"
     msg="Enable ${chosen_output}?"
+    confirmation=$(echo -e "${msg}\nBack\nCancel" | wofi --dmenu --prompt="${chosen_output} is Inactive: ")
   else
     echo "Monitor Status of ${chosen_output} is Unknown"
     exit 0
   fi
 
   if [ -n "${chosen_output}" ]; then
-      # Confirmation dialog
-      confirmation=$(echo -e "${msg}\nUpdate Resolution\nBack\nCancel" | wofi --dmenu --prompt="${chosen_output} is ${status}: ")
       case "${confirmation}" in
         "${msg}")
           swaymsg output "${chosen_output}" toggle
@@ -37,8 +36,10 @@ while true; do
           resolutions=$(swaymsg -t get_outputs | jq -r \
             ".[] | select(.name == \"${chosen_output}\") | .modes | map(\"\(.width)x\(.height)@\(.refresh/1000)\") | join(\"\n\")"
           )
-
-          chosen_resolution=$(echo "${resolutions}" | wofi --dmenu --prompt="Choose Resolution:")
+          current_res=$(swaymsg -t get_outputs | jq -r \
+            ".[] | select(.name == \"${chosen_output}\") | .current_mode | \"\(.width)x\(.height)@\(.refresh/1000)\""
+          )
+          chosen_resolution=$(echo "${resolutions}" | wofi --dmenu --prompt="Current Resolution is: ${current_res}")
 
           if [ -n "${chosen_resolution}" ]; then
             # Set the chosen resolution
