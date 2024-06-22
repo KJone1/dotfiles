@@ -65,10 +65,13 @@ window#waybar.empty #window {
 #temperature,
 #cpu,
 #memory,
+#backlight,
+#pulseaudio,
+#custom-monitors,
 #wireplumber,
 #tray,
 #battery {
-	background: rgba(26, 27, 38, 0.4);
+	/* background: rgba(26, 27, 38, 0.4); */
 	border: 0;
 	background-color: transparent;
 }

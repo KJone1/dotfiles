@@ -14,6 +14,7 @@
     "modules-right": [
       "tray",
       "mpd",
+      "custom/monitors",
       "cpu",
       "memory",
       "pulseaudio",
@@ -104,6 +105,7 @@
         "format-full": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}%  ",
+        "interval": 10,
         // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
@@ -134,9 +136,18 @@
             "phone": "",
             "portable": "",
             "car": " ",
-            "default": ["", "", " "]
+            "default": [" ", " ", " "]
         },
         "on-double-click": "pavucontrol"
+    },
+    "custom/monitors": {
+      "format": "{icon}",
+      "format-icons": ["󰍹 "],
+      "return-type" : "json",
+      "interval": 10,
+      "exec": "$HOME/.config/waybar/custom/monitors.sh",
+      "tooltip": "true",
+      "on-double-click": "$HOME/.config/waybar/custom/monitors-menu.sh"
     },
     //"custom/media": {
     //    "format": "{icon} {}",
