@@ -34,18 +34,18 @@ while true; do
           break
           ;;
         "Update Resolution")
-            resolutions=$(swaymsg -t get_outputs | jq -r \
-                ".[] | select(.name == \"${chosen_output}\") | .modes | map(\"\(.width)x\(.height)@\(.refresh/1000)\") | join(\"\n\")"
-            )
+          resolutions=$(swaymsg -t get_outputs | jq -r \
+            ".[] | select(.name == \"${chosen_output}\") | .modes | map(\"\(.width)x\(.height)@\(.refresh/1000)\") | join(\"\n\")"
+          )
 
-            chosen_resolution=$(echo "${resolutions}" | wofi --dmenu --prompt="Choose Resolution:")
+          chosen_resolution=$(echo "${resolutions}" | wofi --dmenu --prompt="Choose Resolution:")
 
-            if [ -n "${chosen_resolution}" ]; then
-                # Set the chosen resolution
-                swaymsg output "${chosen_output}" mode "${chosen_resolution}Hz"
-            fi
-            break
-            ;;
+          if [ -n "${chosen_resolution}" ]; then
+            # Set the chosen resolution
+            swaymsg output "${chosen_output}" mode "${chosen_resolution}Hz"
+          fi
+          break
+          ;;
         "Cancel")
           break;
           ;;
