@@ -14,30 +14,46 @@ while true; do
     break
   fi
 
-  if echo "$active_outputs" | grep -q "$chosen_output"; then
+  if echo "${active_outputs}" | grep -q "${chosen_output}"; then
     status="Active"
     msg="Disable ${chosen_output}?"
-  elif echo "$inactive_outputs" | grep -q "$chosen_output"; then
+  elif echo "${inactive_outputs}" | grep -q "${chosen_output}"; then
     status="Inactive"
     msg="Enable ${chosen_output}?"
   else
-    echo "Monitor Status of $chosen_output is Unknown"
+    echo "Monitor Status of ${chosen_output} is Unknown"
     exit 0
   fi
 
-  if [ -n "$chosen_output" ]; then
+  if [ -n "${chosen_output}" ]; then
       # Confirmation dialog
-      confirmation=$(echo -e "${msg}\nBack\nCancel" | wofi --dmenu --prompt="${chosen_output} is ${status}: ")
+      confirmation=$(echo -e "${msg}\nUpdate Resolution\nBack\nCancel" | wofi --dmenu --prompt="${chosen_output} is ${status}: ")
+      case "${confirmation}" in
+        "${msg}")
+          swaymsg output "${chosen_output}" toggle
+          break
+          ;;
+        "Update Resolution")
+            resolutions=$(swaymsg -t get_outputs | jq -r \
+                ".[] | select(.name == \"${chosen_output}\") | .modes | map(\"\(.width)x\(.height)@\(.refresh/1000)\") | join(\"\n\")"
+            )
 
-      if [ "$confirmation" = "${msg}" ]; then
-        swaymsg output "${chosen_output}" toggle
-        break
-      elif [ "$confirmation" = "Cancel" ]; then
-        break;
-      elif [ -z "$confirmation" ]; then
-        # Handle case where user doesn't select anything (e.g., closes wofi)
-        break
-      fi
+            chosen_resolution=$(echo "${resolutions}" | wofi --dmenu --prompt="Choose Resolution:")
+
+            if [ -n "${chosen_resolution}" ]; then
+                # Set the chosen resolution
+                swaymsg output "${chosen_output}" mode "${chosen_resolution}Hz"
+            fi
+            break
+            ;;
+        "Cancel")
+          break;
+          ;;
+        "")
+          # Handle case where user doesn't select anything (e.g., closes wofi)
+          break
+          ;;
+      esac
   fi
 done
 exit 0
