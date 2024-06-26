@@ -71,9 +71,10 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
-        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%Y}"
+      // "timezone": "America/New_York",
+      // "format-alt": "{:%d-%m-%Y}"
+      "tooltip": true,
+      "tooltip-format": " {:%d/%m/%Y} "
     },
     "cpu": {
         "format": "{usage}%  ",
@@ -116,10 +117,11 @@
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "format-wifi": " {essid} {icon} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": " {signalStrength}% ",
+        "tooltip-format": " {signalStrength}% | {ipaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": " 󰤮 ",
-        "format-alt": "{essid}: {ipaddr}/{cidr}"
+        //"format-alt": "{essid}: {ipaddr}/{cidr}",
+        "on-double-click": "alacritty --title 'Network Manager' -e nmtui"
     },
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
