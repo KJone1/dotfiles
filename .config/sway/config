@@ -12,7 +12,7 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 set $browser firefox
-set $explorer alacritty -o window.title="'file explorer'" -e lf
+set $explorer alacritty --title 'file explorer' -e lf
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -72,7 +72,7 @@ input type:touchpad {
     bindsym $mod+return exec $term
     bindsym $mod+b exec $browser
     bindsym $mod+f exec $explorer
-    bindsym $mod+n exec $term -o font.size=18 -o window.title="'neovim'" -e nvim
+    bindsym $mod+n exec $term -o font.size=18 --title 'neovim' -e nvim
 
 
     # Kill focused window
