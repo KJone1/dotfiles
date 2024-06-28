@@ -34,14 +34,11 @@ opt.cursorline = true -- Enable cursor line highlight
 -- disable netrw at the very start of your init.lua
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
--- optionally enable 24-bit colour
-opt.termguicolors = true
--- Set highlight on search
-opt.hlsearch = true
+opt.termguicolors = true -- optionally enable 24-bit colour
+opt.hlsearch = true -- Set highlight on search
 opt.incsearch = true
 opt.signcolumn = 'yes' -- Keep signcolumn on by default
 -- Decrease update time
 opt.updatetime = 250
 opt.timeoutlen = 300
--- Set completeopt to have a better completion experience
-opt.completeopt = 'menuone,noselect'
+opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
