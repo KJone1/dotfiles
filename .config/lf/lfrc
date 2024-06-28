@@ -112,3 +112,8 @@ cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
 map gd follow_link
+
+cmd go_to_lfrc ${{
+  lf -remote "send $id cd ~/.config/lf"
+}}
+map gc go_to_lfrc
