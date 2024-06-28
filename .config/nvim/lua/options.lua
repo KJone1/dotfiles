@@ -19,9 +19,9 @@ opt.smartcase = true
 -- Tabs, indent
 -----------------------------------------------------------
 
-vim.cmd 'set tabstop=2'
-vim.cmd 'set softtabstop=2'
-vim.cmd 'set shiftwidth=2'
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
 opt.breakindent = true
 opt.smartindent = true -- Enable auto indenting and set it to spaces
 opt.shiftwidth = 2
