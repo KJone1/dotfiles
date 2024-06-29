@@ -33,6 +33,8 @@ map gt cd ~/.trash
 map d trash
 map D delete
 map a :push %mkdir<space>
+map c unselect
+map C clear
 
 #-----------------------------------------------------------
 #-- Commands
