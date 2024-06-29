@@ -1,42 +1,38 @@
-# interpreter for shell commands
-set shell sh
-
-# set '-eu' options for shell commands
-# These options are used to have safer shell commands. Option '-e' is used to
-# exit on error and option '-u' is used to give error for unset variables.
-# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
-# $fx variables contain names with '*' or '?' characters. However, this option
-# is used selectively within individual commands as it can be limiting at
-# times.
-set shellopts '-eu'
-
-# set internal field separator (IFS) to "\n" for shell commands
-# This is useful to automatically split file names in $fs and $fx properly
-# since default file separator used in these variables (i.e. 'filesep' option)
-# is newline. You need to consider the values of these options and create your
-# commands accordingly.
+#-----------------------------------------------------------
+#-- General
+#-----------------------------------------------------------
+set shell sh set shellopts '-eu'
 set ifs "\n"
-
-# leave some space at the top and the bottom of the screen
-set scrolloff 10
-
+set scrolloff 10 # leave some space at the top and the bottom of the screen
 set cursorpreviewfmt ""
 set drawbox
 set icons
-set ratios 1:1
-# use enter for shell commands
-map <enter> open
-# show the result of execution of previous commands
-map ` !true
-# Show hidden files using .
-map . set hidden!
-# execute current file (must be executable)
-map x $$f
-map X !$f
+set ratios 1:1 # Use 2 panes instead of 3
+set dircounts
+set info size
 
-# dedicated keys for file opener actions
+#-----------------------------------------------------------
+#-- Keymaps
+#-----------------------------------------------------------
+
+map S shell # use S for shell commands
+map <enter> open
+map ` !true # show the result of execution of previous commands
+map . set hidden! # Show hidden files using .
+map x $$f # execute current file (must be executable)
+map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
+map gd follow_link
+map gc cd ~/.config/lf
+map gt cd ~/.trash
+map d trash
+map D delete
+map a :push %mkdir<space>
+
+#-----------------------------------------------------------
+#-- Commands
+#-----------------------------------------------------------
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
@@ -49,32 +45,28 @@ cmd open &{{
   esac
 }}
 
-# mkdir command. See wiki if you want it to select created dir
-map a :push %mkdir<space>
-
 # define a custom 'rename' command without prompt for overwrite
 # cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 # map r push :rename<space>
 
-# make sure trash folder exists
-# %mkdir -p ~/.trash
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    echo "----------"
+    printf "delete files? [y/n] "
+    read ans
+    [ "$ans" = "y" ] && rm -rf $fx
+}}
 
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
-
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ "$ans" = "y" ] && rm -rf $fx
-# }}
-
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
+cmd trash ${{
+  set -f
+  [ -d ~/.trash ] || mkdir ~/.trash
+  printf "$fx\n"
+  echo "----------"
+  printf "trash files? [y/n] "
+  read ans
+  [ "$ans" = "y" ] && mv $fx ~/.trash
+}}
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
@@ -111,9 +103,3 @@ cmd zip ${{
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
-map gd follow_link
-
-cmd go_to_lfrc ${{
-  lf -remote "send $id cd ~/.config/lf"
-}}
-map gc go_to_lfrc
