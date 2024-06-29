@@ -18,6 +18,8 @@ set info size
 
 map S shell # use S for shell commands
 map T $$SHELL # use T to open terminal
+map q quit
+map <esc> quit
 map <enter> open
 map ` !true # show the result of execution of previous commands
 map . set hidden! # Show hidden files using .
