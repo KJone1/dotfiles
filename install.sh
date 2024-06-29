@@ -5,11 +5,14 @@ set -e
 # Initialize an empty options string
 OPTIONS=""
 
-while getopts "d" opt; do
+while getopts "du" opt; do
   case $opt in
     d)
-      # If the -d (debug) flag is present, pass -n to stow
-      OPTIONS="--verbose=2 -n"
+      OPTIONS="-v -n"  # Verbose and dry-run for debugging
+      ;;
+    u)
+      stow -D . -v -t "$HOME"  # Unstow dotfiles verbosely
+      exit 0
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
