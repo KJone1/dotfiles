@@ -28,6 +28,18 @@ M.general = {
       end,
       'Align to char',
     },
+    ['<C-k>'] = {
+      function()
+        require('cinnamon').scroll '<C-u>zz'
+      end,
+      'Remap Ctrl-u',
+    },
+    ['<C-j>'] = {
+      function()
+        require('cinnamon').scroll '<C-d>zz'
+      end,
+      'Remap Ctrl-d',
+    },
   },
 }
 
