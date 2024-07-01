@@ -147,9 +147,9 @@
       "format-icons": ["󰍹 "],
       "return-type" : "json",
       "interval": 10,
-      "exec": "$HOME/.config/waybar/custom/monitors.sh",
+      "exec": "$HOME/.config/waybar/scripts/monitors.sh",
       "tooltip": "true",
-      "on-double-click": "$HOME/.config/waybar/custom/monitors-menu.sh"
+      "on-double-click": "$HOME/.config/waybar/scripts/monitors-menu.sh"
     },
     //"custom/media": {
     //    "format": "{icon} {}",
