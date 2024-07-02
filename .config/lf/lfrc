@@ -32,7 +32,8 @@ map gc cd ~/.config/lf
 map gt cd ~/.trash
 map d trash
 map D delete
-map a :push %mkdir<space>
+map A :push %mkdir<space>
+map a :push %touch<space>
 map c unselect
 map C clear
 
