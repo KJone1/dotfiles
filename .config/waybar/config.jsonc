@@ -10,7 +10,7 @@
       "custom/media"
     ],
     "modules-center": [
-      "sway/mode",
+      "sway/mode"
     ],
     "modules-right": [
       "tray",
@@ -48,7 +48,7 @@
       "format": " {short} ",
       "tooltip": true,
       "tooltip-format": "{long}",
-      "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+      "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
