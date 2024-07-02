@@ -2,6 +2,7 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "spacing": 20, // Gaps between modules (4px)
+    "height": 32,
 
     "modules-left": [
       "sway/workspaces",
