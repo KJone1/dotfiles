@@ -2,6 +2,7 @@
   "position": "top", // Waybar position (top|bottom|left|right)
   "spacing": 20, // Gaps between modules (4px)
   "height": 32,
+  "id": "0",
 
   "modules-left": [
     "sway/workspaces",

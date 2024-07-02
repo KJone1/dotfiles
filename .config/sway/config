@@ -243,7 +243,8 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 bar {
-     swaybar_command waybar
+  id 0
+  swaybar_command waybar
 }
 include @sysconfdir@/sway/config.d/*
 
