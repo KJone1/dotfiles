@@ -16,6 +16,7 @@
     "tray",
     "mpd",
     "custom/monitors",
+    "custom/updates",
     "cpu",
     "memory",
     "pulseaudio",
@@ -125,5 +126,13 @@
     "exec": "$HOME/.config/waybar/scripts/monitors.sh",
     "tooltip": "true",
     "on-double-click": "$HOME/.config/waybar/scripts/monitors-menu.sh"
+  },
+  "custom/updates": {
+    "format": "{icon}",
+    "format-icons": [" "],
+    "interval": 60,
+    "exec": "$HOME/.config/waybar/scripts/updates.sh",
+    "tooltip": "true",
+    "tooltip-format": " New Updates: {} "
   }
 }
