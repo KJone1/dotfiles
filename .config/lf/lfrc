@@ -57,22 +57,13 @@ cmd open &{{
 # map r push :rename<space>
 
 cmd delete ${{
-    set -f
-    printf "$fx\n"
-    echo "----------"
-    printf "delete files? [y/n] "
-    read ans
-    [ "$ans" = "y" ] && rm -rf $fx
+  set -f
+  $HOME/.config/lf/scripts/cowDelete.sh $fx
 }}
 
 cmd trash ${{
   set -f
-  [ -d ~/.trash ] || mkdir ~/.trash
-  printf "$fx\n"
-  echo "----------"
-  printf "trash files? [y/n] "
-  read ans
-  [ "$ans" = "y" ] && mv $fx ~/.trash
+  $HOME/.config/lf/scripts/cowDelete.sh -t $fx
 }}
 
 # extract the current file with the right command
