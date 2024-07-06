@@ -320,8 +320,6 @@ Vagrantfile             
 *.tif   
 *.tiff  
 *.png   
-*.svg   
-*.svgz  
 *.mng   
 *.pcx   
 *.mov   
@@ -375,4 +373,5 @@ Vagrantfile             
 
 # other formats
 *.pdf   
-
+*.svg   󰜡
+*.svgz  󰜡

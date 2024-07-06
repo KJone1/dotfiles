@@ -44,7 +44,8 @@ process_file() {
   else
     case "${fileName##*.}" in
       sh) echo -e " $fileName " ;;
-      svg|png|jpg|JPG) echo -e "  $fileName " ;;
+      png|jpg|JPG) echo -e "  $fileName " ;;
+      svg) echo -e "󰜡  $fileName " ;;
       pdf) echo -e "  $fileName " ;;
       zip|tar|gz|gzip|7z|rar) echo -e " $fileName " ;;
       *) echo -e "  $fileName " ;;
