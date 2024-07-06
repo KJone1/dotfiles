@@ -1,0 +1,44 @@
+window {
+  font-family: JetBrainsMono Nerd Font Mono, Medium;
+  font-size: 18pt;
+  color: #c0caf5;
+  background-color: rgba(24, 27, 32, 0.8);
+}
+
+button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30%;
+  background-color: transparent;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s ease-in;
+  box-shadow: 0 0 10px 2px transparent;
+  border: none;
+  margin: 5px;
+}
+
+button:hover {
+  background-size: 50%;
+  color: transparent;
+  transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+#shutdown {
+  background-image: url("./icons/shutdown.svg");
+}
+
+#sleep {
+  background-image: url("./icons/sleep.svg");
+  background-size: 35%
+}
+#sleep:hover {
+  background-size: 55%
+}
+#reboot {
+  background-image: url("./icons/reboot.svg");
+}
+
+#logout {
+  background-image: url("./icons/logout.svg");
+}
+

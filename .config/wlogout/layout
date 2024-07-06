@@ -1,0 +1,27 @@
+{
+    "label" : "sleep",
+    "action" : "swaylock -f -c 000000 && systemctl suspend",
+    "text" : "[S]leep",
+    "keybind" : "s"
+}
+
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "[P]ower Off",
+    "keybind" : "p"
+}
+
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "[R]eboot",
+    "keybind" : "r"
+}
+
+{
+    "label" : "logout",
+    "action" : "swaymsg exit",
+    "text" : "[L]og Out",
+    "keybind" : "l"
+}

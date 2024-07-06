@@ -111,7 +111,8 @@ input type:touchpad {
             $mod+x mode "default"
         }
     }
-    bindsym --to-code $mod+x mode $exit
+    # bindsym --to-code $mod+x mode $exit
+      bindsym --to-code $mod+x exec ~/.config/sway/scripts/wlogout.sh
 
     bindsym {
         # Capture the currently active output
