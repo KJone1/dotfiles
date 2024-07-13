@@ -8,7 +8,7 @@ return {
       },
       options = {
         max_delta = {
-          time = 2000,
+          time = 1000,
         },
         mode = 'cursor',
       },
