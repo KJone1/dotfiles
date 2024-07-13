@@ -36,6 +36,7 @@ map A :push %mkdir<space>
 map a :push %touch<space>
 map c unselect
 map C clear
+map E nvim_here
 
 #-----------------------------------------------------------
 #-- Commands
@@ -105,4 +106,8 @@ cmd zip ${{
 
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
+}}
+
+cmd nvim_here ${{
+  nvim -c ":Neotree" $PWD
 }}
