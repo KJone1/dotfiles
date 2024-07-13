@@ -42,11 +42,12 @@ return {
           hide_by_name = {
             '.git',
           },
-          follow_current_file = {
-            enabled = true,
-            leave_dirs_open = true,
-          },
         },
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = true,
+        },
+        hijack_netrw_behavior = 'open_current',
       },
     }
   end,
