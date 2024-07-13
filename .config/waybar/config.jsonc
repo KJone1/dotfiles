@@ -29,22 +29,22 @@
 
   // Modules configuration
 
-  // "sway/workspaces": {
-  //     "disable-scroll": true,
-  //     "all-outputs": true,
-  //     "warp-on-scroll": false,
-  //     "format": "{name}: {icon}",
-  //     "format-icons": {
-  //         "1": " ",
-  //         "2": " ",
-  //         "3": " ",
-  //         "4": " ",
-  //         "5": " ",
-  //         "urgent": " ",
-  //         "focused": " ",
-  //         "default": " "
-  //     }
-  // },
+  "sway/workspaces": {
+    "disable-scroll": true
+    // "all-outputs": true,
+    // "warp-on-scroll": false,
+    // "format": "{name}: {icon}",
+    // "format-icons": {
+    //     "1": " ",
+    //     "2": " ",
+    //     "3": " ",
+    //     "4": " ",
+    //     "5": " ",
+    //     "urgent": " ",
+    //     "focused": " ",
+    //     "default": " "
+    // }
+  },
   "sway/language": {
     "format": " {short} ",
     "tooltip": true,
@@ -55,38 +55,35 @@
     "format": "<span style=\"italic\">{}</span>"
   },
   "tray": {
-    // "icon-size": 21,
     "spacing": 10
   },
   "clock": {
-    // "timezone": "America/New_York",
-    // "format-alt": "{:%d-%m-%Y}"
+    "format": "⋆ {:%H:%M} ⋆",
     "tooltip": true,
     "tooltip-format": " {:%d/%m/%Y} "
   },
   "cpu": {
-      "format": "{usage}%  ",
-      "tooltip": false
+    "format": "{usage}%   ",
+    "tooltip": false
   },
   "memory": {
-      "format": "{}%  "
+    "format": "{}%  "
   },
   "backlight": {
-      // "device": "acpi_video1",
-      "format": " {percent}% {icon}",
-      "tooltip": false,
-      "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    "format": "{percent}% {icon}",
+    "tooltip": false,
+    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   },
   "battery": {
     "states": {
-        "good": 95,
-        "warning": 30,
-        "critical": 15
+      "good": 95,
+      "warning": 30,
+      "critical": 15
     },
-    "format": " {capacity}% {icon} ",
+    "format": "{capacity}% {icon}",
     "format-full": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}%  ",
+    "format-plugged": "{capacity}%  ",
     "interval": 10,
     "format-icons": [" ", " ", " ", " ", " "]
   },
@@ -108,19 +105,19 @@
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
-        "headphone": " ",
-        "hands-free": "",
-        "headset": "",
-        "phone": "",
-        "portable": "",
-        "car": " ",
-        "default": [" ", " ", " "]
+      "headphone": " ",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": " ",
+      "default": [" ", " ", " "]
     },
     "on-double-click": "pavucontrol"
   },
   "custom/monitors": {
     "format": "{icon}",
-    "format-icons": ["󰍹 "],
+    "format-icons": ["󰍹  "],
     "return-type" : "json",
     "interval": 10,
     "exec": "$HOME/.config/waybar/scripts/monitors.sh",
@@ -129,7 +126,7 @@
   },
   "custom/updates": {
     "format": "{icon}",
-    "format-icons": [" "],
+    "format-icons": ["  "],
     "interval": 60,
     "exec": "$HOME/.config/waybar/scripts/updates.sh",
     "tooltip": "true",
