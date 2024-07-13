@@ -27,7 +27,8 @@ map x $$f # execute current file (must be executable)
 map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
-map gd follow_link
+map gl follow_link
+map gd cd ~/DEV/dotfiles
 map gc cd ~/.config/lf
 map gt cd ~/.trash
 map d trash
