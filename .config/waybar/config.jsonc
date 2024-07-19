@@ -58,7 +58,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "⋆ {:%H:%M} ⋆",
+    "format": "{:%H:%M} ",
     "tooltip": true,
     "tooltip-format": " {:%d/%m/%Y} "
   },
