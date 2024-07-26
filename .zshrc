@@ -1,5 +1,5 @@
 HIST_STAMPS="dd.mm.yyyy"
-ZSH_THEME="darkblood_custom"
+ZSH_THEME="tokyo-winter"
 zstyle ':omz:update' mode auto      # update automatically without asking
 plugins=(git)
 
