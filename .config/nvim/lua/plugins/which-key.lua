@@ -13,7 +13,7 @@ return {
     local setupMappings = function()
       for _, contextMappings in pairs(mappings) do
         for mode, mapping in pairs(contextMappings) do
-          wk.add(mapping, { mode = { mode } })
+          wk.add { mapping, mode = { mode } }
         end
       end
     end
