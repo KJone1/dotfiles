@@ -31,13 +31,13 @@ map gl follow_link
 map gd cd ~/DEV/dotfiles
 map gc cd ~/.config/lf
 map gt cd ~/.trash
+map gm cd /run/media
 map d trash
 map D delete
 map A :push %mkdir<space>
 map a :push %touch<space>
 map c unselect
 map C clear
-map E nvim_here
 
 #-----------------------------------------------------------
 #-- Commands
@@ -71,6 +71,7 @@ cmd trash ${{
 cmd move ${{
   set -f
   dest=$1
+  mkdir -p $dest
   mv $fx $dest
 }}
 # extract the current file with the right command
@@ -112,3 +113,12 @@ cmd follow_link %{{
 cmd nvim_here ${{
   nvim -c ":Neotree" $PWD
 }}
+
+cmd lazygit_here ${{
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    lazygit
+  else
+    echo "Error: Not inside a Git repository."
+  fi
+}}
+
