@@ -27,12 +27,15 @@ button:hover {
   background-image: url("./icons/shutdown.svg");
 }
 
-#sleep {
-  background-image: url("./icons/sleep.svg");
-  background-size: 35%
+#shutdown:hover {
+  background-size: 42%
 }
-#sleep:hover {
-  background-size: 55%
+#lock{
+  background-image: url("./icons/lock.svg");
+  background-size: 40%
+}
+#lock:hover {
+  background-size: 60%
 }
 #reboot {
   background-image: url("./icons/reboot.svg");

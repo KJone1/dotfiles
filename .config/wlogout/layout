@@ -1,8 +1,8 @@
 {
-    "label" : "sleep",
-    "action" : "swaylock -f -c 000000 && systemctl suspend",
-    "text" : "[S]leep",
-    "keybind" : "s"
+    "label" : "lock",
+    "action" : "swaylock -f -c 000000",
+    "text" : "[L]ock",
+    "keybind" : "l"
 }
 
 {
@@ -22,6 +22,6 @@
 {
     "label" : "logout",
     "action" : "swaymsg exit",
-    "text" : "[L]og Out",
-    "keybind" : "l"
+    "text" : "Log [O]ut",
+    "keybind" : "o"
 }
