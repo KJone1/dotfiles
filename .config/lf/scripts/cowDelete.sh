@@ -66,9 +66,6 @@ if [[ $trash_flag ]]; then
     for file in "$@"; do
       mv "$file" ~/.trash
     done
-  else
-    clear
-    exit 0
   fi
 else
   read -rp "${bold}So you wanna delete them?[y/n]: " ans
@@ -76,8 +73,7 @@ else
     for file in "$@"; do
       rm -rf "$file"
     done
-  else
-    clear
-    exit 0
   fi
 fi
+clear
+exit 0
