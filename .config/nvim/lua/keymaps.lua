@@ -8,14 +8,14 @@ M.general = {
     {
       '<C-k>',
       function()
-        require('cinnamon').scroll '<C-u>zz'
+        require('cinnamon').scroll '10kzz'
       end,
       desc = 'Remap Ctrl-u',
     },
     {
       '<C-j>',
       function()
-        require('cinnamon').scroll '<C-d>zz'
+        require('cinnamon').scroll '10jzz'
       end,
       desc = 'Remap Ctrl-d',
     },
