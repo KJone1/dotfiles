@@ -94,7 +94,8 @@
     "tooltip-format": " {signalStrength}% | {ipaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": " 󰤮 ",
-    "on-double-click": "alacritty --title 'Network Manager' -e nmtui"
+    "on-double-click": "alacritty --title 'Network Manager' -e nmtui",
+    "on-double-click-right": "nmcli device disconnect wlo1 && nmcli device connect wlo1"
   },
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
