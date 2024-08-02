@@ -26,12 +26,16 @@ case "$(file -Lb --mime-type "$file")" in
     output="${file// /_}"
     output=$(basename "${output%.*}")
     output="$HOME/tmp/$output"
-    pdftoppm -f 1 -l 1 \
+    if ! pdftoppm -f 1 -l 1 \
              -scale-to-x 1920 \
              -scale-to-y -1 \
              -singlefile \
              -jpeg -tiffcompression jpeg \
-             -- "${file}" "${output}"
+             -- "${file}" "${output}";
+    then
+      echo "Error converting PDF to JPEG" >&1
+      exit 1
+    fi
     cleanup=1
     draw "${output}.jpg"
     ;;
