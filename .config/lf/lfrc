@@ -11,6 +11,8 @@ set icons
 set ratios 1:1 # Use 2 panes instead of 3
 set dircounts
 set info size
+set previewer ~/.config/lf/scripts/previewer.sh
+set cleaner ~/.config/lf/scripts/cleaner.sh
 
 #-----------------------------------------------------------
 #-- Keymaps
