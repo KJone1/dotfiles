@@ -24,8 +24,8 @@ return {
           color = default_color,
           diff_color = {
             added = { fg = '#98be65' },
-            modified = { fg = '#FF8800' },
-            removed = { fg = '#ca1243' },
+            modified = warn_color,
+            removed = error_color,
           },
         },
       },
