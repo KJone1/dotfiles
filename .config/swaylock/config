@@ -1,4 +1,4 @@
-image=/home/kj/wallpapers/woman.jpg
+image=$HOME/wallpapers/flowers.png
 ignore-empty-password
 font=JetBrains Mono
 indicator-radius=100
