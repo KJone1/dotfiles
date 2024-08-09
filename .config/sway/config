@@ -73,8 +73,9 @@ input type:touchpad {
     bindsym $mod+b exec $browser
     bindsym $mod+f exec $explorer
     bindsym $mod+n exec $term --title 'neovim' -e nvim
-
-
+    bindsym --to-code $mod+x exec ~/.config/sway/scripts/wlogout.sh
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
     # Kill focused window
     bindsym $mod+q kill
 
@@ -93,26 +94,6 @@ input type:touchpad {
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
-
-    # exit mode
-    set $exit "   exit: [s]leep, [p]oweroff, [r]eboot, [l]ogout"
-    mode $exit {
-        bindsym --to-code {
-            s exec swaylock -f -c 000000 && systemctl suspend, mode "default"
-            p exec systemctl poweroff
-            r exec systemctl reboot
-            l exec swaymsg exit
-
-            Return mode "default"
-            Escape mode "default"
-            $mod+x mode "default"
-        }
-    }
-    # bindsym --to-code $mod+x mode $exit
-      bindsym --to-code $mod+x exec ~/.config/sway/scripts/wlogout.sh
 
     bindsym {
         # Capture the currently active output
