@@ -4,7 +4,26 @@ M.general = {
   n = { -- Normal mode mappings
     { '[d', vim.diagnostic.goto_prev, desc = 'Go to previous diagnostic message' },
     { ']d', vim.diagnostic.goto_next, desc = 'Go to next diagnostic message' },
+    { '<leader>p', ':CdProject<CR>', desc = 'Open Saved Projects' },
+    { '<leader>e', ':Neotree<CR>', desc = 'Explore Files in current dir' },
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
+  },
+  i = { -- Insert mode mappings
+    { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
+  },
+  v = { -- Visual mode mappings
+    {
+      'xa',
+      function()
+        require('align').align_to_char { length = 1 }
+      end,
+      desc = 'Align to char',
+    },
+  },
+}
+
+M.scroll = {
+  n = {
     {
       '<C-k>',
       function()
@@ -20,28 +39,19 @@ M.general = {
       desc = 'Remap Ctrl-d',
     },
   },
-  i = { -- Insert mode mappings
-    { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
-  },
-  v = { -- Visual mode mappings
-    {
-      'xa',
-      function()
-        require('align').align_to_char { length = 1 }
-      end,
-      desc = 'Align to char',
-    },
+  i = {},
+  v = {
     {
       '<C-k>',
       function()
-        require('cinnamon').scroll '<C-u>zz'
+        require('cinnamon').scroll '10kzz'
       end,
       desc = 'Remap Ctrl-u',
     },
     {
       '<C-j>',
       function()
-        require('cinnamon').scroll '<C-d>zz'
+        require('cinnamon').scroll '10jzz'
       end,
       desc = 'Remap Ctrl-d',
     },
@@ -115,21 +125,12 @@ M.text = {
 
 M.telescope = {
   n = {
-    { '<leader>p', ':CdProject<CR>', desc = 'Open Saved Projects' },
     { '<leader>t', ':TodoTelescope keywords=TODO,FIX<CR>', desc = 'List TODOs' },
-    { '<leader>e', ':Neotree<CR>', desc = 'Explore Files in current dir' },
-    { '<leader>g', ':Telescope live_grep theme=ivy layout_config={height=0.55,width=0.8}<CR>', desc = 'live grep' },
-    { '<leader>sd', require('telescope.builtin').diagnostics, desc = '[S]earch [D]iagnostics' },
-    { '<leader>so', require('telescope.builtin').oldfiles, desc = 'Find recently opened files' },
-    { '<leader>f', ':Telescope current_buffer_fuzzy_find theme=ivy layout_config={height=0.55}<CR>', desc = '[/] Fuzzily search in current buffer' },
-    {
-      '<leader>cs',
-      function()
-        vim.api.nvim_exec_autocmds('User', { pattern = 'ColorSchemeLoad' })
-        require('telescope.builtin').colorscheme()
-      end,
-      desc = 'Explore colorschemes',
-    },
+    { '<leader>g', ':FzfLua live_grep_resume<CR>', desc = 'Live grep Project' },
+    { '<leader>sd', ':FzfLua diagnostics_workspace<CR>', desc = '[S]earch [D]iagnostics' },
+    { '<leader>so', ':FzfLua oldfiles<CR>', desc = 'List recently opened files' },
+    { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
+    { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
   },
 }
 return M
