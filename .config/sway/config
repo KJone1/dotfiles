@@ -4,6 +4,8 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $mainDisplay HDMI-A-1
+set $sideDisplay eDP-1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -141,7 +143,7 @@ input type:touchpad {
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+0 workspace "music"
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -168,7 +170,12 @@ input type:touchpad {
 
     # Assign apps to workspaces
     assign [app_id="org.mozilla.firefox"] 1
-    assign [title="YouTube Music"] 8
+    assign [title="YouTube Music"] music
+
+    # Assign workspaces to output if output is available
+    workspace 1 output $mainDisplay
+    workspace music output $sideDisplay
+
 #
 # Layout stuff:
 #
