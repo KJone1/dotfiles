@@ -9,8 +9,9 @@ return {
     notify_on_error = false,
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'isort', 'black' },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      python = { 'isort', 'black', stop_after_first = true },
+      yaml = { 'yamlfmt', 'yamlfix', stop_after_first = true },
+      sh = { 'shfmt', 'beautysh', stop_after_first = true },
     },
     default_format_opts = {
       lsp_format = 'fallback',
