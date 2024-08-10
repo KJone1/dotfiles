@@ -6,7 +6,7 @@ has_multiple_displays() {
 }
 
 if has_multiple_displays; then
-  o=$(swaymsg -t get_outputs | jq  -r '. | map(.name) | join(", ")')
+  o=$(swaymsg -t get_outputs | jq -r '. | map(.name) | join(", ")')
   text="{\"text\":\"\",\"tooltip\":\""$o"\"}"
   echo $text
 fi

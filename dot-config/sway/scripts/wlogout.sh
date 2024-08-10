@@ -4,9 +4,9 @@ A_1080=400
 B_1080=400
 
 # Check if wlogout is already running
-if pgrep -x "wlogout" > /dev/null; then
-    pkill -x "wlogout"
-    exit 0
+if pgrep -x "wlogout" >/dev/null; then
+  pkill -x "wlogout"
+  exit 0
 fi
 
 # Get resolution and scaling factor of the focused monitor

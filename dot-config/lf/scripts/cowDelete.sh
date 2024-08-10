@@ -12,22 +12,22 @@ animal="small"
 
 while getopts "th" opt; do
   case $opt in
-    t)
-      trash_flag=true
-      ;;
-    h)
-      echo "Usage: $0 [-t] file1 file2 ..."
-      exit 1
-      ;;
-    \?)
-      echo "Invalid option: -$OPTARG" >&2
-      exit 1
-      ;;
+  t)
+    trash_flag=true
+    ;;
+  h)
+    echo "Usage: $0 [-t] file1 file2 ..."
+    exit 1
+    ;;
+  \?)
+    echo "Invalid option: -$OPTARG" >&2
+    exit 1
+    ;;
   esac
 done
 
 if [[ $OPTIND -gt 1 ]]; then
-  shift $((OPTIND-1))
+  shift $((OPTIND - 1))
 fi
 
 if [ $# -eq 0 ]; then
@@ -43,12 +43,12 @@ process_file() {
     echo -e "  $fileName "
   else
     case "${fileName##*.}" in
-      sh) echo -e " $fileName " ;;
-      png|jpg|JPG) echo -e "  $fileName " ;;
-      svg) echo -e "󰜡  $fileName " ;;
-      pdf) echo -e "  $fileName " ;;
-      zip|tar|gz|gzip|7z|rar) echo -e " $fileName " ;;
-      *) echo -e "  $fileName " ;;
+    sh) echo -e " $fileName " ;;
+    png | jpg | JPG) echo -e "  $fileName " ;;
+    svg) echo -e "󰜡  $fileName " ;;
+    pdf) echo -e "  $fileName " ;;
+    zip | tar | gz | gzip | 7z | rar) echo -e " $fileName " ;;
+    *) echo -e "  $fileName " ;;
     esac
   fi
 }
