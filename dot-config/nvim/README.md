@@ -10,6 +10,7 @@ Clone the repository and install the plugins:
 # on Linux and Mac
 git clone git@github.com:KJone1/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
+
 ### Post Installation
 
 Run the following command and then **you are ready to go**!
@@ -25,14 +26,19 @@ nvim --headless "+Lazy! sync" +qa
 ## 🔌 Plugins
 
 ### colorschemes
+
 - [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim)
 - [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
 - [oh-lucy.nvim](https://github.com/Yazeed1s/oh-lucy.nvim)
 - [omni](https://github.com/getomni/neovim)
+
 ### comments
+
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+
 ### ui
+
 - [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
@@ -40,12 +46,18 @@ nvim --headless "+Lazy! sync" +qa
 - [twilight.nvim](https://github.com/folke/twilight.nvim)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 - [neoscroll](https://github.com/karb94/neoscroll.nvim)
+
 ### git
+
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
+
 ### search and replace
+
 - [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
+
 ### etc
+
 - [auto-save.nvim](https://github.com/okuuva/auto-save.nvim)
 - [better-escape.nvim](https://github.com/max397574/better-escape.nvim)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)

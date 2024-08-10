@@ -11,4 +11,4 @@ Inspired by [Fazzi](https://gitlab.com/fazzi/dotfiles/-/tree/hyprland-laptop?ref
 
 ## Installation
 
-RUN ``` ./install.sh ``` from project root
+RUN `./install.sh` from project root
