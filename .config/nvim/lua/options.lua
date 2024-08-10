@@ -5,6 +5,8 @@ local opt = vim.opt -- Set options (global/buffer/windows-scoped)vim.cmd 'set ex
 -- General
 -----------------------------------------------------------
 
+g.mapleader = ' '
+g.maplocalleader = ' '
 opt.wrap = false
 opt.number = true
 opt.relativenumber = true
@@ -31,7 +33,7 @@ opt.shiftwidth = 2
 -------------------------------------------------------------
 
 opt.cursorline = true -- Enable cursor line highlight
--- disable netrw at the very start of your init.lua
+-- disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 opt.termguicolors = true -- optionally enable 24-bit colour
