@@ -12,6 +12,7 @@ return {
       python = { 'isort', 'black', stop_after_first = true },
       yaml = { 'yamlfmt', 'yamlfix', stop_after_first = true },
       sh = { 'shfmt', 'beautysh', stop_after_first = true },
+      markdown = { 'mdformat' },
     },
     default_format_opts = {
       lsp_format = 'fallback',
