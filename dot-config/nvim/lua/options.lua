@@ -1,6 +1,6 @@
 local g = vim.g -- Global variables
 local opt = vim.opt -- Set options (global/buffer/windows-scoped)vim.cmd 'set expandtab'
-
+local d = vim.diagnostic
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
@@ -44,3 +44,13 @@ opt.signcolumn = 'yes' -- Keep signcolumn on by default
 opt.updatetime = 250
 opt.timeoutlen = 300
 opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
+d.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
+    },
+  },
+}
