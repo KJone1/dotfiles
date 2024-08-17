@@ -13,6 +13,7 @@ return {
       yaml = { 'yamlfmt', 'yamlfix', stop_after_first = true },
       sh = { 'shfmt', 'beautysh', stop_after_first = true },
       markdown = { 'mdformat' },
+      c = { 'clang-format' },
     },
     default_format_opts = {
       lsp_format = 'fallback',
