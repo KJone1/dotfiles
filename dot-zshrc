@@ -23,9 +23,21 @@ alias m="make"
 alias lg="lazygit"
 alias task="go-task"
 alias fcd='cd $(fd --type d | fzf)'
-alias edit='nvim $(fd --type f | fzf)'
 # ---
+edit() {
+    local exclude_list=(".png" ".jpg" ".pdf")
 
+    local exclude_options=""
+    for ext in "${exclude_list[@]}"; do
+        exclude_options+=" --exclude \"*$ext\""
+    done
+
+    local file=$(fd --type f $exclude_options | fzf)
+
+    if [ -n "$file" ]; then
+        nvim "$file"
+    fi
+}
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
