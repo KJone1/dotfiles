@@ -22,6 +22,8 @@ alias k9="k9s"
 alias m="make"
 alias lg="lazygit"
 alias task="go-task"
+alias fcd='cd $(fd --type d | fzf)'
+alias edit='nvim $(fd --type f | fzf)'
 # ---
 
 # Uncomment the following line to use case-sensitive completion.
