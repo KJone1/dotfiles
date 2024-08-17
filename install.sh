@@ -11,17 +11,17 @@ while getopts "du" opt; do
     OPTIONS="-v -n" # Verbose and dry-run for debugging
     ;;
   u)
-    stow -D --dotfiles -v -t "$HOME" . # Unstow dotfiles verbosely
+    stow -D --dotfiles -v -t "${HOME}" . # Unstow dotfiles verbosely
     exit 0
     ;;
   \?)
-    echo "Invalid option: -$OPTARG" >&2
+    echo "Invalid option: -${OPTARG}" >&2
     exit 1
     ;;
   esac
 done
 
-stow . $OPTIONS \
-  -t $HOME \
+stow . "${OPTIONS}" \
+  -t "${HOME}" \
   --ignore=install.sh --ignore=assets --ignore=.editorconfig \
   --no-folding --dotfiles
