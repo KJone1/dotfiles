@@ -127,7 +127,8 @@ M.telescope = {
   n = {
     { '<leader>t', ':TodoTelescope keywords=TODO,FIX<CR>', desc = 'List TODOs' },
     { '<leader>g', ':FzfLua live_grep_resume<CR>', desc = 'Live grep Project' },
-    { '<leader>sd', ':FzfLua diagnostics_workspace<CR>', desc = '[S]earch [D]iagnostics' },
+    { '<leader>sw', ':FzfLua diagnostics_workspace<CR>', desc = 'Search all diagnostics in project' },
+    { '<leader>sd', ':FzfLua diagnostics_document<CR>', desc = 'Search diagnostics in current document' },
     { '<leader>so', ':FzfLua oldfiles<CR>', desc = 'List recently opened files' },
     { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
     { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
