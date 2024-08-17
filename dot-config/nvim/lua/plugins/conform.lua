@@ -10,10 +10,11 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'isort', 'black', stop_after_first = true },
-      yaml = { 'yamlfmt', 'yamlfix', stop_after_first = true },
+      yaml = { 'prettier', 'yamlfmt', 'yamlfix', stop_after_first = true },
       sh = { 'shfmt', 'beautysh', stop_after_first = true },
-      markdown = { 'mdformat' },
+      markdown = { 'prettier', 'mdformat', stop_after_first = true },
       c = { 'clang-format' },
+      cpp = { 'clang-format' },
     },
     default_format_opts = {
       lsp_format = 'fallback',
@@ -26,6 +27,9 @@ return {
     formatters = {
       shfmt = {
         prepend_args = { '-i', '2' },
+      },
+      ['clang-format'] = {
+        append_args = { '--style', 'google' },
       },
     },
   },
