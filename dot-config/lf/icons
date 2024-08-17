@@ -285,8 +285,6 @@ Vagrantfile             
 *.tbz   
 *.tbz2  
 *.tz    
-*.deb   
-*.rpm   
 *.jar   
 *.war   
 *.ear   
@@ -372,6 +370,9 @@ Vagrantfile             
 *.xspf  
 
 # other formats
-*.pdf   
-*.svg   󰜡
-*.svgz  󰜡
+*.pdf    
+*.svg   󰜡 
+*.svgz  󰜡 
+*.rpm    
+*.deb    
+*log     
