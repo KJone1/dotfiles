@@ -370,9 +370,9 @@ Vagrantfile             
 *.xspf  
 
 # other formats
-*.pdf    
-*.svg   󰜡 
-*.svgz  󰜡 
-*.rpm    
-*.deb    
-*log     
+*.pdf   
+*.svg   󰜡
+*.svgz  󰜡
+*.rpm   
+*.deb   
+*.log   
