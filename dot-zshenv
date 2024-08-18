@@ -26,5 +26,4 @@ export K9S_EDITOR=nvim
 export MOZ_ENABLE_WAYLAND=1
 export BROWSER=firefox
 export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-sway}"
-export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 export FZF_DEFAULT_COMMAND="fd --type f"
