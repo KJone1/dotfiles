@@ -7,7 +7,11 @@ local d = vim.diagnostic
 
 g.mapleader = ' '
 g.maplocalleader = ' '
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true
+opt.columns = 80 -- Breaks by word rather than character
+opt.textwidth = 0
+opt.wrapmargin = 0
 opt.number = true
 opt.relativenumber = true
 opt.mouse = 'a' -- Enable mouse mode
@@ -36,7 +40,7 @@ opt.cursorline = true -- Enable cursor line highlight
 -- disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
-opt.termguicolors = true -- optionally enable 24-bit colour
+opt.termguicolors = true -- Optionally enable 24-bit colour
 opt.hlsearch = true -- Set highlight on search
 opt.incsearch = true
 opt.signcolumn = 'yes' -- Keep signcolumn on by default
