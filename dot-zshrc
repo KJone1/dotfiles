@@ -2,7 +2,8 @@
 
 HIST_STAMPS="dd.mm.yyyy"
 ZSH_THEME="tokyo-winter"
-zstyle ':omz:update' mode auto      # update automatically without asking
+# update automatically without asking
+zstyle ':omz:update' mode auto
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -24,22 +25,35 @@ alias k9="k9s"
 alias m="make"
 alias lg="lazygit"
 alias task="go-task"
-alias fcd='cd $(fd --type d | fzf)'
+alias ju='cd $(fd . ${HOME} -H --type d -E ".git" | fzf)'
 # ---
+
 edit() {
-    local exclude_list=(".png" ".jpg" ".pdf")
+  local file_type="$1"
 
-    local exclude_options=""
-    for ext in "${exclude_list[@]}"; do
-        exclude_options+=" --exclude \"*$ext\""
+  local fd_options=()
+  if [[ -n "$file_type" ]]; then
+    fd_options=("-e" "${file_type}")
+  else
+    local exclude_list=("png" "jpg" "pdf" "docx")
+    local exclude_options=()
+    for ext in "$exclude_list[@]"; do
+      exclude_options+=("-E '*.${ext}'")
     done
+    fd_options=("${exclude_options[@]}")
+  fi
 
-    local file=$(fd --type f $exclude_options | fzf)
+  local file
+  file=$(fd -a -H -0 "${fd_options[@]}" --type file  . "${HOME}" | fzf --read0 -0 -1)
 
-    if [ -n "$file" ]; then
-        nvim "$file"
-    fi
+  echo "fd . "${HOME}" -H -0 "${fd_options[@]}" --type file | fzf --read0 -0 -1"
+  if [[ -n "${file}" ]]; then
+    nvim "${file}"
+  else
+    echo "No file was provided."
+  fi
 }
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
