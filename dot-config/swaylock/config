@@ -1,6 +1,6 @@
 image=$HOME/wallpapers/flowers.png
 ignore-empty-password
-font=JetBrains Mono
+font=JetBrainsMono NF Medium
 indicator-radius=100
 indicator-thickness=12
 ring-color=394b70

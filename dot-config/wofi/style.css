@@ -3,7 +3,7 @@
   border: 2px solid #414868;
   border-radius: 8px;
   background-color: rgba(21, 22, 30, 0.5);
-  font-family: JetBrains Mono;
+  font-family: JetBrainsMono NF SemiBold;
   font-size: 16px;
 }
 
@@ -38,7 +38,7 @@
   margin: 5px;
   border: none;
   color: #c0caf5;
-} 
+}
 
 #entry:selected {
 	background-color: #414868;
