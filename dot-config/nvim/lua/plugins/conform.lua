@@ -10,7 +10,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'isort', 'black', stop_after_first = true },
-      yaml = { 'prettier', 'yamlfmt', 'yamlfix', stop_after_first = true },
+      yaml = { 'yamlfmt' },
       sh = { 'shfmt', 'beautysh', stop_after_first = true },
       markdown = { 'prettier', 'mdformat', stop_after_first = true },
       c = { 'clang-format' },
