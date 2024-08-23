@@ -14,12 +14,15 @@ return {
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
-
+    'hrsh7th/cmp-buffer',
+    'chrisgrieser/cmp-nerdfont',
     'rafamadriz/friendly-snippets',
+    'onsails/lspkind.nvim',
   },
   config = function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+    local lspkind = require 'lspkind'
     luasnip.config.setup {}
     cmp.setup {
       snippet = {
@@ -28,7 +31,22 @@ return {
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
-
+      view = {
+        entries = { name = 'custom', selection_order = 'near_cursor' },
+      },
+      formatting = {
+        format = lspkind.cmp_format {
+          mode = 'symbol',
+          menu = {
+            buffer = '[Buffer]',
+            path = '[Path]',
+            nerdfont = '[Icons]',
+            nvim_lsp = '[LSP]',
+            luasnip = '[LuaSnip]',
+            nvim_lua = '[NvimLua]',
+          },
+        },
+      },
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
       --
@@ -72,9 +90,17 @@ return {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
+        { name = 'nerdfont' },
+        {
+          name = 'buffer',
+          option = {
+            keyword_length = 2,
+          },
+        },
         {
           name = 'lazydev',
-          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          -- Set group index to 0 to skip loading LuaLS completions
+          group_index = 0,
         },
       },
     }
