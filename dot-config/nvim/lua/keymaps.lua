@@ -22,19 +22,20 @@ M.general = {
   },
 }
 
+local c = require 'cinnamon'
 M.scroll = {
   n = {
     {
       '<C-k>',
       function()
-        require('cinnamon').scroll '10kzz'
+        c.scroll '10kzz'
       end,
       desc = 'Remap Ctrl-u',
     },
     {
       '<C-j>',
       function()
-        require('cinnamon').scroll '10jzz'
+        c.scroll '10jzz'
       end,
       desc = 'Remap Ctrl-d',
     },
@@ -44,14 +45,14 @@ M.scroll = {
     {
       '<C-k>',
       function()
-        require('cinnamon').scroll '10kzz'
+        c.scroll '10kzz'
       end,
       desc = 'Remap Ctrl-u',
     },
     {
       '<C-j>',
       function()
-        require('cinnamon').scroll '10jzz'
+        c.scroll '10jzz'
       end,
       desc = 'Remap Ctrl-d',
     },
