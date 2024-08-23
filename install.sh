@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 set -e
 
@@ -8,10 +8,12 @@ OPTIONS=""
 while getopts "du" opt; do
   case $opt in
   d)
-    OPTIONS="-v -n" # Verbose and dry-run for debugging
+    # Verbose and dry-run for debugging
+    OPTIONS="-vn"
     ;;
   u)
-    stow -D --dotfiles -v -t "${HOME}" . # Unstow dotfiles verbosely
+    # Unstow dotfiles verbosely
+    stow -D --dotfiles -v -t "${HOME}" .
     exit 0
     ;;
   \?)
