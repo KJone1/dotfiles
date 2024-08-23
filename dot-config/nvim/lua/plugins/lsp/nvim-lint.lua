@@ -9,7 +9,6 @@ return {
     lint.linters_by_ft = {
       dockerfile = { 'hadolint' },
       sh = { 'shellcheck' },
-      markdown = { 'proselint' },
       c = { 'cpplint' },
       cpp = { 'cpplint' },
     }
