@@ -46,7 +46,6 @@ edit() {
   local file
   file=$(fd -a -H -0 "${fd_options[@]}" --type file  . "${HOME}" | fzf --read0 -0 -1)
 
-  echo "fd . "${HOME}" -H -0 "${fd_options[@]}" --type file | fzf --read0 -0 -1"
   if [[ -n "${file}" ]]; then
     nvim "${file}"
   else
