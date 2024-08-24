@@ -1,6 +1,6 @@
-return{
-  "nvim-pack/nvim-spectre",
+return {
+  'nvim-pack/nvim-spectre',
   build = false,
-  cmd = "Spectre",
-  opts = { open_cmd = "noswapfile vnew" },
+  cmd = 'Spectre',
+  opts = { open_cmd = 'noswapfile vnew' },
 }
