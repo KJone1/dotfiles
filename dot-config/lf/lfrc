@@ -40,6 +40,8 @@ map A :push %mkdir<space>
 map a :push %touch<space>
 map c unselect
 map C clear
+map <c-c> copy
+map <c-v> paste
 
 #-----------------------------------------------------------
 #-- Commands
