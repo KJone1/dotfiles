@@ -127,6 +127,7 @@ fi             # FILE
 *.db            
 *.sql           
 *.dump          
+*.sqlite        
 *.clj           
 *.cljc          
 *.cljs          
