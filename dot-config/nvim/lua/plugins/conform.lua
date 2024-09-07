@@ -9,8 +9,9 @@ return {
     notify_on_error = false,
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'isort', 'black', stop_after_first = true },
+      python = { 'black' },
       yaml = { 'yamlfmt' },
+      json = { 'prettier' },
       sh = { 'shfmt', 'beautysh', stop_after_first = true },
       markdown = { 'prettier', 'mdformat', stop_after_first = true },
       c = { 'clang-format' },
