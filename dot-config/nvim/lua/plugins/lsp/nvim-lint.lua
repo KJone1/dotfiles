@@ -11,6 +11,7 @@ return {
       sh = { 'shellcheck' },
       c = { 'cpplint' },
       cpp = { 'cpplint' },
+      python = { 'flake8' },
     }
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
 
