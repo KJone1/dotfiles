@@ -21,10 +21,11 @@ set $explorer $term --title 'file explorer' -e lf
 # set $menu dmenu_path | wmenu | xargs swaymsg exec --
 set $menu wofi | xargs swaymsg exec --
 
-### Output configuration
-#
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
 output * bg /home/kj/wallpapers/abstract.png fill
+
+# Make sure WAYLAND_DISPLAY and XDG_CURRENT_DESKTOP are imported into D-Bus.
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 workspace_layout tabbed
 title_align center
@@ -35,8 +36,8 @@ default_floating_border pixel 1
 titlebar_border_thickness 1
 titlebar_padding 1
 hide_edge_borders --i3 none
-#
-# Example configuration:
+
+### Output configuration
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
