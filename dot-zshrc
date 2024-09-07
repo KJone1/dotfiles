@@ -25,7 +25,7 @@ alias k9="k9s"
 alias m="make"
 alias lg="lazygit"
 alias task="go-task"
-alias ju='cd $(fd . ${HOME} -H --type d -E ".git" | fzf)'
+alias ju='cd $(fd . ${HOME} --max-depth 4 -H --type d -E ".git" | fzf)'
 # ---
 
 edit() {
