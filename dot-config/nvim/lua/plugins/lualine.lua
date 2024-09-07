@@ -77,7 +77,7 @@ return {
           color = default_color,
         },
         {
-          'encoding',
+          'filetype',
           fmt = string.upper,
           color = default_color,
         },
