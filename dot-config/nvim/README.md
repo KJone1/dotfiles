@@ -1,85 +1,67 @@
-# Neovim
-
-## Install Instructions
-
-> Install requires Neovim 0.9+. Always review the code before installing a configuration.
-
-Clone the repository and install the plugins:
-
-```sh
-# on Linux and Mac
-git clone git@github.com:KJone1/nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-```
-
-### Post Installation
-
-Run the following command and then **you are ready to go**!
-
-```sh
-nvim --headless "+Lazy! sync" +qa
-```
-
-## 📦 Package manager
+## 💤 Plugin manager
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ## 🔌 Plugins
 
-### colorschemes
-
-- [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim)
-- [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
-- [oh-lucy.nvim](https://github.com/Yazeed1s/oh-lucy.nvim)
-- [omni](https://github.com/getomni/neovim)
-
-### comments
-
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
-
-### ui
-
-- [dressing.nvim](https://github.com/stevearc/dressing.nvim)
-- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [noice.nvim](https://github.com/folke/noice.nvim)
-- [twilight.nvim](https://github.com/folke/twilight.nvim)
-- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
-- [neoscroll](https://github.com/karb94/neoscroll.nvim)
-
-### git
-
-- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
-
-### search and replace
-
-- [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
-
-### etc
-
+- [align.nvim](https://github.com/Vonr/align.nvim)
 - [auto-save.nvim](https://github.com/okuuva/auto-save.nvim)
-- [better-escape.nvim](https://github.com/max397574/better-escape.nvim)
+- [cd-project.nvim](https://github.com/LintaoAmons/cd-project.nvim)
+- [cinnamon.nvim](https://github.com/declancm/cinnamon.nvim)
+- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
+- [cmp-dotenv](https://github.com/SergioRibera/cmp-dotenv)
+- [cmp-nerdfont](https://github.com/chrisgrieser/cmp-nerdfont)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [cmp-path](https://github.com/hrsh7th/cmp-path)
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+- [conform.nvim](https://github.com/stevearc/conform.nvim)
+- [dressing.nvim](https://github.com/stevearc/dressing.nvim)
+- [eyeliner.nvim](https://github.com/jinh0/eyeliner.nvim)
 - [fidget.nvim](https://github.com/j-hui/fidget.nvim)
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [go.nvim](https://github.com/ray-x/go.nvim)
+- [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+- [guihua.lua](https://github.com/ray-x/guihua.lua)
+- [harpoon](https://github.com/ThePrimeagen/harpoon)
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim)
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [lazydev.nvim](https://github.com/folke/lazydev.nvim)
+- [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)
 - [lsp-lens.nvim](https://github.com/VidocqH/lsp-lens.nvim)
+- [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
+- [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim)
 - [mason.nvim](https://github.com/williamboman/mason.nvim)
-- [neodev.nvim](https://github.com/folke/neodev.nvim)
+- [minintro.nvim](https://github.com/eoh-bse/minintro.nvim)
+- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [neovim](https://github.com/getomni/neovim)
+- [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
+- [noice.nvim](https://github.com/folke/noice.nvim)
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)
+- [nvim-lint](https://github.com/mfussenegger/nvim-lint)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
+- [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [oh-lucy.nvim](https://github.com/Yazeed1s/oh-lucy.nvim)
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-- [spaceport.nvim](https://github.com/CWood-sdf/spaceport.nvim)
-- [telescope-project.nvim](https://github.com/nvim-telescope/telescope-project.nvim)
+- [poimandres.nvim](https://github.com/olivercederborg/poimandres.nvim)
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
 - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
+- [vim-kitty](https://github.com/fladson/vim-kitty)
 - [vim-sleuth](https://github.com/tpope/vim-sleuth)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
