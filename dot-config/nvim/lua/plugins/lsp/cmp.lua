@@ -18,6 +18,7 @@ return {
     'chrisgrieser/cmp-nerdfont',
     'rafamadriz/friendly-snippets',
     'onsails/lspkind.nvim',
+    'SergioRibera/cmp-dotenv',
   },
   config = function()
     local cmp = require 'cmp'
@@ -49,6 +50,7 @@ return {
             nvim_lsp = '[LSP]',
             luasnip = '[LuaSnip]',
             nvim_lua = '[NvimLua]',
+            dotenv = '[ENV]',
           },
         },
       },
@@ -96,6 +98,7 @@ return {
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'nerdfont' },
+        { name = 'dotenv' },
         {
           name = 'buffer',
           option = {
