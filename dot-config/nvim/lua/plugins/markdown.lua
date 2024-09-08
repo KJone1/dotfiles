@@ -13,7 +13,7 @@ local M = {
     ft = { 'markdown' },
     opts = {
       bullet = {
-        icons = { ' ', '󰺕 ', '󰻂 ', '󰍶 ' },
+        icons = { '󰇊 ', '󰇋 ', '󰇌 ', '󰇍 ', '󰇎 ', '󰇏 ' },
       },
     },
   },
