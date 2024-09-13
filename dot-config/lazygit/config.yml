@@ -1,0 +1,47 @@
+gui:
+  sidePanelWidth: 0.3333
+  expandFocusedSidePanel: true
+  # The weight of the expanded side panel, relative to the other panels. 2 means
+  # twice as tall as the other panels. Only relevant if `expandFocusedSidePanel` is true.
+  expandedSidePanelWeight: 6
+  # Sometimes the main window is split in two (e.g. when the selected file has both staged and unstaged changes). This setting controls how the two sections are split.
+  # Options are:
+  # - 'horizontal': split the window horizontally
+  # - 'vertical': split the window vertically
+  # - 'flexible': (default) split the window horizontally if the window is wide enough, otherwise split vertically
+  mainPanelSplitMode: vertical
+  # How the window is split when in half screen mode (i.e. after hitting '+' once).
+  # Possible values:
+  # - 'left': split the window horizontally (side panel on the left, main view on the right)
+  # - 'top': split the window vertically (side panel on top, main view below)
+  enlargedSideViewLocation: left
+  commitLength:
+    show: true
+  showListFooter: true
+  showFileTree: true
+  showRandomTip: false
+  showCommandLog: false
+  showBottomLine: false
+  showPanelJumps: true
+  nerdFontsVersion: "3"
+  showFileIcons: true
+  filterMode: fuzzy
+git:
+  autoFetch: true
+  autoRefresh: true
+  fetchAll: true
+  disableForcePushing: true
+  parseEmoji: true
+update:
+  method: never
+confirmOnQuit: false
+quitOnTopLevelReturn: false
+os:
+  open: kitty -e nvim {{filename}}
+disableStartupPopups: false
+# What to do when opening Lazygit outside of a git repo.
+# - 'prompt': (default) ask whether to initialize a new repo or open in the most recent repo
+# - 'create': initialize a new repo
+# - 'skip': open most recent repo
+# - 'quit': exit Lazygit
+notARepository: prompt
