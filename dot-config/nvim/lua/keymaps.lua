@@ -123,10 +123,41 @@ M.text = {
     { '<Tab>', '<C-t>', desc = 'Indent line' },
   },
 }
+M.dap = {
+
+  n = {
+    {
+      '<leader>db',
+      ':DapToggleBreakpoint<CR>',
+      desc = 'Add breakpoint at line',
+    },
+    {
+      '<leader>d<space>',
+      ':DapContinue<CR>',
+      desc = 'Debbuger: next',
+    },
+    {
+      '<leader>dd',
+      function()
+        require('dapui').open() -- Requires nvim-dap-ui
+        vim.cmd [[DapContinue]] -- Important: This will lazy-load nvim-dap
+      end,
+      desc = 'Start debugger',
+    },
+    {
+      '<leader>dx',
+      function()
+        require('dap').terminate()
+        require('dapui').close()
+      end,
+      desc = 'Stop debugger',
+    },
+  },
+}
 
 M.telescope = {
   n = {
-    { '<leader>t', ':TodoTelescope keywords=TODO,FIX<CR>', desc = 'List TODOs' },
+    { '<leader>t', ':TodoFzfLua keywords=TODO,FIX<CR>', desc = 'List TODOs' },
     { '<leader>g', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project' },
     { '<leader>sw', ':FzfLua diagnostics_workspace<CR>', desc = 'Search all diagnostics in project' },
     { '<leader>sd', ':FzfLua diagnostics_document<CR>', desc = 'Search diagnostics in current document' },

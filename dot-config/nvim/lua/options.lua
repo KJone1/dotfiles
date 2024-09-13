@@ -1,6 +1,7 @@
 local g = vim.g -- Global variables
 local opt = vim.opt -- Set options (global/buffer/windows-scoped)vim.cmd 'set expandtab'
 local d = vim.diagnostic
+local fn = vim.fn
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
@@ -58,3 +59,4 @@ d.config {
     },
   },
 }
+fn.sign_define('DapBreakpoint', { text = '󰏥 ', texthl = 'DevIconFreeBsd', linehl = '', numhl = '' })
