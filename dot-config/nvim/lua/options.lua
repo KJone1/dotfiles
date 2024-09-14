@@ -52,11 +52,14 @@ opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better complet
 d.config {
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = '󰯆',
-      [vim.diagnostic.severity.WARN] = '',
-      [vim.diagnostic.severity.INFO] = '',
-      [vim.diagnostic.severity.HINT] = '',
+      [d.severity.ERROR] = '󰯆',
+      [d.severity.WARN] = '',
+      [d.severity.INFO] = '',
+      [d.severity.HINT] = '',
     },
   },
 }
-fn.sign_define('DapBreakpoint', { text = '󰏥 ', texthl = 'DevIconFreeBsd', linehl = '', numhl = '' })
+fn.sign_define {
+  { name = 'DapBreakpoint', text = '󰏥 ', texthl = 'DevIconFreeBsd', linehl = '', numhl = '' },
+  { name = 'DapBreakpointRejected', text = ' ', texthl = 'DevIconFreeBsd', linehl = '', numhl = '' },
+}
