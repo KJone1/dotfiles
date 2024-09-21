@@ -57,15 +57,15 @@ hide_edge_borders --i3 none
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 input type:keyboard {
-    xkb_layout "us,il"
-    xkb_numlock enabled
-    xkb_options "grp:win_space_toggle,caps:escape"
+  xkb_layout "us,il"
+  xkb_numlock enabled
+  xkb_options "grp:win_space_toggle,caps:escape"
 }
 input type:touchpad {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
 }
 ### Key bindings
 #
