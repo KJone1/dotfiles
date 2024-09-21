@@ -71,41 +71,41 @@ input type:touchpad {
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym --to-code $mod+return exec $term
-    bindsym --to-code $mod+b exec $browser
-    bindsym --to-code $mod+f exec $explorer
-    bindsym --to-code $mod+n exec $term --title 'neovim' --class 'neovim' -e zsh -c 'source ~/.zshrc && c'
-    bindsym --to-code $mod+x exec ~/.config/sway/scripts/wlogout.sh
-    # Reload the configuration file
-    bindsym --to-code $mod+Shift+c reload
-    # Kill focused window
-    bindsym --to-code $mod+q kill
+  # Start a terminal
+  bindsym --to-code $mod+return exec $term
+  bindsym --to-code $mod+b exec $browser
+  bindsym --to-code $mod+f exec $explorer
+  bindsym --to-code $mod+n exec $term --title 'neovim' --class 'neovim' -e zsh -c 'source ~/.zshrc && c'
+  bindsym --to-code $mod+x exec ~/.config/sway/scripts/wlogout.sh
+  # Reload the configuration file
+  bindsym --to-code $mod+Shift+c reload
+  # Kill focused window
+  bindsym --to-code $mod+q kill
 
-    # Start your launcher
-    bindsym Mod1+space exec $menu
-    # Change brightness
-    bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
-    bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
-    # Change volume
-    bindsym XF86AudioMute exec $HOME/.config/sway/scripts/pavolume.pl toggle
-    bindsym XF86AudioRaiseVolume exec $HOME/.config/sway/scripts/pavolume.pl +5%
-    bindsym XF86AudioLowerVolume exec $HOME/.config/sway/scripts/pavolume.pl -5%
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+  # Start your launcher
+  bindsym Mod1+space exec $menu
+  # Change brightness
+  bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
+  bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
+  # Change volume
+  bindsym XF86AudioMute exec $HOME/.config/sway/scripts/pavolume.pl toggle
+  bindsym XF86AudioRaiseVolume exec $HOME/.config/sway/scripts/pavolume.pl +5%
+  bindsym XF86AudioLowerVolume exec $HOME/.config/sway/scripts/pavolume.pl -5%
+  # Drag floating windows by holding down $mod and left mouse button.
+  # Resize them with right mouse button + $mod.
+  # Despite the name, also works for non-floating windows.
+  # Change normal to inverse to use left mouse button for resizing and right
+  # mouse button for dragging.
+  floating_modifier $mod normal
 
-    bindsym {
-      # Capture the currently active output
-      Print       exec wl-copy < $(grimshot save output)
-      # Capture the currently active window
-      Alt+Print   exec wl-copy < $(grimshot save active)
-      # Select and capture a custom rectangular area
-      Ctrl+Print  exec wl-copy < $(grimshot save area)
-    }
+  bindsym {
+    # Capture the currently active output
+    Print       exec wl-copy < $(grimshot save output)
+    # Capture the currently active window
+    Alt+Print   exec wl-copy < $(grimshot save active)
+    # Select and capture a custom rectangular area
+    Ctrl+Print  exec wl-copy < $(grimshot save area)
+  }
 
 #
 # Moving around:
