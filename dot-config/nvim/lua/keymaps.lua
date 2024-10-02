@@ -163,6 +163,7 @@ M.telescope = {
     { '<leader>sw', ':FzfLua diagnostics_workspace<CR>', desc = 'Search all diagnostics in project' },
     { '<leader>sd', ':FzfLua diagnostics_document<CR>', desc = 'Search diagnostics in current document' },
     { '<leader>so', ':FzfLua oldfiles<CR>', desc = 'List recently opened files' },
+    { '<leader><space>', ':FzfLua git_files<CR>', desc = 'List files in project' },
     { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
     { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
   },
