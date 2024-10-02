@@ -61,7 +61,7 @@ M.scroll = {
 
 M.git = {
   n = {
-    { '<leader>l', ':LazyGit<cr>', desc = 'Open LazyGit' },
+    { '<leader>l', ':LazyGit<cr>', desc = 'Open LazyGit', icon = { icon = '󰊢 ' } },
   },
 }
 
@@ -130,6 +130,7 @@ M.dap = {
       '<leader>db',
       ':DapToggleBreakpoint<CR>',
       desc = 'Add breakpoint at line',
+      icon = { icon = ' ', color = 'red' },
     },
     {
       '<leader>d<space>',
