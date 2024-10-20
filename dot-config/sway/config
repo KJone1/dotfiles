@@ -78,7 +78,7 @@ input type:touchpad {
   bindsym --to-code $mod+n exec $term --title 'neovim' --class 'neovim' -e zsh -c 'source ~/.zshrc && c'
   bindsym --to-code $mod+x exec ~/.config/sway/scripts/wlogout.sh
   # Reload the configuration file
-  bindsym --to-code $mod+Shift+c reload
+  bindsym --to-code $mod+Shift+r reload
   # Kill focused window
   bindsym --to-code $mod+q kill
 
