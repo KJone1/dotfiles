@@ -16,7 +16,6 @@ return {
     -- You can add other tools here that you want Mason to install
     local ensure_installed = {
       'bash-language-server',
-      'beautysh',
       'shellcheck',
       'shfmt',
       'black',
@@ -32,9 +31,9 @@ return {
       'gopls',
       'lua-language-server',
       'stylua',
-      'mdformat',
       'prettier',
       'yamlfmt',
+      'taplo',
     }
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
   end,
