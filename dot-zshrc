@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 
 # --- alias list ---
 alias k="kubectl"
-alias uu="sudo dnf upgrade -y && sudo flatpak update -y"
+alias uu="sudo dnf upgrade -y --refresh && sudo flatpak update -y"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
