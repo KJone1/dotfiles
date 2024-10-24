@@ -24,7 +24,6 @@ return {
       'debugpy',
       'clangd',
       'clang-format',
-      'cpplint',
       'codelldb',
       'dockerfile-language-server',
       'hadolint',
