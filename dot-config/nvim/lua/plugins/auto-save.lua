@@ -4,8 +4,5 @@ return {
   event = { 'InsertLeave', 'BufLeave', 'FocusLost' }, -- optional for lazy loading on trigger events
   opts = {
     write_all_buffers = true,
-    execution_message = {
-      enabled = false,
-    },
   },
 }
