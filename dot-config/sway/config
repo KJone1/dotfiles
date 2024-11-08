@@ -4,7 +4,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-set $mainDisplay HDMI-A-1
+set $mainDisplay DP-1
 set $sideDisplay eDP-1
 # Home row direction keys, like vim
 set $left h
@@ -13,7 +13,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty --title "Shell"
-set $browser firefox
+set $browser flatpak run io.github.zen_browser.zen
 set $explorer $term --title 'file explorer' -e lf
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -40,7 +40,9 @@ hide_edge_borders --i3 none
 ### Output configuration
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
+output $mainDisplay {
+  mode 1920x1080@100.047Hz
+}
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
