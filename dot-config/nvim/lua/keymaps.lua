@@ -163,6 +163,12 @@ M.dap = {
   },
 }
 
+M.lsp = {
+  n = {
+    { '<F2>', vim.lsp.buf.rename, desc = 'Refacotr Rename' },
+  },
+}
+
 M.telescope = {
   n = {
     { '<leader>t', ':TodoFzfLua keywords=TODO,FIX<CR>', desc = 'List TODOs' },
