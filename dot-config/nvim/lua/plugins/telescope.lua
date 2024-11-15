@@ -1,6 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
+  lazy = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
     -- Only load if `make` is available. Make sure you have the system requirements installed.
