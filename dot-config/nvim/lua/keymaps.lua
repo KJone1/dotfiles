@@ -172,10 +172,7 @@ M.telescope = {
   n = {
     { '<leader>t', ':TodoFzfLua keywords=TODO,FIX<CR>', desc = 'List TODOs' },
     { '<leader>g', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project' },
-    { '<leader>sw', ':FzfLua diagnostics_workspace<CR>', desc = 'Search all diagnostics in project' },
-    { '<leader>sd', ':FzfLua diagnostics_document<CR>', desc = 'Search diagnostics in current document' },
-    { '<leader>so', ':FzfLua oldfiles<CR>', desc = 'List recently opened files' },
-    { '<leader><space>', ':FzfLua git_files<CR>', desc = 'List files in project' },
+    { '<leader><space>', ':FzfLua files<CR>', desc = 'Search files in project' },
     { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
     { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
   },
