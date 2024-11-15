@@ -182,16 +182,9 @@ input type:touchpad {
 #
 # Layout stuff:
 #
-  # You can "split" the current object of your focus with
-  # $mod+Shift+v or $mod+v, for horizontal and vertical splits
-  # respectively.
-  bindsym $mod+Shift+v splith
-  bindsym $mod+v splitv
-
   # Switch the current container between different layout styles
   # bindsym $mod+s layout stacking
-  bindsym $mod+t layout tabbed
-  bindsym $mod+e layout toggle split
+  bindsym $mod+t layout toggle splitv splith tabbed
 
   # Make the current focus fullscreen
   bindsym F11 fullscreen
