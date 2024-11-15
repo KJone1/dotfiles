@@ -147,8 +147,7 @@ M.dap = {
     {
       '<leader>dd',
       function()
-        require('dapui').open() -- Requires nvim-dap-ui
-        vim.cmd [[DapContinue]] -- Important: This will lazy-load nvim-dap
+        require('dapui').open()
       end,
       desc = 'Start debugger',
     },
