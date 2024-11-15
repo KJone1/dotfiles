@@ -2,7 +2,7 @@ return {
   'leath-dub/snipe.nvim',
   lazy = true,
   hints = {
-    dictionary = 'sadflewcmpghio',
+    dictionary = 'saflewcmpghio',
   },
   opts = {
     sort = 'last',
