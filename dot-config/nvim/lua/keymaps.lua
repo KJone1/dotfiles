@@ -67,10 +67,17 @@ M.git = {
 
 M.harpoon = {
   n = {
-    { '<leader>h', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = 'Browse harpooned files' },
-    { 'ha', ':lua require("harpoon.mark").add_file()<CR>', desc = 'Harpoon file' },
-    { 'hn', ':lua require("harpoon.ui").nav_next()<CR>', desc = 'Navigate to next harpooned file' },
-    { 'hb', ':lua require("harpoon.ui").nav_prev()<CR>', desc = 'Navigate to previous harpooned file' },
+    { '<leader>hh', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = 'Browse harpooned files' },
+    { '<leader>ha', ':lua require("harpoon.mark").add_file()<CR>', desc = 'Harpoon file' },
+    { '<leader>hn', ':lua require("harpoon.ui").nav_next()<CR>', desc = 'Navigate to next harpooned file' },
+    { '<leader>hb', ':lua require("harpoon.ui").nav_prev()<CR>', desc = 'Navigate to previous harpooned file' },
+    {
+      '<leader>j',
+      function()
+        require('snipe').open_buffer_menu()
+      end,
+      desc = 'Open Snipe buffer menu',
+    },
   },
 }
 
