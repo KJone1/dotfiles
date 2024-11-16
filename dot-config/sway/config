@@ -184,7 +184,7 @@ input type:touchpad {
 #
   # Switch the current container between different layout styles
   # bindsym $mod+s layout stacking
-  bindsym $mod+t layout toggle splitv splith tabbed
+  bindsym F6 layout toggle splitv splith tabbed
 
   # Make the current focus fullscreen
   bindsym F11 fullscreen
