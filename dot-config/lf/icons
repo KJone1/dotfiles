@@ -203,11 +203,11 @@ fi             # FILE
 *node_modules           
 *react.jsx              
 *procfile               
-*dockerfile             
-*docker-compose.yml     
-*docker-compose.yaml    
-*compose.yml            
-*compose.yaml           
+*dockerfile             󰡨
+*docker-compose.yml     󰡨
+*docker-compose.yaml    󰡨
+*compose.yml            󰡨
+*compose.yaml           󰡨
 *rakefile               
 *config.ru              
 *gemfile                
