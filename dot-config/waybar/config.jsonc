@@ -79,8 +79,8 @@
     "format-icons": [" ", " ", " ", " ", " "]
   },
   "network": {
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "format-wifi": " {essid} {icon} ",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    "format-wifi": "{essid} {icon}",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": " {signalStrength}% | {ipaddr} ",
     "format-linked": "{ifname} (No IP) ",
