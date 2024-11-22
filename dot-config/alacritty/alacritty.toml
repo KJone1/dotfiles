@@ -1,5 +1,5 @@
-[shell]
-program = "/bin/zsh"
+[terminal]
+shell = "/bin/zsh"
 [window]
 startup_mode = "Windowed"
 dynamic_title = false
@@ -7,7 +7,7 @@ title = "Shell"
 decorations_theme_variant = "Dark"
 [font]
 size = 16
-normal = { family="JetBrainsMono NF",style="Medium" }
+normal = { family = "JetBrainsMono NF", style = "Medium" }
 [selection]
 save_to_clipboard = true
 [mouse]
