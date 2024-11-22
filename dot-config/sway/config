@@ -27,6 +27,9 @@ output * bg /home/kj/wallpapers/abstract.png fill
 # Make sure WAYLAND_DISPLAY and XDG_CURRENT_DESKTOP are imported into D-Bus.
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
+# Start the notification daemon
+exec swaync
+
 workspace_layout tabbed
 title_align center
 smart_borders on
