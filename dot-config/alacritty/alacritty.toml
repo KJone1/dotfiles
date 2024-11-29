@@ -6,7 +6,7 @@ dynamic_title = false
 title = "Shell"
 decorations_theme_variant = "Dark"
 [font]
-size = 16
+size = 18
 normal = { family = "JetBrainsMono NF", style = "Medium" }
 [selection]
 save_to_clipboard = true
