@@ -85,7 +85,7 @@ M.ssr = {
   n = {
     { '<leader>sr', ':Spectre<CR>', desc = 'Search and Replace (Spectre)' },
     {
-      '<leader>ss',
+      '<leader>sl',
       function()
         require('custom').ssr_line()
       end,
