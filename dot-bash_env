@@ -1,5 +1,5 @@
 # vim:ft=bash
 
-if [ -f $HOME/.zshenv ]; then
-  source $HOME/.zshenv
+if [ -f "${HOME}/.zshenv" ]; then
+  source "${HOME}/.zshenv"
 fi
