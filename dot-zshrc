@@ -1,12 +1,12 @@
 # vim:ft=zsh
 
 HIST_STAMPS="dd.mm.yyyy"
-ZSH_THEME="tokyo-winter"
-# update automatically without asking
-zstyle ':omz:update' mode auto
-plugins=(git)
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
 
-source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
 
 # --- alias list ---
 alias k="kubectl"
