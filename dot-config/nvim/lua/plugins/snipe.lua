@@ -1,13 +1,13 @@
 return {
   'leath-dub/snipe.nvim',
   lazy = true,
-  hints = {
-    dictionary = 'saflewcmpghio',
-  },
   opts = {
     sort = 'last',
     navigate = {
       close_buffer = 'dd',
+    },
+    hints = {
+      dictionary = 'saflewcmpghio',
     },
     ui = {
       position = 'center',
