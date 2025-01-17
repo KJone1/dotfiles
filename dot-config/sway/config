@@ -4,7 +4,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-set $mainDisplay DP-1
+set $mainDisplay DP-2
 set $sideDisplay eDP-1
 # Home row direction keys, like vim
 set $left h
@@ -13,7 +13,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty --title "Shell"
-set $browser flatpak run io.github.zen_browser.zen
+set $browser flatpak run app.zen_browser.zen
 set $explorer $term --title 'file explorer' -e lf
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
