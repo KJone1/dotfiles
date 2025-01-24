@@ -28,6 +28,10 @@ return {
             removed = error_color,
           },
         },
+        {
+          require('custom').macro_recording,
+          color = default_color,
+        },
       },
       lualine_c = {},
       lualine_x = {

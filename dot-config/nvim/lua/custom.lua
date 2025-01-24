@@ -97,4 +97,13 @@ function M.current_file_component()
   return string.format('󰝰 %s', shortened)
 end
 
+function M.macro_recording()
+  local recording_register = vim.fn.reg_recording()
+  if recording_register ~= '' then
+    return '  Recording ' .. recording_register
+  else
+    return ''
+  end
+end
+
 return M
