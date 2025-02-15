@@ -87,11 +87,11 @@ end
 
 function M.current_file_component()
   local full_path = vim.fn.expand '%:p' -- Get the full path of the current file
-  local components = vim.split(full_path, '/') -- Split the path into directory components
+  local components = vim.split(full_path, '/')
 
-  local shortened = components[#components] -- Last component (filename)
+  local shortened = components[#components]
   if #components > 1 then
-    shortened = components[#components - 1] .. '/' .. shortened -- Add the parent directory
+    shortened = components[#components - 1] .. '/' .. shortened
   end
 
   return string.format('󰝰 %s', shortened)
