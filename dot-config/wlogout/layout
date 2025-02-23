@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "swaylock -f -c 000000",
+    "action" : "swaylock -f -c 000000 && systemctl suspend",
     "text" : "[L]ock",
     "keybind" : "l"
 }
