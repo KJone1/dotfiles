@@ -3,6 +3,10 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   cmd = 'FzfLua',
   config = function()
-    require('fzf-lua').setup {}
+    require('fzf-lua').setup {
+      files = {
+        previewer = false,
+      },
+    }
   end,
 }
