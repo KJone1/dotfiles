@@ -7,7 +7,6 @@ M.general = {
     { '<leader>p', ':CdProject<CR>', desc = 'Open Saved Projects' },
     { '<leader>e', ':Neotree<CR>', desc = 'Explore Files in current dir' },
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
-    { ';', ':FzfLua commands<CR>', desc = 'Open commands list using fzf' },
   },
   i = { -- Insert mode mappings
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
@@ -143,6 +142,7 @@ M.telescope = {
     { '<leader>t', ':TodoFzfLua keywords=TODO,FIX<CR>', desc = 'List TODOs' },
     { '<leader>g', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project' },
     { '<leader><space>', ':FzfLua files<CR>', desc = 'Search files in project' },
+    { ';', ':FzfLua commands<CR>', desc = 'Open commands list using fzf' },
     { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
     { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
   },
