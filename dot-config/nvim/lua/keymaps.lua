@@ -7,6 +7,7 @@ M.general = {
     { '<leader>p', ':CdProject<CR>', desc = 'Open Saved Projects' },
     { '<leader>e', ':Neotree<CR>', desc = 'Explore Files in current dir' },
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
+    { ';', ':FzfLua commands<CR>', desc = 'Open commands list using fzf' },
   },
   i = { -- Insert mode mappings
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
@@ -128,37 +129,6 @@ M.text = {
     { '<S-A-DOWN>', '<C-o>:t.<CR><C-o>==', desc = 'Duplicate line' },
     { '<S-Tab>', '<C-d>', desc = 'Outdent line' },
     { '<Tab>', '<C-t>', desc = 'Indent line' },
-  },
-}
-M.dap = {
-
-  n = {
-    {
-      '<leader>db',
-      ':DapToggleBreakpoint<CR>',
-      desc = 'Add breakpoint at line',
-      icon = { icon = ' ', color = 'red' },
-    },
-    {
-      '<leader>d<space>',
-      ':DapContinue<CR>',
-      desc = 'Debbuger: next',
-    },
-    {
-      '<leader>dd',
-      function()
-        require('dapui').open()
-      end,
-      desc = 'Start debugger',
-    },
-    {
-      '<leader>dx',
-      function()
-        require('dap').terminate()
-        require('dapui').close()
-      end,
-      desc = 'Stop debugger',
-    },
   },
 }
 
