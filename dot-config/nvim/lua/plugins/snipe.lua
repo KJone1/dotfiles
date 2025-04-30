@@ -11,6 +11,8 @@ return {
     },
     ui = {
       position = 'center',
+      text_align = 'file-first',
+      preselect_current = true,
       open_win_override = {
         border = 'rounded',
       },
