@@ -70,10 +70,6 @@ return {
             return vim.bo.buftype == 'quickfix'
           end,
         },
-        {
-          require('custom').harpoon_component,
-          color = default_color,
-        },
       },
       lualine_y = {
         {
