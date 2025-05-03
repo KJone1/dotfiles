@@ -148,11 +148,31 @@ M.fileformat = function()
   end
   return hl(default_color, string.upper(fileformat) .. ' ')
 end
+M.file_encoding = function()
+  local file_encoding = vim.opt.fileencoding:get()
+
+  local display_encoding
+  if file_encoding == '' then
+    -- If fileencoding is empty, use the value of the 'encoding' option.
+    -- This is the internal encoding, often UTF-8.
+    display_encoding = vim.opt.encoding:get()
+  else
+    display_encoding = file_encoding
+  end
+
+  return hl(default_color, string.upper(display_encoding) .. ' ')
+end
 
 M.active = function()
   local left_section = M.mode() .. M.git_info()
   local middle_section = M.macro_recording() .. M.current_file_component()
-  local right_section = M.diagnostics() .. M.preview_indicator() .. M.readonly_indicator() .. M.quickfix_indicator() .. M.filetype() .. M.fileformat()
+  local right_section = M.diagnostics()
+    .. M.preview_indicator()
+    .. M.readonly_indicator()
+    .. M.quickfix_indicator()
+    .. M.filetype()
+    .. M.file_encoding()
+    .. M.fileformat()
 
   -- Using %= to align sections
   return left_section .. '%=' .. middle_section .. '%=' .. right_section
