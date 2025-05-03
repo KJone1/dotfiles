@@ -80,7 +80,7 @@ end
 M.macro_recording = function()
   local recording_register = vim.fn.reg_recording()
   if recording_register ~= '' then
-    recording_register = hl(error_color, recording_register)
+    recording_register = hl(added_color, recording_register)
     return '  Recording ' .. recording_register .. ' '
   else
     return ''
