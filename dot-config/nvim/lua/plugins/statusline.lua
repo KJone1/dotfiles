@@ -150,7 +150,7 @@ M.fileformat = function()
 end
 
 M.active = function()
-  local left_section = M.mode() .. ' ' .. M.git_info()
+  local left_section = M.mode() .. M.git_info()
   local middle_section = M.macro_recording() .. M.current_file_component()
   local right_section = M.diagnostics() .. M.preview_indicator() .. M.readonly_indicator() .. M.quickfix_indicator() .. M.filetype() .. M.fileformat()
 
