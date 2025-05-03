@@ -85,25 +85,4 @@ function M.harpoon_component()
   return string.format('󱡅 %s/%d', current_mark, total_marks)
 end
 
-function M.current_file_component()
-  local full_path = vim.fn.expand '%:p' -- Get the full path of the current file
-  local components = vim.split(full_path, '/')
-
-  local shortened = components[#components]
-  if #components > 1 then
-    shortened = components[#components - 1] .. '/' .. shortened
-  end
-
-  return string.format('󰝰 %s', shortened)
-end
-
-function M.macro_recording()
-  local recording_register = vim.fn.reg_recording()
-  if recording_register ~= '' then
-    return '  Recording ' .. recording_register
-  else
-    return ''
-  end
-end
-
 return M
