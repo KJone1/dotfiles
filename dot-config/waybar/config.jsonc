@@ -6,8 +6,6 @@
 
   "modules-left": [
     "sway/workspaces",
-    "sway/scratchpad",
-    "custom/media"
   ],
   "modules-center": [
     "sway/mode"
@@ -15,6 +13,7 @@
   "modules-right": [
     "tray",
     "mpd",
+    "sway/scratchpad",
     "custom/monitors",
     "custom/updates",
     "cpu",
