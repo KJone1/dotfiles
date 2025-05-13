@@ -20,18 +20,6 @@ disabled = true
 style = "bold #faf9f6"
 format = '  [$branch]($git_status)'
 
-[git_status]
-style = "#c0caf5"
-ahead = "⇡"
-behind = "⇣"
-diverged = "⇕"
-conflicted = "✗"
-modified = "!"
-staged = "+"
-renamed = "»"
-deleted = "✘"
-untracked = "?"
-
 [status]
 format = '\[[$status]($style)\]'
 style = "bold red"
