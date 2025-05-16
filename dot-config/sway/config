@@ -120,10 +120,10 @@ input type:touchpad {
 # Moving around:
 #
   # Move your focus around using hjkl
-  bindsym $mod+$left focus left
-  bindsym $mod+$down focus down
-  bindsym $mod+$up focus up
-  bindsym $mod+$right focus right
+  bindsym --to-code $mod+$left focus left
+  bindsym --to-code $mod+$down focus down
+  bindsym --to-code $mod+$up focus up
+  bindsym --to-code $mod+$right focus right
   # Or use $mod+[up|down|left|right]
   bindsym $mod+Left focus left
   bindsym $mod+Down focus down
@@ -131,10 +131,10 @@ input type:touchpad {
   bindsym $mod+Right focus right
 
   # Move the focused window with the same, but add Shift
-  bindsym $mod+Shift+$left move left
-  bindsym $mod+Shift+$down move down
-  bindsym $mod+Shift+$up move up
-  bindsym $mod+Shift+$right move right
+  bindsym --to-code $mod+Shift+$left move left
+  bindsym --to-code $mod+Shift+$down move down
+  bindsym --to-code $mod+Shift+$up move up
+  bindsym --to-code $mod+Shift+$right move right
   # Ditto, with arrow keys
   bindsym $mod+Shift+Left move left
   bindsym $mod+Shift+Down move down
