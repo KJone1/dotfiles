@@ -4,7 +4,6 @@ M.general = {
   n = { -- Normal mode mappings
     { '[d', vim.diagnostic.goto_prev, desc = 'Go to previous diagnostic message' },
     { ']d', vim.diagnostic.goto_next, desc = 'Go to next diagnostic message' },
-    { '<leader>p', ':CdProject<CR>', desc = 'Open Saved Projects' },
     { '<leader>e', ':Neotree<CR>', desc = 'Explore Files in current dir' },
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
   },
