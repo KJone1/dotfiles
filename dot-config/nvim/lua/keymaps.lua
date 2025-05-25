@@ -123,10 +123,10 @@ M.lsp = {
 M.telescope = {
   n = {
     { '<leader>t', ':TodoFzfLua keywords=TODO,FIX<CR>', desc = 'List TODOs' },
-    { '<leader>g', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project' },
+    { '<leader>F', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project' },
+    { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
     { '<leader><space>', ':FzfLua files<CR>', desc = 'Search files in project' },
     { ';', ':FzfLua commands<CR>', desc = 'Open commands list using fzf' },
-    { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
     { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
   },
 }
