@@ -50,6 +50,10 @@ opt.signcolumn = 'yes' -- Keep signcolumn on by default
 opt.updatetime = 250
 opt.timeoutlen = 300
 opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
+-- Inline lsp diagnostics
+-- d.config { virtual_text = true }
+-- Floating lsp diagnostics
+d.config { virtual_lines = true }
 d.config {
   signs = {
     text = {
