@@ -5,6 +5,13 @@ M.general = {
     { '[d', vim.diagnostic.goto_prev, desc = 'Go to previous diagnostic message' },
     { ']d', vim.diagnostic.goto_next, desc = 'Go to next diagnostic message' },
     { '<leader>e', ':Neotree<CR>', desc = 'Explore Files in current dir' },
+    {
+      '<leader>j',
+      function()
+        require('snipe').open_buffer_menu()
+      end,
+      desc = 'Open Snipe buffer menu',
+    },
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
   },
   i = { -- Insert mode mappings
