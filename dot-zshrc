@@ -33,6 +33,7 @@ alias lg="lazygit"
 alias task="go-task"
 alias ju='cd $(fd . ${HOME} --max-depth 4 -H --type d -E ".git" | fzf)'
 alias blue='bluetoothctl'
+alias open='xdg-open'
 # ---
 
 edit() {
