@@ -328,9 +328,9 @@ Vagrantfile             
 *.mkv   
 *.webm  
 *.ogm   
-*.mp4   
-*.m4v   
-*.mp4v  
+*.mp4   󰃽
+*.m4v   󰃽
+*.mp4v  󰃽
 *.vob   
 *.qt    
 *.nuv   
