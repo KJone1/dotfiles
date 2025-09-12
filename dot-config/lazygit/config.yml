@@ -1,5 +1,6 @@
 gui:
   sidePanelWidth: 0.3333
+  showRootItemInFileTree: false
   expandFocusedSidePanel: true
   # The weight of the expanded side panel, relative to the other panels. 2 means
   # twice as tall as the other panels. Only relevant if `expandFocusedSidePanel` is true.
@@ -44,4 +45,4 @@ disableStartupPopups: false
 # - 'create': initialize a new repo
 # - 'skip': open most recent repo
 # - 'quit': exit Lazygit
-notARepository: prompt
+notARepository: quit
