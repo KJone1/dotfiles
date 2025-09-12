@@ -5,10 +5,10 @@ default:
   @just --choose
 
 install:
-    stow . {{stow_args}}
+  stow . {{stow_args}}
 
 debug:
-    stow . -vn {{stow_args}}
+  stow . -vn {{stow_args}}
 
 uninstall:
-    stow -D --dotfiles -v -t "${HOME}" .
+  stow -D --dotfiles -v -t "${HOME}" .
