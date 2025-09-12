@@ -24,6 +24,7 @@ gui:
   showCommandLog: false
   showBottomLine: false
   showPanelJumps: true
+  showNumstatInFilesView: true
   nerdFontsVersion: "3"
   showFileIcons: true
   filterMode: fuzzy
