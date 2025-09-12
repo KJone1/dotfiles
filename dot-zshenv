@@ -19,6 +19,7 @@ export PATH
 export KUBECONFIG="${HOME}/.kube/config"
 # Set grim/grimshot screenshot output location
 export XDG_SCREENSHOTS_DIR="${HOME}/Pictures/screenshots"
+export XDG_CONFIG_HOME="${HOME}/.config"
 # K9S defualt editor
 export EDITOR=nvim
 export K9S_EDITOR=nvim
