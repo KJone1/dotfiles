@@ -1,5 +1,6 @@
 ignore_files := '--ignore=install.sh --ignore=assets --ignore=.editorconfig'
-stow_args := '-t "${HOME}" ' + ignore_files + ' --no-folding --dotfiles'
+target_dir := env_var('HOME')
+stow_args := '-t ' + target_dir + ' ' + ignore_files + ' --no-folding --dotfiles'
 
 default:
   @just --choose
@@ -11,4 +12,4 @@ debug:
   stow . -vn {{stow_args}}
 
 uninstall:
-  stow -D --dotfiles -v -t "${HOME}" .
+  stow -D --dotfiles -v -t {{target_dir}} .
