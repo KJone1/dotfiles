@@ -27,7 +27,6 @@ return {
       'codelldb',
       'dockerfile-language-server',
       'hadolint',
-      'gopls',
       'lua-language-server',
       'stylua',
       'prettier',
