@@ -13,3 +13,7 @@ debug:
 
 uninstall:
   stow -D --dotfiles -v -t {{target_dir}} .
+
+reload:
+  @just uninstall
+  @just install
