@@ -35,8 +35,9 @@ Generate single-line commit message that:
 
 - Starts with JIRA ticket if found: `TICKET-123: `
 - Uses imperative mood (Add, Fix, Update, Remove)
-- Describes what the change accomplishes
-- Is concise but informative
+- Describes what the change accomplishes with minimal words
+- Uses 30-40 characters maximum
+- Omits obvious project/directory context
 - **NO Claude watermarks or attribution**
 - **Explains the mission**: Clearly communicate what task was requested and what the change achieves
 
@@ -53,9 +54,12 @@ Generate single-line commit message that:
 
 ### Importance of Concise Messages
 
-- **Keep it short**: Aim for 50 characters or less for the subject line
+- **Keep it short**: Aim for 30-40 characters for the subject line
 - **Be specific**: Focus on the key change, not implementation details
-- **Avoid redundancy**: Don't repeat information that's obvious from the diff
+- **Avoid redundancy**: Don't repeat information obvious from project/directory context
+- **No word fluff**: Use minimal words to explain the change
+- **Skip obvious context**: Don't add things that can be inferred from project name or directory
+- **Include environment context**: Always specify environment for env-specific changes (dev, prod, staging)
 - **Use active voice**: "Fix bug" not "Bug was fixed"
 - **Skip periods**: End the message without punctuation
 
@@ -77,6 +81,12 @@ Generate single-line commit message that:
 
 ### Examples
 
-- `INPE-11041: Add redis configuration for production deployment`
-- `INPE-11041: Fix vault path construction for dynamic environments`
-- `Update authentication middleware validation`
+**Before (too verbose):**
+- `INPE-11041: Add redis configuration for production deployment environment`
+- `INPE-11041: Fix vault path construction for dynamic environments setup`
+- `Update authentication middleware validation in the application`
+
+**After (concise):**
+- `INPE-11041: Add redis config for prod`
+- `INPE-11041: Fix vault paths for dev`
+- `Update auth validation`

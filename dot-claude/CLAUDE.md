@@ -4,8 +4,10 @@
 
 **MANDATORY**: Claude must automatically read and implement the appropriate specialized guidelines based on the task context:
 
-### On Every Session Start
-- **ALWAYS read first**: `@workflow.md` - Contains the fundamental Explore, Plan, Code, Commit methodology that applies to ALL development tasks
+### Commands Available
+Use specialized commands for specific development phases:
+- **`/plan`**: Use for comprehensive task planning and analysis
+- **`/commit`**: Use for Git commit workflow and message creation
 
 ### Context-Based Loading
 When working with specific technologies, **MUST read the relevant guidelines BEFORE starting work**:
@@ -26,13 +28,14 @@ When working with specific technologies, **MUST read the relevant guidelines BEF
 
 For reference, these specialized guideline files are available:
 
-- **[Claude Code Workflow](@workflow.md)** - Explore, Plan, Code, Commit methodology (READ FIRST)
+- **[Plan Command](@commands/plan.md)** - Comprehensive task planning methodology
+- **[Commit Command](@commands/commit.md)** - Git commit workflow and message standards
 - **[Helm Charts](@helm.md)** - Comprehensive best practices for Helm chart development and testing
 - **[GitHub Operations](@github.md)** - GitHub CLI operations and best practices
 
 ## Implementation Requirements
 
-1. **Start every session** by reading `@workflow.md` to understand the fundamental development approach
+1. **Use specialized commands**: Use `/plan` for task planning and `/commit` for git workflows
 2. **Before beginning any task**, identify the relevant technology context and read the appropriate specialized file
 3. **Follow the guidelines** from the specialized files throughout the task execution
 4. **Refer back** to the guidelines if questions arise during implementation
