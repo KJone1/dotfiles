@@ -38,6 +38,7 @@ Generate single-line commit message that:
 - Describes what the change accomplishes
 - Is concise but informative
 - **NO Claude watermarks or attribution**
+- **Explains the mission**: Clearly communicate what task was requested and what the change achieves
 
 ### 6. Execute Commit
 
@@ -57,6 +58,13 @@ Generate single-line commit message that:
 - **Avoid redundancy**: Don't repeat information that's obvious from the diff
 - **Use active voice**: "Fix bug" not "Bug was fixed"
 - **Skip periods**: End the message without punctuation
+
+### Mission Context
+
+- **Explain the purpose**: Commit message should reflect the original task or request
+- **Show intent**: What problem was being solved or feature was being added
+- **Connect to goal**: Make it clear how this change serves the broader objective
+- **User perspective**: Frame the change from the user's requested outcome
 
 ### Verbs
 
