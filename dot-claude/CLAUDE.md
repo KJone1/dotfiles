@@ -21,19 +21,12 @@ When working with specific technologies, **MUST read the relevant guidelines BEF
   - Repository management or collaboration
   - Any GitHub-related workflows
 
-- **Git/Commit Operations**: **MANDATORY** - Read `@commit.md` first when tasks involve:
-  - Any mention of "commit" command or variations
-  - Committing changes to repositories
-  - Creating commit messages
-  - Git workflow operations
-  - ANY git commit-related task or user request
 
 ## Specialized Guidelines
 
 For reference, these specialized guideline files are available:
 
 - **[Claude Code Workflow](@workflow.md)** - Explore, Plan, Code, Commit methodology (READ FIRST)
-- **[Commit Commands](@commit.md)** - Commit workflow, commands, and message best practices
 - **[Helm Charts](@helm.md)** - Comprehensive best practices for Helm chart development and testing
 - **[GitHub Operations](@github.md)** - GitHub CLI operations and best practices
 
