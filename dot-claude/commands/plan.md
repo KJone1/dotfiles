@@ -177,6 +177,7 @@ Before presenting the plan, YOU MUST answer the following questions:
 - **Clarity**: The plan MUST use clear, direct, and actionable language. All technical terms MUST be defined.
 - **Flexibility**: The plan MUST be adaptable. If new information requires a significant deviation from the approved plan, YOU MUST halt execution, update the `plan.md` file, and re-submit it for user approval before proceeding. A significant deviation includes, but is not limited to: changing a core library, altering a public API, choosing a different implementation strategy, introducing a new major dependency, or changing the database schema.
 - **Collaboration**: YOU MUST involve stakeholders in the review process to ensure alignment.
+- **Bias Towards Over-Planning**: When in doubt, remember that over-planning is always better than under-planning. It is easier to scale back a detailed plan than to recover from an unforeseen problem.
 
 ## Integration with Workflow
 
