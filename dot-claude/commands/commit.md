@@ -1,92 +1,110 @@
 # /commit - Git Commit Workflow
 
+## Overarching Directive: No Guessing
+
+- **This is your bible**: This document is the absolute and only source of truth for the `/commit` command. YOU MUST follow this workflow precisely.
+- **No Acting on a Whim**: If any part of the process is unclear, or if an unexpected situation arises that is not covered by these rules, YOU MUST NOT guess or improvise.
+- **Ask for Confirmation**: Your only course of action in a state of ambiguity is to halt, state what is unclear, and ask the user for explicit instructions.
+
+## Prerequisites
+
+- **Git Repository**: YOU MUST be operating inside a valid git repository.
+- **Git Installation**: The `git` command line tool MUST be installed and available in the system's PATH.
+
+## Core Principles
+
+- **ATOMIC COMMITS**: YOU MUST ensure every commit is ATOMIC (representing a single, complete logical change), as this simplifies code reviews, aids debugging (`git bisect`), and makes changes easier to revert. DO NOT bundle multiple unrelated changes into one commit.
+- **SINGLE-LINE MESSAGES**: YOU MUST write the entire commit message on a single line to maintain a clean, readable history that is easy to parse with standard Git tools. YOU MUST NEVER use a commit body or multi-line commit messages.
+
+## Error Handling
+
+- **Pre-commit Hooks**: If the `git commit` command fails due to a pre-commit hook (e.g., a linter or test runner), YOU MUST analyze the error output, fix the underlying issues in the code, and then re-attempt the commit. DO NOT bypass the hook.
+
+## UX Principles
+
+- **Provide Constant Feedback**: YOU MUST report on the outcome of each step in the workflow. For example: "Found JIRA Ticket: ...", "Staging 5 files...", "Commit successful. Hash: ...".
+
 ## Usage
 
 - `/commit` - Commit all changes
 - `/commit staged` - Commit only staged files
-- `/commit <keyword>` - Commit files related to keyword/feature
+- `/commit <keyword>` - Commit files related to a keyword/feature
 
 ## Workflow Steps
 
-### 1. Determine Scope
+### 1. YOU MUST Determine Files for Commit
+- **Analyze Content**: Determine if the commit includes all changes, staged files only, or files matching a keyword.
 
-- **All changes**: Include all modified/new files
-- **Staged only**: Only commit currently staged files without staging additional files
-- **Keyword filter**: Only include files that match the keyword in filename, path, or content
+### 2. YOU MUST Extract JIRA Ticket
+- **Parse Branch**: Execute commands to get the current git branch name.
+- **Extract Ticket**: Find and extract the JIRA ticket ID in the format `[LETTERS]-[NUMBER]` from the branch name.
+- **Handle Duplicates**: If multiple ticket IDs are found in the branch name, YOU MUST use the first one that appears.
 
-### 2. Extract JIRA Ticket
+### 3. YOU MUST Analyze Changes
+- **Execute Diff**: Run `git status` and `git diff` for unstaged changes.
+- **Analyze Staged**: Run `git status` and `git diff --cached` for staged changes.
+- **Understand the Goal**: The analysis MUST inform the commit message by clearly identifying the purpose of the changes.
 
-Parse current git branch name to extract JIRA ticket in format `[LETTERS]-[NUMBER]` (e.g., INPE-11041, ABC-123)
+### 4. YOU MUST Stage Files for Commit
+- **For All Changes**: If committing all changes (no keyword), YOU MUST run `git add -A` to stage all modifications and new files.
+- **For Keyword-based Commits**:
+  - **Identify Matches**: To pinpoint the exact files matching the keyword, YOU MUST use the following methods:
+    - Use `git grep -l '<keyword>'` to find files with matching content.
+    - Use `find . -name '*<keyword>*' -not -path './.git/*' -not -path './node_modules/*'` to find files with matching names or paths, excluding common noisy directories.
+  - **Stage Files**: Stage only the identified files for the commit.
+- **For Staged-only Commits**: DO NOT stage any new files. Proceed to the next step.
 
-### 3. Analyze Changes
+### 5. YOU MUST Create the Commit Message
+**CRITICAL**: YOU MUST NEVER include ANY AI references, watermarks, or attribution in commit messages. The commit MUST appear entirely human-authored.
 
-- **For all/keyword**: Use `git status` and `git diff` for unstaged changes
-- **For staged**: Use `git status` and `git diff --cached` for staged changes only
+**Generate a single-line commit message that follows these rules:**
+- **Start with JIRA Ticket**: If a ticket was found, it MUST be the first part of the message (e.g., `TICKET-123: `). If no ticket is found, YOU MUST omit the prefix.
+- **Use Imperative Mood**: Start the description with an action verb (e.g., Add, Fix, Update).
+- **Describe the Change**: Concisely explain what the change accomplishes.
+- **Set Strict Length**: The entire message, including the JIRA prefix, MUST NOT exceed 72 characters.
+- **Summarize the Goal**: The description MUST summarize the original user request or the problem being solved.
 
-### 4. Filter Files (if keyword provided)
+### 6. YOU MUST Verify Staged Changes
+- **Final Review**: Before committing, YOU MUST run `git diff --staged` to perform a final review of the exact changes that will be committed.
+- **Confirm Accuracy**: Ensure no unintended code or files are included.
 
-- Identify files matching keyword in path, filename, or relevant changes
-- Stage and commit only those specific files
-- Ignore other modified files
+### 7. YOU MUST Confirm with User
+- **Summarize Plan**: Before executing the commit, YOU MUST present a summary of the plan to the user. This includes the files to be committed and the generated commit message.
+- **Request Approval**: YOU MUST ask for explicit user approval before proceeding. The command can be cancelled at this stage.
 
-### 5. Create Commit Message
+### 8. YOU MUST Execute the Commit
+- **Commit**: Upon approval, run the `git commit -m "<generated_message>"` command with the generated message.
 
-Generate single-line commit message that:
-
-- Starts with JIRA ticket if found: `TICKET-123: `
-- Uses imperative mood (Add, Fix, Update, Remove)
-- Describes what the change accomplishes with minimal words
-- Uses 30-40 characters maximum
-- Omits obvious project/directory context
-- **NO Claude watermarks or attribution**
-- **Explains the mission**: Clearly communicate what task was requested and what the change achieves
-
-### 6. Execute Commit
-
-- **All/keyword**: Stage relevant files then commit
-- **Staged**: Skip staging, commit only what's already staged
+### 9. YOU MUST Validate the Final Commit
+- **Verify Log**: After committing, YOU MUST run `git log -1` to verify the final commit is correct.
+- **Amend if Necessary**: If you find an error in the last commit, YOU MUST correct it. To do this, first stage the corrected files, then run `git commit --amend`. This will allow you to edit the previous commit message. DO NOT create a new commit to fix a mistake in the previous one.
+- **DO NOT PUSH**: This command's responsibility ends after the commit. YOU MUST NEVER push the commit to the remote repository.
 
 ## Commit Message Standards
 
 ### Format
 
 `TICKET-123: Brief description of what changed`
+`Update auth validation`
 
-### Importance of Concise Messages
+### IMPORTANT: Rules for Concise and Clear Messages
 
-- **Keep it short**: Aim for 30-40 characters for the subject line
-- **Be specific**: Focus on the key change, not implementation details
-- **Avoid redundancy**: Don't repeat information obvious from project/directory context
-- **No word fluff**: Use minimal words to explain the change
-- **Skip obvious context**: Don't add things that can be inferred from project name or directory
-- **Include environment context**: Always specify environment for env-specific changes (dev, prod, staging)
-- **Use active voice**: "Fix bug" not "Bug was fixed"
-- **Skip periods**: End the message without punctuation
+- **SINGLE-LINE ONLY**: As stated in the core principles, YOU MUST use only a single line.
+- **Be Specific**: YOU MUST focus on the key change, not implementation details.
+- **Avoid Redundancy**: DO NOT repeat information obvious from the project or directory context.
+- **Avoid Filler Words**: YOU MUST NOT use fluff or unnecessary filler words. Messages must be direct and concise.
+- **Use Active Voice**: Write "Fix bug," not "Bug was fixed."
+- **No Periods**: YOU MUST NOT end the message with a period.
 
-### Mission Context
+### Action Verbs
 
-- **Explain the purpose**: Commit message should reflect the original task or request
-- **Show intent**: What problem was being solved or feature was being added
-- **Connect to goal**: Make it clear how this change serves the broader objective
-- **User perspective**: Frame the change from the user's requested outcome
-
-### Verbs
-
-- `Add` - New features, files, or functionality
-- `Fix` - Bug fixes or corrections
-- `Update` - Modifications to existing features
-- `Remove` - Deletion of features, files, or functionality
-- `Refactor` - Code restructuring without functional changes
-- `Improve` - Performance or quality enhancements
-
-### Examples
-
-**Before (too verbose):**
-- `INPE-11041: Add redis configuration for production deployment environment`
-- `INPE-11041: Fix vault path construction for dynamic environments setup`
-- `Update authentication middleware validation in the application`
-
-**After (concise):**
-- `INPE-11041: Add redis config for prod`
-- `INPE-11041: Fix vault paths for dev`
-- `Update auth validation`
+- `Add` - New features, files, or functionality.
+- `Fix` - Bug fixes or corrections.
+- `Update` - Modifications to existing features.
+- `Remove` - Deletion of features, files, or functionality.
+- `Refactor` - Code restructuring without functional changes.
+- `Improve` - Performance or quality enhancements.
+- `Docs` - Changes to documentation only.
+- `Test` - Adding missing tests or correcting existing tests.
+- `Chore` - Changes to the build process, tooling, or other maintenance tasks.
+- `Style` - Code formatting changes that don't alter logic (e.g., white-space).
