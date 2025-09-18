@@ -2,213 +2,187 @@
 
 ## Usage
 
-- `/plan <task description>` - Create an in-depth plan for the specified task
+- `/plan <task description>` - Create an in-depth plan for the specified task.
 
 ## Overview
 
-The plan command is a pure planning phase where Claude analyzes the task from multiple angles, considers edge cases, identifies risks, and creates a comprehensive execution strategy WITHOUT making any actual changes to the codebase.
+The `/plan` command is a mandatory preliminary phase. YOU MUST analyze the task from multiple angles, assess edge cases, identify risks, and create a comprehensive execution strategy BEFORE making any changes to the codebase. This is a pure planning and analysis phase.
 
-## Planning Process
+# Planning Process
 
-### 1. Explore Phase
+### 1. YOU MUST Execute the Explore Phase
 
-**Understand the codebase and requirements before making any changes:**
+**IMPORTANT**: Before writing any code, YOU MUST understand the codebase and requirements.
 
-- **Read and analyze**: Use Read, Grep, and Glob tools to understand existing code structure
-- **Search comprehensively**: Look for related functionality, patterns, and conventions
-- **Identify dependencies**: Find files, functions, and components that might be affected
-- **Understand context**: Review documentation, comments, and existing implementations
-- **Ask clarifying questions**: If requirements are unclear, ask the user for clarification
-
-**Example exploration activities:**
-```bash
-# Search for existing implementations
-grep -r "similar_functionality" .
-# Find related files
-find . -name "*related*" -type f
-# Understand project structure
-ls -la && cat README.md
-```
+- **Analyze Code**: Use Read, Grep, and Glob tools to understand the existing code structure, patterns, and conventions. The goal is to build a complete mental model of the relevant code. While a broad-to-narrow approach is often effective (e.g., `glob` -> `search_file_content` -> `read_file`), you should use the tools flexibly. For instance, reading a central configuration file first might provide the necessary context to perform a more targeted search.
+- **Search Comprehensively**: Identify all related functionality that will be reused or affected by your changes.
+- **Identify Dependencies**: Find all files, functions, and components that are connected to the task.
+- **Analyze Tooling**: Identify the project's tooling for building, testing, and linting by inspecting files like `package.json`, `justfile`, `Makefile`, etc.
+- **Understand Context**: Review all relevant documentation, comments, and existing implementations to build a complete picture.
+- **Clarify Ambiguities**: If requirements are unclear, YOU MUST ask clarifying questions before proceeding.
+- **Synthesize Key Information**: After gathering information, create a mental summary or temporary note of the most critical information (e.g., key functions, relevant files) to prime the planning process.
 
 **Task Analysis:**
-- Parse and analyze the complete task description
-- Identify primary and secondary objectives
-- Understand user intent and desired outcomes
-- Clarify ambiguous requirements through questions if needed
 
-### 2. Multi-Angle Assessment
+- **Parse Task**: Deconstruct the complete task description to identify primary and secondary objectives.
+- **Determine Intent**: Understand the user's desired outcome.
+
+### 2. YOU MUST Conduct a Multi-Angle Assessment
 
 **Technical Considerations:**
-- Evaluate multiple implementation approaches
-- Consider performance implications
-- Assess security requirements and vulnerabilities
-- Analyze backwards compatibility constraints
-- Review scalability and maintainability factors
+
+- **Evaluate Approaches**: Analyze multiple implementation strategies and document the pros and cons of each.
+- **Assess Performance**: Assess the performance implications of your proposed solution.
+- **Analyze Security**: Identify potential security vulnerabilities and plan mitigations.
+- **Ensure Compatibility**: Analyze backwards compatibility constraints.
 
 **Risk Analysis:**
-- Identify potential breaking changes
-- Consider edge cases and error scenarios
-- Evaluate testing complexity and requirements
-- Assess rollback and recovery strategies
-- Consider dependency conflicts and version issues
+
+- **Identify Breaking Changes**: Pinpoint any potential breaking changes your implementation might cause.
+- **Identify Edge Cases**: Identify and plan for all edge cases and error scenarios.
+- **Evaluate Testing Complexity**: Assess the testing requirements and complexity.
 
 **Best Practices Evaluation:**
-- Review industry standards and conventions
-- Consider code quality and maintainability
-- Evaluate documentation and testing needs
-- Assess user experience implications
-- Consider accessibility and internationalization
 
-### 3. Comprehensive Planning
+- **Adhere to Standards**: YOU MUST review and follow all industry and project-specific conventions.
+- **Ensure Quality**: The plan MUST ensure code quality, maintainability, and readability.
+- **Assess UX**: Evaluate user experience implications for any UI/UX changes.
+
+### 3. YOU MUST Create a Comprehensive Plan
 
 **Step Breakdown:**
-- Divide complex tasks into atomic, manageable steps
-- Establish clear dependencies between steps
-- Define success criteria for each step
-- Estimate effort and complexity for each component
-- Identify parallel vs sequential execution opportunities
+
+- **Create Atomic Steps**: Divide complex tasks into small, manageable, and atomic steps. An atomic step is a self-contained unit of work that results in a single, verifiable change. It should leave the codebase in a stable state and, crucially, be easily reversible.
+- **Establish Dependencies**: Clearly define the dependencies between each step.
+- **Define Success Criteria**: For each step, define what success looks like.
 
 **Testing Strategy:**
-- Plan unit tests for new functionality
-- Design integration test scenarios
-- Consider end-to-end testing requirements
-- Plan manual testing and validation steps
-- Define rollback testing procedures
+
+- **Plan Unit Tests**: Design unit tests for all new functionality.
+- **Plan Integration Tests**: Design scenarios for integration testing.
+- **Plan Manual Validation**: Define the steps for manual testing and validation.
 
 **Documentation Plan:**
-- Identify documentation updates needed
-- Plan code comments and inline documentation
-- Consider API documentation changes
-- Plan user-facing documentation updates
-- Define migration guides if needed
 
-### 4. Implementation Strategy
+- **Identify Updates**: Determine which documentation files MUST be updated.
+- **Plan Comments**: Plan for clear and concise code comments where necessary.
+
+### 4. YOU MUST Define the Implementation Strategy
 
 **Execution Order:**
-- Prioritize steps by risk and dependency
-- Identify critical path components
-- Plan incremental delivery milestones
-- Define validation checkpoints
-- Establish feedback loops and review points
 
-**Resource Planning:**
-- Identify required tools and libraries
-- Plan development environment setup
-- Consider team coordination needs
-- Plan code review and approval processes
-- Define deployment and release strategy
+- **Prioritize Steps**: Order the steps by risk and dependency, tackling the highest-risk items first.
+- **Identify Critical Path**: Determine the critical path for the implementation.
+- **Define Checkpoints**: Establish validation checkpoints to review progress.
 
-### 5. Plan Output
+### 5. YOU MUST Generate a Plan Output File
 
-**Create Temporary Plan File:**
-- Generate detailed `plan.md` file in project root
-- Include step-by-step execution instructions
-- Document all considerations and decisions
-- Provide reference links and resources
-- Include troubleshooting and fallback options
+**Create `plan.md`:**
+
+- **Generate File**: Create a detailed `plan.md` file in the project root.
+- **Document Instructions**: Include step-by-step execution instructions.
+- **Record Decisions**: Document all technical decisions, considerations, and trade-offs.
 
 **Plan Structure:**
+
 ```markdown
 # Plan: [Task Description]
 
 ## Executive Summary
-- Brief overview of the task and approach
+- Brief overview of the task and the chosen approach.
+
+## Definition of Done
+- A clear, concise list of criteria that MUST be met for the task to be considered complete.
+
+## Non-Goals
+- A list of items that are explicitly out of scope for this task to prevent scope creep.
+
+## Assumptions
+- A list of any assumptions made about the codebase, environment, or requirements.
+
+## Environment Considerations
+- A list of any differences in configuration, API keys, or behavior the implementation must account for across different environments (development, staging, production).
 
 ## Technical Analysis
-- Architecture decisions and rationale
-- Technology choices and alternatives
-- Performance and security considerations
+- Architecture decisions and rationale.
+- Technology choices.
+- Performance, security, and compatibility considerations.
+- (Optional) ASCII diagrams or Mermaid syntax for complex architectural changes.
+
+## Alternative Approaches Considered
+- A brief description of other viable approaches and why they were not chosen.
 
 ## Implementation Steps
-1. Step 1: [Description]
-   - Rationale: [Why this step]
-   - Dependencies: [What must be done first]
-   - Success criteria: [How to verify completion]
-   - Risks: [Potential issues]
+1.  **Step 1**: [Description]
+    -   **Rationale**: [Why this step is necessary]
+    -   **Dependencies**: [What must be done first]
+    -   **Success Criteria**: [How to verify completion]
+    -   **Verification**: [The *exact* command(s) to run to prove the step was successful (e.g., 'pytest tests/test_feature.py')]
+    -   **Risks**: [Potential issues with this step]
+    -   **Effort**: [e.g., S, M, L]
+
+## Major Checkpoints
+- A high-level list of milestones where progress can be re-validated.
 
 ## Testing Strategy
-- Unit testing approach
-- Integration testing plan
-- Manual testing scenarios
+- Unit testing approach.
+- Integration testing plan.
+- Manual testing scenarios.
 
 ## Documentation Updates
-- Code documentation changes
-- User documentation updates
-- API documentation changes
+- List of documents to be updated.
+- Plan for code comments.
 
-## Risk Mitigation
-- Identified risks and mitigation strategies
-- Rollback procedures
-- Alternative approaches
+## Resources & Links
+- A list of relevant URLs or file paths for future reference.
 
-## Timeline and Milestones
-- Estimated effort for each phase
-- Key validation checkpoints
-- Delivery milestones
+## Identified Risks
+- A list of potential problems or obstacles.
+
+## Mitigation Strategy
+- A corresponding list of actions to prevent or handle the identified risks.
+
+## Estimated Timeline
+- A high-level, optional timeline (e.g., "Phase 1: 2-3 hours").
 ```
 
-### 6. Plan Validation
+### 6. YOU MUST Validate the Plan
 
-**Review and Refinement:**
-- Validate plan completeness and accuracy
-- Check for missing dependencies or steps
-- Verify risk mitigation strategies
-- Confirm testing coverage adequacy
-- Ensure documentation completeness
+**Self-Correction Checklist:**
+
+Before presenting the plan, YOU MUST answer the following questions:
+- Have I read all files relevant to the changes?
+- Does the plan account for the project's existing patterns, conventions, and frameworks?
+- Have I identified the riskiest part of the plan and prioritized it accordingly?
+- Does each implementation step have a clearly defined and tested rollback procedure?
+- Is the testing strategy sufficient to prevent regressions?
+- Does the plan address the user's request completely?
 
 **Stakeholder Review:**
-- Present plan to user for feedback and approval
-- Address questions and concerns
-- Refine plan based on feedback
-- Confirm understanding and expectations
-- Get explicit approval before proceeding
+
+- **Present Plan**: YOU MUST present the plan to the user for feedback and approval.
+- **Address Concerns**: YOU MUST answer any questions and address all concerns.
+- **Get Approval**: YOU MUST get explicit approval from the user before proceeding with implementation.
 
 ### 7. Cleanup Process
 
 **Plan File Management:**
-- Store plan in temporary location for execution reference
-- Version control plan file if changes are made
-- Archive completed plans for future reference
-- Clean up temporary files after task completion
-- Maintain plan history for similar future tasks
 
-## Planning Best Practices
+- **Store Plan**: Keep the `plan.md` file in a temporary location for reference during execution.
+- **Clean Up**: After the task has been fully implemented and all related code has been committed, YOU MUST delete the temporary `plan.md` file.
 
-**Thoroughness:**
-- Better to over-plan than under-plan
-- Consider second and third-order effects
-- Plan for failure scenarios and edge cases
-- Include multiple implementation alternatives
-- Document assumptions and constraints
+## IMPORTANT: Planning Best Practices
 
-**Clarity:**
-- Use clear, actionable language
-- Define technical terms and concepts
-- Provide context and rationale for decisions
-- Include examples and references
-- Make steps specific and measurable
-
-**Flexibility:**
-- Build in adaptation points and decision gates
-- Allow for discovery and learning during execution
-- Plan for requirement changes and pivots
-- Include alternative approaches and fallbacks
-- Design for iterative refinement
-
-**Collaboration:**
-- Involve stakeholders in plan review
-- Seek expert input on complex technical decisions
-- Plan for team coordination and communication
-- Include knowledge transfer and documentation
-- Design for code review and quality assurance
+- **Thoroughness**: YOU MUST plan for all scenarios and analyze all potential second and third-order effects of your changes.
+- **Clarity**: The plan MUST use clear, direct, and actionable language. All technical terms MUST be defined.
+- **Flexibility**: The plan MUST be adaptable. If new information requires a significant deviation from the approved plan, YOU MUST halt execution, update the `plan.md` file, and re-submit it for user approval before proceeding. A significant deviation includes, but is not limited to: changing a core library, altering a public API, choosing a different implementation strategy, introducing a new major dependency, or changing the database schema.
+- **Collaboration**: YOU MUST involve stakeholders in the review process to ensure alignment.
 
 ## Integration with Workflow
 
-The plan command integrates with the overall Claude Code workflow:
+The planning process is the foundation of the entire workflow:
 
-1. **Explore Phase**: Gather context and understand requirements
-2. **Plan Phase**: Use `/plan` command to create comprehensive plan
-3. **Code Phase**: Execute plan systematically using TodoWrite
-4. **Commit Phase**: Commit changes following established practices
-
-The plan command ensures thorough preparation before any code changes, reducing errors and improving quality.
+1.  **Explore Phase**: Gather context.
+2.  **Plan Phase**: Use `/plan` to create the comprehensive plan.
+3.  **Code Phase**: Execute the plan systematically.
+4.  **Commit Phase**: Commit changes following the `/commit` guidelines.
