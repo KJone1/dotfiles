@@ -14,6 +14,16 @@ return {
           ['enter'] = actions.ex_run_cr,
         },
       },
+      oldfiles = {
+        previewer = false,
+      },
+      git = {
+        status = {
+          actions = false,
+          previewer = false,
+          cmd = 'git status -uall --porcelain | awk \'{s=substr($1,1,1); print (s=="M"?1:s=="A"?2:s=="D"?3:s=="?"?4:5), $0}\' | sort -n | cut -d\' \' -f2-',
+        },
+      },
     }
   end,
 }
