@@ -16,7 +16,9 @@ return {
       markdown = { 'prettier' },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
+      terraform = { 'terraform_fmt' },
     },
+
     default_format_opts = {
       lsp_format = 'fallback',
     },
