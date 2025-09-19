@@ -18,13 +18,6 @@ M.general = {
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
   },
   v = { -- Visual mode mappings
-    {
-      'xa',
-      function()
-        require('align').align_to_char { length = 1 }
-      end,
-      desc = 'Align to char',
-    },
   },
 }
 
@@ -73,7 +66,6 @@ M.git = {
 
 M.ssr = {
   n = {
-    { '<leader>sr', ':Spectre<CR>', desc = 'Search and Replace (Spectre)' },
     {
       '<leader>sl',
       function()
@@ -123,15 +115,17 @@ M.text = {
 
 M.lsp = {
   n = {
-    { '<F2>', vim.lsp.buf.rename, desc = 'Refacotr Rename' },
+    { '<F2>', vim.lsp.buf.rename, desc = 'Refactor Rename' },
   },
 }
 
 M.telescope = {
   n = {
     { '<leader>t', ':TodoFzfLua keywords=TODO,FIX<CR>', desc = 'List TODOs' },
-    { '<leader>F', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project' },
-    { '<leader>f', ':FzfLua lgrep_curbuf resume=true<CR>', desc = '[/] Live grep current buffer' },
+    { '<leader>fg', ':FzfLua live_grep_native resume=true<CR>', desc = 'Live grep Project', icon = { icon = ' ' } },
+    { '<leader>ff', ':FzfLua lgrep_curbuf resume=true<CR>', desc = 'Live grep current buffer', icon = { icon = ' ' } },
+    { '<leader>fw', ':FzfLua git_status<CR>', desc = 'Search modified files', icon = { icon = ' ' } },
+    { '<leader>fr', ':FzfLua oldfiles<CR>', desc = 'Search file history', icon = { icon = ' ' } },
     { '<leader><space>', ':FzfLua files<CR>', desc = 'Search files in project' },
     { ';', ':FzfLua commands<CR>', desc = 'Open commands list using fzf' },
     { '<leader>cs', ':FzfLua colorschemes<CR>', desc = 'Explore colorschemes' },
