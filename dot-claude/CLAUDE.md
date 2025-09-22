@@ -4,12 +4,22 @@
 
 **MANDATORY**: Claude must automatically read and implement the appropriate specialized guidelines based on the task context:
 
-### Commands Available
-Use specialized commands for specific development phases:
-- **`/plan`**: Use for comprehensive task planning and analysis
-- **`/commit`**: Use for Git commit workflow and message creation
+## AI Guidance
 
-### Context-Based Loading
+- After receiving tool results, carefully reflect on their quality and determine optimal next steps before proceeding. Use your thinking to plan and iterate based on this new information, and then take the best next action.
+- For maximum efficiency, whenever you need to perform multiple independent operations, invoke all relevant tools simultaneously rather than sequentially.
+- Before you finish, please verify your solution
+- Do what has been asked; nothing more, nothing less.
+- NEVER create new files unless they're absolutely necessary for achieving your goal.
+- ALWAYS prefer editing an existing file to creating a new one.
+- NEVER proactively create documentation files (\*.md) or README files. Only create documentation files if explicitly requested by the User.
+- When asked to commit changes, exclude CLAUDE.md from any commits.
+- Reuse existing code wherever possible and minimize unnecessary arguments.
+- Look for opportunities to simplify the code or remove unnecessary parts.
+- Focus on targeted modifications rather than large-scale changes.
+
+## Context-Based Loading
+
 When working with specific technologies, **MUST read the relevant guidelines BEFORE starting work**:
 
 - **Helm/Helm Charts**: Read `@helm.md` first when tasks involve:
@@ -23,19 +33,15 @@ When working with specific technologies, **MUST read the relevant guidelines BEF
   - Repository management or collaboration
   - Any GitHub-related workflows
 
-
 ## Specialized Guidelines
 
 For reference, these specialized guideline files are available:
 
-- **[Plan Command](@commands/plan.md)** - Comprehensive task planning methodology
-- **[Commit Command](@commands/commit.md)** - Git commit workflow and message standards
 - **[Helm Charts](@helm.md)** - Comprehensive best practices for Helm chart development and testing
 - **[GitHub Operations](@github.md)** - GitHub CLI operations and best practices
 
 ## Implementation Requirements
 
-1. **Use specialized commands**: Use `/plan` for task planning and `/commit` for git workflows
 2. **Before beginning any task**, identify the relevant technology context and read the appropriate specialized file
 3. **Follow the guidelines** from the specialized files throughout the task execution
 4. **Refer back** to the guidelines if questions arise during implementation
