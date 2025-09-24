@@ -2,6 +2,8 @@
 
 ## Usage
 
+The input to the command is $ARGUMENTS.
+
 - `/plan <task description>` - Create an in-depth plan for the specified task.
 
 ## Overview
@@ -89,60 +91,75 @@ The `/plan` command is a mandatory preliminary phase. YOU MUST analyze the task 
 # Plan: [Task Description]
 
 ## Executive Summary
+
 - Brief overview of the task and the chosen approach.
 
 ## Definition of Done
+
 - A clear, concise list of criteria that MUST be met for the task to be considered complete.
 
 ## Non-Goals
+
 - A list of items that are explicitly out of scope for this task to prevent scope creep.
 
 ## Assumptions
+
 - A list of any assumptions made about the codebase, environment, or requirements.
 
 ## Environment Considerations
+
 - A list of any differences in configuration, API keys, or behavior the implementation must account for across different environments (development, staging, production).
 
 ## Technical Analysis
+
 - Architecture decisions and rationale.
 - Technology choices.
 - Performance, security, and compatibility considerations.
 - (Optional) ASCII diagrams or Mermaid syntax for complex architectural changes.
 
 ## Alternative Approaches Considered
+
 - A brief description of other viable approaches and why they were not chosen.
 
 ## Implementation Steps
+
 1.  **Step 1**: [Description]
-    -   **Rationale**: [Why this step is necessary]
-    -   **Dependencies**: [What must be done first]
-    -   **Success Criteria**: [How to verify completion]
-    -   **Verification**: [The *exact* command(s) to run to prove the step was successful (e.g., 'pytest tests/test_feature.py')]
-    -   **Risks**: [Potential issues with this step]
-    -   **Effort**: [e.g., S, M, L]
+    - **Rationale**: [Why this step is necessary]
+    - **Dependencies**: [What must be done first]
+    - **Success Criteria**: [How to verify completion]
+    - **Verification**: [The *exact* command(s) to run to prove the step was successful (e.g., 'pytest tests/test_feature.py')]
+    - **Risks**: [Potential issues with this step]
+    - **Effort**: [e.g., S, M, L]
 
 ## Major Checkpoints
+
 - A high-level list of milestones where progress can be re-validated.
 
 ## Testing Strategy
+
 - Unit testing approach.
 - Integration testing plan.
 - Manual testing scenarios.
 
 ## Documentation Updates
+
 - List of documents to be updated.
 - Plan for code comments.
 
 ## Resources & Links
+
 - A list of relevant URLs or file paths for future reference.
 
 ## Identified Risks
+
 - A list of potential problems or obstacles.
 
 ## Mitigation Strategy
+
 - A corresponding list of actions to prevent or handle the identified risks.
 
 ## Estimated Timeline
+
 - A high-level, optional timeline (e.g., "Phase 1: 2-3 hours").
 ```
 
@@ -151,6 +168,7 @@ The `/plan` command is a mandatory preliminary phase. YOU MUST analyze the task 
 **Self-Correction Checklist:**
 
 Before presenting the plan, YOU MUST answer the following questions:
+
 - Have I read all files relevant to the changes?
 - Does the plan account for the project's existing patterns, conventions, and frameworks?
 - Have I identified the riskiest part of the plan and prioritized it accordingly?

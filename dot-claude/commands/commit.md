@@ -26,6 +26,10 @@
 
 ## Usage
 
+The input to the commit command is $ARGUMENTS.
+
+Options:
+
 - `/commit` - Commit all changes
 - `/commit staged` - Commit only staged files
 - `/commit <keyword>` - Commit files related to a keyword/feature
@@ -34,7 +38,10 @@
 
 ### 1. YOU MUST Determine Files for Commit
 
-- **Analyze Content**: Determine if the commit includes all changes, staged files only, or files matching a keyword.
+- **Check Input**: Examine the input from `$ARGUMENTS` and determine:
+  - If empty: Commit all changes
+  - If "staged": Commit only staged files
+  - If contains keyword: Commit files related to that keyword/feature
 
 ### 2. YOU MUST Extract JIRA Ticket
 
