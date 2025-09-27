@@ -1,6 +1,5 @@
-ignore_files := '--ignore=install.sh --ignore=assets --ignore=.editorconfig'
 target_dir := env_var('HOME')
-stow_args := '-t ' + target_dir + ' ' + ignore_files + ' --no-folding --dotfiles'
+stow_args := '-t ' + target_dir + ' --no-folding --dotfiles'
 
 default:
   @just --choose

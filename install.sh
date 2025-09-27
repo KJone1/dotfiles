@@ -25,5 +25,4 @@ done
 
 stow . "${OPTIONS}" \
   -t "${HOME}" \
-  --ignore=install.sh --ignore=assets --ignore=.editorconfig \
   --no-folding --dotfiles
