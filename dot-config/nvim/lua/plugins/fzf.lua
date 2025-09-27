@@ -16,6 +16,8 @@ return {
       },
       oldfiles = {
         previewer = false,
+        cwd_only = true,
+        include_current_session = true,
       },
       git = {
         status = {
