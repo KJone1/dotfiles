@@ -22,6 +22,8 @@
 
 When working with specific technologies, **MUST read the relevant guidelines BEFORE starting work**:
 
+- **Git Commits**: **ALWAYS use the `/commit` command** when the prompt requires committing changes. Pass all relevant context and changes to the command.
+
 - **Helm/Helm Charts**: Read `@helm.md` first when tasks involve:
   - Helm chart creation, modification, or troubleshooting
   - Working with `values.yaml`, templates, or Chart.yaml files

@@ -1,3 +1,14 @@
+---
+name: commit
+description: Create atomic git commits with JIRA ticket integration
+arguments: "[all|staged|mod|<keyword>]"
+examples:
+  - /commit
+  - /commit staged
+  - /commit mod
+  - /commit <keyword>
+---
+
 # /commit - Git Commit Workflow
 
 ## Overarching Directive: No Guessing
@@ -32,6 +43,7 @@ Options:
 
 - `/commit` - Commit all changes
 - `/commit staged` - Commit only staged files
+- `/commit mod` - Commit only files modified by Claude during the current session
 - `/commit <keyword>` - Commit files related to a keyword/feature
 
 ## Workflow Steps
@@ -41,6 +53,7 @@ Options:
 - **Check Input**: Examine the input from `$ARGUMENTS` and determine:
   - If empty: Commit all changes
   - If "staged": Commit only staged files
+  - If "mod": Commit only files modified by Claude during the current session
   - If contains keyword: Commit files related to that keyword/feature
 
 ### 2. YOU MUST Extract JIRA Ticket
@@ -49,21 +62,25 @@ Options:
 - **Extract Ticket**: Find and extract the JIRA ticket ID in the format `[LETTERS]-[NUMBER]` from the branch name.
 - **Handle Duplicates**: If multiple ticket IDs are found in the branch name, YOU MUST use the first one that appears.
 
-### 3. YOU MUST Analyze Changes
-
-- **Execute Diff**: Run `git status` and `git diff` for unstaged changes.
-- **Analyze Staged**: Run `git status` and `git diff --cached` for staged changes.
-- **Understand the Goal**: The analysis MUST inform the commit message by clearly identifying the purpose of the changes.
-
-### 4. YOU MUST Stage Files for Commit
+### 3. YOU MUST Stage Files for Commit
 
 - **For All Changes**: If committing all changes (no keyword), YOU MUST run `git add -A` to stage all modifications and new files.
 - **For Keyword-based Commits**:
   - **Identify Matches**: To pinpoint the exact files matching the keyword, YOU MUST use the following methods:
-    - Use `git grep -l '<keyword>'` to find files with matching content.
-    - Use `find . -name '*<keyword>*' -not -path './.git/*' -not -path './node_modules/*'` to find files with matching names or paths, excluding common noisy directories.
+    - Use the Grep tool to find files with matching content: search for the keyword pattern with `output_mode: "files_with_matches"`.
+    - Use the Glob tool to find files with matching names or paths: search for patterns like `**/*<keyword>*`.
   - **Stage Files**: Stage only the identified files for the commit.
 - **For Staged-only Commits**: DO NOT stage any new files. Proceed to the next step.
+- **For Modified-only Commits** (when `mod` is specified):
+  - **Track Session Files**: YOU MUST maintain awareness of which files you (Claude) have modified during the current conversation session using the Read, Write, Edit, or NotebookEdit tools.
+  - **Identify Modified Files**: Only include files that were modified by Claude during this session, excluding files that were already modified before the session started.
+  - **Stage Files**: Stage only the files modified by Claude during this session using `git add <file1> <file2> ...` for each identified file.
+
+### 4. YOU MUST Analyze Staged Changes
+
+- **Execute Analysis**: Run `git status` and `git diff --staged` to analyze the changes that are now staged for commit.
+- **Understand the Goal**: The analysis MUST inform the commit message by clearly identifying the purpose of the changes that will actually be committed.
+- **Verify Scope**: Ensure the staged changes align with the intended scope (all changes, staged only, modified only, or keyword-based).
 
 ### 5. YOU MUST Create the Commit Message
 
@@ -77,12 +94,7 @@ Options:
 - **Set Strict Length**: The entire message, including the JIRA prefix, MUST NOT exceed 72 characters.
 - **Summarize the Goal**: The description MUST summarize the original user request or the problem being solved.
 
-### 6. YOU MUST Verify Staged Changes
-
-- **Final Review**: Before committing, YOU MUST run `git diff --staged` to perform a final review of the exact changes that will be committed.
-- **Confirm Accuracy**: Ensure no unintended code or files are included.
-
-### 7. YOU MUST Confirm with User
+### 6. YOU MUST Confirm with User
 
 - **Summarize Plan**: Before executing the commit, YOU MUST ALWAYS present a summary of the plan to the user. This includes the files to be committed and the generated commit message.
 - **Request Approval**: YOU MUST ALWAYS ask for explicit user approval using the exact format: "Do you approve this commit? (y/n)". Only accept these responses:
@@ -90,11 +102,11 @@ Options:
   - **Valid NO responses**: `n`, `no` (case insensitive)
   - **Invalid responses**: Any other input is interpreted as NO and the commit is cancelled.
 
-### 8. YOU MUST Execute the Commit
+### 7. YOU MUST Execute the Commit
 
-- **Commit**: Upon approval, run the `git commit -m "<generated_message>"` command with the generated message.
+- **Commit**: Upon approval, run the `git commit -sm "<generated_message>"` command with the generated message.
 
-### 9. YOU MUST Validate the Final Commit
+### 8. YOU MUST Validate the Final Commit
 
 - **Verify Log**: After committing, YOU MUST run `git log -1` to verify the final commit is correct.
 - **Amend if Necessary**: If you find an error in the last commit, YOU MUST correct it. To do this, first stage the corrected files, then run `git commit --amend`. This will allow you to edit the previous commit message. DO NOT create a new commit to fix a mistake in the previous one.
@@ -104,8 +116,9 @@ Options:
 
 ### Format
 
-`TICKET-123: Brief description of what changed`
-`Update auth validation`
+**With JIRA ticket**: `TICKET-123: Brief description of what changed`
+
+**Without JIRA ticket**: `Update auth validation`
 
 ### IMPORTANT: Rules for Concise and Clear Messages
 
