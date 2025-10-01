@@ -25,6 +25,6 @@
       "Read(./build)"
     ]
   },
-  "outputStyle": "Explanatory",
+  "outputStyle": "default",
   "spinnerTipsEnabled": false
 }
