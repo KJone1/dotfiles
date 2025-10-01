@@ -56,6 +56,7 @@ Rules:
 - Imperative mood
 - Max 72 chars including ticket
 - No period at end
+- Be specific: describe WHAT changed and WHY when space permits
 
 ### 6. Confirm with User
 
