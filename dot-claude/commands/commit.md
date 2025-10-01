@@ -3,7 +3,7 @@ description: Create atomic git commits with JIRA ticket integration
 argument-hint: " all | staged | mod | <keyword> "
 ---
 
-# /commit Workflow
+# /commit
 
 ## Rules
 
@@ -52,7 +52,7 @@ Format:
 
 Rules:
 
-- Start with action verb (Add/Fix/Update/Remove/Refactor/Improve/Docs/Test/Chore/Style)
+- Start with single action verb only (Add/Fix/Update/Remove/Refactor/Improve), no prefixes
 - Imperative mood
 - Max 72 chars including ticket
 - No period at end
