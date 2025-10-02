@@ -2,3 +2,7 @@ install.sh
 assets
 .editorconfig
 justfile
+.git
+.gitignore
+.vscode
+README.md
