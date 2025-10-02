@@ -2,8 +2,8 @@ local M = {}
 
 M.general = {
   n = { -- Normal mode mappings
-    { '[d', vim.diagnostic.goto_prev, desc = 'Go to previous diagnostic message' },
-    { ']d', vim.diagnostic.goto_next, desc = 'Go to next diagnostic message' },
+    { '[d', vim.diagnostic.jump { count = -1, float = true }, desc = 'Go to previous diagnostic message' },
+    { ']d', vim.diagnostic.jump { count = 1, float = true }, desc = 'Go to next diagnostic message' },
     { '<leader>e', ':Neotree toggle reveal_force_cwd<CR>', desc = 'Explore Files in current dir' },
     {
       '<leader>j',
