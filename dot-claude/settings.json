@@ -26,5 +26,6 @@
     ]
   },
   "outputStyle": "default",
-  "spinnerTipsEnabled": false
+  "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": false
 }
