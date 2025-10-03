@@ -18,6 +18,6 @@
 
 Read relevant guidelines BEFORE starting work:
 
-- **Git Commits**: Always use `/commit` command
+- **Git Commits**: Always use SlashCommand(/commit)
 - **Helm/Helm Charts**: Read `@helm.md` for chart work, values.yaml, templates
 - **GitHub Operations**: Read `@github.md` for PRs, issues, repo management
