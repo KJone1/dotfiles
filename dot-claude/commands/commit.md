@@ -7,12 +7,12 @@ argument-hint: " all | staged | mod | <keyword> "
 
 ## Rules
 
-- Follow workflow precisely. If unclear, ask.
-- Atomic commits only (single logical change). Multiple files OK if related to same change.
-- If staged files have unrelated changes, split into separate commits.
-- Single-line messages (no body, max 72 chars).
-- If pre-commit hook fails, fix and retry. Never bypass.
-- No AI references in messages.
+- Follow workflow precisely. Ask if unclear
+- Atomic commits (single logical change). Multiple files OK if same change
+- Split unrelated staged changes into separate commits
+- Single-line messages (no body)
+- If pre-commit hook fails, fix and retry. Never bypass
+- No AI references in messages
 
 ## Workflow
 
@@ -21,8 +21,8 @@ argument-hint: " all | staged | mod | <keyword> "
 From `$ARGUMENTS`:
 
 - Empty → all changes
-- `staged` → staged files only
-- `mod` → files modified by Claude this session (via Read/Write/Edit/NotebookEdit tools)
+- `staged` → staged only
+- `mod` → files Claude modified this session (Read/Write/Edit/NotebookEdit)
 - `<keyword>` → files matching keyword
 
 ### 2. Extract JIRA Ticket
@@ -34,16 +34,16 @@ From `$ARGUMENTS`:
 ### 3. Stage Files
 
 - **All**: `git add -A`
-- **Keyword**: Use Grep tool (`output_mode: "files_with_matches"`) and Glob tool (`**/*<keyword>*`), then `git add` matching files
+- **Keyword**: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`), then `git add` matches
 - **Staged**: Skip
-- **Mod**: `git add <file1> <file2>...` for Claude-modified files only
+- **Mod**: `git add <file1> <file2>...` for Claude-modified files
 
 ### 4. Analyze Staged Changes
 
 - Run `git status` and `git diff --staged`
-- Verify staged changes match intended scope
-- If unrelated: `git reset HEAD`, create separate atomic commits
-- Understand purpose for commit message
+- Verify staged matches intended scope
+- Unrelated changes → `git reset HEAD`, separate commits
+- Understand purpose for message
 
 ### 5. Create Message
 
@@ -52,11 +52,11 @@ Format:
 - Without ticket: `Description`
 
 Rules:
-- Start with single action verb (Add/Fix/Update/Remove/Refactor/Improve), no prefixes
+- Start with action verb (Add/Fix/Update/Remove/Refactor/Improve)
 - Imperative mood
-- Max 72 chars including ticket
+- Max 72 chars with ticket, 50 chars without
 - No periods
-- Be specific: explain WHY this change was made, not HOW 
+- Explain WHY, not HOW
 
 ### 6. Confirm
 
@@ -66,8 +66,8 @@ Present:
 
 Ask: "Do you approve this commit? (y/n)"
 
-- Accept: `y`, `yes` (case insensitive)
-- Reject: `n`, `no`, or anything else
+Accept: `y`, `yes` (case insensitive)
+Reject: `n`, `no`, or anything else
 
 ### 7. Execute
 
@@ -75,6 +75,6 @@ Ask: "Do you approve this commit? (y/n)"
 
 ### 8. Validate
 
-- Run `git log -1` to verify
-- If Error found: amend with `git commit --amend`
-- Never push (command ends after commit)
+- `git log -1` to verify
+- Error found → amend with `git commit --amend`
+- Never push (ends after commit)
