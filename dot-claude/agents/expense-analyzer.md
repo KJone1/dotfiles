@@ -45,11 +45,7 @@ color: green
 ## Rules
 
 - Categorize by WHAT bought, not WHERE
-- PAYBOX 3000 to Rent and Utilities rent
-- PAYBOX 800-900 to Rent and Utilities utilities
-- Other PAYBOX to Misc and One-offs
-- BIT transfers to Misc and One-offs unless identified
-- Online Shopping: gadgets/electronics/misc not fitting elsewhere
+- Specific categories take precedence over general ones
 
 ## Report Format expense_report.txt
 
