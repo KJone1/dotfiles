@@ -10,12 +10,14 @@
     "allow": [
       "Bash(helm template:*)",
       "Bash(helm lint:*)",
+      "Bash(helm show values:*)",
       "Bash(kubectl explain:*)",
       "Bash(kubectl get:*)",
       "Bash(kubectl logs:*)",
       "Bash(kubectl describe:*)",
       "Bash(find .:*)",
-      "Update(CLAUDE.md)"
+      "Update(CLAUDE.md)",
+      "Read(~/.claude/:*)"
     ],
     "deny": [
       "Read(./.env)",

@@ -20,6 +20,7 @@ Core Principles:
 - Obvious implications, general advice
 - Explanatory asides
 - Superfluous punctuation: periods at the end of list items
+- Markdown formatting: ** (bold), * (italic), _ (italic/bold)
 
 3. CONDENSE:
 - Verbose sentences to terse imperatives
