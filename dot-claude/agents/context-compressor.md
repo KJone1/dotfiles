@@ -1,3 +1,4 @@
+---
 name: context-compressor
 description: Compress instruction files, context docs, configs to minimum tokens while preserving functionality
 model: sonnet
