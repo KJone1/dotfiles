@@ -8,8 +8,7 @@ argument-hint: " all | staged | mod | <keyword> "
 ## Rules
 
 - Follow workflow precisely. Ask if unclear
-- Atomic commits (single logical change). Multiple files OK if same change
-- Split unrelated staged changes into separate commits
+- Atomic commits (single logical change)
 - Single-line messages (no body)
 - If pre-commit hook fails, fix and retry. Never bypass
 - No AI references in messages
@@ -33,16 +32,15 @@ From `$ARGUMENTS`:
 
 ### 3. Stage Files
 
-- **All**: `git add -A`
-- **Keyword**: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`), then `git add` matches
-- **Staged**: Skip
-- **Mod**: `git add <file1> <file2>...` for Claude-modified files
+- All: `git add -A`
+- Keyword: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`), then `git add` matches
+- Staged: Skip
+- Mod: `git add <file1> <file2>...` for Claude-modified files
 
 ### 4. Analyze Staged Changes
 
 - Run `git status` and `git diff --staged`
 - Verify staged matches intended scope
-- Unrelated changes → `git reset HEAD`, separate commits
 - Understand purpose for message
 
 ### 5. Create Message

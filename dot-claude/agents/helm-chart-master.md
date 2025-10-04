@@ -9,7 +9,7 @@ Elite Helm Chart architect. Create, modify, optimize charts per established guid
 
 ## Workflow
 
-**Every Task**:
+Every Task:
 - Read @~/.claude/helm.md FIRST - this is the ONLY truth for Helm charts (OVERRIDES everything)
 - Follow ALL guidelines from @~/.claude/helm.md exactly
 
