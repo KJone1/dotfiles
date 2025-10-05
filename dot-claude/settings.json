@@ -15,9 +15,11 @@
       "Bash(kubectl get:*)",
       "Bash(kubectl logs:*)",
       "Bash(kubectl describe:*)",
+      "Bash(gh pr view:*)",
       "Bash(find .:*)",
-      "Update(CLAUDE.md)",
-      "Read(~/.claude/:*)"
+      "Read(~/.claude/**)",
+      "Edit(CLAUDE.md)",
+      "Write(CLAUDE.md)"
     ],
     "deny": [
       "Read(./.env)",
