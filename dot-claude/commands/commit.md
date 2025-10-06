@@ -10,69 +10,79 @@ argument-hint: " all | staged | mod | <keyword> "
 - Follow workflow precisely. Ask if unclear
 - Atomic commits (single logical change)
 - Single-line messages (no body)
-- If pre-commit hook fails, fix and retry. Never bypass
+- Pre-commit hook fails → fix and retry. Never bypass
 - No AI references in messages
 
 ## Workflow
 
-### 1. Determine Scope
+### 1. Determine Scope & Stage Files
 
-From `$ARGUMENTS`:
+`$ARGUMENTS`:
+- Empty → all: `git add -A`
+- `staged` → staged only: Skip
+- `mod` → Claude-modified files: `git add <file1> <file2>...`
+- `<keyword>` → files matching keyword: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`) → `git add` matches
 
-- Empty → all changes
-- `staged` → staged only
-- `mod` → files Claude modified this session (Read/Write/Edit/NotebookEdit)
-- `<keyword>` → files matching keyword
+### 2. Check Branch
 
-### 2. Extract JIRA Ticket
+`git branch --show-current`: `master`/`main` → Main | Other → Feature
 
-- Get branch name: `git branch --show-current`
-- Extract ticket ID: `[LETTERS]-[NUMBER]` format
-- If multiple found, use first
+---
 
-### 3. Stage Files
+## Main Branch Workflow
 
-- All: `git add -A`
-- Keyword: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`), then `git add` matches
-- Staged: Skip
-- Mod: `git add <file1> <file2>...` for Claude-modified files
+### 3. Analyze Staged Changes
 
-### 4. Analyze Staged Changes
-
-- Run `git status` and `git diff --staged`
-- Verify staged matches intended scope
+- `git status` + `git diff --staged`
+- Verify staged matches scope
 - Understand purpose for message
 
-### 5. Create Message
-
-Format:
-- With ticket: `TICKET-123: Description`
-- Without ticket: `Description`
+### 4. Create Message
 
 Rules:
 - Start with action verb (Add/Fix/Update/Remove/Refactor/Improve)
 - Imperative mood
-- Max 72 chars with ticket, 50 chars without
+- Max 50 chars
 - No periods
 - Explain WHY, not HOW
 
-### 6. Confirm
+### 5. Confirm
 
 Present:
 - Files to commit
 - Commit message
 
 Ask: "Do you approve this commit? (y/n)"
-
 Accept: `y`, `yes` (case insensitive)
 Reject: `n`, `no`, or anything else
 
-### 7. Execute
+### 6. Execute
 
 `git commit -m "<message>"`
 
-### 8. Validate
+### 7. Validate
 
 - `git log -1` to verify
-- Error found → amend with `git commit --amend`
-- Never push (ends after commit)
+- Error found → `git commit --amend`
+- Never push
+
+---
+
+## Feature Branch Workflow
+
+### 3. Extract JIRA Ticket
+
+- Extract ticket ID from branch name: `[LETTERS]-[NUMBER]` format
+- Multiple found → use first
+
+### 4. Create Message
+
+Format: `TICKET-123: wip`
+
+### 5. Execute
+- `git commit -m "<message>"` (no confirmation)
+
+### 6. Validate
+- `git log -1` to verify
+- Error found → `git commit --amend`
+- Never push
