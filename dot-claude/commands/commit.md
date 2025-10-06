@@ -69,7 +69,7 @@ Reject: `n`, `no`, or anything else
 
 ### 7. Execute
 
-`git commit -sm "<message>"`
+`git commit -m "<message>"`
 
 ### 8. Validate
 
