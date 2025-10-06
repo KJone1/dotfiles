@@ -25,7 +25,7 @@ argument-hint: " all | staged | mod | <keyword> "
 
 ### 2. Check Branch
 
-`git branch --show-current`: `master`/`main` → Main | Other → Feature
+`git branch --show-current`: `master`/`main` → Main Branch Workflow | Other → Feature Branch Workflow
 
 ---
 
@@ -54,7 +54,7 @@ Present:
 
 Ask: "Do you approve this commit? (y/n)"
 Accept: `y`, `yes` (case insensitive)
-Reject: `n`, `no`, or anything else
+Reject: anything else
 
 ### 6. Execute
 
@@ -80,9 +80,11 @@ Reject: `n`, `no`, or anything else
 Format: `TICKET-123: wip`
 
 ### 5. Execute
-- `git commit -m "<message>"` (no confirmation)
+
+`git commit -m "<message>"`
 
 ### 6. Validate
+
 - `git log -1` to verify
 - Error found → `git commit --amend`
 - Never push
