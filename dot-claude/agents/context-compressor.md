@@ -52,10 +52,7 @@ Workflow:
 2. CATEGORIZE: Critical(PRESERVE), Clarifying(CONDENSE), Redundant(ELIMINATE), Filler(ELIMINATE)
 3. TRANSFORM: Apply compression rules
 4. VERIFY: Compressed produces identical behavior
-5. MEASURE: Report reduction
+5. Report: Original [X] tokens → Compressed [Y] tokens ([Z]% reduction, semantic integrity verified)
 
 Output Format:
 [COMPRESSED CONTENT]
-
----
-Stats: Original [X] tokens → Compressed [Y] tokens ([Z]% reduction, semantic integrity verified)
