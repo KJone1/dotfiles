@@ -14,10 +14,10 @@ Analyze infrastructure, report findings. Only modify CLAUDE.md for knowledge sto
 BEFORE starting:
 
 1. Detect project type:
-   - Helm: `Chart.yaml`, `values.yaml`, `templates/` dir
-   - ArgoCD: `Application.yaml`, `*.yaml` with `kind: Application`, `argocd/` dir
-   - Kubernetes: `*.yaml` with `kind: Deployment/Service/ConfigMap`, `k8s/` or `manifests/` dir
-   - Terraform: `*.tf` files, `.terraform/` dir
+   - Helm: `Chart.yaml`, `values.yaml`, `templates/`
+   - ArgoCD: `Application.yaml`, `*.yaml` with `kind: Application`, `argocd/`
+   - Kubernetes: `*.yaml` with `kind: Deployment/Service/ConfigMap`, `k8s/` or `manifests/`
+   - Terraform: `*.tf` files, `.terraform/`
 
 2. Read required references:
    - Helm/K8s/ArgoCD: MUST read `~/.claude/helm.md` FIRST (base ALL analysis on helm.md conventions, compare project against standards)
@@ -76,48 +76,44 @@ State Boundaries: State 1: [Scope, components]
 ### SECTION 3: STYLE & PATTERN GUIDE (Both)
 
 Naming Conventions:
-
-- Terraform: Resources `{env}-{service}-{resource_type}`, Variables `snake_case` full words, Files `kebab-case.tf` grouped by type, Tags: env, service, managed-by, cost-center
-- Helm/K8s: Charts `kebab-case` descriptive names, Releases `{env}-{chart-name}`, Labels app.kubernetes.io/name, app.kubernetes.io/instance, Files `kebab-case.yaml`, template names match resource type
+- Terraform: Resources `{env}-{service}-{resource_type}`, Variables `snake_case`, Files `kebab-case.tf`, Tags: env, service, managed-by, cost-center
+- Helm/K8s: Charts `kebab-case`, Releases `{env}-{chart-name}`, Labels app.kubernetes.io/name, app.kubernetes.io/instance, Files `kebab-case.yaml`
 
 Code Organization:
-
 - Terraform: main.tf, variables.tf, outputs.tf, versions.tf, locals.tf
-- Helm: Chart.yaml, values.yaml, templates/, charts/ (subcharts)
+- Helm: Chart.yaml, values.yaml, templates/, charts/
 
-Common Idioms: [Show TF env-specific overrides, Helm conditional rendering, K8s ConfigMap/Secret mounting with code examples]
+Common Idioms: [TF env-specific overrides, Helm conditional rendering, K8s ConfigMap/Secret mounting with code examples]
 
 ### SECTION 4: CRITICAL CONNECTIONS MAP (AI)
 
 Key Data Flows:
-
 - Terraform: variable.vpc_id → module.networking → output.subnet_ids → module.compute
 - Helm: values.database.host → template → Deployment env vars → Secret references
 - ArgoCD: Application spec → Helm values override → Cluster deployment
 
-External Dependencies: Cloud providers (AWS/GCP/Azure), External DNS, Secrets sources, Container registries, Helm repos, OCI registries, Git repos, External databases, APIs, third-party services
+External Dependencies: Cloud providers, External DNS, Secrets sources, Container registries, Helm repos, OCI registries, Git repos, External databases, APIs, third-party services
 
 Cross-Component References:
-
 - Terraform: [Component A] outputs.endpoint → [Component B] variables.api_url
 - Helm: [Chart A] values.global → [Subchart B] values inheritance
 - K8s: [Service A] endpoint → [Deployment B] env variable
 
 ### SECTION 5: OBSERVED CONVENTIONS (Both)
 
-Resource patterns: Naming `{env}-{service}-{type}`, module usage (abstracted vs inline), tagging (standard tags present/missing), variable validation (where applied), output docs (coverage level)
+Resource patterns: Naming `{env}-{service}-{type}`, module usage, tagging, variable validation, output docs
 
-Pipeline patterns: Flow (stage → validate → plan → apply), approval gates (manual approval locations), artifacts (plan storage), validation stages, notifications (failure alerts)
+Pipeline patterns: Flow (stage → validate → plan → apply), approval gates, artifacts, validation stages, notifications
 
-Secret handling: Sources (Secrets Manager, hardcoded, other), variable sensitivity (where marked), commit history (secrets committed), logging (exposure risks)
+Secret handling: Sources (Secrets Manager, hardcoded, other), variable sensitivity, commit history, logging exposure risks
 
 ### SECTION 6: ARCHITECTURAL INSIGHTS (Human)
 
 How This Works: [Narrative for new team members]
 
-Design Decisions & Rationale: Why modules by service not resource type [Explanation], Why state split by env [Explanation], Why values hardcoded [Explanation]
+Design Decisions & Rationale: Why modules by service not resource type, Why state split by env, Why values hardcoded [Explanations]
 
-Evolution: Current phase [Mature/Growing/Early/Refactoring], Evidence [What code reveals], Trajectory [Direction]
+Evolution: Current phase [Mature/Growing/Early/Refactoring], Evidence, Trajectory
 
 ### SECTION 7: DIFF ANALYSIS - GAPS & RECOMMENDATIONS (Both)
 
@@ -135,16 +131,16 @@ Terraform Service patterns:
 → Reference: `/modules/services/api-service/`, Structure: main.tf, variables.tf, outputs.tf, Registration: `/environments/{env}/main.tf`, Tagging: observed patterns
 
 Helm Chart patterns:
-→ Reference: `/charts/{chart-name}/`, Structure: Chart.yaml, values.yaml, templates/, charts/, Template helpers: `/charts/{chart-name}/templates/_helpers.tpl`, Value overrides: `/environments/{env}/values-{env}.yaml`
+→ Reference: `/charts/{chart-name}/`, Structure: Chart.yaml, values.yaml, templates/, charts/, Template helpers: `templates/_helpers.tpl`, Value overrides: `/environments/{env}/values-{env}.yaml`
 
 K8s Manifest patterns:
-→ Reference: `/k8s/` or `/manifests/` or `/base/`, Kustomize: base/ + overlays/{env}/, Organization: by namespace or by resource type
+→ Reference: `/k8s/` or `/manifests/` or `/base/`, Kustomize: base/ + overlays/{env}/, Organization: by namespace or resource type
 
 Pipeline patterns:
 → Location: `/ci-cd/Jenkinsfile`, `/.github/workflows/`, `/ci-cd/deploy.yaml`, TF flow: validate → plan → approve → apply, Helm flow: lint → template → diff → upgrade, ArgoCD: GitOps sync, auto-sync policies
 
 Config patterns:
-→ TF vars: `/modules/{service}/variables.tf`, `/environments/{env}/terraform.tfvars`, Helm values: `/charts/{chart}/values.yaml`, `/environments/{env}/values-{env}.yaml`, K8s configs: ConfigMap/Secret usage patterns, Docs: `/modules/{service}/README.md`, `/charts/{chart}/README.md`
+→ TF vars: `/modules/{service}/variables.tf`, `/environments/{env}/terraform.tfvars`, Helm values: `/charts/{chart}/values.yaml`, `/environments/{env}/values-{env}.yaml`, K8s configs: ConfigMap/Secret usage, Docs: `/modules/{service}/README.md`, `/charts/{chart}/README.md`
 
 Reference patterns:
 → TF: Data sources, remote state usage, parameterization, Helm: Template functions, named templates, subchart dependencies, K8s: Service discovery, DNS, label selectors
@@ -182,7 +178,7 @@ After completing analysis:
 
 2. Compare findings (if exists): Read current CLAUDE.md, compare patterns/conventions vs your analysis, identify outdated/incorrect/missing info
 
-3. Surgically update if needed: Your analysis = current truth (updated), CLAUDE.md = knowledge store (may be outdated), Add new patterns (missing), Update outdated conventions (incorrect), Remove incorrect/irrelevant info (no longer valid), Keep existing accurate content, Preserve user-written guidelines unrelated to patterns
+3. Surgically update if needed: Your analysis = current truth, CLAUDE.md = knowledge store (may be outdated), Add new patterns, Update outdated conventions, Remove incorrect/irrelevant info, Keep existing accurate content, Preserve user-written guidelines unrelated to patterns
 
 4. No change if current: If CLAUDE.md accurately reflects findings, skip update
 
