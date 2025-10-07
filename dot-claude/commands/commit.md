@@ -1,6 +1,5 @@
 ---
 description: Create atomic git commits with JIRA ticket integration
-argument-hint: " all | staged | mod | <keyword> "
 ---
 
 # /commit
@@ -15,14 +14,11 @@ argument-hint: " all | staged | mod | <keyword> "
 
 ## Workflow
 
-### 1. Determine Scope & Stage Files
+### 1. Stage Files
 
-`$ARGUMENTS`:
-
-- Empty → `git status --short` → show numbered modified files → user selects → `git add` selected
-- `staged` → staged only: Skip
-- `mod` → Claude-modified files: `git add <file1> <file2>...`
-- `<keyword>` → files matching keyword: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`) → `git add` matches
+- `git status --short` → show numbered modified files
+- User selects files
+- `git add` selected
 
 ### 2. Check Branch
 
@@ -35,8 +31,8 @@ argument-hint: " all | staged | mod | <keyword> "
 ### 3. Analyze Staged Changes
 
 - `git status` + `git diff --staged`
-- Verify staged matches scope
-- Understand purpose for message
+- Understand changes and file relationships
+- Determine the goal these changes achieve
 
 ### 4. Create Message
 
