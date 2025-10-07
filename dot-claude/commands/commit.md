@@ -18,7 +18,8 @@ argument-hint: " all | staged | mod | <keyword> "
 ### 1. Determine Scope & Stage Files
 
 `$ARGUMENTS`:
-- Empty → all: `git add -A`
+
+- Empty → `git status --short` → show numbered modified files → user selects → `git add` selected
 - `staged` → staged only: Skip
 - `mod` → Claude-modified files: `git add <file1> <file2>...`
 - `<keyword>` → files matching keyword: Grep (`output_mode: "files_with_matches"`) + Glob (`**/*<keyword>*`) → `git add` matches
@@ -40,6 +41,7 @@ argument-hint: " all | staged | mod | <keyword> "
 ### 4. Create Message
 
 Rules:
+
 - Start with action verb (Add/Fix/Update/Remove/Refactor/Improve)
 - Imperative mood
 - Max 50 chars
@@ -49,6 +51,7 @@ Rules:
 ### 5. Confirm
 
 Present:
+
 - Files to commit
 - Commit message
 
