@@ -9,7 +9,7 @@ path=($HOME/.local/bin
       $HOME/.local/bin/go/bin
       $HOME/.local/bin/google-cloud-sdk/bin
       /usr/local/go/bin
-      /home/kj/go/bin
+      $HOME/go/bin
       $HOME/bin
       /var/lib/k0s/bin
       /opt

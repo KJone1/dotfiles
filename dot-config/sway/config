@@ -22,7 +22,7 @@ set $explorer $term --title 'file explorer' -e lf
 set $menu wofi | xargs swaymsg exec --
 
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg /home/kj/wallpapers/abstract.png fill
+output * bg $HOME/wallpapers/abstract.png fill
 
 # Make sure WAYLAND_DISPLAY and XDG_CURRENT_DESKTOP are imported into D-Bus.
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
