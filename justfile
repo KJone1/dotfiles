@@ -21,3 +21,11 @@ uninstall:
 reload:
   @just uninstall
   @just install
+
+doctor:
+  #!/usr/bin/env bash
+  missing=0
+  for cmd in fd fzf bat starship nvim zsh stow; do
+    command -v $cmd &> /dev/null || { echo "✗ $cmd is missing"; ((missing++)); }
+  done
+  [ $missing -eq 0 ] && echo "✓ All dependencies installed" || exit 1
