@@ -76,7 +76,9 @@ Reject: anything else
 
 ### 4. Create Message
 
-Format: `TICKET-123: wip`
+- `git log --oneline` to check if first commit
+- First → `TICKET-123: <branch-name-description>`
+- Subsequent → `TICKET-123: update`
 
 ### 5. Execute
 

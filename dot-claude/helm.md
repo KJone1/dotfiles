@@ -14,20 +14,22 @@ MANDATORY: `helm template --set` test ALL changes with multiple value combos
 - Replace ALL instances: Find+replace entire chart
 - Defaults in values.yaml ONLY: `{{ .Values.x }}` not `{{ .Values.x | default y }}`
 - Environment-agnostic: Design for dev/staging/prod
+- values.yaml: no quotes on primitives (port: 8080, enabled: true)
 
 ## Templates
 
-- 2-space indent, no excess quotes
-- `name: {{ .Values.name }}` ✓ | `port: "{{ .Values.port }}"` ✓
+- 2-space indent, NO excess quotes
+- Quote only when numeric/boolean must be string: port: "{{ .Values.port }}" (number→string) | name: {{ .Values.name }} (string, no quotes)
 - Whitespace: Use `{{-` to trim left and `-}}` to trim right
 - Conditionals: `{{- if .Values.x }}` or `{{- with .Values.x }}` (use `with` when referencing values inside)
 - Loops: `range`
-- NOTES.txt: Only for `required` value checks, no other content
+- NOTES.txt: Only for {{ required "msg" .Values.x }} validation, no other content
 
 ## Resources
 
-- CPU: requests only (250m), NO limits
-- Memory: requests == limits (512Mi)
+- CPU: requests only (no limits)
+- Memory: requests == limits
+- Set resources appropriate for workload
 
 ## Labels
 
@@ -36,7 +38,15 @@ MANDATORY: `helm template --set` test ALL changes with multiple value combos
 
 ## Security
 
-Non-root, security contexts, secrets (not ConfigMaps), network policies, liveness/readiness probes
+Required:
+- securityContext.runAsNonRoot: true (all containers)
+- readinessProbe (all deployments/statefulsets)
+- Secrets for sensitive data (never ConfigMaps)
+
+Recommended:
+- livenessProbe with delays
+- Network policies
+- securityContext.readOnlyRootFilesystem: true where possible
 
 ## Testing (MANDATORY)
 
@@ -60,7 +70,7 @@ Test with `helm template --set`:
 ## Dependencies
 
 - Pin subchart versions in `Chart.yaml`, override via chart name key
-- Keep `Chart.yaml` metadata current
+- On changes: bump Chart.yaml version, update appVersion if app changes, revise description if functionality changes
 - Review subchart: `helm show values <chart>` to check defaults, structure, what's templated vs hardcoded; explicitly set critical values to avoid upstream changes
 
 ## Anti-patterns
