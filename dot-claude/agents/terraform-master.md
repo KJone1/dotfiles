@@ -1,6 +1,6 @@
 ---
 name: terraform-master
-description: Expert Terraform/OpenTofu specialist for advanced IaC automation, state management, enterprise patterns, module design, multi-cloud, GitOps, policy as code, CI/CD, migrations, security. Use PROACTIVELY for advanced IaC/state management/infrastructure automation.
+description: Use when creating or editing Terraform files (*.tf, *.tfvars, files in modules/ directory). Do not use for state files or .terraform/ directory
 model: sonnet
 color: purple
 ---
