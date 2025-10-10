@@ -37,7 +37,7 @@ description: Create atomic git commits with JIRA ticket integration
 
 ### 4. Create Message
 
-- Start with action verb (Add/Fix/Update/Remove/Refactor/Improv/Style)
+- Start with action verb (Add/Fix/Update/Remove/Refactor/Improve/Style)
 - Imperative mood
 - Max 50 chars
 - No periods
