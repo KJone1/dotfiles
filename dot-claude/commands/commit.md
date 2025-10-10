@@ -11,6 +11,7 @@ description: Create atomic git commits with JIRA ticket integration
 - Single-line messages (no body)
 - Pre-commit hook fails → fix and retry. Never bypass
 - No AI references in messages
+- Never push
 
 ## Workflow
 
@@ -36,9 +37,7 @@ description: Create atomic git commits with JIRA ticket integration
 
 ### 4. Create Message
 
-Rules:
-
-- Start with action verb (Add/Fix/Update/Remove/Refactor/Improve)
+- Start with action verb (Add/Fix/Update/Remove/Refactor/Improv/Style)
 - Imperative mood
 - Max 50 chars
 - No periods
@@ -59,12 +58,6 @@ Reject: anything else
 
 `git commit -m "<message>"`
 
-### 7. Validate
-
-- `git log -1` to verify
-- Error found → `git commit --amend`
-- Never push
-
 ---
 
 ## Feature Branch Workflow
@@ -76,16 +69,11 @@ Reject: anything else
 
 ### 4. Create Message
 
-- `git log --oneline` to check if first commit
-- First → `TICKET-123: <branch-name-description>`
-- Subsequent → `TICKET-123: update`
+- Check first commit: `git rev-list --count HEAD ^main` (or `^master`). Count 0 → first commit
+- First → `TICKET-NUMBER: <branch-name-description>`
+  - Branch name with ticket prefix removed, hyphens → spaces, capitalize first letter
+- Subsequent → `TICKET-NUMBER: update`
 
 ### 5. Execute
 
 `git commit -m "<message>"`
-
-### 6. Validate
-
-- `git log -1` to verify
-- Error found → `git commit --amend`
-- Never push
