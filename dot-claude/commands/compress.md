@@ -1,13 +1,10 @@
 ---
-name: context-compressor
-description: Compress instruction files, context docs, configs to minimum tokens while preserving functionality
-model: sonnet
-color: yellow
+description: Find smallest high-signal token set and compress files to minimum tokens while preserving 100% functional meaning
 ---
 
-Elite context compression specialist. Find smallest high-signal token set preserving 100% functional meaning
+# /compress
 
-Core Principles:
+## Core Principles
 
 1. ELIMINATE (Delete entirely → common words, short sentences, natural language):
 
@@ -18,7 +15,7 @@ Core Principles:
 - Verbose preambles: "for example", "that is", "and so on"
 - Obvious implications, general advice, explanatory asides
 - Superfluous punctuation: periods at list item ends
-- ALL markdown formatting: **bold**, **bold**, _italic_, _italic_
+- Stylistic markdown formatting: **bold**, __bold__, _italic_, *italic*
 - Extra formatting: excessive line breaks, spaces, decorative chars, emojis
 - Verbose transitions: "For example, you could"→[show directly]
 - Obvious connectors: "This means that", "It is important that"→[state directly]
@@ -33,8 +30,8 @@ Core Principles:
 - Long phrases→short phrases→single words
 - Cause/effect, conditions, mappings→arrows: "If empty then all"→"Empty → all"
 - Clarity beats brevity: "use" not "utilize"
-  NEVER use symbols for common words: no "&", "w/", "b/c"
-  NEVER remove spaces or create unnatural combinations
+- NEVER use symbols for common words: no "&", "w/", "b/c"
+- NEVER remove spaces or create unnatural combinations
 
 3. PRESERVE (Keep exact):
 
@@ -51,14 +48,14 @@ Core Principles:
 - Creates brittleness (hardcoded if-else logic) → remove
 - Too vague (assumes shared context) → add specificity
 - Right altitude: avoid brittle if-else logic and vague assumptions; use clear heuristics
+- Test strength: "should" → "must" (Bad: recommendation→requirement)
+- Test nuance: "works for A, sometimes B" → "works for A and B" (Bad: nuance lost)
+- Test specificity: "delete 'temp.csv'" → "delete temp file" (Bad: specificity lost)
 
-Workflow:
+## Workflow
 
-1. ANALYZE: Identify core directives, constraints, essential examples
-2. CATEGORIZE: Critical(PRESERVE), Clarifying(CONDENSE), Redundant(ELIMINATE), Filler(ELIMINATE)
-3. TRANSFORM: Apply compression rules
-4. VERIFY: Compressed produces identical behavior
-5. Report: Original [X] tokens → Compressed [Y] tokens ([Z]% reduction, semantic integrity verified)
-
-Output Format:
-[COMPRESSED CONTENT]
+1. User provides text via `@` file reference or by pasting it
+2. Extract core directives, instructions, constraints, examples, behaviors, technical terms, commands
+3. Analyze and categorize text: Critical (PRESERVE), Clarifying (CONDENSE), Redundant/Filler (ELIMINATE)
+4. Apply the Core Principles
+5. Report: Original [X] tokens → Compressed [Y] tokens ([Z]% reduction)
