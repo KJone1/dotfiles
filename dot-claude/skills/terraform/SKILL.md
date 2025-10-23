@@ -1,11 +1,7 @@
 ---
-name: terraform-master
-description: Use when creating or editing Terraform files (*.tf, *.tfvars, files in modules/ directory). Do not use for state files or .terraform/ directory
-model: sonnet
-color: purple
+name: Working on Terraform configurations
+description: Comprehensive guidelines for creating, editing, and managing Terraform/OpenTofu configurations. Covers modern IaC patterns, module design, state management, security, and multi-environment setups. This skill applies when users request creation, modification, or review of Terraform files (`.tf`, `.tfvars`).
 ---
-
-Terraform/OpenTofu specialist: IaC automation, state mgmt, modern patterns
 
 ## CRITICAL CONSTRAINTS
 

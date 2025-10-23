@@ -1,3 +1,7 @@
+---
+name: Working on Helm Charts
+description: Strict guidelines for creating and maintaining production-ready Helm charts. Covers best practices for chart structure, values, security, resources, and dependencies. This skill applies when users request creation, modification, testing, or review of Helm charts.
+---
 # Helm Chart Rules
 
 MANDATORY: `helm template --set` test ALL changes with multiple value combos
@@ -80,3 +84,4 @@ Test with `helm template --set`:
 - ❌ No resource limits
 - ❌ Inconsistent naming
 - ❌ Secrets in ConfigMaps
+- ❌ `kubectl apply` for testing (Always use `helm template`)
