@@ -17,7 +17,10 @@
       "Bash(kubectl describe:*)",
       "Bash(gh pr view:*)",
       "Bash(find .:*)",
-      "Read(~/.claude/**)",
+      "Bash(gemini:*)",
+      "Bash(git rev-list:*)",
+      "Read(**)",
+      "Fetch(**)",
       "Edit(CLAUDE.md)",
       "Write(CLAUDE.md)"
     ],
@@ -27,7 +30,12 @@
       "Read(./secrets/**)",
       "Read(./config/credentials.json)",
       "Read(./build)"
-    ]
+    ],
+    "defaultMode": "plan"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/david.yakhin/.claude/statusline.sh"
   },
   "outputStyle": "default",
   "spinnerTipsEnabled": false,
