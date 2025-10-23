@@ -1,3 +1,8 @@
+---
+name: Working with GitHub
+description: Strict guidelines for all GitHub operations using the `gh` CLI. Covers pull requests, secrets management, and commit conventions. This skill applies when users need to interact with GitHub repositories.
+---
+
 # GitHub Operations
 
 **MANDATORY**: Always use `gh` CLI for all GitHub operations. Verify `gh auth status` before starting.
