@@ -13,11 +13,4 @@
 - Simplify code and remove unnecessary parts
 - Focus on targeted modifications
 - When removing or refactoring code, remove all references and calls (no garbage left behind)
-
-## Context-Based Loading
-
-Read relevant guidelines BEFORE starting work:
-
-- **Git Commits**: Always use SlashCommand(/commit)
-- **Helm/Helm Charts**: Read `@helm.md` for chart work, values.yaml, templates
-- **GitHub Operations**: Read `@github.md` for PRs, issues, repo management
+- Never add comments explaining created code
