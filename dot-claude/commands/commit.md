@@ -31,7 +31,7 @@ description: Create atomic git commits with JIRA ticket integration
 
 ### 3. Analyze Staged Changes
 
-- `git status` + `git diff --staged`
+- `git diff --staged`
 - Understand changes and file relationships
 - Determine the goal these changes achieve
 
