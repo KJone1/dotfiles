@@ -19,6 +19,7 @@
       "Bash(find .:*)",
       "Bash(gemini:*)",
       "Bash(git rev-list:*)",
+      "Bash(git log:*)",
       "Read(**)",
       "Fetch(**)",
       "Edit(CLAUDE.md)",
