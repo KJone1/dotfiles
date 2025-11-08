@@ -21,7 +21,8 @@
       "Bash(git rev-list:*)",
       "Bash(git log:*)",
       "Read(**)",
-      "Fetch(**)",
+      "WebFetch",
+      "WebSearch",
       "Edit(CLAUDE.md)",
       "Write(CLAUDE.md)"
     ],

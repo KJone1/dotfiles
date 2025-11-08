@@ -1,6 +1,6 @@
 ---
-name: Working with GitHub
-description: Strict guidelines for all GitHub operations using the `gh` CLI. Covers pull requests, secrets management, and commit conventions. This skill applies when users need to interact with GitHub repositories.
+name: github
+description: Strict guidelines for all GitHub operations using the `gh` CLI. Covers pull requests, secrets management, and commit conventions. Applied when working with GitHub repositories, creating PRs, managing secrets, or following commit conventions.
 ---
 
 # GitHub Operations

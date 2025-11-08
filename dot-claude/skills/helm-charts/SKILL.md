@@ -1,6 +1,6 @@
 ---
-name: Working on Helm Charts
-description: Strict guidelines for creating and maintaining production-ready Helm charts. Covers best practices for chart structure, values, security, resources, and dependencies. This skill applies when users request creation, modification, testing, or review of Helm charts.
+name: helm-charts
+description: Strict guidelines for creating and maintaining production-ready Helm charts. Covers best practices for chart structure, values, security, resources, and dependencies. Applied when creating, modifying, testing, or reviewing Helm charts.
 ---
 # Helm Chart Rules
 
