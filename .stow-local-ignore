@@ -6,3 +6,4 @@ justfile
 .gitignore
 .vscode
 README.md
+CLAUDE.md
