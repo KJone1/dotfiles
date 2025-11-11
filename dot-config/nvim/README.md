@@ -5,6 +5,7 @@
 ## 🔌 Plugins
 
 - [auto-save.nvim](https://github.com/okuuva/auto-save.nvim)
+- [cinnamon.nvim](https://github.com/declancm/cinnamon.nvim)
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
 - [cmp-dotenv](https://github.com/SergioRibera/cmp-dotenv)
 - [cmp-nerdfont](https://github.com/chrisgrieser/cmp-nerdfont)
