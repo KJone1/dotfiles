@@ -1,24 +1,72 @@
 return {
   n = {
     -- Diagnostics
-    { '[d', function() vim.diagnostic.jump { count = -1, float = true } end, desc = 'Go to previous diagnostic message' },
-    { ']d', function() vim.diagnostic.jump { count = 1, float = true } end, desc = 'Go to next diagnostic message' },
+    {
+      '[d',
+      function()
+        vim.diagnostic.jump { count = -1, float = true }
+      end,
+      desc = 'Go to previous diagnostic message',
+    },
+    {
+      ']d',
+      function()
+        vim.diagnostic.jump { count = 1, float = true }
+      end,
+      desc = 'Go to next diagnostic message',
+    },
 
     -- Files & Navigation
     { '<leader>e', ':Yazi<CR>', desc = 'Explore Files in current dir' },
-    { '<leader>j', function() require('snipe').open_buffer_menu() end, desc = 'Open Snipe buffer menu' },
+    {
+      '<leader>j',
+      function()
+        require('snipe').open_buffer_menu()
+      end,
+      desc = 'Open Snipe buffer menu',
+    },
     { '<F1>', '<ESC>', desc = 'Remap F1 as escape' },
 
     -- Scroll
-    { '<C-k>', function() require('cinnamon').scroll '10kzz' end, desc = 'Remap Ctrl-u' },
-    { '<C-j>', function() require('cinnamon').scroll '10jzz' end, desc = 'Remap Ctrl-d' },
+    {
+      '<C-k>',
+      function()
+        require('cinnamon').scroll '10kzz'
+      end,
+      desc = 'Remap Ctrl-u',
+    },
+    {
+      '<C-j>',
+      function()
+        require('cinnamon').scroll '10jzz'
+      end,
+      desc = 'Remap Ctrl-d',
+    },
 
     -- Git
-    { '<leader>l', function() require('snacks').lazygit() end, desc = 'Open LazyGit' },
+    {
+      '<leader>l',
+      function()
+        require('snacks').lazygit()
+      end,
+      desc = 'Open LazyGit',
+    },
 
     -- Search/Replace
-    { '<leader>sl', function() require('custom').ssr_line() end, desc = 'Search and Replace in line' },
-    { '<leader>sa', function() require('custom').ssr_buffer() end, desc = 'Search and Replace in current buffer' },
+    {
+      '<leader>sl',
+      function()
+        require('custom').ssr_line()
+      end,
+      desc = 'Search and Replace in line',
+    },
+    {
+      '<leader>sa',
+      function()
+        require('custom').ssr_buffer()
+      end,
+      desc = 'Search and Replace in current buffer',
+    },
 
     -- Text Editing
     { '<A-DOWN>', ':m .+1<CR>==', desc = 'Move one line down' },
@@ -60,8 +108,20 @@ return {
 
   v = {
     -- Scroll
-    { '<C-k>', function() require('cinnamon').scroll '10kzz' end, desc = 'Remap Ctrl-u' },
-    { '<C-j>', function() require('cinnamon').scroll '10jzz' end, desc = 'Remap Ctrl-d' },
+    {
+      '<C-k>',
+      function()
+        require('cinnamon').scroll '10kzz'
+      end,
+      desc = 'Remap Ctrl-u',
+    },
+    {
+      '<C-j>',
+      function()
+        require('cinnamon').scroll '10jzz'
+      end,
+      desc = 'Remap Ctrl-d',
+    },
 
     -- Text Manipulation
     { '<A-UP>', ":m '<-2<CR>gv=gv", desc = 'Move selected lines up' },
