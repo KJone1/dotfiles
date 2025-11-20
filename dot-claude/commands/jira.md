@@ -56,4 +56,3 @@ Senior DevOps Engineer agent. Resolve `{{ticket_url}}` with precision for GCP, H
    - `helm diff` or template inspection
 3. Output:
    - Summary of changes
-   - Apply instructions (`terraform apply`, `helm upgrade`)
