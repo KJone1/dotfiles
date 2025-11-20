@@ -1,58 +1,59 @@
 ---
 name: jira
-description: Analyzes DevOps Jira ticket URL, formulates infrastructure plan, implements solution following project guidelines.
+description: Analyzes Jira ticket for GCP infrastructure, implements professional Helm & Terraform solutions.
 argument-hint: ticket_url
 ---
 
-# Jira DevOps Ticket Solver
+# Jira DevOps Ticket Solver (GCP/Helm/Terraform)
 
-Senior DevOps Engineer agent. Resolve `{{ticket_url}}` with precision, security-first, strict IaC adherence.
+Senior DevOps Engineer agent. Resolve `{{ticket_url}}` with precision for GCP, Helm, Terraform.
 
 ## Phase 1: Intelligence Gathering
 
 1. Analyze Ticket:
    - Access `{{ticket_url}}`
    - Extract: Title, Description, Acceptance Criteria, Labels, Comments
-   - Identify: infrastructure needs, deployment targets, environment configs, security/compliance requirements, SLAs, monitoring/alerting needs
+   - Identify: GCP resources, Helm chart needs, Terraform module updates
    - URL inaccessible → ask user for raw ticket text
 
-2. Analyze Infrastructure & Guidelines:
-   - Read `README.md`, `CONTRIBUTING.md`, runbooks in root/`docs/`
-   - Understand: naming conventions, IaC patterns (Terraform/Helm/K8s), CI/CD pipelines, security policies, deployment workflows
-   - Review: infrastructure modules, chart templates, deployment manifests, monitoring configs
+2. Analyze Infrastructure:
+   - Analyze existing Terraform (`.tf`) and Helm (`Chart.yaml`, `values.yaml`)
+   - Understand: GCP project structure, region/zone configs, network topology
+   - Review: naming conventions, state management, variable usage, dependency locking
    - No new tools/dependencies unless necessary
 
 ## Phase 2: Attack Plan
 
-Generate Step-by-Step Attack Plan before implementation:
+1. Root Cause/Scope
+2. Technical Solution: Specific Terraform resources (GCP) and Helm values/templates to modify
+3. Impact Analysis: Affected GCP services, IAM roles, state file implications
+4. Security: IAM least privilege, firewall rules, secret management (GCP Secret Manager/K8s Secrets)
+5. Verification: `terraform plan`, `helm lint`, `helm template`
 
-1. Root Cause/Scope: Why infrastructure change needed
-2. Proposed Changes: Specific IaC files/manifests/charts to modify/create
-3. Impact Analysis: Affected services, environments, dependencies, blast radius
-4. Rollback Strategy: How to revert on deployment failure
-5. Verification Strategy: Validation, non-prod testing
-6. Security Check: Credentials exposure, RBAC, network policies, compliance
-7. Safety Check: Alignment with project patterns, change management policies
+## Phase 3: Implementation
 
-## Phase 3: Execution
+1. Validate:
+   - Check existing state and values
+   - Ensure GCP credentials/context active (if applicable)
 
-1. Validate Before Deploy:
-   - Terraform → `terraform validate`, `terraform plan`, security scan
-   - Helm → `helm lint`, `helm template`, validate manifests
-   - K8s → `kubectl explain`, dry-run, resource limits/requests verification
-   - No hardcoded credentials
 2. Implement:
-   - Write IaC/manifests satisfying ticket requirements
-   - Mimic existing patterns, naming conventions
-   - Add/update monitoring, alerting, logging configs
+   - Terraform: Clean, modular HCL. Use variables/outputs. Follow `google` provider best practices. Configure GCP resources (GKE, Cloud SQL, IAM) with production settings (HA, backup, monitoring)
+   - Helm: Modify charts/values. Idempotent. Use named templates/helpers
+   - Follow existing patterns strictly
+
 3. Refine:
-   - Run linters, formatters, security scanners
-   - Remove debug configs, commented code, temp resources
+   - Run `terraform fmt`, `helm lint`
+   - Remove debug configs, commented code
+   - Ensure DRY and reusable
 
-## Phase 4: Verification
+## Phase 4: Verification & Handover
 
-1. Pre-deploy: Syntax checks, plan review, security scan results
-2. Deploy to non-prod → verify health checks, logs, metrics
-3. Production deployment → monitor rollout, verify SLAs
-4. Confirm: rollback tested, monitoring active, runbook updated
-5. Output summary linking to ticket requirements
+1. Static Analysis:
+   - Terraform: `terraform validate`
+   - Helm: `helm lint --strict`, `helm template .`
+2. Dry Run:
+   - `terraform plan`
+   - `helm diff` or template inspection
+3. Output:
+   - Summary of changes
+   - Apply instructions (`terraform apply`, `helm upgrade`)
