@@ -48,7 +48,7 @@ return {
           enabled = true,
           leave_dirs_open = true,
         },
-        hijack_netrw_behavior = 'open_default',
+        hijack_netrw_behavior = 'false',
       },
     }
   end,
