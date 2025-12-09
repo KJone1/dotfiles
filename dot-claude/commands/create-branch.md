@@ -1,17 +1,14 @@
 ---
-description: Create git branch from ticket ID or commit message
+name: create-branch
+description: Create git branch from ticket ID
+argument-hint: ticket_id
 ---
 
 # /create-branch
 
-## Modes
+## Usage
 
-### `id <ticket-id>`
-Extract ticket ID
-
-### `like <keyword>`
-- `git log --grep="<keyword>" --oneline -n 1`
-- Extract ticket ID from commit
+`/create-branch id <ticket-id>`
 
 ## Process
 
