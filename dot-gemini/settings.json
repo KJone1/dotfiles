@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json",
+  "ui": {
+    "hideTips": true,
+    "hideBanner": true,
+    "hideFooter": false,
+    "hideWindowTitle": true
+  },
+  "general": {
+    "preferredEditor": "neovim",
+    "vimMode": false,
+    "previewFeatures": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "vertex-ai"
+    }
+  },
+  "context": {
+    "fileName": [
+      "CLAUDE.md",
+      "GEMINI.md"
+    ],
+    "includeDirectories": [
+      "~/.claude",
+      "~/.gemini"
+    ],
+    "loadMemoryFromIncludeDirectories": true
+  },
+  "advanced": {
+    "excludedEnvVars": [
+      "DEBUG",
+      "DEBUG_MODE",
+      "NODE_ENV"
+    ]
+  },
+  "tools": {
+    "allowed": [
+      "run_shell_command(helm template)",
+      "run_shell_command(helm lint)",
+      "run_shell_command(helm show values)",
+      "run_shell_command(kubectl explain)",
+      "run_shell_command(kubectl get)",
+      "run_shell_command(kubectl logs)",
+      "run_shell_command(kubectl describe)",
+      "run_shell_command(gh pr view)",
+      "run_shell_command(find .)",
+      "run_shell_command(gemini)",
+      "run_shell_command(git rev-list)",
+      "run_shell_command(git log)",
+      "read_file",
+      "web_fetch",
+      "google_web_search"
+    ]
+  }
+}
