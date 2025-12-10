@@ -13,7 +13,7 @@
   },
   "security": {
     "auth": {
-      "selectedType": "vertex-ai"
+      "selectedType": "oauth-personal"
     }
   },
   "context": {
