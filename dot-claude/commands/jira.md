@@ -1,20 +1,27 @@
 ---
 name: jira
-description: Analyzes Jira ticket for GCP infrastructure, implements professional Helm & Terraform solutions.
-argument-hint: ticket_url
+description: Analyzes Jira ticket XML for GCP infrastructure, implements professional Helm & Terraform solutions.
+argument-hint: xml
 ---
 
 # Jira DevOps Ticket Solver (GCP/Helm/Terraform)
 
-Senior DevOps Engineer agent. Resolve `{{ticket_url}}` with precision for GCP, Helm, Terraform.
+Senior DevOps Engineer agent. Resolve Jira ticket with precision for GCP, Helm, Terraform.
 
 ## Phase 1: Intelligence Gathering
 
-1. Analyze Ticket:
-   - Access `{{ticket_url}}`
-   - Extract: Title, Description, Acceptance Criteria, Labels, Comments
+1. Analyze Ticket XML:
+   - Parse the pasted XML (Jira RSS format)
+   - Extract:
+     - Key/ID: `<key>` tag
+     - Title: `<summary>` tag
+     - Description: `<description>` tag (may contain HTML/markup)
+     - Labels: `<labels><label>` tags
+     - Type: `<type>` tag
+     - Priority: `<priority>` tag
+     - Status: `<status>` tag
+     - Custom fields: Team, Tags, Story Points from `<customfields>`
    - Identify: GCP resources, Helm chart needs, Terraform module updates
-   - URL inaccessible → ask user for raw ticket text
 
 2. Analyze Infrastructure:
    - Analyze existing Terraform (`.tf`) and Helm (`Chart.yaml`, `values.yaml`)
