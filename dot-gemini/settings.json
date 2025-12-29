@@ -17,22 +17,12 @@
     }
   },
   "context": {
-    "fileName": [
-      "CLAUDE.md",
-      "GEMINI.md"
-    ],
-    "includeDirectories": [
-      "~/.claude",
-      "~/.gemini"
-    ],
+    "fileName": ["CLAUDE.md", "GEMINI.md"],
+    "includeDirectories": ["~/.claude", "~/.gemini"],
     "loadMemoryFromIncludeDirectories": true
   },
   "advanced": {
-    "excludedEnvVars": [
-      "DEBUG",
-      "DEBUG_MODE",
-      "NODE_ENV"
-    ]
+    "excludedEnvVars": ["DEBUG", "DEBUG_MODE", "NODE_ENV"]
   },
   "tools": {
     "allowed": [
