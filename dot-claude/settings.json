@@ -16,6 +16,8 @@
       "Bash(kubectl logs:*)",
       "Bash(kubectl describe:*)",
       "Bash(gh pr view:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh repo view:*)",
       "Bash(find .:*)",
       "Bash(gemini:*)",
       "Bash(git rev-list:*)",
