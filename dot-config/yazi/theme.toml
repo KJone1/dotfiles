@@ -5,7 +5,9 @@ cwd = { fg = "#7aa2f7" }
 
 # Hovered
 hovered = { reversed = true }
-preview_hovered = { underline = false }
+
+[indicator]
+preview = { underline = false }
 
 # Find
 find_keyword = { fg = "#f7768e", bold = true, italic = true, underline = true }
