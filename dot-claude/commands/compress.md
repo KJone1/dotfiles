@@ -1,5 +1,6 @@
 ---
 description: Find smallest high-signal token set and compress files to minimum tokens while preserving 100% functional meaning
+argument-hint: "@file"
 ---
 
 # /compress
@@ -15,7 +16,7 @@ description: Find smallest high-signal token set and compress files to minimum t
 - Verbose preambles: "for example", "that is", "and so on"
 - Obvious implications, general advice, explanatory asides
 - Superfluous punctuation: periods at list item ends
-- Stylistic markdown formatting: **bold**, __bold__, _italic_, *italic*
+- Stylistic markdown formatting: **bold**, **bold**, _italic_, _italic_
 - Extra formatting: excessive line breaks, spaces, decorative chars, emojis
 - Verbose transitions: "For example, you could"→[show directly]
 - Obvious connectors: "This means that", "It is important that"→[state directly]

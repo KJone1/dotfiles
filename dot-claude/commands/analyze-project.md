@@ -1,5 +1,6 @@
 ---
 description: Analyze IaC patterns, deployment configs, operational conventions via gemini CLI
+argument-hint: question
 ---
 
 # /analyze-project
