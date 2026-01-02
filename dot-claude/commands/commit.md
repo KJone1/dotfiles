@@ -17,9 +17,12 @@ description: Create atomic git commits with JIRA ticket integration
 
 ### 1. Stage Files
 
-- `git status --short` → show numbered modified files
-- User selects files
-- `git add` selected
+- `git status --short` → get modified files
+- Use `AskUserQuestion` with `multiSelect: true`:
+  - Each option: label=filename, description=file status (M/D/A/?)
+  - Header: "Files"
+  - Question: "Which files do you want to stage for commit?"
+- `git add` selected files from user's answer
 
 ### 2. Check Branch
 
@@ -50,9 +53,12 @@ Present:
 - Files to commit
 - Commit message
 
-Ask: "Do you approve this commit? (y/n)"
-Accept: `y`, `yes` (case insensitive)
-Reject: anything else
+Use `AskUserQuestion` with `multiSelect: false`:
+
+- Header: "Approval"
+- Question: "Do you approve this commit?"
+- Options: "Yes" (proceed), "No" (abort)
+- Proceed only if user selects "Yes"
 
 ### 6. Execute
 
