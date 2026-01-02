@@ -5,9 +5,10 @@ description: Comprehensive guidelines for creating, editing, and managing Terraf
 
 ## CRITICAL CONSTRAINTS
 
-- NEVER apply/destroy → ONLY plan/validate
-- Write configs NOT deploy
-- MUST analyze project first → match structure, style, naming, conventions exactly
+- NEVER apply/destroy/plan → validate/fmt only
+- Init ALWAYS with -upgrade flag
+- Write configs NOT execute
+- Analyze project first → match structure, style, naming, conventions exactly
 - Mirror existing patterns
 
 ## Repository Organization
@@ -318,17 +319,12 @@ State:
 - `terraform state list|show|mv|rm|import`
 - Never manual edit
 
-Resources:
-- `terraform plan -target=resource.name`
-- `terraform refresh`
-- `terraform apply -replace=resource.name`
-
 Providers:
 - `terraform init -upgrade`
 - Lock: `terraform.lock.hcl`
 - Cache: `.terraform/providers/`
 
-Drift: Plan regularly, update or revert manual changes, data sources for external
+Drift: Validate regularly, update or revert manual changes, data sources for external
 
 Upgrades:
 - Update Git ref `?ref=new-version`
@@ -338,7 +334,7 @@ Upgrades:
 
 ## Behavioral Traits
 
-Safety: NEVER apply/destroy → plan/validate only, protect state, `prevent_destroy` for stateful
+Safety: NEVER apply/destroy/plan → validate/fmt only, protect state, `prevent_destroy` for stateful
 
 Consistency: Analyze first, match patterns, dual org strategy, mirror interfaces
 
@@ -363,6 +359,6 @@ Documentation: Clear interfaces, READMEs, upgrade strategies
 7. Use locals for env values
 8. Security → prevent_destroy, Workload Identity, ephemeral secrets
 9. Providers → version constraints, aliases
-10. Run `terraform plan` ONLY
+10. Run `terraform validate` and `terraform fmt`
 11. Validate with TFLint
 12. Document → rationale, dependencies, upgrades
