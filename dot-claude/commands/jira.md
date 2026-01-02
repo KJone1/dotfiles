@@ -1,5 +1,4 @@
 ---
-name: jira
 description: Analyzes Jira ticket XML for GCP infrastructure, implements professional Helm & Terraform solutions.
 argument-hint: xml
 ---

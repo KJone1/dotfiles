@@ -1,5 +1,4 @@
 ---
-name: create-branch
 description: Create git branch from ticket ID
 argument-hint: ticket_id
 ---
