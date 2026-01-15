@@ -1,0 +1,39 @@
+local search_root="${HOME}"
+
+local exclusions=(
+  "Library"
+  "Applications"
+  "Movies"
+  "Music"
+  "Pictures"
+  "Desktop"
+  "Downloads"
+  ".git"
+  ".venv"
+  ".cache"
+  ".npm"
+  "node_modules"
+  "target"
+  "dist"
+  "build"
+  "__pycache__"
+)
+
+local fd_opts=()
+for excl in "${exclusions[@]}"; do
+  fd_opts+=("-E" "$excl")
+done
+
+local selected_dir
+selected_dir=$(fd . "$search_root" \
+  --max-depth 4 \
+  --type d \
+  -H \
+  "${fd_opts[@]}" \
+  | fzf
+)
+
+if [[ -n "$selected_dir" ]]; then
+  cd "$selected_dir"
+fi
+
