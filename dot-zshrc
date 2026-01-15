@@ -16,7 +16,6 @@ eval "$(starship init zsh)"
 
 # --- alias list ---
 alias k="kubectl"
-alias uu="sudo dnf upgrade -y --refresh && flatpak update -y"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
@@ -31,46 +30,12 @@ alias k9="k9s"
 alias m="make"
 alias lg="lazygit"
 alias task="go-task"
-alias ju='cd $(fd . ${HOME} --max-depth 4 -H --type d -E ".git" | fzf)'
 alias blue='bluetoothctl'
 alias open='xdg-open'
 # ---
 
-edit() {
-  local file_type="$1"
+autoload -Uz $HOME/.zfunc/*(:t)
 
-  local fd_options=()
-  if [[ -n "$file_type" ]]; then
-    fd_options=("-e" "${file_type}")
-  else
-    local exclude_list=("png" "jpg" "pdf" "docx")
-    local exclude_options=()
-    for ext in "$exclude_list[@]"; do
-      exclude_options+=("-E '*.${ext}'")
-    done
-    fd_options=("${exclude_options[@]}")
-  fi
-
-  local file
-  file=$(fd -a -H -0 "${fd_options[@]}" --type file  . "${HOME}" | fzf --read0 -0 -1)
-
-  if [[ -n "${file}" ]]; then
-    nvim "${file}"
-  else
-    echo "No file was provided."
-  fi
-}
-
-c() {
-  p=$(fd -a -H -0 --type d  --exact-depth 1 . "${HOME}/DEV" | fzf --read0 -0 -1)
-
-  if [[ -n "${p}" ]]; then
-    cd "${p}"
-    nvim .
-  else
-    echo "Cancled"
-  fi
-}
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

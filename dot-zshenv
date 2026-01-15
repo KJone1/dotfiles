@@ -16,6 +16,9 @@ path=($HOME/.local/bin
       $path)
 export PATH
 
+typeset -aU fpath
+fpath=($HOME/.zfunc $fpath)
+
 export KUBECONFIG="${HOME}/.kube/config"
 # Set grim/grimshot screenshot output location
 export XDG_SCREENSHOTS_DIR="${HOME}/Pictures/screenshots"
