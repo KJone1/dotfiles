@@ -1,9 +1,10 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
   },
   build = ':TSUpdate',
+  branch = 'main',
   config = function()
     require('nvim-treesitter.configs').setup {
       -- Add languages to be installed here that you want installed for treesitter
