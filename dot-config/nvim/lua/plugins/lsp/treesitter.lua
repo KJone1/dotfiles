@@ -6,7 +6,7 @@ return {
   build = ':TSUpdate',
   branch = 'main',
   config = function()
-    require('nvim-treesitter.configs').setup {
+    require('nvim-treesitter.config').setup {
       -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'vimdoc', 'vim' },
 
