@@ -1,0 +1,12 @@
+local port=$1
+[[ -z $port ]] && { echo "Usage: killport <port>"; return 1 }
+
+local pids=($(lsof -ti:$port))
+if (( $#pids > 0 )); then
+    for pid in $pids; do
+        echo "Killing $(ps -p $pid -o comm=) ($pid) on port $port"
+        kill -9 $pid
+    done
+else
+    echo "No process found on port $port"
+fi
