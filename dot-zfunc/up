@@ -1,0 +1,5 @@
+local count=${1:-1}
+[[ $count =~ ^[0-9]+$ ]] || { echo "Usage: up [n]"; return 1 }
+
+echo "Going up $count times..."
+repeat $count cd ..
