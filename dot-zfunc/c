@@ -1,8 +1,8 @@
-p=$(fd -a -H -0 --type d  --exact-depth 1 . "${HOME}/DEV" | fzf --read0 -0 -1)
+local p=$(fd -a -H -0 --type d --exact-depth 1 . "${HOME}/DEV" | fzf --read0 -0 -1)
 
-if [[ -n "${p}" ]]; then
-  cd "${p}"
+if [[ -n $p ]]; then
+  builtin cd "$p"
   nvim .
 else
-  echo "Cancled"
+  echo "Cancelled"
 fi
