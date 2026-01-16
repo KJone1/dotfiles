@@ -1,0 +1,5 @@
+[[ -f $1 ]] || { echo "Usage: bak <file>"; return 1 }
+
+local backup="$1_$(date +%Y%m%d_%H%M%S).bak"
+cp -r "$1" "$backup"
+echo "Created $backup"
