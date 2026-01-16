@@ -1,5 +1,2 @@
-new_directory="$*";
-if [ $# -eq 0 ]; then
-    new_directory=${HOME};
-fi;
-builtin cd "${new_directory}" && /bin/ls -lhF --color=auto
+local dir="${*:-$HOME}"
+builtin cd "$dir" && ls
