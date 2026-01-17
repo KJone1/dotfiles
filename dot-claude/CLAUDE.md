@@ -14,3 +14,4 @@
 - Focus on targeted modifications
 - When removing or refactoring code, remove all references and calls (no garbage left behind)
 - Never add comments explaining created code
+- Never use tables in terminal output; use lists instead for better readability
