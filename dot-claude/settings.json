@@ -22,6 +22,7 @@
       "Bash(gemini:*)",
       "Bash(git rev-list:*)",
       "Bash(git log:*)",
+      "Bash(just:*)",
       "Read(**)",
       "WebFetch",
       "WebSearch",
@@ -35,7 +36,7 @@
       "Read(./config/credentials.json)",
       "Read(./build)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "default"
   },
   "statusLine": {
     "type": "command",
