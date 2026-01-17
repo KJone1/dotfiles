@@ -1,6 +1,7 @@
 ---
-name: prompt-writer
-description: Best practices for writing effective AI prompts from scratch. Applied when creating new prompts, instructions, or system messages for LLMs. Focuses on clarity, specificity, and token efficiency.
+name: prompt
+description: Use when asked about writing or improving AI prompts, instructions, or system messages.
+user-invocable: false
 ---
 
 # Prompt Writing

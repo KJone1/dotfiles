@@ -1,6 +1,7 @@
 ---
 name: github
-description: Strict guidelines for all GitHub operations using the `gh` CLI. Covers pull requests, secrets management, and commit conventions. Applied when working with GitHub repositories, creating PRs, managing secrets, or following commit conventions.
+description: Use when asked about GitHub operations, PRs, or commit conventions.
+user-invocable: false
 ---
 
 # GitHub Operations
@@ -14,4 +15,3 @@ description: Strict guidelines for all GitHub operations using the `gh` CLI. Cov
 - Include Summary + Test plan in PR body
 - PR titles: Match branch format with JIRA ticket if present (e.g., `TICKET-123: Add user authentication`)
 - Provide context in descriptions
-- Never commit secrets (use `gh secret set NAME --body "value"`)

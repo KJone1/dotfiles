@@ -1,6 +1,7 @@
 ---
 name: helm-charts
-description: Strict guidelines for creating and maintaining production-ready Helm charts. Covers best practices for chart structure, values, security, resources, and dependencies. Applied when creating, modifying, testing, or reviewing Helm charts.
+description: Use when asked about creating, modifying, testing, or reviewing Helm charts.
+user-invocable: false
 ---
 # Helm Chart Rules
 
