@@ -1,6 +1,7 @@
 ---
 name: terraform
-description: Comprehensive guidelines for creating, editing, and managing Terraform/OpenTofu configurations. Covers modern IaC patterns, module design, state management, security, and multi-environment setups. Applied when creating, modifying, or reviewing Terraform files (`.tf`, `.tfvars`).
+description: Use when asked about Terraform/OpenTofu configurations, IaC patterns, or module design.
+user-invocable: false
 ---
 
 ## CRITICAL CONSTRAINTS
