@@ -34,6 +34,6 @@ selected_dir=$(fd . "$search_root" \
 )
 
 if [[ -n "$selected_dir" ]]; then
-  cd "$selected_dir"
+  builtin cd "$selected_dir"
 fi
 
