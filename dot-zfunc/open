@@ -1,0 +1,8 @@
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	command open "$@"
+elif command -v xdg-open >/dev/null; then
+	xdg-open "$@" >/dev/null 2>&1 &!
+else
+	echo "No open command available." >&2
+	return 1
+fi
