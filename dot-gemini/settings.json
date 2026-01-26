@@ -1,28 +1,45 @@
 {
   "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json",
+  "general": {
+    "previewFeatures": true,
+    "preferredEditor": "neovim",
+    "vimMode": false
+  },
   "ui": {
+    "hideWindowTitle": true,
     "hideTips": true,
     "hideBanner": true,
-    "hideFooter": false,
-    "hideWindowTitle": true
+    "hideFooter": false
   },
-  "general": {
-    "preferredEditor": "neovim",
-    "vimMode": false,
-    "previewFeatures": true
+  "privacy": {
+    "usageStatisticsEnabled": false
   },
-  "security": {
-    "auth": {
-      "selectedType": "oauth-personal"
+  "telemetry": {
+    "enabled": false
+  },
+  "experimental": {
+    "skills": true,
+    "jitContext": true,
+    "plan": true
+  },
+  "skills": {
+    "enabled": true
+  },
+  "modelConfigs": {
+    "customAliases": {
+      "chat-base": {
+        "modelConfig": {
+          "generateContentConfig": {
+            "temperature": 0
+          }
+        }
+      }
     }
   },
   "context": {
     "fileName": ["CLAUDE.md", "GEMINI.md"],
     "includeDirectories": ["~/.claude", "~/.gemini"],
     "loadMemoryFromIncludeDirectories": true
-  },
-  "advanced": {
-    "excludedEnvVars": ["DEBUG", "DEBUG_MODE", "NODE_ENV"]
   },
   "tools": {
     "allowed": [
@@ -42,5 +59,13 @@
       "web_fetch",
       "google_web_search"
     ]
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "advanced": {
+    "excludedEnvVars": ["DEBUG", "DEBUG_MODE", "NODE_ENV"]
   }
 }
