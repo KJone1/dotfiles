@@ -29,7 +29,6 @@ alias m="make"
 alias lg="lazygit"
 alias task="go-task"
 alias blue='bluetoothctl'
-alias open='xdg-open'
 # ---
 
 autoload -Uz $HOME/.zfunc/*(:t)
