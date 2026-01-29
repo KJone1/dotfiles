@@ -11,6 +11,14 @@ return {
       sh = { 'shellcheck' },
       python = { 'flake8' },
     }
+
+    lint.linters.flake8.args = {
+      '--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s',
+      '--no-header',
+      '--ignore=E501',
+      '-',
+    }
+
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
 
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
