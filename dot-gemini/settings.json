@@ -42,6 +42,10 @@
     "loadMemoryFromIncludeDirectories": true
   },
   "tools": {
+    "shell": {
+      "enableInteractiveShell": true,
+      "showColor": true
+    },
     "allowed": [
       "run_shell_command(helm template)",
       "run_shell_command(helm lint)",
