@@ -4,50 +4,46 @@ description: Create atomic git commits with JIRA ticket integration
 
 # /commit
 
-## Rules
-
-- Follow workflow precisely. Ask if unclear
-- Atomic commits (single logical change)
+<rules>
+- Follow workflow precisely
 - Single-line messages (no body)
 - Pre-commit hook fails → fix and retry. Never bypass
 - No AI references in messages
 - Never push
+</rules>
 
 ## Workflow
 
-### 1. Stage Files
+<stage-files step="1">
+1. `git status --short` → get modified files
+2. Use `AskUserQuestion` with `multiSelect: true`:
+   - Each option: label=filename, description=file status (M/D/A/?)
+   - Header: "Files"
+   - Question: "Which files do you want to stage for commit?"
+3. `git add` selected files from user's answer
+</stage-files>
 
-- `git status --short` → get modified files
-- Use `AskUserQuestion` with `multiSelect: true`:
-  - Each option: label=filename, description=file status (M/D/A/?)
-  - Header: "Files"
-  - Question: "Which files do you want to stage for commit?"
-- `git add` selected files from user's answer
-
-### 2. Check Branch
-
+<check-branch step="2">
 `git branch --show-current`: `master`/`main` → Main Branch Workflow | Other → Feature Branch Workflow
-
----
+</check-branch>
 
 ## Main Branch Workflow
 
-### 3. Analyze Staged Changes
-
+<analyze-staged-changes step="3">
 - `git diff --staged`
 - Understand changes and file relationships
 - Determine the goal these changes achieve
+</analyze-staged-changes>
 
-### 4. Create Message
-
+<create-message step="4">
 - Start with action verb (Add/Fix/Update/Remove/Refactor/Improve/Style)
 - Imperative mood
 - Max 50 chars
 - No periods
 - Explain WHY, not HOW
+</create-message>
 
-### 5. Confirm
-
+<confirm step="5">
 Present:
 
 - Files to commit
@@ -60,26 +56,26 @@ Use `AskUserQuestion` with `multiSelect: false`:
 - Options: "Yes" (proceed), "No" (abort)
 - Proceed only if user selects "Yes"
 
-### 6. Execute
+</confirm>
 
+<execute step="6">
 `git commit -m "<message>"`
-
----
+</execute>
 
 ## Feature Branch Workflow
 
-### 3. Extract JIRA Ticket
+<extract-jira-ticket step="3">
+Extract ticket ID from branch name: `[LETTERS]-[NUMBER]` format
+</extract-jira-ticket>
 
-- Extract ticket ID from branch name: `[LETTERS]-[NUMBER]` format
-- Multiple found → use first
-
-### 4. Create Message
-
+<create-message step="4">
 - Check first commit: `git rev-list --count HEAD ^main` (or `^master`). Count 0 → first commit
-- First → `TICKET-NUMBER: <branch-name-description>`
-  - Branch name with ticket prefix removed, hyphens → spaces, capitalize first letter
+- First → `TICKET-NUMBER: <summary>`
+  - Derive a natural language summary from the branch name
+  - Expand abbreviations and ensure a conversational, PR-friendly style
 - Subsequent → `TICKET-NUMBER: update`
+</create-message>
 
-### 5. Execute
-
+<execute step="5">
 `git commit -m "<message>"`
+</execute>
