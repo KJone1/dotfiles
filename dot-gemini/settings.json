@@ -17,6 +17,9 @@
   "telemetry": {
     "enabled": false
   },
+  "model": {
+    "name": "gemini-3-pro-preview"
+  },
   "experimental": {
     "skills": true,
     "jitContext": true,
