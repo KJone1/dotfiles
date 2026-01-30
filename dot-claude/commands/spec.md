@@ -70,11 +70,3 @@ argument-hint: feature_description
 - Protection: encryption (rest/transit), PII, retention
 - Audit: logging, compliance, lineage
 </security-privacy>
-
-<deployment-operations>
-- Rollout: flags, canary, blue-green, percentage
-- Rollback: triggers, automated/manual, consistency
-- Monitoring: dashboards, alerts, SLOs, budgets
-- Docs: runbooks, API, architecture, troubleshooting
-- Compatibility: versioning, deprecation, migration
-</deployment-operations>
