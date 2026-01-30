@@ -25,7 +25,7 @@ reload:
 doctor:
   #!/usr/bin/env bash
   missing=0
-  for cmd in fd fzf bat starship nvim zsh stow; do
+  for cmd in fd fzf bat starship nvim zsh stow rg kitty lazygit; do
     command -v $cmd &> /dev/null || { echo "✗ $cmd is missing"; ((missing++)); }
   done
   [ $missing -eq 0 ] && echo "✓ All dependencies installed" || exit 1
