@@ -5,16 +5,15 @@ argument-hint: "@file"
 
 # /compress
 
-## Workflow
-
+<workflow>
 1. User provides text via `@` file reference or by pasting it
 2. Extract core directives, instructions, constraints, examples, behaviors, technical terms, commands
 3. Analyze and categorize text: Critical (PRESERVE), Clarifying (CONDENSE), Redundant/Filler (ELIMINATE)
 4. Apply the Core Principles
 5. Report: Original [X] tokens → Compressed [Y] tokens ([Z]% reduction)
+</workflow>
 
-## Core Principles
-
+<core-principles>
 1. ELIMINATE (Delete entirely → common words, short sentences, natural language):
 
 - Filler: very, really, just, simply, basically, actually, essentially
@@ -60,3 +59,4 @@ argument-hint: "@file"
 - Test strength: "should" → "must" (Bad: recommendation→requirement)
 - Test nuance: "works for A, sometimes B" → "works for A and B" (Bad: nuance lost)
 - Test specificity: "delete 'temp.csv'" → "delete temp file" (Bad: specificity lost)
+</core-principles>
