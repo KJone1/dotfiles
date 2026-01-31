@@ -1,0 +1,13 @@
+local model="prompt-writer:v1"
+
+echo "Using model: $model"
+
+local sandbox_profile='(version 1) (allow default) (deny network*) (allow network*)'
+
+if [[ -f "$1" ]]; then
+    echo "Input file: $1"
+    command cat "$1" | sandbox-exec -p "$sandbox_profile" command ollama run "$model" | sed '/<think>/,/<\/think>/d'
+else
+    echo "Input text: $*"
+    echo "$*" | sandbox-exec -p "$sandbox_profile" command ollama run "$model" | sed '/<think>/,/<\/think>/d'
+fi
