@@ -16,6 +16,7 @@
       "Bash(kubectl logs:*)",
       "Bash(kubectl describe:*)",
       "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
       "Bash(gh run view:*)",
       "Bash(gh repo view:*)",
       "Bash(find .:*)",
@@ -31,7 +32,6 @@
     ],
     "deny": [
       "Read(./.env)",
-      "Read(./.env.*)",
       "Read(./secrets/**)",
       "Read(./config/credentials.json)",
       "Read(./build)"
