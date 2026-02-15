@@ -1,4 +1,0 @@
-local dir="${*:-$HOME}"
-builtin cd "$dir"
-echo "now in: $PWD"
-ls
