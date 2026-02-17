@@ -19,6 +19,7 @@
       "Bash(gh pr diff:*)",
       "Bash(gh run view:*)",
       "Bash(gh repo view:*)",
+      "Bash(gh issue view:*)",
       "Bash(find .:*)",
       "Bash(gemini:*)",
       "Bash(git rev-list:*)",
@@ -42,7 +43,12 @@
     "type": "command",
     "command": "bash /Users/david.yakhin/.claude/statusline.sh"
   },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true
+  },
   "outputStyle": "default",
   "spinnerTipsEnabled": false,
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "medium"
 }
