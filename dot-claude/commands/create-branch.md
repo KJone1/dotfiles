@@ -6,8 +6,7 @@ argument-hint: ticket_id
 # /create-branch
 
 <steps>
-1. `git checkout master && git pull`
-2. Analyze: `git diff` + `git status`
-3. Generate description from changed files
-4. `git checkout -b INPE-{ticket-id}-{description}`
+1. Run and analyze output of: `git checkout master && git pull && git diff && git status`
+2. Generate description from changed files
+3. `git checkout -b INPE-{ticket-id}-{description}`
 </steps>
