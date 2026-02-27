@@ -6,7 +6,7 @@ user-invocable: false
 
 # Terraform Standards
 
-## Development Workflow
+## Safety and Guidelines
 
 <rules>
 <rule>
@@ -28,7 +28,43 @@ explanation: Running a plan can be slow and may require active credentials/state
 </rule>
 
 <rule>
-Init ALWAYS with `-upgrade` flag.
+NEVER use `import` blocks (1.5+) → these modify state and infrastructure management, violating the 'non-destructive' mandate.
+<example>
+<intent>Prevent unauthorized state or management changes.</intent>
+<rationale>Importing resources into state is a high-risk operation that should be handled by human operators with full context, not automated agents.</rationale>
+<good_example>
+user: Import this existing S3 bucket into my terraform.
+assistant: I cannot perform imports as they modify the state. Please use the `terraform import` command manually or consult your infrastructure team.
+explanation: Adheres to the safety mandate by refusing to perform state-altering operations.
+</good_example>
+<bad_example>
+user: Import this existing S3 bucket.
+assistant: [write_file(file_path="main.tf", content="import { to = aws_s3_bucket.this ... }")]
+explanation: Violates safety by attempting to modify infrastructure management via state-altering blocks.
+</bad_example>
+</example>
+</rule>
+
+<rule>
+NEVER use `removed` blocks (1.7+) → these modify state and infrastructure management, violating the 'non-destructive' mandate.
+<example>
+<intent>Prevent unauthorized state or management changes.</intent>
+<rationale>Removing resources from state management is a high-risk operation that can lead to orphaned infrastructure or state corruption if handled incorrectly by an agent.</rationale>
+<good_example>
+user: Remove this resource from terraform management but don't delete it.
+assistant: I cannot use `removed` blocks as they modify the state management. Please perform this operation manually using `terraform state rm` or a `removed` block yourself.
+explanation: Adheres to the safety mandate by refusing to perform state-altering operations.
+</good_example>
+<bad_example>
+user: Stop managing this resource.
+assistant: [write_file(file_path="main.tf", content="removed { from = aws_instance.web ... }")]
+explanation: Violates safety by attempting to modify infrastructure management via state-altering blocks.
+</bad_example>
+</example>
+</rule>
+
+<rule>
+terraform init ALWAYS with `-upgrade` flag.
 <example>
 <intent>Initialize with latest provider versions.</intent>
 <rationale>Ensures the environment uses the most recent compatible providers and modules.</rationale>
@@ -45,6 +81,65 @@ explanation: Standard init may use stale cached providers, missing critical bug 
 </example>
 </rule>
 
+<rule>
+ALWAYS require remote state configuration in `terraform {}` blocks; NEVER allow local `.tfstate` files in production-ready code.
+<example>
+<intent>Configure a secure remote backend.</intent>
+<rationale>Prevents state loss and enables collaboration by storing state in a shared, versioned location.</rationale>
+<good_example>
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+explanation: Uses a remote S3 backend with state locking via DynamoDB for safety and collaboration.
+</good_example>
+<bad_example>
+# No backend block defined
+explanation: Defaults to local state, which is risky for team environments and production infrastructure.
+</bad_example>
+</example>
+</rule>
+
+<rule>
+Versioning strategy: Pin Terraform core minor (`~> 1.9`), Providers major (`~> 5.0`), and Modules exact (`5.1.2`). Use `.terraform.lock.hcl` and commit it.
+<example>
+<intent>Implement a stable versioning strategy.</intent>
+<rationale>Prevents breaking changes from unexpected updates while allowing for patch/minor improvements.</rationale>
+<good_example>
+terraform {
+  required_version = "~> 1.9"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+explanation: Uses pessimistic constraints to balance stability and updates.
+</good_example>
+<bad_example>
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0"
+    }
+  }
+}
+explanation: Using '>= 4.0' is risky as it allows major version upgrades (e.g., 5.0) which may contain breaking changes.
+</bad_example>
+</example>
+</rule>
+</rules>
+
+## Development Workflow
+
+<rules>
 <rule>
 Mirror existing project patterns → check for existing modules, similar resources, and conventions (naming, tagging, structure) before implementing.
 <example>
@@ -89,6 +184,7 @@ Validate schemas with Web Search or Provider Documentation → Search provider d
 
 ## Error Solving
 
+<rules>
 <rule>
 Root cause first → address underlying IaC issues (e.g., circular dependencies, hardcoded values), not symptoms.
 <example>
@@ -106,79 +202,52 @@ explanation: Creates redundant infrastructure instead of fixing the underlying c
 </bad_example>
 </example>
 </rule>
+</rules>
 
 ## Data Source Preference
 
+<rules>
 <rule>
 ALWAYS use `data` sources instead of hardcoded IDs for existing infrastructure (e.g., VPCs, Subnets) to ensure environment portability.
 <example>
-<intent>Validate resource schema before implementation.</intent>
-<rationale>Prevents syntax errors and incorrect block usage by verifying the provider's expected schema.</rationale>
+<intent>Use data sources for existing infrastructure.</intent>
+<rationale>Hardcoded IDs are brittle and prevent configuration reuse across different environments or accounts.</rationale>
 <good_example>
-user: Add a lifecycle rule to this S3 bucket to transition to Glacier after 30 days.
-assistant: [google_web_search(query="terraform aws_s3_bucket lifecycle_rule schema")]
-explanation: Verifies the exact block structure and attribute names from official documentation before writing code.
-</good_example>
-<bad_example>
-user: Add a lifecycle rule to this S3 bucket to transition to Glacier after 30 days.
-assistant: resource "aws_s3_bucket" "this" {
-  lifecycle_rule = {
-    transition = "GLACIER"
-    days = 30
+user: Create a security group in the existing 'management' VPC.
+assistant: [google_web_search(query="terraform aws_vpc data source filters")]
+data "aws_vpc" "management" {
+  filter {
+    name   = "tag:Name"
+    values = ["management-vpc"]
   }
 }
-explanation: Guesses the schema, leading to potential syntax errors (e.g., using an object instead of a block or incorrect attribute names).
-</bad_example>
-</example>
-</rule>
 
-## Configuration Standards
-
-### Backend Configuration
-
-<rules>
-<rule>
-ALWAYS require remote state configuration in `terraform {}` blocks.
-</rule>
-<rule>
-NEVER allow local `.tfstate` files in production-ready code.
-<example>
-<intent>Configure a secure remote backend.</intent>
-<rationale>Prevents state loss and enables collaboration by storing state in a shared, versioned location.</rationale>
-<good_example>
-terraform {
-  backend "s3" {
-    bucket         = "my-terraform-state"
-    key            = "global/s3/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
-  }
+resource "aws_security_group" "ssh" {
+  name   = "allow-ssh"
+  vpc_id = data.aws_vpc.management.id
+  # ...
 }
-explanation: Uses a remote S3 backend with state locking via DynamoDB for safety and collaboration.
+explanation: Uses a data source with filters to dynamically retrieve the VPC ID, ensuring the configuration is portable across environments.
 </good_example>
 <bad_example>
-# No backend block defined
-explanation: Defaults to local state, which is risky for team environments and production infrastructure.
+resource "aws_security_group" "ssh" {
+  name   = "allow-ssh"
+  vpc_id = "vpc-0a1b2c3d4e5f6g7h8"
+  # ...
+}
+explanation: Hardcodes a specific VPC ID, making the configuration non-portable and prone to failure if the VPC is recreated or the code is used in a different account.
 </bad_example>
 </example>
 </rule>
 </rules>
 
+## Configuration Standards
+
 ### Functional Validation (1.5+)
 
 <rules>
 <rule>
-Use `check` blocks for continuous functional validation of infrastructure health.
-</rule>
-<rule>
-The data block fetches information that you can reference in expressions in the assert block's condition argument.
-</rule>
-<rule>
-Defining a data block in a check block is optional. You can only reference a nested data source within its parent check block.
-</rule>
-<rule>
-If a nested data source's provider raises errors, they are masked as warnings and do not prevent the Terraform operation from continuing.
+ALWAYS use `check` blocks for continuous functional validation of infrastructure health, utilizing nested `data` blocks for assertions while ensuring they remain scoped to the parent block and do not block main operations.
 <example>
 <intent>Implement functional health checks using scoped data sources.</intent>
 <rationale>Ensures that infrastructure is not only deployed but also performing as expected, with errors in checks not blocking the main operation.</rationale>
@@ -207,6 +276,7 @@ explanation: Relies solely on resource creation success without verifying servic
 
 ### Resource Block Ordering
 
+<rules>
 <rule>
 Strict ordering for consistency:
 1. `count` or `for_each` FIRST (blank line after)
@@ -245,6 +315,7 @@ explanation: Mixing meta-arguments with resource-specific arguments makes the co
 </bad_example>
 </example>
 </rule>
+</rules>
 
 ### Variable Definition Structure
 
@@ -324,6 +395,7 @@ explanation: Uses redundant 'this_' prefix and lacks a description.
 
 ## Iteration Logic: Count vs For_Each
 
+<rules>
 <rule>
 Use `count` for: Boolean toggles (`var.enabled ? 1 : 0`) or simple numeric replication.
 Use `for_each` for: Collections where items may be reordered/removed, or when stable resource addresses are required.
@@ -350,9 +422,11 @@ explanation: List-based iteration causes all subsequent resources to be recreate
 </bad_example>
 </example>
 </rule>
+</rules>
 
 ## Dependency Management
 
+<rules>
 <rule>
 Use `locals` + `try()` to hint explicit resource deletion order and avoid brittle `depends_on`.
 <example>
@@ -381,9 +455,11 @@ explanation: Explicit depends_on is brittle and can make the dependency graph ha
 </bad_example>
 </example>
 </rule>
+</rules>
 
 ## Modern Terraform Features (1.0+)
 
+<rules>
 <rule>
 Use modern functions and blocks:
 - `try()` → Safe fallbacks.
@@ -414,46 +490,6 @@ explanation: Uses cross-variable validation (1.9+) and moved blocks (1.1+) for r
 # No validation between variables
 # Manual state mv commands for renaming
 explanation: Lacks automated validation and requires manual, error-prone state manipulation.
-</bad_example>
-</example>
-</rule>
-
-## Version Management
-
-<rules>
-<rule>
-Versioning strategy:
-- Terraform core → Pin minor version (`~> 1.9`).
-- Providers → Pin major version (`~> 5.0`).
-- Modules → Pin exact version in production (`5.1.2`).
-</rule>
-<rule>
-Use `.terraform.lock.hcl` and commit it to source control.
-<example>
-<intent>Implement a stable versioning strategy.</intent>
-<rationale>Prevents breaking changes from unexpected updates while allowing for patch/minor improvements.</rationale>
-<good_example>
-terraform {
-  required_version = "~> 1.9"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-explanation: Uses pessimistic constraints to balance stability and updates.
-</good_example>
-<bad_example>
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 4.0"
-    }
-  }
-}
-explanation: Using '>= 4.0' is risky as it allows major version upgrades (e.g., 5.0) which may contain breaking changes.
 </bad_example>
 </example>
 </rule>
