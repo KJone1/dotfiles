@@ -1,9 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json",
   "general": {
-    "previewFeatures": true,
     "preferredEditor": "neovim",
-    "vimMode": false
+    "vimMode": false,
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
   },
   "ui": {
     "hideWindowTitle": true,
@@ -18,10 +22,9 @@
     "enabled": false
   },
   "model": {
-    "name": "gemini-3-pro-preview"
+    "name": "auto"
   },
   "experimental": {
-    "skills": true,
     "jitContext": true,
     "plan": true
   },
