@@ -1,4 +1,8 @@
 {
+  "debugger": {
+    "save_breakpoints": false
+  },
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
   "collaboration_panel": {
     "button": false,
   },
@@ -28,12 +32,12 @@
     "fleet-themes": true,
   },
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "icon_theme": "Zed (Default)",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "ui_font_size": 16,
   "buffer_font_size": 16.0,
-  "theme": {
-    "mode": "light",
-    "light": "Fleet Light",
-    "dark": "Ayu Dark",
-  },
+  "theme": "Fleet Light",
 }
