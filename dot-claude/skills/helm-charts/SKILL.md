@@ -1,7 +1,7 @@
 ---
 name: helm-charts
 description: Expert guidance for Helm chart development, testing, and security.
-user-invocable: false
+user-invokable: false
 ---
 
 # Helm Chart Standards
