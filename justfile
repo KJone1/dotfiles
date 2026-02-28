@@ -1,4 +1,4 @@
-target_dir := env_var('HOME')
+target_dir := env('HOME')
 stow_args := '-t ' + target_dir + ' --no-folding --dotfiles'
 
 [default]
