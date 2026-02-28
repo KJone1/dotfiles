@@ -1,7 +1,7 @@
 ---
 name: prompt
 description: Use when asked about writing or improving AI prompts, instructions, or system messages.
-user-invocable: false
+user-invokable: false
 ---
 
 # Prompt Writing
