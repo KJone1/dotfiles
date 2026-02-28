@@ -29,15 +29,15 @@
     "lua": true,
     "just": true,
     "git-firefly": true,
-    "fleet-themes": true,
+    "catppuccin-icons": true,
   },
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "icon_theme": {
     "mode": "light",
-    "light": "Zed (Default)",
+    "light": "Catppuccin Latte",
     "dark": "Zed (Default)"
   },
   "ui_font_size": 16,
   "buffer_font_size": 16.0,
-  "theme": "Fleet Light",
+  "theme": "One Light",
 }
