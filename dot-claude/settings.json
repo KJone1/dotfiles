@@ -8,6 +8,7 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
+      "Bash(git checkout master && git pull && git diff && git status)",
       "Bash(helm template:*)",
       "Bash(helm lint:*)",
       "Bash(helm show values:*)",
@@ -25,7 +26,9 @@
       "Bash(git rev-list:*)",
       "Bash(git log:*)",
       "Bash(just:*)",
-      "Read(**)",
+      "Read",
+      "Glob",
+      "Grep",
       "WebFetch",
       "WebSearch",
       "Edit(CLAUDE.md)",
@@ -39,6 +42,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "claude-sonnet-4-6",
   "statusLine": {
     "type": "command",
     "command": "bash /Users/david.yakhin/.claude/statusline.sh"
@@ -49,6 +53,5 @@
   "outputStyle": "default",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "medium"
+  "skipDangerousModePermissionPrompt": true
 }
