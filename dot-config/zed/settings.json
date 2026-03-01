@@ -1,4 +1,43 @@
 {
+  "use_system_window_tabs": false,
+  "bottom_dock_layout": "contained",
+  "tabs": {
+    "file_icons": false,
+    "git_status": false
+  },
+  "tab_bar": {
+    "show": false
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_user_picture": false,
+    "show_user_menu": true,
+    "show_sign_in": false,
+    "show_onboarding_banner": true,
+    "show_branch_icon": true
+  },
+  "colorize_brackets": true,
+  "show_whitespaces": "selection",
+  "indent_guides": {
+    "background_coloring": "disabled",
+    "coloring": "indent_aware"
+  },
+  "tab_size": 2,
+  "toolbar": {
+    "agent_review": false,
+    "code_actions": false,
+    "selections_menu": true,
+    "quick_actions": true,
+    "breadcrumbs": true
+  },
+  "minimap": {
+    "show": "never",
+    "thumb": "hover"
+  },
+  "gutter": {
+    "breakpoints": false
+  },
+  "relative_line_numbers": "disabled",
   "debugger": {
     "save_breakpoints": false
   },
