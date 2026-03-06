@@ -3,10 +3,10 @@
   "bottom_dock_layout": "contained",
   "tabs": {
     "file_icons": false,
-    "git_status": false
+    "git_status": false,
   },
   "tab_bar": {
-    "show": false
+    "show": false,
   },
   "title_bar": {
     "show_menus": false,
@@ -14,13 +14,13 @@
     "show_user_menu": true,
     "show_sign_in": false,
     "show_onboarding_banner": true,
-    "show_branch_icon": true
+    "show_branch_icon": true,
   },
   "colorize_brackets": true,
   "show_whitespaces": "selection",
   "indent_guides": {
     "background_coloring": "disabled",
-    "coloring": "indent_aware"
+    "coloring": "indent_aware",
   },
   "tab_size": 2,
   "toolbar": {
@@ -28,18 +28,18 @@
     "code_actions": false,
     "selections_menu": true,
     "quick_actions": true,
-    "breadcrumbs": true
+    "breadcrumbs": true,
   },
   "minimap": {
     "show": "never",
-    "thumb": "hover"
+    "thumb": "hover",
   },
   "gutter": {
-    "breakpoints": false
+    "breakpoints": false,
   },
   "relative_line_numbers": "disabled",
   "debugger": {
-    "save_breakpoints": false
+    "save_breakpoints": false,
   },
   "ui_font_family": "JetBrainsMono Nerd Font Mono",
   "collaboration_panel": {
@@ -70,11 +70,19 @@
     "git-firefly": true,
     "catppuccin-icons": true,
   },
+  "file_scan_exclusions": [
+    ".ruff_cache",
+    ".mypy_cache",
+    ".pytest_cache",
+    "__pycache__",
+    ".DS_Store",
+    ".git",
+  ],
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "icon_theme": {
     "mode": "light",
     "light": "Catppuccin Latte",
-    "dark": "Zed (Default)"
+    "dark": "Zed (Default)",
   },
   "ui_font_size": 16,
   "buffer_font_size": 16.0,
