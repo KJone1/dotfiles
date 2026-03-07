@@ -1,0 +1,65 @@
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = [
+  "git ", "just ", "find ", "gemini ", "ls ", "pwd", "cat ", "grep ", 
+  "mkdir -p "
+]
+decision = "allow"
+priority = 500
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = ["kubectl explain", "kubectl get", "kubectl logs", "kubectl describe"]
+decision = "allow"
+priority = 500
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = ["helm template", "helm lint", "helm show values"]
+decision = "allow"
+priority = 500
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = ["gh pr view", "gh pr diff", "gh run view", "gh repo view", "gh issue view"]
+decision = "allow"
+priority = 500
+
+[[rule]]
+toolName = ["read_file", "glob", "grep_search", "web_fetch", "google_web_search"]
+decision = "allow"
+priority = 400
+
+[[rule]]
+toolName = "read_file"
+argsPattern = ".*\\.env.*"
+decision = "deny"
+deny_message = "Access to .env files is restricted for security."
+priority = 900
+
+[[rule]]
+toolName = "read_file"
+argsPattern = ".*/secrets/.*"
+decision = "deny"
+deny_message = "Access to secrets directory is restricted."
+priority = 900
+
+[[rule]]
+toolName = "read_file"
+argsPattern = ".*/config/credentials\\.json"
+decision = "deny"
+deny_message = "Access to credentials.json is restricted."
+priority = 900
+
+[[rule]]
+toolName = "read_file"
+argsPattern = ".*/build/.*"
+decision = "deny"
+deny_message = "Access to build artifacts is restricted."
+priority = 900
+
+[[rule]]
+toolName = ["write_file", "replace"]
+argsPattern = ".*CLAUDE\\.md"
+decision = "allow"
+priority = 600
