@@ -1,4 +1,7 @@
 {
+  "notification_panel": {
+    "button": false,
+  },
   "use_system_window_tabs": false,
   "bottom_dock_layout": "contained",
   "tabs": {
@@ -39,6 +42,7 @@
   },
   "relative_line_numbers": "disabled",
   "debugger": {
+    "button": false,
     "save_breakpoints": false,
   },
   "ui_font_family": "JetBrainsMono Nerd Font Mono",
