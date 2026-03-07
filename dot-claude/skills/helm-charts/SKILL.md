@@ -1,6 +1,6 @@
 ---
 name: helm-charts
-description: Expert guidance for Helm chart development, testing, and security.
+description: Guide for Helm chart development, testing, and security following established standards and ArgoCD deployment patterns. This skill should be used when users want to develop, test, or secure Helm charts.
 user-invokable: false
 ---
 

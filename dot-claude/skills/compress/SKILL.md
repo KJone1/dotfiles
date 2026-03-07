@@ -1,9 +1,9 @@
 ---
-description: Find smallest high-signal token set and compress files to minimum tokens while preserving 100% functional meaning
-argument-hint: "@file"
+name: compress
+description: Guide for high-signal token compression for files and text. This skill should be used when users want to reduce the token count of a file or text while preserving 100% of its functional meaning and core directives.
 ---
 
-# /compress
+# Compress
 
 <workflow>
 1. User provides text via `@` file reference or by pasting it
@@ -22,8 +22,6 @@ argument-hint: "@file"
 - Politeness, hedging, motivational text, meta-commentary
 - Verbose preambles: "for example", "that is", "and so on"
 - Obvious implications, general advice, explanatory asides
-- Superfluous punctuation: periods at list item ends
-- Stylistic markdown formatting: **bold**, **bold**, _italic_, _italic_
 - Extra formatting: excessive line breaks, spaces, decorative chars, emojis
 - Verbose transitions: "For example, you could"→[show directly]
 - Obvious connectors: "This means that", "It is important that"→[state directly]

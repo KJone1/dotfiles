@@ -1,6 +1,6 @@
 ---
 name: terraform
-description: Expert guidance for Terraform development, testing, and architecture.
+description: Guide for Terraform development, testing, and architecture following best practices and safety guidelines. This skill should be used when users want to develop, test, or architect Terraform configurations.
 user-invocable: false
 ---
 

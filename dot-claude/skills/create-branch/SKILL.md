@@ -1,9 +1,9 @@
 ---
-description: Create git branch from ticket ID
-argument-hint: ticket_id
+name: create-branch
+description: Guide for git branch creation. This skill should be used when users want to create a new git branch.
 ---
 
-# /create-branch
+# Create Branch
 
 <steps>
 1. Run and analyze output of: `git checkout master && git pull && git diff && git status`

@@ -1,8 +1,9 @@
 ---
-description: Create atomic git commits with JIRA ticket integration
+name: commit
+description: Guide for git commit creation. This skill should be used when users want to create git commits.
 ---
 
-# /commit
+# Commit
 
 <rules>
 - Follow workflow precisely

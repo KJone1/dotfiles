@@ -1,6 +1,6 @@
 ---
-description: Analyzes Jira ticket XML for GCP infrastructure, implements professional Helm & Terraform solutions.
-argument-hint: xml
+name: jira
+description: Guide for Jira ticket analysis and DevOps solution implementation for GCP infrastructure. This skill should be used when users want to resolve Jira tickets by analyzing ticket XML and implementing professional Helm and Terraform solutions.
 ---
 
 # Jira DevOps Ticket Solver (GCP/Helm/Terraform)
