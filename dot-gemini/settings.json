@@ -5,8 +5,7 @@
     "vimMode": false,
     "sessionRetention": {
       "enabled": true,
-      "maxAge": "30d",
-      "warningAcknowledged": true
+      "maxAge": "30d"
     }
   },
   "ui": {
@@ -51,24 +50,7 @@
     "shell": {
       "enableInteractiveShell": true,
       "showColor": true
-    },
-    "allowed": [
-      "run_shell_command(helm template)",
-      "run_shell_command(helm lint)",
-      "run_shell_command(helm show values)",
-      "run_shell_command(kubectl explain)",
-      "run_shell_command(kubectl get)",
-      "run_shell_command(kubectl logs)",
-      "run_shell_command(kubectl describe)",
-      "run_shell_command(gh pr view)",
-      "run_shell_command(find .)",
-      "run_shell_command(gemini)",
-      "run_shell_command(git rev-list)",
-      "run_shell_command(git log)",
-      "read_file",
-      "web_fetch",
-      "google_web_search"
-    ]
+    }
   },
   "security": {
     "auth": {
