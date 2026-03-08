@@ -26,6 +26,8 @@
       "Bash(git rev-list:*)",
       "Bash(git log:*)",
       "Bash(just:*)",
+      "Bash(fastmcp:*)",
+      "mcp__grafana-prod",
       "Read",
       "Glob",
       "Grep",
