@@ -316,7 +316,7 @@ If you used `--examples`, delete any placeholder files that are not needed for t
 Write the YAML frontmatter with `name` and `description`:
 
 - `name`: The skill name
-- `description`: This is the primary triggering mechanism for your skill, and helps Claude understand when to use the skill.
+- `description`: The description is a trigger mechanism, not documentation. Claude scans it at startup to decide when to activate. This is the primary triggering mechanism for your skill, and helps Claude understand when to use the skill.
   - Follow this style: `Guide for [brief summary of what the skill does]. This skill should be used when users want to [specific actions/goals] that [benefit/outcome].`
   - Include both what the Skill does and specific triggers/contexts for when to use it.
   - Include all "when to use" information here - Not in the body. The body is only loaded after triggering, so "When to Use This Skill" sections in the body are not helpful to Claude.
