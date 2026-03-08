@@ -82,6 +82,17 @@
     ".DS_Store",
     ".git",
   ],
+  "file_types": {
+    "Helm": ["**/templates/*.yaml"],
+    "JSONC": [
+      "**/.zed/**/*.json",
+      "**/zed/**/*.json",
+      "**/Zed/**/*.json",
+      "**/.vscode/**/*.json",
+    ],
+    "Shell Script": [".env.*"],
+    "Dockerfile": ["Dockerfile*"],
+  },
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "icon_theme": {
     "mode": "light",
