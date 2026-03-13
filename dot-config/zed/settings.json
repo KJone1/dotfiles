@@ -5,7 +5,7 @@
     "status_style": "label_color",
     "collapse_untracked_diff": false,
     "tree_view": true,
-    "fallback_branch_name": "master"
+    "fallback_branch_name": "master",
   },
   "diff_view_style": "split",
   "notification_panel": {
@@ -92,7 +92,14 @@
     ".git",
   ],
   "file_types": {
-    "Helm": ["**/templates/*.yaml"],
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml",
+      "**/values*.yaml",
+    ],
     "JSONC": [
       "**/.zed/**/*.json",
       "**/zed/**/*.json",
