@@ -82,6 +82,8 @@
     "just": true,
     "git-firefly": true,
     "catppuccin-icons": true,
+    "csv": true,
+    "raindbow-csv": true,
   },
   "file_scan_exclusions": [
     ".ruff_cache",
