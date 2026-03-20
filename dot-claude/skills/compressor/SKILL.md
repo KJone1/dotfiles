@@ -1,6 +1,7 @@
 ---
-name: compress
+name: compressor
 description: Guide for high-signal token compression for files and text. This skill should be used when users want to reduce the token count of a file or text while preserving 100% of its functional meaning and core directives.
+disable-model-invocation: true
 ---
 
 # Compress
