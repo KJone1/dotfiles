@@ -1,6 +1,7 @@
 ---
 name: commit
 description: Guide for git commit creation. This skill should be used when users want to create git commits.
+model: haiku
 ---
 
 # Commit
