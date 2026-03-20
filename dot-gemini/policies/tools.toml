@@ -1,34 +1,64 @@
 [[rule]]
 toolName = "run_shell_command"
 commandPrefix = [
-  "git ", "just ", "find ", "gemini ", "ls ", "pwd", "cat ", "grep ", 
-  "mkdir -p "
+  "git checkout master",
+  "git pull",
+  "git diff",
+  "git status",
+  "git rev-list",
+  "git log",
+  "just ",
+  "find ",
+  "gemini ",
+  "ls ",
+  "pwd",
+  "cat ",
+  "grep ",
+  "mkdir -p ",
+  "kubectl explain",
+  "kubectl get",
+  "kubectl logs",
+  "kubectl describe",
+  "helm template",
+  "helm lint",
+  "helm show values",
+  "gh pr view",
+  "gh pr list",
+  "gh pr diff",
+  "gh pr checks",
+  "gh run view",
+  "gh repo view",
+  "gh issue view",
+  "fastmcp "
 ]
 decision = "allow"
 priority = 500
 
 [[rule]]
-toolName = "run_shell_command"
-commandPrefix = ["kubectl explain", "kubectl get", "kubectl logs", "kubectl describe"]
+mcpName = "grafana-prod"
 decision = "allow"
 priority = 500
 
 [[rule]]
-toolName = "run_shell_command"
-commandPrefix = ["helm template", "helm lint", "helm show values"]
-decision = "allow"
-priority = 500
-
-[[rule]]
-toolName = "run_shell_command"
-commandPrefix = ["gh pr view", "gh pr diff", "gh run view", "gh repo view", "gh issue view"]
-decision = "allow"
-priority = 500
-
-[[rule]]
-toolName = ["read_file", "glob", "grep_search", "web_fetch", "google_web_search"]
+toolName = [
+  "read_file",
+  "glob",
+  "grep_search",
+  "web_fetch",
+  "google_web_search",
+  "activate_skill"
+]
 decision = "allow"
 priority = 400
+
+[[rule]]
+toolName = [
+  "write_file",
+  "replace"
+]
+argsPattern = ".*CLAUDE\\.md"
+decision = "allow"
+priority = 600
 
 [[rule]]
 toolName = "read_file"
@@ -57,9 +87,3 @@ argsPattern = ".*/build/.*"
 decision = "deny"
 deny_message = "Access to build artifacts is restricted."
 priority = 900
-
-[[rule]]
-toolName = ["write_file", "replace"]
-argsPattern = ".*CLAUDE\\.md"
-decision = "allow"
-priority = 600
