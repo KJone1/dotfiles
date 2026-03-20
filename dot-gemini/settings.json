@@ -12,7 +12,12 @@
     "hideWindowTitle": true,
     "hideTips": true,
     "hideBanner": true,
-    "hideFooter": false
+    "hideFooter": false,
+    "showCitations": true,
+    "footer": {
+      "hideSandboxStatus": true,
+      "hideContextPercentage": false
+    }
   },
   "privacy": {
     "usageStatisticsEnabled": false
