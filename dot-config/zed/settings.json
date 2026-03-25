@@ -1,5 +1,6 @@
 {
   "git_panel": {
+    "file_icons": true,
     "dock": "left",
     "button": true,
     "status_style": "label_color",
