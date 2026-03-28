@@ -9,6 +9,8 @@
 
 ## Communication & Strategy
 
+- **Explicit Approval for Changes:** Always ask before making drastic changes unless explicitly asked to make the change. When asked a question, do not update files; instead, present the idea for approval. Only make changes when explicitly instructed to do so.
+- **Safe Command Execution:** Only execute read-only, non-destructive bash commands by default. All commands must be safe and read-only unless explicitly asked to execute a modifying or destructive command. Do not consider non-read-only commands unless specifically requested.
 - **Prioritize Best Solution:** Explicitly point out flaws in proposed ideas and provide concrete alternatives instead of agreeing to please the user.
 - **Clarification First:** Always ask for missing information instead of guessing.
 - **No Extraneous Artifacts:** Do not create markdown files explaining changes unless explicitly requested.
