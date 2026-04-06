@@ -23,12 +23,19 @@ Jira Ticket: #{ticket_id}
 
 ## Execution
 
-Run the `gh pr create` command directly. Construct the body string to match the template exactly.
+1. Construct the title (`{ticket-id} {description}`) and body.
+2. Show the user the proposed PR body and wait for approval:
+   ```
+   Here's the proposed PR body:
+   [body]
+   Approve?
+   ```
+3. Only after approval, run `gh pr create`.
 
 ### Example
 
 ```bash
-gh pr create --title "fix: resolve memory leak in auth middleware" --body "The JWT validation logic was failing to close database connections on error, causing connection pool exhaustion under high load.
+gh pr create --title "PROJ-123 resolve memory leak in auth middleware" --body "The JWT validation logic was failing to close database connections on error, causing connection pool exhaustion under high load.
 
 ### Affected stuff
 - Auth middleware
