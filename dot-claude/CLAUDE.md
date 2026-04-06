@@ -21,6 +21,11 @@
 - **GitHub:** Use `gh` CLI exclusively for GitHub interactions.
 - **Kubernetes:** Use `kubectl` for all Kubernetes tasks.
 - **Python:** Always use `uv` and `uvx` for all python-related tasks.
+- **Json:  **Always start by trying `jq` for json related tasks
+- **Yaml:** Always start by trying `yq` for yaml related tasks
+  > Note: All cli flags should come after the subcommnad to not interfere with tool allow list patterns  
+  > good example: `kubectl get pods -n app`  
+  > bad example: `kubectl -n app get pods`
 
 # Verified Truth Protocol
 
