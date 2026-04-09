@@ -1,11 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json",
+  "policyPaths": ["~/.gemini/policies/tools.toml"],
   "general": {
     "preferredEditor": "neovim",
     "vimMode": false,
     "sessionRetention": {
       "enabled": true,
       "maxAge": "30d"
+    },
+    "plan": {
+      "enabled": true
     }
   },
   "ui": {
@@ -31,7 +35,6 @@
   },
   "experimental": {
     "jitContext": true,
-    "plan": true,
     "enableAgents": true
   },
   "skills": {
