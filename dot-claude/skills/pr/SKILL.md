@@ -1,6 +1,6 @@
 ---
 name: pr
-description: Guide for creating Pull Requests on GitHub. This skill should be used when users want to create a new PR (Pull Request).
+description: Guide for opening Pull Requests on GitHub. This skill should be used when users want to open a new PR (Pull Request).
 model: haiku
 ---
 
