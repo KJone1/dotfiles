@@ -31,7 +31,9 @@
       "Bash(gh api repos/*/*/releases*)",
       "Bash(gh api repos/*/*/issues *)",
       "Bash(gh api repos/*/*/issues/* *)",
+      "Bash(krr *)",
       "Bash(find .:*)",
+      "Bash(ls *)",
       "Bash(gemini:*)",
       "Bash(git rev-list:*)",
       "Bash(git log:*)",
@@ -55,7 +57,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "claude-sonnet-4-6",
+  "model": "claude-sonnet-4-6[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
