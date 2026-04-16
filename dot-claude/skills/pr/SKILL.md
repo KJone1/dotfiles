@@ -24,13 +24,8 @@ Jira Ticket: #{ticket_id}
 ## Execution
 
 1. Construct the title (`{ticket-id} {description}`) and body.
-2. Show the user the proposed PR body and wait for approval:
-   ```
-   Here's the proposed PR body:
-   [body]
-   Approve?
-   ```
-3. Only after approval, run `gh pr create`.
+2. Use the AskUserQuestion tool to show the proposed PR body and ask for approval. Present the full body as the question text with only two options: "Yes" and "No".
+3. Only after the user selects "Yes", run `gh pr create`.
 
 ### Example
 
@@ -47,5 +42,5 @@ Jira Ticket: #PROJ-123"
 ## Strict Rules
 
 1. **No Conversational Filler**: Never use phrases like "In this PR...", "I have updated...", or "This change aims to...".
-2. **Specific Rationale**: Start directly with the technical reason for the change (e.g., "The connection pool was being exhausted because..." instead of "Improving database performance").
+2. **Specific Rationale**: Start directly with the technical reason for the change. One sentence, no extra context, no "consistent with X" or "which allows Y" addendums. Bad: "Enables automated review of Renovate dependency updates using Claude, consistent with the pattern in the charts repo." Good: "Enables automated review of Renovate dependency updates using Claude."
 3. **High-Level Affected Stuff**: Do not list every file or function changed (the diff already shows this). List the general components, services, or systems affected.
