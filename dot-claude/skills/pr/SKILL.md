@@ -1,6 +1,6 @@
 ---
 name: pr
-description: Guide on how to open a PR (Pull Request) on GitHub. This skill should always be used when users want to open a new PR.
+description: Guide on how to open a PR (Pull Request) on GitHub. This skill should always be used when user want to open a new PR.
 model: haiku
 ---
 
