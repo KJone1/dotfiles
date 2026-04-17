@@ -1,6 +1,6 @@
 ---
 name: pr
-description: Guide for opening Pull Requests on GitHub. This skill should be used when users want to open a new PR (Pull Request).
+description: Guide on how to open a PR (Pull Request) on GitHub. This skill should always be used when users want to open a new PR.
 model: haiku
 ---
 
@@ -23,13 +23,13 @@ Jira Ticket: #{ticket_id}
 
 ## Execution
 
-1. Construct the title (`{ticket-id} {description}`) and body.
+1. Construct the title (`{ticket-id}: {description}`) and body.
 2. Run `gh pr create` with the title and body.
 
 ### Example
 
 ```bash
-gh pr create --title "PROJ-123 resolve memory leak in auth middleware" --body "The JWT validation logic was failing to close database connections on error, causing connection pool exhaustion under high load.
+gh pr create --title "PROJ-123: resolve memory leak in auth middleware" --body "The JWT validation logic was failing to close database connections on error, causing connection pool exhaustion under high load.
 
 ### Affected stuff
 - Auth middleware
