@@ -1,6 +1,9 @@
 ---
 name: jira
 description: Guide for Jira ticket analysis and DevOps solution implementation for GCP infrastructure. This skill should be used when users want to resolve Jira tickets by analyzing ticket XML and implementing professional Helm and Terraform solutions.
+argument-hint: ticket
+user-invocable: true
+disable-model-invocation: true
 ---
 
 # Jira DevOps Ticket Solver (GCP/Helm/Terraform)
