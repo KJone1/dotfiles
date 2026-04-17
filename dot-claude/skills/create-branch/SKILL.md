@@ -1,6 +1,6 @@
 ---
 name: create-branch
-description: Guide for git branch creation. This skill should be used when users want to create a new git branch.
+description: Guide on how to create a branch. This skill should always be used when users want to create a new git branch.
 argument-hint: ticket-id
 model: haiku
 ---
