@@ -9,17 +9,17 @@
     "fallback_branch_name": "master",
   },
   "diff_view_style": "split",
-  "notification_panel": {
-    "button": false,
-  },
   "use_system_window_tabs": false,
   "bottom_dock_layout": "contained",
   "tabs": {
-    "file_icons": false,
-    "git_status": false,
+    "file_icons": true,
+    "git_status": true,
   },
   "tab_bar": {
-    "show": false,
+    "show_pinned_tabs_in_separate_row": false,
+    "show_tab_bar_buttons": false,
+    "show_nav_history_buttons": false,
+    "show": true,
   },
   "title_bar": {
     "show_menus": false,
@@ -93,6 +93,8 @@
     "__pycache__",
     ".DS_Store",
     ".git",
+    ".vscode",
+    ".venv",
   ],
   "file_types": {
     "Helm": [
