@@ -24,8 +24,7 @@ Jira Ticket: #{ticket_id}
 ## Execution
 
 1. Construct the title (`{ticket-id} {description}`) and body.
-2. Use the AskUserQuestion tool to show the proposed PR body and ask for approval. Present the full body as the question text with only two options: "Yes" and "No".
-3. Only after the user selects "Yes", run `gh pr create`.
+2. Run `gh pr create` with the title and body.
 
 ### Example
 
