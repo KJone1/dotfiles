@@ -1,4 +1,25 @@
 {
+  "search": {
+    "button": true
+  },
+  "diagnostics": {
+    "button": true
+  },
+  "terminal": {
+    "button": false
+  },
+  "status_bar": {
+    "show_active_file": true,
+    "active_language_button": true
+  },
+  "project_panel": {
+    "button": true,
+    "dock": "left",
+  },
+  "outline_panel": {
+    "button": false,
+    "dock": "left",
+  },
   "git_panel": {
     "file_icons": true,
     "dock": "left",
@@ -22,12 +43,13 @@
     "show": true,
   },
   "title_bar": {
+    "show_project_items": true,
     "show_menus": false,
     "show_user_picture": false,
     "show_user_menu": true,
     "show_sign_in": false,
     "show_onboarding_banner": true,
-    "show_branch_icon": true,
+    "show_branch_status_icon": true,
   },
   "colorize_brackets": true,
   "show_whitespaces": "selection",
@@ -40,8 +62,8 @@
     "agent_review": false,
     "code_actions": false,
     "selections_menu": true,
-    "quick_actions": true,
-    "breadcrumbs": true,
+    "quick_actions": false,
+    "breadcrumbs": false,
   },
   "minimap": {
     "show": "never",
@@ -57,6 +79,7 @@
   },
   "ui_font_family": "JetBrainsMono Nerd Font Mono",
   "collaboration_panel": {
+    "dock": "left",
     "button": false,
   },
   "disable_ai": true,
