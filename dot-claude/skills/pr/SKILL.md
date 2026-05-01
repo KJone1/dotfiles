@@ -1,7 +1,6 @@
 ---
 name: pr
 description: Guide on how to open a PR (Pull Request) on GitHub. This skill should always be used when user want to open a new PR.
-model: haiku
 ---
 
 # PR Creation Guide
@@ -18,25 +17,28 @@ The PR body must start directly with the rationale, followed by the "Affected st
 ### Affected stuff
 - [High-level components or systems impacted]
 
-Jira Ticket: #{ticket_id}
+Jira Ticket: [#{ticket_id}]({jira_ticket_url})
 ```
 
+Resolve `{jira_ticket_url}` from user memory or infer it from context (git remotes, prior tickets in the repo, project config).
 ## Execution
 
-1. Construct the title (`{ticket-id}: {description}`) and body.
+1. Construct the title (`{ticket_id}: {description}`) and body.
 2. Run `gh pr create` with the title and body.
 
 ### Example
 
 ```bash
-gh pr create --title "PROJ-123: resolve memory leak in auth middleware" --body "The JWT validation logic was failing to close database connections on error, causing connection pool exhaustion under high load.
+gh pr create --title "PROJ-123: close db connections on JWT validation error" --body "JWT validation leaked database connections on error, exhausting the pool under load.
 
 ### Affected stuff
 - Auth middleware
-- Database connection pool management
+- Database connection pool
 
-Jira Ticket: #PROJ-123"
+Jira Ticket: [#PROJ-123](https://example.atlassian.net/browse/PROJ-123)"
 ```
+
+The URL in the example is illustrative. Use the actual Jira base URL resolved at runtime.
 
 ## Strict Rules
 
