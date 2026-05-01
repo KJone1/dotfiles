@@ -11,6 +11,7 @@ bindkey -e
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^H' backward-kill-word
+bindkey '\e\e' send-break
 
 eval "$(starship init zsh)"
 
