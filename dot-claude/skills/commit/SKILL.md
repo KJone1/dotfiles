@@ -14,7 +14,7 @@ model: haiku
 
 ## Workflow
 
-1. `git status --short` → get modified files
+1. `git status --short` → get relevant modified files (exclude `CLAUDE.md` from commits)
 2. Use `AskUserQuestion` with `multiSelect: true`:
   - Each option: label=filename, description=file status (M/D/A/?)
   - Header: "Files"
