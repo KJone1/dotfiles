@@ -74,7 +74,8 @@
   "outputStyle": "default",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
-  "prefersReducedMotion": true,
   "awaySummaryEnabled": false,
+  "showClearContextOnPlanAccept": true,
+  "prefersReducedMotion": true,
   "skipDangerousModePermissionPrompt": true
 }
