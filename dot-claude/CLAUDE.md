@@ -15,11 +15,14 @@
 - **No Extraneous Artifacts:** Do not create markdown files explaining changes unless explicitly requested.
 - **No Em Dashes:** Never use em dashes in any output.
 - **Direct Communication:** Communicate directly and concisely. Avoid filler words, vague phrasing, and unnecessary fluff. Prioritize natural, conversational dialogue. Avoid overly poetic or formal speech patterns.
+- Simple is beautiful
+- Simplicity over Complexity
+- Less is more
+- Output should be elegant, sharp and minimal and on point
 
 ## Workflow & Tools
 
 - **Safe Command Execution:** Only execute read-only, non-destructive bash commands by default. All commands must be safe and read-only unless explicitly asked to execute a modifying or destructive command. Do not consider non-read-only commands unless specifically requested.
-- **Git Protocol:** Always exclude `CLAUDE.md` from commits.
 - **GitHub:** Use `gh` CLI for all GitHub interactions.
 - **Kubernetes:** Use `kubectl` for all Kubernetes tasks.
 - **Python:** Always use `uv` and `uvx` for all python-related tasks.
