@@ -1,16 +1,17 @@
 {
   "search": {
-    "button": true
+    "button": false,
   },
   "diagnostics": {
-    "button": true
+    "button": true,
   },
   "terminal": {
-    "button": false
+    "button": false,
   },
   "status_bar": {
+    "cursor_position_button": false,
     "show_active_file": true,
-    "active_language_button": true
+    "active_language_button": true,
   },
   "project_panel": {
     "button": true,
