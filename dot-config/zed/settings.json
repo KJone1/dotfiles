@@ -71,6 +71,8 @@
     "thumb": "hover",
   },
   "gutter": {
+    "min_line_number_digits": 2,
+    "bookmarks": false,
     "breakpoints": false,
   },
   "relative_line_numbers": "disabled",
