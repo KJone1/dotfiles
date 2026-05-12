@@ -14,9 +14,6 @@ The PR body must start directly with the rationale, followed by the "Affected st
 ```markdown
 [Rationale/Problem being solved]
 
-### Affected stuff
-- [High-level components or systems impacted]
-
 Jira Ticket: [#{ticket_id}]({jira_ticket_url})
 ```
 
@@ -29,11 +26,7 @@ Resolve `{jira_ticket_url}` from user memory or infer it from context (git remot
 ### Example
 
 ```bash
-gh pr create --title "PROJ-123: close db connections on JWT validation error" --body "JWT validation leaked database connections on error, exhausting the pool under load.
-
-### Affected stuff
-- Auth middleware
-- Database connection pool
+gh pr create --title "PROJ-123: Add MaxUnavailable override for Argo Rollouts" --body "Adds configurable \`maxUnavailable\` parameter for Argo Rollouts blue-green deployments with a default of 25%.
 
 Jira Ticket: [#PROJ-123](https://example.atlassian.net/browse/PROJ-123)"
 ```
@@ -43,5 +36,4 @@ The URL in the example is illustrative. Use the actual Jira base URL resolved at
 ## Strict Rules
 
 1. **No Conversational Filler**: Never use phrases like "In this PR...", "I have updated...", or "This change aims to...".
-2. **Specific Rationale**: Start directly with the technical reason for the change. One sentence, no extra context, no "consistent with X" or "which allows Y" addendums. Bad: "Enables automated review of Renovate dependency updates using Claude, consistent with the pattern in the charts repo." Good: "Enables automated review of Renovate dependency updates using Claude."
-3. **High-Level Affected Stuff**: Do not list every file or function changed (the diff already shows this). List the general components, services, or systems affected.
+2. **Specific Rationale**: Start directly with the technical reason for the change. One sentence, no extra context, no "consistent with X" or "which allows Y" addendums. Bad: "Enables automated review of Renovate dependency updates using Claude, consistent with the pattern in the charts repo." Good: "Adds configurable `maxUnavailable` parameter for Argo Rollouts blue-green deployments with a default of 25%."
