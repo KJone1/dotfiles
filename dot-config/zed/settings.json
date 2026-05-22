@@ -1,4 +1,5 @@
 {
+  "cli_default_open_behavior": "new_window",
   "search": {
     "button": false,
   },
@@ -6,6 +7,7 @@
     "button": true,
   },
   "terminal": {
+    "copy_on_select": true,
     "button": false,
   },
   "status_bar": {
