@@ -26,14 +26,16 @@ Resolve `{jira_ticket_url}` from user memory or infer it from context (git remot
 ### Example
 
 ```bash
-gh pr create --title "PROJ-123: Add MaxUnavailable override for Argo Rollouts" --body "Adds configurable \`maxUnavailable\` parameter for Argo Rollouts blue-green deployments with a default of 25%.
+gh pr create --title "PROJ-123: Add MaxUnavailable override for Argo Rollouts" --body "Set \`maxUnavailable\` to 25% for Argo Rollouts blue-green deployments.
 
 Jira Ticket: [#PROJ-123](https://example.atlassian.net/browse/PROJ-123)"
 ```
 
 The URL in the example is illustrative. Use the actual Jira base URL resolved at runtime.
 
-## Strict Rules
+## Rules
 
-1. **No Conversational Filler**: Never use phrases like "In this PR...", "I have updated...", or "This change aims to...".
-2. **Specific Rationale**: Start directly with the technical reason for the change. One sentence, no extra context, no "consistent with X" or "which allows Y" addendums. Bad: "Enables automated review of Renovate dependency updates using Claude, consistent with the pattern in the charts repo." Good: "Adds configurable `maxUnavailable` parameter for Argo Rollouts blue-green deployments with a default of 25%."
+1. **One sentence max**: The body is one sentence. Not a paragraph. Not bullets. One sentence.
+2. **No context, no explanation**: Do not explain what the technology is, how it works, or why it matters in general. Just state what changed.
+3. **No filler**: Never use "In this PR...", "This change aims to...", "This wires...", "This adds support for...", or similar lead-ins. Start with the action directly.
+4. **Commit-message tone**: Write like a commit message - tight, specific, lowercase ok. "Update X to Y" or "Set X for Y" is the target length and tone.
