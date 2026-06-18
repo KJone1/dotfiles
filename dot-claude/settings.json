@@ -63,7 +63,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "claude-sonnet-4-6[1m]",
+  "model": "opusplan",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
