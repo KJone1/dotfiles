@@ -1,0 +1,54 @@
+{
+  "userSettings": {
+    "customThemeSeedsLight": {
+      "background": "#F5F5F5",
+      "foregroundOverride": "#383A42",
+      "primary": "#4078F2"
+    },
+    "gcpRegion": "global",
+    "globalPermissionGrants": {
+      "allow": [
+        "command(cat)",
+        "command(fastmcp)",
+        "command(find)",
+        "command(gemini)",
+        "command(gh issue view)",
+        "command(gh pr checks)",
+        "command(gh pr diff)",
+        "command(gh pr list)",
+        "command(gh pr view)",
+        "command(gh repo view)",
+        "command(gh run view)",
+        "command(git checkout master)",
+        "command(git diff)",
+        "command(git log)",
+        "command(git pull)",
+        "command(git rev-list)",
+        "command(git show)",
+        "command(git status)",
+        "command(grep)",
+        "command(head)",
+        "command(helm lint)",
+        "command(helm show values)",
+        "command(helm template)",
+        "command(just)",
+        "command(kubectl describe)",
+        "command(kubectl explain)",
+        "command(kubectl get)",
+        "command(kubectl logs)",
+        "command(ls)",
+        "command(mkdir)",
+        "command(pwd)",
+        "command(rg)",
+        "command(tail)",
+        "mcp(grafana-prod/*)",
+        "mcp(langfuse-docs/*)",
+        "read_url(antigravity.google)",
+        "read_url(github.com)",
+        "read_url(raw.githubusercontent.com)"
+      ]
+    },
+    "themeMode": "THEME_MODE_LIGHT",
+    "verboseAgentChat": false
+  }
+}
