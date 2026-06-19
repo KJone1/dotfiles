@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "langfuse-docs": {
+      "serverUrl": "https://langfuse.com/api/mcp",
+      "disabled": false
+    }
+  }
+}
