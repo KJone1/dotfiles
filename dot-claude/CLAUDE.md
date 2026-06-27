@@ -23,11 +23,11 @@
 ## Workflow & Tools
 
 - **Safe Command Execution:** Only execute read-only, non-destructive bash commands by default. All commands must be safe and read-only unless explicitly asked to execute a modifying or destructive command. Do not consider non-read-only commands unless specifically requested.
-- **GitHub:** Use `gh` CLI for all GitHub interactions.
-- **Kubernetes:** Use `kubectl` for all Kubernetes tasks.
-- **Python:** Always use `uv` and `uvx` for all python-related tasks.
-- **Json:** Always start by trying `jq` for json related tasks.
-- **Yaml:** Always start by trying `yq` for yaml related tasks.
+- **GitHub:** Always start by trying `gh` for all GitHub related tasks.
+- **Kubernetes:** Always start by trying `kubectl` for all Kubernetes related tasks.
+- **Python:** Always start by trying `uv` and `uvx` for all python related tasks.
+- **Json:** Always start by trying `jq` for all json related tasks.
+- **Yaml:** Always start by trying `yq` for all yaml related tasks.
   > Note: All cli flags should come after the subcommnad to not interfere with tool allow list patterns  
   > good example: `kubectl get pods -n app`  
   > bad example: `kubectl -n app get pods`
