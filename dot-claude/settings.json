@@ -13,6 +13,7 @@
       "Bash(grep *)",
       "Bash(head *)",
       "Bash(ls *)",
+      "Bash(realpath *)",
       "Bash(rg *)",
       "Bash(tail *)",
       "Bash(git checkout master && git pull && git diff && git status)",
