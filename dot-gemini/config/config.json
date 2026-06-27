@@ -15,6 +15,7 @@
         "read_url(github.com)",
         "read_url(raw.githubusercontent.com)",
         "command(cat)",
+        "command(diff)",
         "command(fastmcp)",
         "command(find)",
         "command(gemini)",

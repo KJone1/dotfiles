@@ -13,6 +13,7 @@ commandPrefix = [
   "ls",
   "pwd",
   "cat",
+  "diff",
   "grep",
   "rg",
   "mkdir -p",
