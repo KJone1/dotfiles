@@ -1,5 +1,6 @@
 {
   "userSettings": {
+    "conversationWidth": "CONVERSATION_WIDTH_WIDE",
     "customThemeSeedsLight": {
       "background": "#F5F5F5",
       "foregroundOverride": "#383A42",
@@ -45,11 +46,13 @@
         "command(mkdir)",
         "command(npm run build)",
         "command(pwd)",
+        "command(realpath)",
         "command(rg)",
         "command(tail)",
         "command(git branch --show-current)"
       ]
     },
+    "remoteControlHostname": "silent-water",
     "themeMode": "THEME_MODE_LIGHT",
     "verboseAgentChat": false
   }
