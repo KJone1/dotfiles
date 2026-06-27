@@ -23,6 +23,7 @@
 ## Workflow & Tools
 
 - **Safe Command Execution:** Only execute read-only, non-destructive bash commands by default. All commands must be safe and read-only unless explicitly asked to execute a modifying or destructive command. Do not consider non-read-only commands unless specifically requested.
+- **Throwaway Scripts:** Prefer creating simple, throwaway scripts in the workspace over executing long or complex inline command invocations. This makes the logic clear, reviewable, and easy to run repeatedly with different parameters.
 - **GitHub:** Always start by trying `gh` for all GitHub related tasks.
 - **Kubernetes:** Always start by trying `kubectl` for all Kubernetes related tasks.
 - **Python:** Always start by trying `uv` and `uvx` for all python related tasks.
