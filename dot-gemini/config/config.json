@@ -49,7 +49,9 @@
         "command(pwd)",
         "command(realpath)",
         "command(rg)",
+        "command(sort)",
         "command(tail)",
+        "command(uniq)",
         "command(git branch --show-current)"
       ]
     },

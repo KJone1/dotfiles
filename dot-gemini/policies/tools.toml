@@ -16,6 +16,8 @@ commandPrefix = [
   "diff",
   "grep",
   "rg",
+  "sort",
+  "uniq",
   "mkdir -p",
   "kubectl explain",
   "kubectl get",
