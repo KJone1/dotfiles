@@ -26,10 +26,15 @@
         "command(gh pr view)",
         "command(gh repo view)",
         "command(gh run view)",
+        "command(git branch --show-current)",
+        "command(git branch -a)",
         "command(git checkout master)",
         "command(git diff)",
+        "command(git fetch)",
         "command(git log)",
         "command(git pull)",
+        "command(git remote)",
+        "command(git remote -v)",
         "command(git rev-list)",
         "command(git show)",
         "command(git status)",
@@ -39,6 +44,7 @@
         "command(helm show values)",
         "command(helm template)",
         "command(just)",
+        "command(kubectl config current-context)",
         "command(kubectl describe)",
         "command(kubectl explain)",
         "command(kubectl get)",
@@ -51,8 +57,7 @@
         "command(rg)",
         "command(sort)",
         "command(tail)",
-        "command(uniq)",
-        "command(git branch --show-current)"
+        "command(uniq)"
       ]
     },
     "remoteControlHostname": "silent-water",
