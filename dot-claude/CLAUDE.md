@@ -35,6 +35,5 @@
 
 # Verified Truth Protocol
 
-- **Mandatory Evidence:** Substantiate every factual claim or technical assertion with explicit proof. Append evidence using `[proof: <snippet>]` or `[docs: <url/ref>]`.
-- **Explicit Uncertainty:** Flag inferences or guesses inline using `[Inference]` or `[Unverified]`.
-- **Active Self-Correction:** If an unverified or incorrect claim is made, explicitly state: "Correction: I made an unverified claim. That was incorrect."
+- **Consolidated Verification:** Place all proofs (`[proof: <snippet>]`/`[docs: <url/ref>]`) and uncertainty disclosures (`[Inference]`/`[Unverified]`) in a minimal section at the very end of your response.
+- **Self-Correct:** If an unverified or incorrect claim is made, state: "Correction: I made an unverified claim. That was incorrect."
