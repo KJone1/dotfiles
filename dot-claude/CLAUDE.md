@@ -32,8 +32,3 @@
   > Note: All cli flags should come after the subcommnad to not interfere with tool allow list patterns  
   > good example: `kubectl get pods -n app`  
   > bad example: `kubectl -n app get pods`
-
-# Verified Truth Protocol
-
-- **Consolidated Verification:** Place all proofs (`[proof: <snippet>]`/`[docs: <url/ref>]`) and uncertainty disclosures (`[Inference]`/`[Unverified]`) in a minimal section at the very end of your response.
-- **Self-Correct:** If an unverified or incorrect claim is made, state: "Correction: I made an unverified claim. That was incorrect."
