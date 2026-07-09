@@ -46,6 +46,8 @@
       "Bash(helm show values *)",
       "Bash(helm template *)",
       "Bash(gcloud logging read *)",
+      "Bash(logcli query *)",
+      "Bash(promtool query *)",
       "Bash(fastmcp *)",
       "Bash(gemini *)",
       "Bash(just *)",

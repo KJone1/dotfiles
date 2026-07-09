@@ -49,6 +49,8 @@
         "command(kubectl explain)",
         "command(kubectl get)",
         "command(kubectl logs)",
+        "command(logcli query)",
+        "command(promtool query)",
         "command(ls)",
         "command(mkdir)",
         "command(npm run build)",
