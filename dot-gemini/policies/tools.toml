@@ -23,6 +23,8 @@ commandPrefix = [
   "kubectl get",
   "kubectl logs",
   "kubectl describe",
+  "logcli query",
+  "promtool query",
   "helm template",
   "helm lint",
   "helm show values",
