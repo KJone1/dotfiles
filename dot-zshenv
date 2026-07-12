@@ -7,6 +7,7 @@ typeset -aU path
 path=($HOME/.local/bin
       $HOME/.local/bin/go/bin
       $HOME/.local/bin/google-cloud-sdk/bin
+      $HOME/.bun/bin
       /usr/local/go/bin
       $HOME/go/bin
       $HOME/bin
