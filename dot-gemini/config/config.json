@@ -9,6 +9,7 @@
     "gcpRegion": "global",
     "globalPermissionGrants": {
       "allow": [
+        "mcp(qmd/*)",
         "mcp(grafana-prod/*)",
         "mcp(langfuse-docs/*)",
         "read_url(antigravity.google)",
