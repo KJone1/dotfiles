@@ -58,8 +58,7 @@
       "Grep",
       "WebFetch",
       "WebSearch",
-      "Edit(CLAUDE.md)",
-      "Write(CLAUDE.md)"
+      "Edit(CLAUDE.md)"
     ],
     "deny": [
       "Read(./.env)",
