@@ -127,6 +127,7 @@
     ".git",
     ".vscode",
     ".venv",
+    "node_modules"
   ],
   "file_types": {
     "Helm": [
