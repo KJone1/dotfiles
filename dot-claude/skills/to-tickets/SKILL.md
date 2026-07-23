@@ -45,13 +45,21 @@ Present the proposed breakdown as a numbered list. For each ticket, show:
 - **Blocked by**: which other tickets (if any) must complete first
 - **What it delivers**: the end-to-end behaviour this ticket makes work
 
-Ask the user:
+Ask the user about structure:
 
 - Does the granularity feel right? (too coarse / too fine)
 - Are the blocking edges correct - does each ticket only depend on tickets that genuinely gate it?
 - Should any tickets be merged or split further?
 
-Iterate until the user approves the breakdown.
+Also ask targeted clarification questions wherever the answer changes what gets written into a ticket - the goal is a high-quality, unambiguous ticket, not just filling in open requirements:
+
+- Edge cases and error states the plan/spec left unspecified
+- Undefined behaviour (empty state, conflict, failure, permission denial)
+- Acceptance criteria that are implied but not explicit - confirm the concrete `--dod` checkpoints before they're written
+- Technical approach decisions where more than one reasonable implementation exists
+- Scope boundaries - what's explicitly out of scope, so `--constraint` can capture it
+
+Iterate until the clarifications are answered and the user approves the breakdown.
 
 ### 5. Publish the tickets to the board
 
@@ -82,8 +90,15 @@ kb task new "<Ticket title>" \
   --dod "<Definition-of-done checkpoint>" [--dod "<checkpoint>" ...] \
   --constraint "<Hard constraint>" [--constraint "<constraint>" ...] \
   -d "$(cat <<'EOF'
+<Context: why this ticket exists - the problem or gap it closes, one or two
+sentences, referencing the spec/plan it came from.>
+
 <What to build: the end-to-end behaviour this ticket makes work, from the
 user's perspective - not a layer-by-layer implementation list.>
+
+<Notes: anything resolved during clarification that shapes the
+implementation - edge cases, chosen approach where alternatives existed,
+explicit non-goals not already captured by --constraint.>
 EOF
 )"
 ```
@@ -92,7 +107,7 @@ EOF
 - **`--dod`**: one flag per acceptance criterion. Each is a concrete, checkable condition for the ticket to be demoable/verifiable.
 - **`--constraint`**: hard constraints that scope the blast radius of the ticket - what the implementing agent must NOT touch or change - so it stays focused, avoids over-engineering, and doesn't make unintended broad changes.
 
-In the `-d` description, avoid specific file paths - they go stale fast (use `--relevant-file` for paths). Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts - not a working demo, just the important bits.
+The `-d` description must be in-depth and professional - it is the ticket's primary artifact, written so an implementer with no other context can pick it up cold: state the why before the what, use precise domain vocabulary (not shorthand from the conversation), and fold in the clarifications gathered in Step 4 rather than leaving them implicit. Avoid specific file paths - they go stale fast (use `--relevant-file` for paths). Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts - not a working demo, just the important bits.
 
 ### 6. Work the frontier
 
