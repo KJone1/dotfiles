@@ -72,9 +72,10 @@ kb project new "<Repo name>" --path "$(git rev-parse --show-toplevel)"
 **Create one task per ticket, in dependency order (blockers first)** so each dependent can reference blockers that already exist. Capture the `id` from each command's JSON and reuse it as a `--blocked-by` value for later tickets. Every ticket in one breakdown shares the same `-l <feature-slug>` label so the set can be listed together.
 
 ```
-kb --out json task new "<Ticket title>" \
+kb task new "<Ticket title>" \
   -p <project> \
-  -l <feature-slug> \
+  -l <relevant-labels> \
+  -l <relevant-labels> \
   --priority <urgent|high|medium|low> \
   --blocked-by <blocker-id> [--blocked-by <blocker-id> ...] \
   --relevant-file <absolute-path> [--relevant-file <absolute-path> ...] \
@@ -83,19 +84,15 @@ kb --out json task new "<Ticket title>" \
   -d "$(cat <<'EOF'
 <What to build: the end-to-end behaviour this ticket makes work, from the
 user's perspective - not a layer-by-layer implementation list.>
-
-Blocked by: <blocker titles, or "None - can start immediately">
 EOF
 )"
 ```
-
-Omit `--blocked-by`, `--relevant-file`, `--dod`, and `--constraint` when there's nothing to put in them. To wire an edge discovered after creation, use `kb task block <id> --by <blocker-id> -p <project>`.
 
 - **`--relevant-file`**: absolute paths to files this ticket touches or must read, when known at breakdown time. Use this instead of inlining file paths in the `-d` description - it's structured metadata on the board rather than prose that goes stale.
 - **`--dod`**: one flag per acceptance criterion. Each is a concrete, checkable condition for the ticket to be demoable/verifiable.
 - **`--constraint`**: hard constraints that scope the blast radius of the ticket - what the implementing agent must NOT touch or change - so it stays focused, avoids over-engineering, and doesn't make unintended broad changes.
 
-In the `-d` description, avoid specific file paths or code snippets - they go stale fast (use `--relevant-file` for paths). Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts - not a working demo, just the important bits.
+In the `-d` description, avoid specific file paths - they go stale fast (use `--relevant-file` for paths). Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts - not a working demo, just the important bits.
 
 ### 6. Work the frontier
 
