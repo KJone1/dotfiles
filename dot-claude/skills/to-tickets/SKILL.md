@@ -14,7 +14,7 @@ Break a plan, spec, or conversation into a set of **tickets** - tracer-bullet ve
 
 Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments.
 
-### 2. Explore the codebase (optional)
+### 2. Explore the codebase
 
 If you have not already explored the codebase, do so to understand the current state of the code. Ticket titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
 
@@ -64,18 +64,6 @@ Iterate until the clarifications are answered and the user approves the breakdow
 ### 5. Publish the tickets to the board
 
 Tickets live on your local kanban board via the `kb` CLI - one **task** per ticket. The mapping is **project = code repo**, **feature = label**, **ticket = task**. All output is available as JSON with the global `--out json` flag; use it whenever you need to capture an id.
-
-**Resolve the project.** A project maps to a repo. List projects and match the current repo root:
-
-```
-kb --out json project list
-```
-
-Match the entry whose `path` equals `$(git rev-parse --show-toplevel)`. If none matches, create one and capture its `id`:
-
-```
-kb project new "<Repo name>" --path "$(git rev-parse --show-toplevel)"
-```
 
 **Create one task per ticket, in dependency order (blockers first)** so each dependent can reference blockers that already exist. Capture the `id` from each command's JSON and reuse it as a `--blocked-by` value for later tickets. Every ticket in one breakdown shares the same `-l <feature-slug>` label so the set can be listed together.
 
