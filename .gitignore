@@ -6,3 +6,4 @@ cd-project.nvim.json
 .vscode
 CLAUDE.md
 .DS_Store
+.system
