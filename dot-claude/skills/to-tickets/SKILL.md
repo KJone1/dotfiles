@@ -10,105 +10,204 @@ Break a plan, spec, or conversation into a set of **tickets** - tracer-bullet ve
 
 ## Process
 
-### 1. Gather context
+### 1. Load ideas
 
-Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments.
+Input:
 
-### 2. Explore the codebase
+- `<selection>`: one idea ID, multiple idea IDs, or `all`.
 
-If you have not already explored the codebase, do so to understand the current state of the code. Ticket titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
+Steps:
 
-Look for opportunities to prefactor the code to make the implementation easier. "Make the change easy, then make the easy change."
+1. If `<selection>` is `all`, list all open ideas:
 
-### 3. Draft vertical slices
-
-Break the work into **tracer bullet** tickets.
-
-<vertical-slice-rules>
-
-- Each slice cuts a narrow but COMPLETE path through every layer (schema, API, UI, tests) - vertical, NOT a horizontal slice of one layer
-- A completed slice is demoable or verifiable on its own
-- Each slice is sized to fit in a single fresh context window
-- Any prefactoring should be done first
-
-</vertical-slice-rules>
-
-Give each ticket its **blocking edges** - the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
-
-**Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change - rename a column, retype a shared symbol - whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a tracer bullet; sequence it as **expand-contract**. First expand: add the new form beside the old so nothing breaks. Then migrate the call sites over in batches sized by blast radius (per package, per directory), each batch its own ticket blocked by the expand, keeping CI green batch to batch because the old form still exists. Finally contract: delete the old form once no caller remains, in a ticket blocked by every migrate batch. When even the batches can't stay green alone, keep the sequence but let them share an integration branch that all block a final integrate-and-verify ticket - green is promised only there.
-
-### 4. Quiz the user
-
-Present the proposed breakdown as a numbered list. For each ticket, show:
-
-- **Title**: short descriptive name
-- **Blocked by**: which other tickets (if any) must complete first
-- **What it delivers**: the end-to-end behaviour this ticket makes work
-
-Ask the user about structure:
-
-- Does the granularity feel right? (too coarse / too fine)
-- Are the blocking edges correct - does each ticket only depend on tickets that genuinely gate it?
-- Should any tickets be merged or split further?
-
-Also ask targeted clarification questions wherever the answer changes what gets written into a ticket - the goal is a high-quality, unambiguous ticket, not just filling in open requirements:
-
-- Edge cases and error states the plan/spec left unspecified
-- Undefined behaviour (empty state, conflict, failure, permission denial)
-- Acceptance criteria that are implied but not explicit - confirm the concrete `--dod` checkpoints before they're written
-- Technical approach decisions where more than one reasonable implementation exists
-- Scope boundaries - what's explicitly out of scope, so `--constraint` can capture it
-
-Iterate until the clarifications are answered and the user approves the breakdown.
-
-### 5. Publish the tickets to the board
-
-Tickets live on your local kanban board via the `kb` CLI - one **task** per ticket. The mapping is **project = code repo**, **feature = label**, **ticket = task**. All output is available as JSON with the global `--out json` flag; use it whenever you need to capture an id.
-
-**Create one task per ticket, in dependency order (blockers first)** so each dependent can reference blockers that already exist. Capture the `id` from each command's JSON and reuse it as a `--blocked-by` value for later tickets. Every ticket in one breakdown shares the same `-l <feature-slug>` label so the set can be listed together.
-
+```bash
+kb idea list -s open
 ```
-kb task new "<Ticket title>" \
-  -p <project> \
-  -l <relevant-labels> \
-  -l <relevant-labels> \
-  --priority <urgent|high|medium|low> \
-  --blocked-by <blocker-id> [--blocked-by <blocker-id> ...] \
-  --relevant-file <absolute-path> [--relevant-file <absolute-path> ...] \
-  --dod "<Definition-of-done checkpoint>" [--dod "<checkpoint>" ...] \
-  --constraint "<Hard constraint>" [--constraint "<constraint>" ...] \
+
+2. If `<selection>` contains idea IDs, use exactly those IDs.
+
+3. Read every selected idea:
+
+```bash
+kb idea get "<idea-id>"
+```
+
+Run this command once for each selected idea ID.
+
+4. Treat the current conversation as additional requirements.
+
+5. Ask the user to resolve missing or conflicting requirements before continuing.
+
+6. Do not mark an idea as processed until all derived tickets are published successfully.
+
+### 2. Analyze the current state
+
+Inputs:
+
+- The ideas loaded in Step 1.
+- The current codebase.
+
+Steps:
+
+1. Explore the codebase areas related to each idea.
+
+2. Compare each requirement with the current implementation, architecture, tests, and project conventions.
+
+3. Identify existing behavior, missing behavior, constraints, dependencies, risks, and reusable patterns.
+
+4. Formulate an elegant, robust approach that fits the existing architecture and remains maintainable over time.
+
+5. Reject hacks, fragile workarounds, duplicated logic, and solutions that create unnecessary maintenance costs.
+
+6. Consider alternative approaches and explain their meaningful tradeoffs.
+
+7. Identify any prerequisite work, including behavior-preserving refactors, that would make the implementation safer, cleaner, or easier to maintain. Draft each prerequisite as a separate ticket in Step 3 and make it block every ticket that depends on it.
+
+8. Ask the user when an unresolved decision would materially change the scope, behavior, or technical approach.
+
+Do not modify files during this step.
+
+### 3. Draft atomic tickets
+
+Inputs:
+
+- The selected ideas.
+- The requirements, approach, and prerequisites identified in Step 2.
+
+Steps:
+
+1. Draft a separate ticket for every prerequisite identified in Step 2.
+
+2. Split work by domain and blast radius. Create separate tickets for backend, frontend, CLI, infrastructure, migrations, and any other independently changeable area.
+
+3. Keep each ticket atomic within its blast radius. Within its domain, make it a narrow but complete path through every required layer and its tests. Do not combine changes that can be implemented, reviewed, tested, or reverted independently.
+
+4. Add dependencies between domain tickets only when required. For example, make a frontend or CLI ticket depend on a backend ticket when it consumes a contract introduced by that backend ticket.
+
+5. Keep each ticket within one fresh context window. Require it to leave the repository working with its relevant tests passing.
+
+6. Populate every ticket field:
+
+   - A concise title.
+   - A description containing context, what the ticket solves, the desired outcome, and the original raw idea.
+   - A priority.
+   - The `todo` status.
+   - Specific relevant labels such as `bug`, `ui`, `cli`, `api`, `permissions`, `migration`, or `refactor`.
+   - Every blocking ticket, when blockers exist.
+   - Every relevant absolute file path.
+   - Concrete, verifiable definition-of-done checkpoints.
+   - Hard scope constraints.
+
+Do not prescribe the technical implementation approach in the description. The coding agent must derive it from the ticket context and current codebase.
+
+7. For a wide mechanical refactor that cannot remain working as one ticket, draft separate expand-contract tickets:
+
+   - **Expand**: introduce the new form without removing the old form.
+   - **Migrate**: move callers in independently verifiable batches.
+   - **Contract**: remove the old form after all migration tickets are complete.
+
+8. Make each migration ticket depend on the expand ticket. Make the contract ticket depend on every migration ticket.
+
+9. Confirm that every selected idea and requirement is covered by at least one ticket.
+
+### 4. Review the ticket plan with the user
+
+Input:
+
+- The ticket plan drafted in Step 3.
+
+Steps:
+
+1. Present the tickets in dependency order as a numbered list.
+
+2. Show the following for every ticket:
+
+   - Title.
+   - Domain and blast radius.
+   - Blocking tickets.
+   - What the ticket solves.
+   - Desired outcome.
+   - Priority and labels.
+
+3. Ask the user to review:
+
+   - Whether each ticket is atomic and focused on one domain.
+   - Whether any prerequisite or ticket is missing.
+   - Whether any tickets should be split or merged.
+   - Whether every dependency is required and correctly ordered.
+   - Whether the priority and labels are correct.
+
+4. Ask targeted questions only when the answer changes a ticket field. Clarify missing behavior, edge cases, failure states, permissions, acceptance criteria, or scope boundaries.
+
+5. Do not ask the user to choose the technical implementation approach. The coding agent must derive it from the approved ticket context and current codebase.
+
+6. Update the ticket plan after each answer and present the revised plan.
+
+7. Repeat this review until the user explicitly approves the ticket plan.
+
+Do not create tasks or mark ideas as processed before approval.
+
+### 5. Publish the approved tickets
+
+Inputs:
+
+- The ticket plan approved in Step 4.
+- The selected idea IDs.
+
+Steps:
+
+1. Create tickets in dependency order. Create every blocker first and use its returned task ID in the dependent tickets.
+
+2. Create each approved ticket with every field populated:
+
+```bash
+kb task new "<ticket-title>" \
   -d "$(cat <<'EOF'
-<Context: why this ticket exists - the problem or gap it closes, one or two
-sentences, referencing the spec/plan it came from.>
+Context:
+<Explain the relevant current state and background.>
 
-<What to build: the end-to-end behaviour this ticket makes work, from the
-user's perspective - not a layer-by-layer implementation list.>
+What this ticket solves:
+<Explain the specific problem this atomic ticket addresses.>
 
-<Notes: anything resolved during clarification that shapes the
-implementation - edge cases, chosen approach where alternatives existed,
-explicit non-goals not already captured by --constraint.>
+Desired outcome:
+<Describe the behavior or state that must exist after completion.>
+
+Original raw idea:
+Idea ID: <idea-id>
+<Copy the original idea text without rewriting it.>
 EOF
-)"
+)" \
+  --priority "<urgent|high|medium|low>" \
+  -s todo \
+  -l "<relevant-label>" \
+  --blocked-by "<blocker-task-id>" \
+  --relevant-file "<absolute-file-path>" \
+  --dod "<concrete, verifiable acceptance checkpoint>" \
+  --constraint "<hard scope constraint>"
 ```
 
-- **`--relevant-file`**: absolute paths to files this ticket touches or must read, when known at breakdown time. Use this instead of inlining file paths in the `-d` description - it's structured metadata on the board rather than prose that goes stale.
-- **`--dod`**: one flag per acceptance criterion. Each is a concrete, checkable condition for the ticket to be demoable/verifiable.
-- **`--constraint`**: hard constraints that scope the blast radius of the ticket - what the implementing agent must NOT touch or change - so it stays focused, avoids over-engineering, and doesn't make unintended broad changes.
+Use one or more specific labels that describe the ticket, such as `bug`, `ui`, `cli`, `api`, `permissions`, `migration`, or `refactor`.
 
-The `-d` description must be in-depth and professional - it is the ticket's primary artifact, written so an implementer with no other context can pick it up cold: state the why before the what, use precise domain vocabulary (not shorthand from the conversation), and fold in the clarifications gathered in Step 4 rather than leaving them implicit. Avoid specific file paths - they go stale fast (use `--relevant-file` for paths). Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts - not a working demo, just the important bits.
+Repeat `-l`, `--blocked-by`, `--relevant-file`, `--dod`, and `--constraint` when multiple values apply.
 
-### 6. Work the frontier
+Omit `--blocked-by` when the ticket has no blockers. Repeat the original raw idea block when a ticket derives from multiple ideas.
 
-List the breakdown, blockers-first, and read the dependency state off the board:
+The `-d` description must be in-depth and professional. It is the ticket's primary artifact and must let an implementer with no other context pick it up cold.
 
+3. Verify every created ticket:
+
+```bash
+kb task get "<task-id>"
 ```
-kb task list -p <project> -l <feature-slug>
+
+Confirm that the description, priority, status, labels, blockers, relevant files, definition of done, and constraints match the approved ticket plan.
+
+4. If creation or verification fails, stop. Report the successful task IDs and the failed command. Do not recreate successful tasks or process any ideas.
+
+5. After every ticket derived from an idea is created and verified, mark the idea as processed:
+
+```bash
+kb idea done "<idea-id>"
 ```
 
-A ticket is on the **frontier** when every id in its `blocked_by` is `done` (`kb task get <id> -p <project>` shows the blockers and their state). For a purely linear chain that means top to bottom. Pick one frontier ticket, then:
-
-1. `kb task move <id> inprogress -p <project>` - claim it.
-2. Implement the slice. Append progress with `kb task note <id> "<what changed, decisions, gotchas>" -p <project>` so a fresh context can pick up where you left off.
-3. When it is green and demoable: `kb task done <id> -p <project>` (or `kb task move <id> inreview -p <project>` if it awaits review before done).
-
-Work the frontier one ticket at a time, clearing context between tickets. The board - not a scratch file - is the source of truth for what is done and what is unblocked.
+Run this command once for each fully processed idea.
