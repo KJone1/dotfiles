@@ -14,7 +14,7 @@ Break a plan, spec, or conversation into a set of **tickets** - tracer-bullet ve
 
 Input:
 
-- `<selection>`: one idea ID, multiple idea IDs, or `all`.
+- `<selection>`: one idea ID, multiple idea IDs, `all`, or an inline raw ticket idea.
 
 Steps:
 
