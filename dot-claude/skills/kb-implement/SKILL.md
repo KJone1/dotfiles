@@ -115,9 +115,11 @@ Explore the current codebase and choose an elegant, maintainable implementation 
 
 Stay within the task's atomic blast radius. Follow the project's existing conventions. Add or update the tests required by the definition of done and run the relevant verification commands.
 
-Record important progress, decisions, and blockers:
+Record a short progress note:
 
-kb task note "<task-id>" "Changed: <completed work>. Decisions: <important decisions>. Remaining: <remaining work or none>."
+kb task note "<task-id>" "<one or two sentences on what now works>. Tests: <passed|failed>. <Anything noteworthy the user should be aware of, only if any>."
+
+Keep the note under 40 words. Write the behavior, not the mechanics. No file names, no code, no per-test breakdown, no decision log.
 
 Return:
 - Files changed.
