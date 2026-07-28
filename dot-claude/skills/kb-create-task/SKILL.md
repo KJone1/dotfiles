@@ -120,14 +120,15 @@ Steps:
 
 1. Present the tickets in dependency order as a numbered list.
 
-2. Show the following for every ticket:
+2. Show only the following for every ticket, and nothing else:
 
-   - Title.
-   - Domain and blast radius.
-   - Blocking tickets.
-   - What the ticket solves.
-   - Desired outcome.
-   - Priority and labels.
+   ```
+   Title: <title>
+
+   Desc: <description>
+
+   Blocked by: <blocker-ticket>
+   ```
 
 3. Ask the user to review:
 
@@ -135,9 +136,8 @@ Steps:
    - Whether any prerequisite or ticket is missing.
    - Whether any tickets should be split or merged.
    - Whether every dependency is required and correctly ordered.
-   - Whether the priority and labels are correct.
 
-4. Ask targeted questions only when the answer changes a ticket field. Clarify missing behavior, edge cases, failure states, permissions, acceptance criteria, or scope boundaries.
+4. Ask targeted questions only when the answer changes a ticket field. Clarify missing behavior, edge cases, failure states, or permissions.
 
 5. Do not ask the user to choose the technical implementation approach. The coding agent must derive it from the approved ticket context and current codebase.
 
