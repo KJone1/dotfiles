@@ -5,7 +5,7 @@ argument-hint: [task-id, task-ids, or all]
 disable-model-invocation: true
 ---
 
-# KB Implement
+# Kanban Implement
 
 Implement selected tasks from the local kanban board with the `kb` CLI. Build dependency-aware execution waves, dispatch non-colliding tasks to dedicated subagents, and independently verify ticket compliance and engineering quality before accepting their changes.
 
