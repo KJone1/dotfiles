@@ -1,10 +1,10 @@
 ---
-name: to-tickets
-description: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published as tasks on your local kanban board via the kb CLI.
+name: kb-create-task
+description: Create professional, atomic kanban tasks from a plan, spec, idea, or conversation using the kb CLI, with explicit dependencies and acceptance criteria. Use when Codex needs to turn requirements into one or more reviewed local kanban tasks.
 disable-model-invocation: true
 ---
 
-# To Tickets
+# Kanban Create Task
 
 Break a plan, spec, or conversation into a set of **tickets** - tracer-bullet vertical slices, each declaring the tickets that **block** it.
 
