@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # KB Implement
 
-Implement selected tasks from the local kanban board with the `kb` CLI. Build dependency-aware execution waves, dispatch non-colliding tasks to dedicated subagents, and verify their combined changes.
+Implement selected tasks from the local kanban board with the `kb` CLI. Build dependency-aware execution waves, dispatch non-colliding tasks to dedicated subagents, and independently verify ticket compliance and engineering quality before accepting their changes.
 
 ## Process
 
@@ -157,23 +157,33 @@ Steps:
 kb task get "<task-id>"
 ```
 
-2. Review each task's changes against its description, relevant files, definition of done, constraints, and atomic blast radius.
+2. Inspect the actual diff and surrounding code. Do not accept the subagent's summary or passing tests as sufficient evidence.
 
-3. Confirm that the implementation fits the existing architecture and does not introduce hacks, fragile workarounds, duplicated logic, unrelated changes, or unapproved scope.
+3. Apply two independent acceptance gates:
 
-4. Independently run the relevant tests, type checks, linters, builds, and other verification required by the task.
+   - **Ticket compliance:** Confirm that the implementation satisfies the complete description, relevant files, definition of done, constraints, and atomic blast radius without unrelated or unapproved scope.
+   - **Engineering quality:** Confirm that the solution is professional, production-ready, and appropriate for the codebase, not merely functional. Review all concerns relevant to the change:
+     - Architectural fit: reuse established abstractions and patterns, preserve clear boundaries, and avoid unnecessary new paradigms.
+     - Correctness depth: reason through normal, edge, failure, and recovery paths, including state transitions and cleanup where applicable.
+     - Maintainability: require clear naming, cohesive responsibilities, minimal complexity, useful comments only where needed, and no dead code, debug residue, duplication, hacks, or fragile workarounds.
+     - Compatibility and completeness: update affected callers, contracts, schemas, configuration, migrations, generated artifacts, and documentation when the change requires them.
+     - Production concerns: assess security, data integrity, concurrency, performance, resource use, observability, and backward compatibility in proportion to the task's risk.
+     - Test quality: require meaningful tests at the appropriate level that exercise changed behavior and important failure or regression paths. Reject tautological tests and tests coupled only to implementation details.
+     - Scope discipline: do not demand speculative abstractions, unrelated cleanup, or scope expansion in the name of quality.
 
-5. After every task passes individually, verify the combined wave for integration failures and regressions.
+4. Independently run the relevant tests, type checks, linters, builds, and other verification required by the task. Add focused verification for risks discovered during review when existing checks do not cover them.
 
-6. If verification fails, keep the task `inprogress`, record the failure, and return it to its subagent with precise correction instructions:
+5. After every task passes both gates individually, verify the combined wave for integration failures and regressions.
+
+6. If either gate fails, keep the task `inprogress`, record the deficiency, and return it to its subagent with precise correction instructions:
 
 ```bash
-kb task note "<task-id>" "Verification failed: <failure>. Required correction: <correction>."
+kb task note "<task-id>" "Verification failed: <ticket or quality deficiency>. Required correction: <correction>."
 ```
 
 Repeat verification after the correction.
 
-7. After the task and combined wave pass every check, record the result:
+7. After the task and combined wave pass both gates and every check, record the result:
 
 ```bash
 kb task note "<task-id>" "Verified: <commands and checks>. Result: passed. Ready for review."
@@ -185,7 +195,7 @@ kb task note "<task-id>" "Verified: <commands and checks>. Result: passed. Ready
 kb task move "<task-id>" inreview
 ```
 
-Do not move a task to `inreview` when any definition-of-done checkpoint is unmet.
+Do not move a task to `inreview` when any definition-of-done checkpoint is unmet or the engineering-quality gate fails.
 
 Do not commit or push.
 
