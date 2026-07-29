@@ -13,11 +13,10 @@ Turn the input into independently useful **kanban tasks**: tracer-bullet vertica
 Apply these rules throughout kanban task creation:
 
 1. Inspect the selected ideas and relevant codebase before questioning the user.
-2. Relentlessly resolve every material decision that could change behavior, scope, task fields, dependencies, acceptance criteria, constraints, or task decomposition.
-3. Ask one question at a time, give a clear recommended answer with a brief reason and meaningful tradeoff, and wait for the user's answer.
+2. Relentlessly resolve every open question that could change behavior, scope, dependencies, acceptance criteria, constraints, or task decomposition.
+3. Ask one question at a time only when user input is required to draft correct tasks. Give a clear recommendation with a brief reason and meaningful tradeoff. Infer task metadata from the requirements and codebase without asking the user to confirm it.
 4. Discover technical facts from the codebase. Do not ask the user to design the implementation.
-5. Do not silently resolve a material decision unless the user explicitly delegates that decision.
-6. Publish only after the user approves the final task plan.
+5. Publish only after the user approves the final task plan.
 
 ## Process
 
@@ -78,7 +77,7 @@ Do not modify files during this step.
 
 1. Check for missing work, weak boundaries, incorrect dependencies, and unverifiable definition-of-done checkpoints.
 2. Resolve material issues using the grilling rules. Keep revisions internal and show an affected task only when confirmation is useful.
-3. Present the complete plan in dependency order using this format:
+3. Present the complete plan in dependency order. For each task, output exactly these three fields and nothing else:
 
    ```
    Title: <title>
@@ -87,6 +86,8 @@ Do not modify files during this step.
 
    Blocked by: <blocker-ticket>
    ```
+
+   Do not show priority, labels, relevant files, definition of done, constraints, or the original raw idea.
 
 4. Ask the user to approve the complete plan.
 5. If changes are requested, revise it and present the complete plan again.
