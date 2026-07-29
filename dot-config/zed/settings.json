@@ -20,16 +20,17 @@
   },
   "project_panel": {
     "button": true,
-    "dock": "left",
+    "dock": "right",
   },
   "outline_panel": {
     "button": false,
     "dock": "left",
   },
   "git_panel": {
+    "entry_primary_click_action": "file_diff",
     "group_by": "none",
     "file_icons": true,
-    "dock": "left",
+    "dock": "right",
     "button": true,
     "status_style": "label_color",
     "collapse_untracked_diff": false,
