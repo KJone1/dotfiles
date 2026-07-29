@@ -1,13 +1,13 @@
 ---
 name: kb-implement
-description: Analyze task dependencies and code collisions, then implement selected local kanban tasks through verified parallel subagent execution using the kb CLI.
+description: Analyze task dependencies and code collisions, implement selected local kanban tasks through parallel subagent execution, and delegate independent acceptance review to kb-review using the kb CLI.
 argument-hint: [task-id, task-ids, or all]
 disable-model-invocation: true
 ---
 
 # Kanban Implement
 
-Implement selected tasks from the local kanban board with the `kb` CLI. Build dependency-aware execution waves, dispatch non-colliding tasks to dedicated subagents, and independently verify ticket compliance and engineering quality before accepting their changes.
+Implement selected tasks from the local kanban board with the `kb` CLI. Build dependency-aware execution waves, dispatch non-colliding tasks to dedicated subagents, and invoke `$kb-review` to independently review and accept their changes.
 
 ## Process
 
@@ -60,7 +60,7 @@ kb task get "<blocker-task-id>"
 
 Run this command once for each blocker ID.
 
-3. Record each blocker's status. Treat a selected task as ready only when every blocker is `inreview` or `done`.
+3. Record each blocker's status. Treat a selected task as ready only when every blocker is `done`.
 
 4. Explore the codebase areas related to each selected task.
 
@@ -134,7 +134,7 @@ Do not commit or push.
 
 5. Do not modify files owned by active subagents.
 
-6. Wait for every subagent in the wave to finish before verifying the wave.
+6. Wait for every subagent in the wave to finish before reviewing the wave.
 
 7. If dispatch fails after claiming a task, return it to `todo`:
 
@@ -142,62 +142,49 @@ Do not commit or push.
 kb task move "<task-id>" todo
 ```
 
-### 4. Verify the execution wave
+### 4. Review the execution wave with kb-review
 
 Inputs:
 
 - The completed subagent results.
-- The code changes produced by the execution wave.
+- The task IDs in the completed execution wave.
 
 Steps:
 
-1. Read each task again:
+1. Read every subagent result and each task:
 
 ```bash
 kb task get "<task-id>"
 ```
 
-2. Inspect the actual diff and surrounding code. Do not accept the subagent's summary or passing tests as sufficient evidence.
+2. If a subagent reports an unmet definition-of-done checkpoint, failed required check, blocker, or scope conflict, keep the task `inprogress` and return precise correction instructions to the same subagent.
 
-3. Apply two independent acceptance gates:
+3. Wait for every required correction to finish. Repeat Steps 1 and 2 until every task in the wave is ready for independent review.
 
-   - **Ticket compliance:** Confirm that the implementation satisfies the complete description, relevant files, definition of done, constraints, and atomic blast radius without unrelated or unapproved scope.
-   - **Engineering quality:** Confirm that the solution is professional, production-ready, and appropriate for the codebase, not merely functional. Review all concerns relevant to the change:
-     - Architectural fit: reuse established abstractions and patterns, preserve clear boundaries, and avoid unnecessary new paradigms.
-     - Correctness depth: reason through normal, edge, failure, and recovery paths, including state transitions and cleanup where applicable.
-     - Maintainability: require clear naming, cohesive responsibilities, minimal complexity, useful comments only where needed, and no dead code, debug residue, duplication, hacks, or fragile workarounds.
-     - Compatibility and completeness: update affected callers, contracts, schemas, configuration, migrations, generated artifacts, and documentation when the change requires them.
-     - Production concerns: assess security, data integrity, concurrency, performance, resource use, observability, and backward compatibility in proportion to the task's risk.
-     - Test quality: require meaningful tests at the appropriate level that exercise changed behavior and important failure or regression paths. Reject tautological tests and tests coupled only to implementation details.
-     - Scope discipline: do not demand speculative abstractions, unrelated cleanup, or scope expansion in the name of quality.
-
-4. Independently run the relevant tests, type checks, linters, builds, and other verification required by the task. Add focused verification for risks discovered during review when existing checks do not cover them.
-
-5. After every task passes both gates individually, verify the combined wave for integration failures and regressions.
-
-6. If either gate fails, keep the task `inprogress`, record the deficiency, and return it to its subagent with precise correction instructions:
-
-```bash
-kb task note "<task-id>" "Verification failed: <ticket or quality deficiency>. Required correction: <correction>."
-```
-
-Repeat verification after the correction.
-
-7. After the task and combined wave pass both gates and every check, record the result:
-
-```bash
-kb task note "<task-id>" "Verified: <commands and checks>. Result: passed. Ready for review."
-```
-
-8. Move the verified task to `inreview`:
+4. Move each review-ready task to `inreview`:
 
 ```bash
 kb task move "<task-id>" inreview
 ```
 
-Do not move a task to `inreview` when any definition-of-done checkpoint is unmet or the engineering-quality gate fails.
+If any move fails, stop and report the failed command.
 
-Do not commit or push.
+5. Invoke `$kb-review` with the exact task IDs in the wave. Load and follow its complete instructions without reproducing, abbreviating, or weakening its review process in this skill.
+
+6. Read every reviewed task and handle its resulting status:
+
+   - `done`: accept the task.
+   - `inprogress`: return the `$kb-review` findings to the same implementation subagent as precise correction instructions.
+   - `inreview`: treat the review as blocked. Stop the affected task and report the blocker or required user input.
+   - Any other status: stop and report the unexpected transition.
+
+7. Wait for every review correction to finish, then repeat Steps 1 through 5 for the corrected task IDs.
+
+8. Repeat Steps 6 and 7 until every task in the wave is `done` or a review remains blocked.
+
+Only `$kb-review` may move a task from `inreview` to `done` or back to `inprogress`.
+
+Do not perform an independent code review in this skill, commit, or push.
 
 ### 5. Advance through the remaining waves
 
@@ -207,7 +194,7 @@ Input:
 
 Steps:
 
-1. After each verified wave, read every selected task:
+1. After each reviewed wave, read every selected task:
 
 ```bash
 kb task get "<task-id>"
@@ -217,16 +204,16 @@ Run this command once for each selected task ID.
 
 2. Identify the selected tasks that remain `todo`.
 
-3. Treat a remaining task as ready only when every task in its `blocked_by` field is `inreview` or `done`.
+3. Treat a remaining task as ready only when every task in its `blocked_by` field is `done`.
 
 4. Rebuild the execution plan from Step 2 for the ready tasks. Recalculate blast radii and collisions against the updated codebase.
 
-5. Dispatch and verify the next wave using Steps 3 and 4.
+5. Dispatch and review the next wave using Steps 3 and 4.
 
-6. Repeat until every selected task is `inreview`.
+6. Repeat until every selected task is `done`.
 
 7. If selected `todo` tasks remain but none are ready, stop and report each blocked task with its blocker IDs and statuses. Do not implement tasks outside the original selection.
 
-8. Report the final status and verification result for every selected task.
+8. Report the final status and review result for every selected task.
 
-Do not mark tasks `done`, commit, or push.
+Do not commit or push.
