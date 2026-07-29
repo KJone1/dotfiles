@@ -1,219 +1,117 @@
 ---
 name: kb-implement
-description: Analyze task dependencies and code collisions, implement selected local kanban tasks through parallel subagent execution, and delegate independent acceptance review to kb-review using the kb CLI.
+description: Implement selected kanban tasks with subagents, then invoke kb-review to independently review and accept their changes.
 argument-hint: [task-id, task-ids, or all]
 disable-model-invocation: true
 ---
 
 # Kanban Implement
 
-Implement selected tasks from the local kanban board with the `kb` CLI. Build dependency-aware execution waves, dispatch non-colliding tasks to dedicated subagents, and invoke `$kb-review` to independently review and accept their changes.
+Implement the selected `todo` tasks. Build dependency-aware execution waves and dispatch non-colliding tasks to dedicated subagents. After the agents are done, invoke `$kb-review` to independently review and accept their changes.
 
 ## Process
 
 ### 1. Load tasks
 
-Input:
+Resolve the selected task IDs:
 
-- `<selection>`: one task ID, multiple task IDs, or `all`.
-
-Steps:
-
-1. If `<selection>` is `all`, list all `todo` tasks:
+- For `all`, use every `todo` task:
 
 ```bash
 kb task list -s todo
 ```
 
-2. If `<selection>` contains task IDs, use exactly those IDs.
+- Otherwise, use exactly the provided task IDs.
 
-3. Read every selected task:
+Read each selected task:
 
 ```bash
 kb task get "<task-id>"
 ```
 
-Run this command once for each selected task ID.
+Only handle tasks in `todo`. Ask the user before handling a task with another status. Treat the current conversation as additional requirements and constraints.
 
-4. Continue only with tasks whose status is `todo`. Ask the user before handling a selected task with another status.
+Do not modify files or move tasks yet.
 
-5. Treat the current conversation as additional requirements and constraints.
+### 2. Build execution waves
 
-Do not modify files or move tasks during this step.
-
-### 2. Build the execution plan
-
-Inputs:
-
-- The selected `todo` tasks from Step 1.
-- The current codebase.
-
-Steps:
-
-1. Build a dependency graph containing every selected task and its `blocked_by` relationships.
-
-2. Read every referenced blocker:
+Read any referenced blocker not already loaded:
 
 ```bash
 kb task get "<blocker-task-id>"
 ```
 
-Run this command once for each blocker ID.
+A task is ready only when every blocker is `done`.
 
-3. Record each blocker's status. Treat a selected task as ready only when every blocker is `done`.
+Inspect the relevant code and identify dependencies and likely collisions. Put independent tasks in the same execution wave. Sequence tasks that overlap in files, contracts, behavior, or tests.
 
-4. Explore the codebase areas related to each selected task.
+Report:
 
-5. Compare each task's description, relevant files, definition of done, and constraints with the current implementation and architecture.
+- The next execution wave.
+- Tasks blocked by dependencies.
+- Tasks that must run sequentially.
 
-6. Determine each task's actual blast radius, including shared files, symbols, contracts, schemas, generated artifacts, configuration, and tests.
+Ask the user only when required information is missing or contradictory, or the task requires work outside its approved scope.
 
-7. Group ready tasks into execution waves. Place tasks in the same wave only when they can be implemented, tested, and reviewed independently.
-
-8. Sequence tasks when their blast radii overlap or when one task changes behavior, contracts, or files used by another task.
-
-9. Ask the user before continuing when a task is missing required context, has contradictory fields, exceeds one fresh context window, or requires work outside its approved scope.
-
-Output:
-
-- Tasks in each execution wave.
-- Dependencies that block later waves.
-- Collisions that require serial execution.
-
-Do not modify files or move tasks during this step.
+Do not modify files or move tasks yet.
 
 ### 3. Dispatch the execution wave
 
-Input:
+Dispatch one subagent per independent task. Run colliding tasks sequentially.
 
-- The next ready execution wave from Step 2.
-
-Steps:
-
-1. Dispatch one subagent for each non-colliding task. Respect the available agent limit.
-
-2. If ready tasks collide, dispatch them one at a time in dependency and priority order.
-
-3. Immediately before dispatching a task, claim it:
+Immediately before dispatching a task, claim it:
 
 ```bash
 kb task move "<task-id>" inprogress
 ```
 
-4. Give each subagent this prompt:
-
-```text
-Implement kb task <task-id>.
-
-Read the complete task first:
-
-kb task get "<task-id>"
-
-Follow the full description, relevant files, definition of done, and constraints.
-
-Explore the current codebase and choose an elegant, maintainable implementation that fits the existing architecture. Reject hacks, fragile workarounds, unnecessary duplication, and unrelated changes.
-
-Stay within the task's atomic blast radius. Follow the project's existing conventions. Add or update the tests required by the definition of done and run the relevant verification commands.
-
-Record a short progress note:
-
-kb task note "<task-id>" "<one or two sentences on what now works>. Tests: <passed|failed>. <Anything noteworthy the user should be aware of, only if any>."
-
-Keep the note under 40 words. Write the behavior, not the mechanics. No file names, no code, no per-test breakdown, no decision log.
-
-Return:
-- Files changed.
-- Behavior implemented.
-- Verification commands and results.
-- Unmet definition-of-done checkpoints.
-- Blockers or scope conflicts.
-
-Do not move the task to inreview or done.
-Do not commit or push.
-```
-
-5. Do not modify files owned by active subagents.
-
-6. Wait for every subagent in the wave to finish before reviewing the wave.
-
-7. If dispatch fails after claiming a task, return it to `todo`:
+Give the subagent the task ID and relevant conversation context. It must read the complete task, implement it, run the relevant checks, and record a concise progress note:
 
 ```bash
-kb task move "<task-id>" todo
+kb task note "<task-id>" "<what now works>. Tests: <passed|failed>. <important caveat, if any>."
 ```
 
-### 4. Review the execution wave with kb-review
-
-Inputs:
-
-- The completed subagent results.
-- The task IDs in the completed execution wave.
-
-Steps:
-
-1. Read every subagent result and each task:
-
-```bash
-kb task get "<task-id>"
-```
-
-2. If a subagent reports an unmet definition-of-done checkpoint, failed required check, blocker, or scope conflict, keep the task `inprogress` and return precise correction instructions to the same subagent.
-
-3. Wait for every required correction to finish. Repeat Steps 1 and 2 until every task in the wave is ready for independent review.
-
-4. Move each review-ready task to `inreview`:
+After successful implementation and checks, the subagent must record the progress note and move the task to `inreview`:
 
 ```bash
 kb task move "<task-id>" inreview
 ```
 
-If any move fails, stop and report the failed command.
+If implementation or required checks are incomplete, leave the task in `inprogress` and report the blocker.
 
-5. Invoke `$kb-review` with the exact task IDs in the wave. Load and follow its complete instructions without reproducing, abbreviating, or weakening its review process in this skill.
+The subagent must not commit or push.
 
-6. Read every reviewed task and handle its resulting status:
+Do not modify files owned by active subagents. Wait for every subagent in the wave to finish.
 
-   - `done`: accept the task.
-   - `inprogress`: return the `$kb-review` findings to the same implementation subagent as precise correction instructions.
-   - `inreview`: treat the review as blocked. Stop the affected task and report the blocker or required user input.
-   - Any other status: stop and report the unexpected transition.
-
-7. Wait for every review correction to finish, then repeat Steps 1 through 5 for the corrected task IDs.
-
-8. Repeat Steps 6 and 7 until every task in the wave is `done` or a review remains blocked.
-
-Only `$kb-review` may move a task from `inreview` to `done` or back to `inprogress`.
-
-Do not perform an independent code review in this skill, commit, or push.
-
-### 5. Advance through the remaining waves
-
-Input:
-
-- The task IDs selected in Step 1.
-
-Steps:
-
-1. After each reviewed wave, read every selected task:
+If dispatch fails after claiming a task, return it to `todo`:
 
 ```bash
-kb task get "<task-id>"
+kb task move "<task-id>" todo
 ```
 
-Run this command once for each selected task ID.
+### 4. Review the execution wave with the kb-review skill
 
-2. Identify the selected tasks that remain `todo`.
+After the agents are done, invoke the `$kb-review` skill with the exact task IDs that reached `inreview`. Follow the complete skill and compare each implementation against its task from Step 1.
 
-3. Treat a remaining task as ready only when every task in its `blocked_by` field is `done`.
+Handle the review result:
 
-4. Rebuild the execution plan from Step 2 for the ready tasks. Recalculate blast radii and collisions against the updated codebase.
+- `done`: accept the task.
+- `inprogress`: send the review findings to the same implementation subagent. Wait for it to correct the implementation and move the task back to `inreview`, then invoke the `$kb-review` skill again.
+- `inreview`: the review is blocked. Report the blocker or required user input.
+- Any other status: stop and report the unexpected transition.
 
-5. Dispatch and review the next wave using Steps 3 and 4.
+Repeat until every task is `done` or blocked.
 
-6. Repeat until every selected task is `done`.
+Only the `$kb-review` skill may move a task from `inreview` to `done` or back to `inprogress`. Never move a corrected task to `done` directly. Run the `$kb-review` skill again and let it decide the transition.
 
-7. If selected `todo` tasks remain but none are ready, stop and report each blocked task with its blocker IDs and statuses. Do not implement tasks outside the original selection.
+### 5. Continue through the remaining waves
 
-8. Report the final status and review result for every selected task.
+After each reviewed wave, take the remaining selected `todo` tasks whose blockers are now `done`. Build the next execution wave with Step 2, then dispatch and review it with Steps 3 and 4.
 
-Do not commit or push.
+Repeat until every selected task is `done` or no task is ready.
+
+If no task is ready, report each blocked task with its blocker IDs and statuses. Do not implement tasks outside the original selection.
+
+Report the final status and review result for every selected task.
+
+Suggest committing the changes using the `$commit` skill.
