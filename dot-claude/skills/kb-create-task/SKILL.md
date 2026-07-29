@@ -1,152 +1,84 @@
 ---
 name: kb-create-task
-description: Create professional, atomic kanban tasks from a plan, spec, idea, or conversation using the kb CLI, with one-at-a-time grilling about requirements and task decomposition, explicit dependencies, and acceptance criteria. Use when Codex needs to turn requirements into one or more reviewed local kanban tasks.
+description: Turn an idea, plan, spec, or conversation into clear, actionable kanban tasks using the kb CLI. Use when you need to clarify requirements, define task boundaries and dependencies, and publish approved tasks.
 disable-model-invocation: true
 ---
 
 # Kanban Create Task
 
-Break a plan, spec, or conversation into a set of **tickets** - tracer-bullet vertical slices, each declaring the tickets that **block** it.
+Turn the input into independently useful **kanban tasks**: tracer-bullet vertical slices.
 
 ## Grilling rules
 
-Apply these rules throughout ticket creation:
+Apply these rules throughout kanban task creation:
 
 1. Inspect the selected ideas and relevant codebase before questioning the user.
-2. Relentlessly resolve every material decision that could change behavior, scope, ticket fields, dependencies, acceptance criteria, constraints, or task decomposition.
+2. Relentlessly resolve every material decision that could change behavior, scope, task fields, dependencies, acceptance criteria, constraints, or task decomposition.
 3. Ask one question at a time, give a clear recommended answer with a brief reason and meaningful tradeoff, and wait for the user's answer.
-4. Look up discoverable facts instead of asking the user. Do not ask the user to choose a technical implementation.
+4. Discover technical facts from the codebase. Do not ask the user to design the implementation.
 5. Do not silently resolve a material decision unless the user explicitly delegates that decision.
-6. After all material decisions are resolved, continue to drafting without a separate approval gate. Require explicit approval only for the final ticket plan before publishing.
+6. Publish only after the user approves the final task plan.
 
 ## Process
 
-### 1. Load ideas
+### 1. Load input
 
-Input:
+`<selection>` can be one or more idea IDs, `all`, or an inline idea.
 
-- `<selection>`: one idea ID, multiple idea IDs, `all`, or an inline raw ticket idea.
-
-Steps:
-
-1. If `<selection>` is `all`, list all open ideas:
+1. For `all`, load every open idea:
 
 ```bash
 kb idea list -s open
 ```
 
-2. If `<selection>` contains idea IDs, use exactly those IDs.
-
-3. Read every selected idea:
+2. For idea IDs, load each selected idea:
 
 ```bash
 kb idea get "<idea-id>"
 ```
 
-Run this command once for each selected idea ID.
-
-4. Treat the current conversation as additional requirements.
-
-5. Resolve missing or conflicting requirements using the grilling rules.
-
-6. Do not mark an idea as processed until all derived tickets are published successfully.
+3. Include requirements from the current conversation.
+4. Resolve missing or conflicting requirements using the grilling rules.
+5. Do not mark an idea as processed until all derived kanban tasks are published.
 
 ### 2. Analyze the current state
 
-Inputs:
-
-- The ideas loaded in Step 1.
-- The current codebase.
-
-Steps:
-
-1. Explore the codebase areas related to each idea.
-
-2. Compare each requirement with the current implementation, architecture, tests, and project conventions.
-
-3. Identify existing behavior, missing behavior, constraints, dependencies, risks, and reusable patterns.
-
-4. Formulate an elegant, robust approach that fits the existing architecture and remains maintainable over time.
-
-5. Reject hacks, fragile workarounds, duplicated logic, and solutions that create unnecessary maintenance costs.
-
-6. Consider alternative approaches and explain their meaningful tradeoffs.
-
-7. Identify any prerequisite work, including behavior-preserving refactors, that would make the implementation safer, cleaner, or easier to maintain. Draft each prerequisite as a separate ticket in Step 3 and make it block every ticket that depends on it.
-
-8. Resolve every remaining decision that would materially change scope, behavior, ticket fields, dependencies, acceptance criteria, constraints, or task decomposition using the grilling rules.
-
-9. Before drafting, always recommend whether to keep each idea as one ticket or split it into multiple tickets, then ask the user to confirm the decomposition. Require confirmation even when recommending one ticket.
-
-10. When recommending a split, propose the exact ticket boundaries and dependencies. Resolve disputed boundaries one at a time. Do not split merely by technical layer when that would create incomplete horizontal slices.
+1. Inspect the relevant code, tests, architecture, and project conventions.
+2. Identify what exists, what must change, reusable patterns, constraints, dependencies, and risks.
+3. Create an elegant, robust, maintainable, yet simple approach that fits the existing architecture. Consider alternatives only when they would materially change the task plan.
+4. Reject hacks, fragile workarounds, duplicated logic, and solutions that create unnecessary maintenance costs.
+5. Create prerequisite tasks only when they are required for safe implementation, not merely cleaner.
+6. Decide whether the work needs one or multiple tracer-bullet vertical slices. Split only work that can be implemented, reviewed, and tested independently.
+7. Resolve remaining material decisions using the grilling rules, then draft the tasks.
 
 Do not modify files during this step.
 
-### 3. Draft atomic tickets
+### 3. Draft kanban tasks
 
-Inputs:
+1. Make each task a standalone, narrow, complete tracer-bullet vertical slice that can be implemented, reviewed, tested, and reverted independently within one context window.
+2. Split work only when the boundary is justified by domain, blast radius, or a real dependency. Each resulting task must remain independently useful.
+3. Create the prerequisite tasks identified in Step 2. Add dependencies only when required.
+4. Each task must leave the repository working with its relevant tests passing.
+5. Populate every task field:
 
-- The selected ideas.
-- The requirements, approach, and prerequisites identified in Step 2.
-
-Steps:
-
-1. Draft a separate ticket for every prerequisite identified in Step 2.
-
-2. Split work by domain and blast radius. Create separate tickets for backend, frontend, CLI, infrastructure, migrations, and any other independently changeable area.
-
-3. Keep each ticket atomic within its blast radius. Within its domain, make it a narrow but complete path through every required layer and its tests. Do not combine changes that can be implemented, reviewed, tested, or reverted independently.
-
-4. Add dependencies between domain tickets only when required. For example, make a frontend or CLI ticket depend on a backend ticket when it consumes a contract introduced by that backend ticket.
-
-5. Keep each ticket within one fresh context window. Require it to leave the repository working with its relevant tests passing.
-
-6. Populate every ticket field:
-
-   - A concise title.
-   - A description containing context, what the ticket solves, the desired outcome, and the original raw idea.
-   - A priority.
-   - The `todo` status.
-   - Specific relevant labels such as `bug`, `ui`, `cli`, `api`, `permissions`, `migration`, or `refactor`.
-   - Every blocking ticket, when blockers exist.
-   - Every relevant absolute file path.
+   - Concise title.
+   - Description with context, the problem, desired outcome, and original raw idea.
+   - Priority and `todo` status.
+   - Specific labels.
+   - Blocking tasks, when applicable.
+   - Relevant absolute file paths.
    - Concrete, verifiable definition-of-done checkpoints.
    - Hard scope constraints.
 
-Do not prescribe the technical implementation approach in the description. The coding agent must derive it from the ticket context and current codebase.
+6. Give the worker enough discovered context to understand exactly what must change, why, where to start, and how completion will be verified. Include relevant behavior, findings, file paths, symbols, and constraints. Encourage targeted exploration, but do not make the worker rediscover the problem from scratch.
+7. Do not prescribe the technical implementation. The coding agent must derive it from the task context as much as possible, then validate it against the codebase.
+8. Confirm that every selected idea and requirement is covered.
 
-7. For a wide mechanical refactor that cannot remain working as one ticket, draft separate expand-contract tickets:
+### 4. Review the task plan
 
-   - **Expand**: introduce the new form without removing the old form.
-   - **Migrate**: move callers in independently verifiable batches.
-   - **Contract**: remove the old form after all migration tickets are complete.
-
-8. Make each migration ticket depend on the expand ticket. Make the contract ticket depend on every migration ticket.
-
-9. Confirm that every selected idea and requirement is covered by at least one ticket.
-
-### 4. Review the ticket plan with the user
-
-Input:
-
-- The ticket plan drafted in Step 3.
-
-Steps:
-
-1. Inspect the drafted plan for questionable boundaries, unnecessary or missing dependencies, missing work, and unverifiable acceptance criteria.
-
-2. Resolve each material issue using the grilling rules. Treat the following as internal review criteria:
-
-   - Whether each ticket is atomic and focused on one domain.
-   - Whether any prerequisite or ticket is missing.
-   - Whether any tickets should be split or merged.
-   - Whether every dependency is required and correctly ordered.
-
-3. Keep revisions internally during grilling. Show only an affected ticket when immediate confirmation is useful; do not reprint the complete plan after every answer.
-
-4. Once no material issues remain, present the complete ticket plan in dependency order as a numbered list.
-
-5. Show only the following for every ticket, and nothing else:
+1. Check for missing work, weak boundaries, incorrect dependencies, and unverifiable definition-of-done checkpoints.
+2. Resolve material issues using the grilling rules. Keep revisions internal and show an affected task only when confirmation is useful.
+3. Present the complete plan in dependency order using this format:
 
    ```
    Title: <title>
@@ -156,42 +88,30 @@ Steps:
    Blocked by: <blocker-ticket>
    ```
 
-6. Ask the user to approve the final ticket plan.
+4. Ask the user to approve the complete plan.
+5. If changes are requested, revise it and present the complete plan again.
+6. Publish only after explicit approval.
 
-7. If the user requests changes, resume one-at-a-time grilling, revise the plan internally, and present the complete plan again only when no material issues remain.
+### 5. Publish the approved tasks
 
-8. Repeat until the user explicitly approves the ticket plan.
-
-Do not create tasks or mark ideas as processed before approval.
-
-### 5. Publish the approved tickets
-
-Inputs:
-
-- The ticket plan approved in Step 4.
-- The selected idea IDs.
-
-Steps:
-
-1. Create tickets in dependency order. Create every blocker first and use its returned task ID in the dependent tickets.
-
-2. Create each approved ticket with every field populated:
+1. Create tasks in dependency order. Create blockers first and use their returned IDs in dependent tasks.
+2. Create each task with every drafted field:
 
 ```bash
-kb task new "<ticket-title>" \
+kb task new "<task-title>" \
   -d "$(cat <<'EOF'
-Context:
-<Explain the relevant current state and background.>
-
-What this ticket solves:
-<Explain the specific problem this atomic ticket addresses.>
+Problem:
+<The specific problem this task solves.>
 
 Desired outcome:
-<Describe the behavior or state that must exist after completion.>
+<The behavior or state required after completion.>
+
+Context:
+<Relevant current state and findings.>
 
 Original raw idea:
 Idea ID: <idea-id>
-<Copy the original idea text without rewriting it.>
+<Copy the original idea without rewriting it.>
 EOF
 )" \
   --priority "<urgent|high|medium|low>" \
@@ -199,32 +119,16 @@ EOF
   -l "<relevant-label>" \
   --blocked-by "<blocker-task-id>" \
   --relevant-file "<absolute-file-path>" \
-  --dod "<concrete, verifiable acceptance checkpoint>" \
+  --dod "<verifiable completion checkpoint>" \
   --constraint "<hard scope constraint>"
 ```
 
-Use one or more specific labels that describe the ticket, such as `bug`, `ui`, `cli`, `api`, `permissions`, `migration`, or `refactor`.
+Repeat flags when multiple values apply. Omit `--blocked-by` when there is no blocker. Include each original idea when a task comes from multiple ideas.
 
-Repeat `-l`, `--blocked-by`, `--relevant-file`, `--dod`, and `--constraint` when multiple values apply.
+The description must be a self-contained worker handoff. Include the relevant findings from Step 2 so the worker does not need to rediscover the problem, while leaving implementation decisions to the worker.
 
-Omit `--blocked-by` when the ticket has no blockers. Repeat the original raw idea block when a ticket derives from multiple ideas.
-
-The `-d` description must be in-depth and professional. It is the ticket's primary artifact and must let an implementer with no other context pick it up cold.
-
-3. Verify every created ticket:
-
-```bash
-kb task get "<task-id>"
-```
-
-Confirm that the description, priority, status, labels, blockers, relevant files, definition of done, and constraints match the approved ticket plan.
-
-4. If creation or verification fails, stop. Report the successful task IDs and the failed command. Do not recreate successful tasks or process any ideas.
-
-5. After every ticket derived from an idea is created and verified, mark the idea as processed:
+3. After all tasks for an idea are created, mark it as processed:
 
 ```bash
 kb idea done "<idea-id>"
 ```
-
-Run this command once for each fully processed idea.
