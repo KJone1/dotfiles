@@ -14,7 +14,7 @@ Apply these rules throughout kanban task creation:
 
 1. Inspect the selected ideas and relevant codebase before questioning the user.
 2. Relentlessly resolve every open question that could change behavior, scope, dependencies, acceptance criteria, constraints, or task decomposition.
-3. Ask one question at a time only when user input is required to draft correct tasks. Give a clear recommendation with a brief reason and meaningful tradeoff. Infer task metadata from the requirements and codebase without asking the user to confirm it.
+3. Ask one question at a time only when user input is required to draft correct tasks. Give a clear recommendation with a brief reason and meaningful tradeoff. Figure out task metadata from the requirements and codebase without asking the user to confirm it.
 4. Discover technical facts from the codebase. Do not ask the user to design the implementation.
 5. Publish only after the user approves the final task plan.
 
@@ -86,8 +86,6 @@ Do not modify files during this step.
 
    Blocked by: <blocker-ticket>
    ```
-
-   Do not show priority, labels, relevant files, definition of done, constraints, or the original raw idea.
 
 4. Ask the user to approve the complete plan.
 5. If changes are requested, revise it and present the complete plan again.
