@@ -1,12 +1,23 @@
 ---
 name: kb-create-task
-description: Create professional, atomic kanban tasks from a plan, spec, idea, or conversation using the kb CLI, with explicit dependencies and acceptance criteria. Use when Codex needs to turn requirements into one or more reviewed local kanban tasks.
+description: Create professional, atomic kanban tasks from a plan, spec, idea, or conversation using the kb CLI, with one-at-a-time grilling about requirements and task decomposition, explicit dependencies, and acceptance criteria. Use when Codex needs to turn requirements into one or more reviewed local kanban tasks.
 disable-model-invocation: true
 ---
 
 # Kanban Create Task
 
 Break a plan, spec, or conversation into a set of **tickets** - tracer-bullet vertical slices, each declaring the tickets that **block** it.
+
+## Grilling rules
+
+Apply these rules throughout ticket creation:
+
+1. Inspect the selected ideas and relevant codebase before questioning the user.
+2. Relentlessly resolve every material decision that could change behavior, scope, ticket fields, dependencies, acceptance criteria, constraints, or task decomposition.
+3. Ask one question at a time, give a clear recommended answer with a brief reason and meaningful tradeoff, and wait for the user's answer.
+4. Look up discoverable facts instead of asking the user. Do not ask the user to choose a technical implementation.
+5. Do not silently resolve a material decision unless the user explicitly delegates that decision.
+6. After all material decisions are resolved, continue to drafting without a separate approval gate. Require explicit approval only for the final ticket plan before publishing.
 
 ## Process
 
@@ -36,7 +47,7 @@ Run this command once for each selected idea ID.
 
 4. Treat the current conversation as additional requirements.
 
-5. Ask the user to resolve missing or conflicting requirements before continuing.
+5. Resolve missing or conflicting requirements using the grilling rules.
 
 6. Do not mark an idea as processed until all derived tickets are published successfully.
 
@@ -63,7 +74,11 @@ Steps:
 
 7. Identify any prerequisite work, including behavior-preserving refactors, that would make the implementation safer, cleaner, or easier to maintain. Draft each prerequisite as a separate ticket in Step 3 and make it block every ticket that depends on it.
 
-8. Ask the user when an unresolved decision would materially change the scope, behavior, or technical approach.
+8. Resolve every remaining decision that would materially change scope, behavior, ticket fields, dependencies, acceptance criteria, constraints, or task decomposition using the grilling rules.
+
+9. Before drafting, always recommend whether to keep each idea as one ticket or split it into multiple tickets, then ask the user to confirm the decomposition. Require confirmation even when recommending one ticket.
+
+10. When recommending a split, propose the exact ticket boundaries and dependencies. Resolve disputed boundaries one at a time. Do not split merely by technical layer when that would create incomplete horizontal slices.
 
 Do not modify files during this step.
 
@@ -118,9 +133,20 @@ Input:
 
 Steps:
 
-1. Present the tickets in dependency order as a numbered list.
+1. Inspect the drafted plan for questionable boundaries, unnecessary or missing dependencies, missing work, and unverifiable acceptance criteria.
 
-2. Show only the following for every ticket, and nothing else:
+2. Resolve each material issue using the grilling rules. Treat the following as internal review criteria:
+
+   - Whether each ticket is atomic and focused on one domain.
+   - Whether any prerequisite or ticket is missing.
+   - Whether any tickets should be split or merged.
+   - Whether every dependency is required and correctly ordered.
+
+3. Keep revisions internally during grilling. Show only an affected ticket when immediate confirmation is useful; do not reprint the complete plan after every answer.
+
+4. Once no material issues remain, present the complete ticket plan in dependency order as a numbered list.
+
+5. Show only the following for every ticket, and nothing else:
 
    ```
    Title: <title>
@@ -130,20 +156,11 @@ Steps:
    Blocked by: <blocker-ticket>
    ```
 
-3. Ask the user to review:
+6. Ask the user to approve the final ticket plan.
 
-   - Whether each ticket is atomic and focused on one domain.
-   - Whether any prerequisite or ticket is missing.
-   - Whether any tickets should be split or merged.
-   - Whether every dependency is required and correctly ordered.
+7. If the user requests changes, resume one-at-a-time grilling, revise the plan internally, and present the complete plan again only when no material issues remain.
 
-4. Ask targeted questions only when the answer changes a ticket field. Clarify missing behavior, edge cases, failure states, or permissions.
-
-5. Do not ask the user to choose the technical implementation approach. The coding agent must derive it from the approved ticket context and current codebase.
-
-6. Update the ticket plan after each answer and present the revised plan.
-
-7. Repeat this review until the user explicitly approves the ticket plan.
+8. Repeat until the user explicitly approves the ticket plan.
 
 Do not create tasks or mark ideas as processed before approval.
 
