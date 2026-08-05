@@ -14,9 +14,18 @@ Apply these rules throughout kanban task creation:
 
 1. Inspect the selected ideas and relevant codebase before questioning the user.
 2. Relentlessly resolve every open question that could change behavior, scope, dependencies, acceptance criteria, constraints, or task decomposition.
-3. Ask one question at a time only when user input is required to draft correct tasks. Give a clear recommendation with a brief reason and meaningful tradeoff. Figure out task metadata from the requirements and codebase without asking the user to confirm it.
+3. Ask one question at a time whenever a gap would otherwise force an assumption about a task's scope, behavior, dependencies, or acceptance criteria. Give a clear recommendation with a brief reason and meaningful tradeoff. Figure out task metadata from the requirements and codebase without asking the user to confirm it.
 4. Discover technical facts from the codebase. Do not ask the user to design the implementation.
-5. Publish only after the user approves the final task plan.
+5. Before drafting, examine every idea through each of these grilling lenses:
+   - **Scope** — what is explicitly in and out of this work; what looks related but isn't part of it.
+   - **Failure** — what happens on error, partial failure, retry, or malformed/empty input.
+   - **Intent** — whether the agent's understanding of the desired outcome matches what the user meant, not just the literal wording.
+   - **Dependency & blast radius** — what else in the codebase touches this, what could break, what must land first.
+   - **Verification** — how anyone, not just the author, can check the work is done without re-asking.
+
+   Ask the user about a grilling lens only when it surfaces a real gap for that specific idea; do not treat this as a fixed checklist of questions asked regardless of relevance.
+6. Restate the problem and desired outcome in plain language and get explicit confirmation before drafting tasks in Step 3. This checkpoint is separate from the final plan approval in Step 4.
+7. Publish only after the user approves the final task plan.
 
 ## Process
 
@@ -48,7 +57,7 @@ kb idea get "<idea-id>"
 4. Reject hacks, fragile workarounds, duplicated logic, and solutions that create unnecessary maintenance costs.
 5. Create prerequisite tasks only when they are required for safe implementation, not merely cleaner.
 6. Decide whether the work needs one or multiple tracer-bullet vertical slices. Split only work that can be implemented, reviewed, and tested independently.
-7. Resolve remaining material decisions using the grilling rules, then draft the tasks.
+7. Resolve remaining material decisions using the grilling rules, confirm shared understanding per Rule 6, then draft the tasks.
 
 Do not modify files during this step.
 
