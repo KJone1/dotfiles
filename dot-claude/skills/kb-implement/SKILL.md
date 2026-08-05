@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Kanban Implement
 
-Implement the selected `todo` tasks. Build dependency-aware execution waves and dispatch non-colliding tasks to dedicated subagents. After the agents are done, invoke `$kb-review` to independently review and accept their changes.
+Implement the selected `todo` tasks. Build dependency-aware execution waves and dispatch non-colliding tasks to dedicated subagents. After the agents are done, invoke the `kb-review` skill to independently review and accept their changes.
 
 ## Process
 
@@ -91,18 +91,18 @@ kb task move "<task-id>" todo
 
 ### 4. Review the execution wave with the kb-review skill
 
-After the agents are done, invoke the `$kb-review` skill with the exact task IDs that reached `inreview`. Follow the complete skill and compare each implementation against its task from Step 1.
+After the agents are done, invoke the `kb-review` skill with the exact task IDs that reached `inreview`. Follow the complete skill and compare each implementation against its task from Step 1.
 
 Handle the review result:
 
 - `done`: accept the task.
-- `inprogress`: send the review findings to the same implementation subagent. Wait for it to correct the implementation and move the task back to `inreview`, then invoke the `$kb-review` skill again.
+- `inprogress`: send the review findings to the same implementation subagent. Wait for it to correct the implementation and move the task back to `inreview`, then invoke the `kb-review` skill again.
 - `inreview`: the review is blocked. Report the blocker or required user input.
 - Any other status: stop and report the unexpected transition.
 
 Repeat until every task is `done` or blocked.
 
-Only the `$kb-review` skill may move a task from `inreview` to `done` or back to `inprogress`. Never move a corrected task to `done` directly. Run the `$kb-review` skill again and let it decide the transition.
+Only the `kb-review` skill may move a task from `inreview` to `done` or back to `inprogress`. Never move a corrected task to `done` directly. Run the `kb-review` skill again and let it decide the transition.
 
 ### 5. Continue through the remaining waves
 
@@ -114,4 +114,4 @@ If no task is ready, report each blocked task with its blocker IDs and statuses.
 
 Report the final status and review result for every selected task.
 
-Suggest committing the changes using the `$commit` skill.
+Suggest committing the changes using the `commit` skill.
