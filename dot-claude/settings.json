@@ -78,7 +78,7 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true
   },
-  "outputStyle": "default",
+  "outputStyle": "No Nonsense",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "awaySummaryEnabled": false,
