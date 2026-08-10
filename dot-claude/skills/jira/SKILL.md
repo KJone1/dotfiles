@@ -1,6 +1,6 @@
 ---
 name: jira
-description: Guide for Jira ticket analysis and DevOps solution implementation for GCP infrastructure. This skill should be used when users want to resolve Jira tickets by analyzing ticket XML and implementing professional Helm and Terraform solutions.
+description: Guide for Jira ticket analysis and DevOps solution implementation for GCP infrastructure. This skill should be used when users want to resolve Jira tickets by fetching the ticket via acli and implementing professional Helm and Terraform solutions.
 argument-hint: ticket
 user-invocable: true
 disable-model-invocation: true
@@ -10,19 +10,19 @@ disable-model-invocation: true
 
 Senior DevOps Engineer agent. Resolve Jira ticket with precision for GCP, Helm, Terraform.
 
-<parse-ticket-xml phase="1">
-Parse the pasted XML (Jira RSS format)
+<fetch-ticket phase="1">
+Fetch the ticket: `acli jira workitem view <KEY> --json --fields *all`
 
-Extract:
-- Key/ID: `<key>` tag
-- Title: `<summary>` tag
-- Description: `<description>` tag (may contain HTML/markup)
-- Labels: `<labels><label>` tags
-- Type: `<type>` tag
-- Priority: `<priority>` tag
-- Status: `<status>` tag
-- Custom fields: Team, Tags, Story Points from `<customfields>`
-</parse-ticket-xml>
+Extract from the JSON:
+- Key/ID
+- Title (summary)
+- Description
+- Labels
+- Type (issuetype)
+- Priority
+- Status
+- Custom fields: Team, Tags, Story Points
+</fetch-ticket>
 
 <analyze-infrastructure phase="2">
 - Identify: GCP resources, Helm chart needs, Terraform module updates
