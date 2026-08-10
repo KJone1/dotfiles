@@ -53,6 +53,7 @@
       "Bash(just *)",
       "Bash(kb *)",
       "Bash(krr *)",
+      "Bash(acli jira workitem view *)",
       "mcp__grafana-prod",
       "mcp__langfuse-docs",
       "Read",
