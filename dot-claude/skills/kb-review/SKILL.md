@@ -35,8 +35,6 @@ Run this command once for each selected task ID.
 
 4. Continue only with tasks whose status is `inreview`. Ask the user before handling a selected task with another status.
 
-5. Treat the current conversation as additional requirements and constraints.
-
 Do not modify files or move tasks during this step.
 
 ### 2. Build the review plan
