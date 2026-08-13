@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Git Branch"
+  short_description: "Create a ticket-based Git branch"
+  default_prompt: "Use $create-branch to create a Git branch"

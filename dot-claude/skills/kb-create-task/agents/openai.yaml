@@ -1,0 +1,7 @@
+interface:
+  display_name: "Kanban Task Creator"
+  short_description: "Turn approved plans into kanban tasks"
+  default_prompt: "Use $kb-create-task to turn this idea to a kanban tasks"
+
+policy:
+  allow_implicit_invocation: false
