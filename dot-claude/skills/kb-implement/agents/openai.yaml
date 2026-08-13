@@ -1,0 +1,7 @@
+interface:
+  display_name: "Kanban Task Implementer"
+  short_description: "Implement and review kanban tasks"
+  default_prompt: "Use $kb-implement to implement the selected kanban tasks"
+
+policy:
+  allow_implicit_invocation: false

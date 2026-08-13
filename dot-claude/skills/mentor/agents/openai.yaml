@@ -1,0 +1,7 @@
+interface:
+  display_name: "Mentor"
+  short_description: "Coach tasks without doing the work"
+  default_prompt: "Use $mentor to coach me through this task one phase at a time without doing it for me."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Solve Jira Ticket"
+  short_description: "Resolve Jira tickets"
+  default_prompt: "Use $jira to analyze and implement the specified Jira ticket"
+
+policy:
+  allow_implicit_invocation: false

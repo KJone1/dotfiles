@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit"
+  short_description: "Create Git commits"
+  default_prompt: "Use $commit to create a well scoped Git commits"
