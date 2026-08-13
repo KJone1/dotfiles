@@ -11,7 +11,7 @@ disable-model-invocation: true
 Senior DevOps Engineer agent. Resolve Jira ticket with precision for GCP, Helm, Terraform.
 
 <fetch-ticket phase="1">
-Fetch the ticket: `acli jira workitem view <KEY> --json --fields *all`
+Fetch the ticket: `acli jira workitem view <KEY> --json --fields "*all"`
 
 Extract from the JSON:
 - Key/ID
