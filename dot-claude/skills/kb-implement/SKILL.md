@@ -4,38 +4,105 @@ description: Implement selected kanban tasks test-first with subagents, then use
 argument-hint: [task-id, task-ids, or all]
 disable-model-invocation: true
 ---
-
 # Kanban Implement
 
-Implement the selected `todo` tasks. Build dependency-aware execution waves and dispatch non-colliding tasks to dedicated subagents. After the agents are done, dispatch a dedicated subagent using the `kb-review` skill to independently review and accept their changes.
+<objective>
 
-## Process
+Implement selected `todo` kanban tasks test-first with dedicated implementation subagents.
 
-### 1. Load tasks
+Build dependency-aware execution waves, run independent tasks concurrently, and sequence tasks that can collide.
 
-Resolve the selected task IDs:
+After each wave, use a dedicated subagent following the complete `kb-review` skill to independently review the work and decide whether each task is accepted or returned for correction.
 
-- For `all`, use every `todo` task:
+</objective>
+
+<inputs>
+
+## Selection
+
+Accept `<selection>` as:
+
+* One task ID.
+* Multiple task IDs.
+* `all`.
+
+For `all`, select every `todo` task:
 
 ```bash
 kb task list -s todo
 ```
 
-- Otherwise, use exactly the provided task IDs.
+Otherwise, use exactly the provided task IDs.
 
-Read each selected task:
+## Task authority
+
+Treat each kanban task as the authoritative source of requirements.
+
+The complete task includes:
+
+* Description.
+* Definition of done.
+* Relevant files.
+* Constraints.
+* Blockers.
+
+If the current conversation adds or changes a requirement, ask the user to update the task before continuing.
+
+</inputs>
+
+<guardrails>
+
+## Scope
+
+* Only handle selected tasks in `todo`.
+* Ask the user before handling a selected task with another status.
+* Do not implement tasks outside the original selection.
+* Ask the user only when required information is missing or contradictory, or the task requires work outside its approved scope.
+
+## Repository ownership
+
+* Do not modify files before dispatching an approved execution wave.
+* Do not modify files owned by active implementation subagents.
+* Wait for every implementation subagent in a wave to finish before starting review.
+* Implementation subagents must not commit or push.
+
+## Status ownership
+
+* Claim a task immediately before dispatching its implementation subagent.
+* Leave incomplete implementations in `inprogress`.
+* Only the review subagent following `kb-review` may move a task from `inreview` to `done` or back to `inprogress`.
+* The main agent must not perform the review or move tasks out of `inreview`.
+* Never move a corrected task directly to `done`.
+
+## Review independence
+
+* Use a dedicated review subagent for the entire execution wave.
+* Do not give the reviewer implementation summaries, suspected findings, or proposed conclusions.
+* The review subagent must not modify implementation files or fix findings.
+
+</guardrails>
+
+<workflow>
+
+## 1. Load selected tasks
+
+Resolve the selection using the input contract.
+
+Read every selected task:
 
 ```bash
 kb task get "<task-id>"
 ```
 
-Only handle tasks in `todo`. Ask the user before handling a task with another status. Treat the task as the authoritative source of requirements. If the current conversation adds or changes a requirement, ask the user to update the task before continuing.
+Verify that each selected task is in `todo`.
 
-Do not modify files or move tasks yet.
+Stop and ask the user before handling a selected task with another status.
 
-### 2. Build execution waves
+Do not modify files or move tasks during this phase.
 
-Read any referenced blocker not already loaded:
+## 2. Build the next execution wave
+
+Read every referenced blocker that is not already loaded:
 
 ```bash
 kb task get "<blocker-task-id>"
@@ -43,21 +110,34 @@ kb task get "<blocker-task-id>"
 
 A task is ready only when every blocker is `done`.
 
-Inspect the relevant code and identify dependencies and likely collisions. Put independent tasks in the same execution wave. Sequence tasks that overlap in files, contracts, behavior, or tests.
+Inspect the relevant code and identify:
+
+* Task dependencies.
+* Shared files.
+* Shared contracts.
+* Overlapping behavior.
+* Overlapping tests.
+* Other likely collisions.
+
+Put independent, non-colliding tasks in the same execution wave.
+
+Sequence tasks that overlap in files, contracts, behavior, or tests.
 
 Report:
 
-- The next execution wave.
-- Tasks blocked by dependencies.
-- Tasks that must run sequentially.
+* The next execution wave.
+* Tasks blocked by dependencies.
+* Tasks that must run sequentially.
 
-Ask the user only when required information is missing or contradictory, or the task requires work outside its approved scope.
+Resolve missing, contradictory, or out-of-scope requirements before dispatch.
 
-Do not modify files or move tasks yet.
+Do not modify files or move tasks during this phase.
 
-### 3. Dispatch the execution wave
+## 3. Dispatch the execution wave
 
-Dispatch one subagent per independent task. Run colliding tasks sequentially.
+Dispatch one dedicated implementation subagent per independent task.
+
+Run colliding tasks sequentially.
 
 Immediately before dispatching a task, claim it:
 
@@ -65,37 +145,17 @@ Immediately before dispatching a task, claim it:
 kb task move "<task-id>" inprogress
 ```
 
-Give the subagent the task ID. It must read the complete task, including its description, definition of done, relevant files, and constraints, before changing code.
+Give the implementation subagent the task ID.
 
-For each testable behavior, the subagent must work in vertical red-green cycles:
+Instruct it to:
 
-1. Identify the public interface where the behavior is observable.
-2. Write one focused test that describes the required behavior, not the implementation.
-3. Derive expected results from the task, specification, or a known example, never by repeating the implementation's calculation.
-4. Run the test and confirm it fails because the behavior is missing or incorrect, not because the test is broken.
-5. Write the minimum production code needed to make that test pass.
-6. Run the test and confirm it passes.
-7. Repeat with the next behavior, then run the relevant regression checks.
-
-Do not write all tests before all implementation. Do not write production code before its failing test. Test through public interfaces, avoid testing private methods or mocking internal collaborators, and do not add tests to satisfy a coverage percentage. After confirming a test fails for the expected reason, do not weaken or rewrite it to accommodate the implementation. Change it only when it contradicts the task or is itself incorrect. Refactor only while the tests are green. If the task has no testable runtime behavior, use the appropriate deterministic verification instead of creating an artificial test.
-
-After implementation and checks, record a concise progress note:
-
-```bash
-kb task note "<task-id>" "<what now works>. Tests: <passed|failed>. <important caveat, if any>."
-```
-
-After successful implementation and checks, the subagent must record the progress note and move the task to `inreview`:
-
-```bash
-kb task move "<task-id>" inreview
-```
-
-If implementation or required checks are incomplete, leave the task in `inprogress` and report the blocker.
-
-The subagent must not commit or push.
-
-Do not modify files owned by active subagents. Wait for every subagent in the wave to finish.
+1. Read the complete task before changing code.
+2. Follow the implementation contract.
+3. Run the required checks.
+4. Record a concise progress note.
+5. Move successful work to `inreview`.
+6. Leave incomplete work in `inprogress` and report the blocker.
+7. Avoid committing or pushing.
 
 If dispatch fails after claiming a task, return it to `todo`:
 
@@ -103,31 +163,211 @@ If dispatch fails after claiming a task, return it to `todo`:
 kb task move "<task-id>" todo
 ```
 
-### 4. Review the execution wave with an independent subagent
+Do not modify files owned by active implementation subagents.
 
-After all implementation subagents in the wave finish, dispatch one dedicated review subagent for the entire wave. Give it the exact task IDs that reached `inreview` and instruct it to follow the complete `kb-review` skill. Do not give it implementation summaries, suspected findings, or proposed conclusions. Wait for it to finish.
+Wait for every implementation subagent in the wave to finish.
 
-The main agent must not perform the review or move tasks out of `inreview`. The review subagent must not modify implementation files or fix findings.
+## 4. Review the execution wave
 
-Handle the review result:
+Collect the exact task IDs that reached `inreview`.
 
-- `done`: accept the task.
-- `inprogress`: send the review findings to the same implementation subagent. For corrections that change behavior, require the same vertical red-green cycle before modifying production code. Wait for it to correct the implementation and move the task back to `inreview`, then send the exact task IDs to the same review subagent and instruct it to follow the complete `kb-review` skill again.
-- `inreview`: the review is blocked. Report the blocker or required user input.
-- Any other status: stop and report the unexpected transition.
+Dispatch one dedicated review subagent for the entire wave.
 
-Repeat until every task is `done` or blocked.
+Give it only:
 
-Only the review subagent following the `kb-review` skill may move a task from `inreview` to `done` or back to `inprogress`. Never move a corrected task to `done` directly. Send it back to the same review subagent and let that subagent decide the transition.
+* The exact task IDs in `inreview`.
+* An instruction to follow the complete `kb-review` skill.
 
-### 5. Continue through the remaining waves
+Do not give it implementation summaries, suspected findings, or proposed conclusions.
 
-After each reviewed wave, take the remaining selected `todo` tasks whose blockers are now `done`. Build the next execution wave with Step 2, then dispatch and review it with Steps 3 and 4.
+Wait for the review subagent to finish.
 
-Repeat until every selected task is `done` or no task is ready.
+Handle each result using the review contract.
 
-If no task is ready, report each blocked task with its blocker IDs and statuses. Do not implement tasks outside the original selection.
+Repeat correction and review until every task in the wave is `done` or blocked.
+
+## 5. Continue through remaining waves
+
+After each reviewed wave, select the remaining original `todo` tasks whose blockers are now `done`.
+
+Build the next wave using Step 2, then dispatch and review it using Steps 3 and 4.
+
+Repeat until:
+
+* Every selected task is `done`, or
+* No selected task is ready.
+
+If no task is ready, report every blocked task with its blocker IDs and statuses.
+
+Do not implement tasks outside the original selection.
+
+## 6. Report completion
 
 Report the final status and review result for every selected task.
 
-Suggest committing the changes using the `commit` skill.
+Suggest committing the accepted changes using the `commit` skill.
+
+</workflow>
+
+<implementation_contract>
+
+## Vertical red-green cycles
+
+For each testable behavior:
+
+1. Identify the public interface where the behavior is observable.
+2. Write one focused test that describes the required behavior, not the implementation.
+3. Derive expected results from the task, specification, or a known example. Never repeat the implementation's calculation in the test.
+4. Run the test and confirm it fails because the behavior is missing or incorrect, not because the test is broken.
+5. Write the minimum production code needed to make that test pass.
+6. Run the test and confirm it passes.
+7. Repeat with the next behavior.
+8. Run the relevant regression checks.
+
+## Test integrity
+
+* Do not write all tests before all implementation.
+* Do not write production code before its failing test.
+* Test through public interfaces.
+* Avoid testing private methods.
+* Avoid mocking internal collaborators.
+* Do not add tests only to satisfy a coverage percentage.
+* After confirming a test fails for the expected reason, do not weaken or rewrite it to accommodate the implementation.
+* Change a test only when it contradicts the task or is itself incorrect.
+* Refactor only while the tests are green.
+
+If the task has no testable runtime behavior, use the appropriate deterministic verification instead of creating an artificial test.
+
+## Progress note
+
+After implementation and checks, record a concise progress note:
+
+```bash
+kb task note "<task-id>" "<what now works>. Tests: <passed|failed>. <important caveat, if any>."
+```
+
+## Handoff to review
+
+After successful implementation and required checks, record the progress note and move the task to `inreview`:
+
+```bash
+kb task move "<task-id>" inreview
+```
+
+If implementation or required checks are incomplete, leave the task in `inprogress` and report the blocker.
+
+</implementation_contract>
+
+<review_contract>
+
+## Reviewer authority
+
+The dedicated review subagent must follow the complete `kb-review` skill.
+
+The main agent must not perform the review.
+
+The review subagent must not modify implementation files or fix findings.
+
+Only the review subagent may move a task from `inreview` to:
+
+* `done` when accepted.
+* `inprogress` when corrections are required.
+
+## Result handling
+
+Handle each reviewed task according to its resulting status.
+
+### `done`
+
+Accept the task.
+
+### `inprogress`
+
+1. Send the review findings to the same implementation subagent.
+2. Require the same vertical red-green cycle before production changes when a correction changes behavior.
+3. Wait for the implementation subagent to make the corrections and move the task back to `inreview`.
+4. Send the exact task IDs to the same review subagent.
+5. Instruct it to follow the complete `kb-review` skill again.
+6. Wait for the review result.
+
+Never move the corrected task directly to `done`.
+
+### `inreview`
+
+Treat the review as blocked.
+
+Report the blocker or required user input.
+
+### Any other status
+
+Stop and report the unexpected transition.
+
+## Completion condition
+
+Repeat until every task is `done` or blocked.
+
+</review_contract>
+
+<failure_handling>
+
+## Dispatch failure
+
+If dispatch fails after a task was claimed, return it to `todo`:
+
+```bash
+kb task move "<task-id>" todo
+```
+
+Report the dispatch failure.
+
+## Implementation failure
+
+Leave the task in `inprogress` when implementation or required checks are incomplete.
+
+Report:
+
+* The blocker.
+* Failed checks.
+* Relevant command output.
+* Required user input, when applicable.
+
+## Review blockage
+
+Leave the task in `inreview` when the reviewer cannot reach a conclusion.
+
+Report the blocker or required user input.
+
+## Dependency blockage
+
+When no selected task is ready, report every blocked task with:
+
+* Task ID.
+* Blocker IDs.
+* Blocker statuses.
+
+</failure_handling>
+
+<output_contract>
+
+Before each execution wave, report:
+
+* Tasks in the wave.
+* Tasks blocked by dependencies.
+* Tasks that must run sequentially.
+
+After each execution wave, report:
+
+* Implementation result for every dispatched task.
+* Verification result for every dispatched task.
+* Review result for every task that reached `inreview`.
+* Blockers or required user input.
+
+At completion, report:
+
+* Final status for every selected task.
+* Final independent review result for every selected task.
+* Tasks that remain blocked and why.
+
+Suggest using the `commit` skill only after the accepted changes are ready to commit.
+
+</output_contract>
