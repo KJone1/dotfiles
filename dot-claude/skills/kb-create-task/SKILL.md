@@ -329,7 +329,13 @@ Do not split work merely to create smaller tasks.
 
 ## Repository integrity
 
-Each task must leave the repository working with its relevant tests passing.
+Each task must leave the repository in a working state.
+
+## Definition-of-done scope
+
+Definition-of-done checkpoints describe the goal or outcome only.
+
+Do not specify tests, test types, verification methods, or live/manual/QA testing in a definition-of-done checkpoint.
 
 ## Required decisions
 
