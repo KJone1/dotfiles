@@ -213,7 +213,7 @@ Suggest committing the accepted changes using the `commit` skill.
 
 ## Vertical red-green cycles
 
-For each testable behavior:
+For each non-trivial behavior (conditionals, calculations, state transitions, error handling, edge cases):
 
 1. Identify the public interface where the behavior is observable.
 2. Write one focused test that describes the required behavior, not the implementation.
@@ -222,21 +222,22 @@ For each testable behavior:
 5. Write the minimum production code needed to make that test pass.
 6. Run the test and confirm it passes.
 7. Repeat with the next behavior.
-8. Run the relevant regression checks.
+8. Run the relevant unit regression checks. Do not run live, manual, QA, or smoke tests.
 
 ## Test integrity
 
+* Write unit tests only. Do not write, run, or request live, manual, QA, or smoke tests; the user performs those separately.
 * Do not write all tests before all implementation.
 * Do not write production code before its failing test.
 * Test through public interfaces.
 * Avoid testing private methods.
 * Avoid mocking internal collaborators.
-* Do not add tests only to satisfy a coverage percentage.
+* Do not add tests only to satisfy a coverage percentage or for the sake of having a test.
 * After confirming a test fails for the expected reason, do not weaken or rewrite it to accommodate the implementation.
 * Change a test only when it contradicts the task or is itself incorrect.
 * Refactor only while the tests are green.
 
-If the task has no testable runtime behavior, use the appropriate deterministic verification instead of creating an artificial test.
+If the behavior is trivial or boilerplate (configuration, wiring, pure refactors, pass-through code) or the task has no testable runtime behavior, use the appropriate deterministic verification (type check, lint, build) instead of creating an artificial test.
 
 ## Progress note
 
