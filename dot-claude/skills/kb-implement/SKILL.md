@@ -4,6 +4,7 @@ description: Implement selected kanban tasks test-first with subagents, then use
 argument-hint: [task-id, task-ids, or all]
 disable-model-invocation: true
 ---
+
 # Kanban Implement
 
 <objective>
@@ -372,3 +373,4 @@ At completion, report:
 Suggest using the `commit` skill only after the accepted changes are ready to commit.
 
 </output_contract>
+
