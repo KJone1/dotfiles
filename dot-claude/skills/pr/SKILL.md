@@ -18,6 +18,7 @@ Jira Ticket: [#{ticket_id}]({jira_ticket_url})
 ```
 
 Resolve `{jira_ticket_url}` from user memory or infer it from context (git remotes, prior tickets in the repo, project config).
+
 ## Execution
 
 1. Construct the title (`{ticket_id}: {description}`) and body.

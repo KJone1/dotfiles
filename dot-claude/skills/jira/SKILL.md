@@ -11,47 +11,59 @@ disable-model-invocation: true
 Senior DevOps Engineer agent. Resolve Jira ticket with precision for GCP, Helm, Terraform.
 
 <fetch-ticket phase="1">
+
 Fetch the ticket: `acli jira workitem view <KEY> --json --fields "*all"`
 
 Extract from the JSON:
-- Key/ID
-- Title (summary)
-- Description
-- Labels
-- Type (issuetype)
-- Priority
-- Status
-- Custom fields: Team, Tags, Story Points
+
+* Key/ID
+* Title (summary)
+* Description
+* Labels
+* Type (issuetype)
+* Priority
+* Status
+* Custom fields: Team, Tags, Story Points
+
 </fetch-ticket>
 
 <analyze-infrastructure phase="2">
-- Identify: GCP resources, Helm chart needs, Terraform module updates
-- Analyze existing Terraform (`.tf`) and Helm (`Chart.yaml`, `values.yaml`)
-- Understand: GCP project structure, region/zone configs, network topology
-- Review: naming conventions, state management, variable usage, dependency locking
-- No new tools/dependencies unless necessary
+
+* Identify: GCP resources, Helm chart needs, Terraform module updates
+* Analyze existing Terraform (`.tf`) and Helm (`Chart.yaml`, `values.yaml`)
+* Understand: GCP project structure, region/zone configs, network topology
+* Review: naming conventions, state management, variable usage, dependency locking
+* No new tools/dependencies unless necessary
+
 </analyze-infrastructure>
 
 <attack-plan phase="3">
-- Root Cause/Scope
-- Technical Solution: Specific Terraform resources (GCP) and Helm values/templates to modify
-- Impact Analysis: Affected GCP services, IAM roles, state file implications
-- Security: IAM least privilege, firewall rules, secret management (GCP Secret Manager/K8s Secrets)
-- Verification: `terraform plan`, `helm lint`, `helm template`
+
+* Root Cause/Scope
+* Technical Solution: Specific Terraform resources (GCP) and Helm values/templates to modify
+* Impact Analysis: Affected GCP services, IAM roles, state file implications
+* Security: IAM least privilege, firewall rules, secret management (GCP Secret Manager/K8s Secrets)
+* Verification: `terraform plan`, `helm lint`, `helm template`
+
 </attack-plan>
 
 <implementation phase="4">
+
 Validate:
-- Check existing state and values
-- Ensure GCP credentials/context active (if applicable)
+
+* Check existing state and values
+* Ensure GCP credentials/context active (if applicable)
 
 Implement:
-- Terraform: Clean, modular HCL. Use variables/outputs. Follow `google` provider best practices. Configure GCP resources (GKE, Cloud SQL, IAM) with production settings (HA, backup, monitoring)
-- Helm: Modify charts/values. Idempotent. Use named templates/helpers
-- Follow existing patterns strictly
+
+* Terraform: Clean, modular HCL. Use variables/outputs. Follow `google` provider best practices. Configure GCP resources (GKE, Cloud SQL, IAM) with production settings (HA, backup, monitoring)
+* Helm: Modify charts/values. Idempotent. Use named templates/helpers
+* Follow existing patterns strictly
 
 Refine:
-- Run `terraform fmt`, `helm lint`
-- Remove debug configs, commented code
-- Ensure DRY and reusable
+
+* Run `terraform fmt`, `helm lint`
+* Remove debug configs, commented code
+* Ensure DRY and reusable
+
 </implementation>

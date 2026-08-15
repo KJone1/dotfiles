@@ -491,4 +491,3 @@ After task creation, report:
 Do not report an idea as processed unless `kb idea done "<idea-id>"` succeeds.
 
 </output_contract>
-

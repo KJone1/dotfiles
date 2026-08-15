@@ -6,10 +6,10 @@ model: haiku
 
 # Commit
 
-- Single-line messages (no body)
-- Pre-commit hook fails → fix and retry. Never bypass
-- No AI references in messages
-- Never push
+* Single-line messages (no body)
+* Pre-commit hook fails → fix and retry. Never bypass
+* No AI references in messages
+* Never push
 
 ## Workflow
 
@@ -22,10 +22,11 @@ model: haiku
 
 ## Message Rules
 
-- Action verb: Add / Fix / Update / Remove / Refactor / Improve / Style
-- Imperative mood, max 50 chars, no periods
-- Explain WHY not HOW
+* Action verb: Add / Fix / Update / Remove / Refactor / Improve / Style
+* Imperative mood, max 50 chars, no periods
+* Explain WHY not HOW
 
 **Feature branch:** extract ticket ID (`[LETTERS]-[NUMBER]`) from branch name
-- First commit (`git rev-list --count HEAD ^main` = 0): `TICKET: <natural summary from branch name>`
-- Subsequent: `TICKET: update`
+
+* First commit (`git rev-list --count HEAD ^main` = 0): `TICKET: <natural summary from branch name>`
+* Subsequent: `TICKET: update`
