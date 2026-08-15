@@ -19,9 +19,9 @@ Inspect the actual implementation, apply separate ticket-compliance and engineer
 
 Accept `<selection>` as:
 
-- One task ID.
-- Multiple task IDs.
-- `all`.
+* One task ID.
+* Multiple task IDs.
+* `all`.
 
 ## Required task status
 
@@ -33,14 +33,14 @@ Ask the user before handling a selected task with another status.
 
 Use:
 
-- The complete task record.
-- Referenced blocker tasks.
-- The current codebase.
-- The working tree.
-- Repository status and diffs.
-- Task notes.
-- Surrounding code.
-- Affected tests.
+* The complete task record.
+* Referenced blocker tasks.
+* The current codebase.
+* The working tree.
+* Repository status and diffs.
+* Task notes.
+* Surrounding code.
+* Affected tests.
 
 </inputs>
 
@@ -48,26 +48,26 @@ Use:
 
 ## Independence
 
-- Inspect the actual implementation independently.
-- Do not accept task notes, implementation summaries, or passing tests as sufficient evidence.
-- Do not modify implementation files or fix findings.
-- Do not commit or push.
+* Inspect the actual implementation independently.
+* Do not accept task notes, implementation summaries, or passing tests as sufficient evidence.
+* Do not modify implementation files or fix findings.
+* Do not commit or push.
 
 ## Board mutations
 
-- Do not move tasks before the transition phase.
-- Write task notes and move tasks only through the defined transition rules.
-- Never claim a note or status transition that did not succeed.
+* Do not move tasks before the transition phase.
+* Write task notes and move tasks only through the defined transition rules.
+* Never claim a note or status transition that did not succeed.
 
 ## Clarification boundaries
 
 Ask the user before continuing when:
 
-- A selected task is not `inreview`.
-- Changes cannot be attributed to a selected task.
-- Required context is missing.
-- Task fields conflict.
-- A conclusive review requires work outside the selected scope.
+* A selected task is not `inreview`.
+* Changes cannot be attributed to a selected task.
+* Required context is missing.
+* Task fields conflict.
+* A conclusive review requires work outside the selected scope.
 
 </guardrails>
 
@@ -111,37 +111,37 @@ Record each blocker's status. Review selected blockers before their dependents.
 
 Inspect:
 
-- Repository status.
-- Relevant diffs.
-- Task notes.
-- Surrounding code.
-- Affected tests.
+* Repository status.
+* Relevant diffs.
+* Task notes.
+* Surrounding code.
+* Affected tests.
 
 Map the implementation changes to each selected task's:
 
-- Description.
-- Relevant files.
-- Definition of done.
-- Constraints.
-- Actual blast radius.
+* Description.
+* Relevant files.
+* Definition of done.
+* Constraints.
+* Actual blast radius.
 
 Identify overlapping changes that require combined verification across:
 
-- Files.
-- Symbols.
-- Contracts.
-- Schemas.
-- Generated artifacts.
-- Configuration.
-- Tests.
+* Files.
+* Symbols.
+* Contracts.
+* Schemas.
+* Generated artifacts.
+* Configuration.
+* Tests.
 
 Apply the clarification boundaries when the available evidence does not support a conclusive, properly scoped review.
 
 Report the review plan before reviewing tasks:
 
-- Task review order.
-- Dependencies that prevent a task from reaching `done`.
-- Overlapping changes that require combined verification.
+* Task review order.
+* Dependencies that prevent a task from reaching `done`.
+* Overlapping changes that require combined verification.
 
 Do not modify files or move tasks during this phase.
 
@@ -164,18 +164,18 @@ Apply both acceptance gates defined in the review criteria:
 
 Independently run the verification appropriate to the task:
 
-- Tests.
-- Type checks.
-- Linters.
-- Builds.
-- Checks required by the task.
-- Focused read-only verification for risks discovered during review when existing checks do not cover them.
+* Tests.
+* Type checks.
+* Linters.
+* Builds.
+* Checks required by the task.
+* Focused read-only verification for risks discovered during review when existing checks do not cover them.
 
 Record findings in severity order. For every finding, include when available:
 
-- Affected file and line.
-- Concrete impact.
-- Required correction.
+* Affected file and line.
+* Concrete impact.
+* Required correction.
 
 Assign a provisional verdict using the verdict definitions.
 
@@ -195,8 +195,8 @@ Change a provisional verdict to `blocked` when a combined-check failure cannot b
 
 Before allowing a dependent task to pass, confirm every blocker is:
 
-- `done`, or
-- A selected task with a final passing verdict.
+* `done`, or
+* A selected task with a final passing verdict.
 
 Do not modify implementation files, commit, push, or change task status during this phase.
 
@@ -204,8 +204,8 @@ Do not modify implementation files, commit, push, or change task status during t
 
 Use:
 
-- The final review result for every selected task.
-- The findings and verification evidence from the individual and combined reviews.
+* The final review result for every selected task.
+* The findings and verification evidence from the individual and combined reviews.
 
 Process tasks in dependency order.
 
@@ -229,11 +229,11 @@ Follow the output contract after all attempted notes and transitions complete.
 
 Confirm that the implementation satisfies the complete:
 
-- Description.
-- Relevant files.
-- Definition of done.
-- Constraints.
-- Atomic blast radius.
+* Description.
+* Relevant files.
+* Definition of done.
+* Constraints.
+* Atomic blast radius.
 
 Reject unrelated or unapproved scope.
 
@@ -245,79 +245,79 @@ Review every concern relevant to the change.
 
 ### Architectural fit
 
-- Reuse established abstractions and patterns.
-- Preserve clear boundaries.
-- Avoid unnecessary new paradigms.
+* Reuse established abstractions and patterns.
+* Preserve clear boundaries.
+* Avoid unnecessary new paradigms.
 
 ### Correctness depth
 
 Reason through:
 
-- Normal paths.
-- Edge cases.
-- Failure paths.
-- Recovery paths.
-- State transitions.
-- Cleanup where applicable.
+* Normal paths.
+* Edge cases.
+* Failure paths.
+* Recovery paths.
+* State transitions.
+* Cleanup where applicable.
 
 ### Maintainability
 
 Require:
 
-- Clear naming.
-- Cohesive responsibilities.
-- Minimal complexity.
-- Useful comments only where needed.
-- No dead code.
-- No debug residue.
-- No duplication.
-- No hacks.
-- No fragile workarounds.
+* Clear naming.
+* Cohesive responsibilities.
+* Minimal complexity.
+* Useful comments only where needed.
+* No dead code.
+* No debug residue.
+* No duplication.
+* No hacks.
+* No fragile workarounds.
 
 ### Compatibility and completeness
 
 Confirm that affected items are updated when required:
 
-- Callers.
-- Contracts.
-- Schemas.
-- Configuration.
-- Migrations.
-- Generated artifacts.
-- Documentation.
+* Callers.
+* Contracts.
+* Schemas.
+* Configuration.
+* Migrations.
+* Generated artifacts.
+* Documentation.
 
 ### Production concerns
 
 Assess in proportion to the task's risk:
 
-- Security.
-- Data integrity.
-- Concurrency.
-- Performance.
-- Resource use.
-- Observability.
-- Backward compatibility.
+* Security.
+* Data integrity.
+* Concurrency.
+* Performance.
+* Resource use.
+* Observability.
+* Backward compatibility.
 
 ### Test quality
 
 Require meaningful tests at the appropriate level that exercise:
 
-- Changed behavior.
-- Important failure paths.
-- Important regression paths.
+* Changed behavior.
+* Important failure paths.
+* Important regression paths.
 
 Reject:
 
-- Tautological tests.
-- Tests coupled only to implementation details.
+* Tautological tests.
+* Tests coupled only to implementation details.
 
 ### Scope discipline
 
 Do not demand:
 
-- Speculative abstractions.
-- Unrelated cleanup.
-- Scope expansion in the name of quality.
+* Speculative abstractions.
+* Unrelated cleanup.
+* Scope expansion in the name of quality.
 
 </review_criteria>
 
@@ -327,11 +327,11 @@ Do not demand:
 
 Assign `passed` only when:
 
-- Ticket compliance passes.
-- Engineering quality passes.
-- Every required check passes.
-- Every definition-of-done checkpoint is met.
-- Every blocker is `done` or is a selected task with a final passing verdict.
+* Ticket compliance passes.
+* Engineering quality passes.
+* Every required check passes.
+* Every definition-of-done checkpoint is met.
+* Every blocker is `done` or is a selected task with a final passing verdict.
 
 ## Failed
 
@@ -341,10 +341,10 @@ Assign `failed` when at least one actionable ticket-compliance or engineering-qu
 
 Assign `blocked` when a reliable verdict is prevented by:
 
-- Missing context.
-- An external verification failure.
-- An inseparable change.
-- A combined-check failure that cannot be attributed reliably.
+* Missing context.
+* An external verification failure.
+* An inseparable change.
+* A combined-check failure that cannot be attributed reliably.
 
 </verdicts>
 
@@ -390,15 +390,15 @@ Keep the task in `inreview`.
 
 ## Transition invariants
 
-- Process tasks in dependency order.
-- Write the task note before attempting its status transition.
-- Move a task only after its note succeeds.
-- Stop processing a task when its note or move command fails.
-- Do not move a task to `done` when any definition-of-done checkpoint is unmet.
-- Do not move a task to `done` when either acceptance gate fails.
-- Do not move a task to `done` when a required check fails.
-- Do not move a task to `done` when a blocker is not `done`.
-- Do not modify implementation files, commit, or push.
+* Process tasks in dependency order.
+* Write the task note before attempting its status transition.
+* Move a task only after its note succeeds.
+* Stop processing a task when its note or move command fails.
+* Do not move a task to `done` when any definition-of-done checkpoint is unmet.
+* Do not move a task to `done` when either acceptance gate fails.
+* Do not move a task to `done` when a required check fails.
+* Do not move a task to `done` when a blocker is not `done`.
+* Do not modify implementation files, commit, or push.
 
 </transitions>
 
@@ -412,18 +412,18 @@ If no blocking findings remain, state that explicitly.
 
 For every selected task, report:
 
-- Final review verdict.
-- Resulting kanban status.
-- Acceptance checks performed.
-- Commands and verification run.
-- Residual risk.
-- Verification gaps.
+* Final review verdict.
+* Resulting kanban status.
+* Acceptance checks performed.
+* Commands and verification run.
+* Residual risk.
+* Verification gaps.
 
 Distinguish:
 
-- Code deficiencies.
-- External blockers.
-- Environmental blockers.
+* Code deficiencies.
+* External blockers.
+* Environmental blockers.
 
 Do not report a task as passed or `done` unless its note and status transition both succeeded.
 
