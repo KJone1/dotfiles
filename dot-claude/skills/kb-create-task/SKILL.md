@@ -22,23 +22,23 @@ Clarify material requirements, inspect the relevant codebase, obtain approval at
 
 Accept `<selection>` as:
 
-- One idea ID.
-- Multiple idea IDs.
-- `all`.
-- An inline idea.
-- Requirements from the current conversation.
+* One idea ID.
+* Multiple idea IDs.
+* `all`.
+* An inline idea.
+* Requirements from the current conversation.
 
 ## Sources
 
 Use:
 
-- Selected idea records.
-- Requirements from the current conversation.
-- Relevant code.
-- Existing tests.
-- Current architecture.
-- Project conventions.
-- Existing dependencies and reusable patterns.
+* Selected idea records.
+* Requirements from the current conversation.
+* Relevant code.
+* Existing tests.
+* Current architecture.
+* Project conventions.
+* Existing dependencies and reusable patterns.
 
 </inputs>
 
@@ -54,20 +54,20 @@ Discover technical facts from the codebase. Do not ask the user to design the im
 
 Relentlessly resolve every open question that could change:
 
-- Behavior.
-- Scope.
-- Dependencies.
-- Acceptance criteria.
-- Constraints.
-- Task decomposition.
+* Behavior.
+* Scope.
+* Dependencies.
+* Acceptance criteria.
+* Constraints.
+* Task decomposition.
 
 Ask one question at a time whenever a gap would otherwise force an assumption.
 
 For each question:
 
-- Give a clear recommendation.
-- Explain the recommendation briefly.
-- State the meaningful tradeoff.
+* Give a clear recommendation.
+* Explain the recommendation briefly.
+* State the meaningful tradeoff.
 
 Derive task metadata from the requirements and codebase without asking the user to confirm it.
 
@@ -79,19 +79,19 @@ Before formulating the plan, examine every idea through the relevant lenses.
 
 Determine:
 
-- What is explicitly included.
-- What is explicitly excluded.
-- What appears related but is not part of the work.
+* What is explicitly included.
+* What is explicitly excluded.
+* What appears related but is not part of the work.
 
 ### Failure
 
 Determine what happens for:
 
-- Errors.
-- Partial failures.
-- Retries.
-- Malformed input.
-- Empty input.
+* Errors.
+* Partial failures.
+* Retries.
+* Malformed input.
+* Empty input.
 
 ### Intent
 
@@ -101,10 +101,10 @@ Confirm that the understood desired outcome matches the user's intent, not only 
 
 Determine:
 
-- What else in the codebase touches the change.
-- What could break.
-- What must land first.
-- Which changes can remain independent.
+* What else in the codebase touches the change.
+* What could break.
+* What must land first.
+* Which changes can remain independent.
 
 ### Verification
 
@@ -147,10 +147,10 @@ Create an elegant, robust, maintainable, and simple approach that fits the exist
 
 Reject:
 
-- Hacks.
-- Fragile workarounds.
-- Duplicated logic.
-- Solutions that create unnecessary maintenance costs.
+* Hacks.
+* Fragile workarounds.
+* Duplicated logic.
+* Solutions that create unnecessary maintenance costs.
 
 Consider alternative approaches only when they would materially change the task plan.
 
@@ -162,10 +162,10 @@ Add task dependencies only when required.
 
 ## Task creation
 
-- Do not create tasks before explicit plan approval.
-- Do not ask the user to confirm task metadata that can be derived from the requirements and codebase.
-- Do not prescribe the technical implementation.
-- Do not mark an idea as processed until all kanban tasks derived from that idea are created successfully.
+* Do not create tasks before explicit plan approval.
+* Do not ask the user to confirm task metadata that can be derived from the requirements and codebase.
+* Do not prescribe the technical implementation.
+* Do not mark an idea as processed until all kanban tasks derived from that idea are created successfully.
 
 </guardrails>
 
@@ -197,20 +197,20 @@ Do not mark an idea as processed during this phase.
 
 Inspect the relevant:
 
-- Code.
-- Tests.
-- Architecture.
-- Project conventions.
+* Code.
+* Tests.
+* Architecture.
+* Project conventions.
 
 Identify:
 
-- What already exists.
-- What must change.
-- Reusable patterns.
-- Constraints.
-- Dependencies.
-- Risks.
-- Actual blast radius.
+* What already exists.
+* What must change.
+* Reusable patterns.
+* Constraints.
+* Dependencies.
+* Risks.
+* Actual blast radius.
 
 Develop an elegant, robust, maintainable, and simple approach that fits the existing architecture.
 
@@ -234,11 +234,11 @@ Do not modify files during this phase.
 
 Formulate the task plan and describe:
 
-- What each task covers.
-- What problem each task solves.
-- What outcome each task produces.
-- How the tasks relate.
-- Which dependencies are required.
+* What each task covers.
+* What problem each task solves.
+* What outcome each task produces.
+* How the tasks relate.
+* Which dependencies are required.
 
 Apply the task-design contract to every proposed task.
 
@@ -246,12 +246,12 @@ Include prerequisite tasks identified during analysis.
 
 Check the complete plan for:
 
-- Missing work.
-- Weak task boundaries.
-- Incorrect dependencies.
-- Unnecessary dependencies.
-- Tasks that are not independently useful.
-- Tasks that would leave the repository broken.
+* Missing work.
+* Weak task boundaries.
+* Incorrect dependencies.
+* Unnecessary dependencies.
+* Tasks that are not independently useful.
+* Tasks that would leave the repository broken.
 
 Resolve material issues using the clarification rules.
 
@@ -279,9 +279,9 @@ Do not create kanban tasks during this phase.
 
 Derive every required task field from:
 
-- Approved requirements.
-- Codebase findings.
-- The approved plan.
+* Approved requirements.
+* Codebase findings.
+* The approved plan.
 
 Do not ask the user to confirm derived metadata.
 
@@ -309,19 +309,19 @@ Make every task a standalone, narrow, complete tracer-bullet vertical slice.
 
 Each task must be independently:
 
-- Implementable.
-- Reviewable.
-- Testable.
-- Revertible.
-- Completable within one context window.
+* Implementable.
+* Reviewable.
+* Testable.
+* Revertible.
+* Completable within one context window.
 
 ## Split boundaries
 
 Split work only when justified by:
 
-- Domain boundaries.
-- Blast radius.
-- A real dependency.
+* Domain boundaries.
+* Blast radius.
+* A real dependency.
 
 Every resulting task must remain independently useful.
 
@@ -341,10 +341,10 @@ Do not specify tests, test types, verification methods, or live/manual/QA testin
 
 For every task, settle:
 
-- The problem.
-- The desired outcome.
-- The scope boundary.
-- The blockers.
+* The problem.
+* The desired outcome.
+* The scope boundary.
+* The blockers.
 
 ## Dependencies
 
@@ -381,15 +381,15 @@ After presenting the complete plan:
 
 Derive every field for each approved task from the requirements and codebase:
 
-- Concise title.
-- Description containing context, problem, desired outcome, and original raw idea.
-- Priority.
-- `todo` status.
-- Specific labels.
-- Relevant absolute file paths.
-- Concrete, verifiable definition-of-done checkpoints.
-- Hard scope constraints.
-- Required blocker task IDs.
+* Concise title.
+* Description containing context, problem, desired outcome, and original raw idea.
+* Priority.
+* `todo` status.
+* Specific labels.
+* Relevant absolute file paths.
+* Concrete, verifiable definition-of-done checkpoints.
+* Hard scope constraints.
+* Required blocker task IDs.
 
 ## Worker handoff
 
@@ -397,14 +397,14 @@ Make the task description a self-contained worker handoff.
 
 Include enough discovered context for the worker to understand:
 
-- What must change.
-- Why it must change.
-- Where to start.
-- Relevant current behavior.
-- Relevant findings.
-- Relevant files and symbols.
-- Important constraints.
-- How completion will be verified.
+* What must change.
+* Why it must change.
+* Where to start.
+* Relevant current behavior.
+* Relevant findings.
+* Relevant files and symbols.
+* Important constraints.
+* How completion will be verified.
 
 Encourage targeted exploration, but do not make the worker rediscover the problem from scratch.
 
@@ -454,12 +454,12 @@ EOF
 
 ## Flag rules
 
-- Repeat flags when multiple values apply.
-- Omit `--blocked-by` when there is no blocker.
-- Include every original idea when a task comes from multiple ideas.
-- Use absolute paths for every relevant file.
-- Use concrete and independently verifiable definition-of-done checkpoints.
-- Use hard scope constraints that prevent unrelated work.
+* Repeat flags when multiple values apply.
+* Omit `--blocked-by` when there is no blocker.
+* Include every original idea when a task comes from multiple ideas.
+* Use absolute paths for every relevant file.
+* Use concrete and independently verifiable definition-of-done checkpoints.
+* Use hard scope constraints that prevent unrelated work.
 
 ## Idea completion
 
@@ -477,17 +477,18 @@ Do not run this command before every derived task exists.
 
 Before task creation, produce:
 
-- A confirmed statement of the problem and desired outcome.
-- A complete approved plan in dependency order.
+* A confirmed statement of the problem and desired outcome.
+* A complete approved plan in dependency order.
 
 After task creation, report:
 
-- Every created task ID and title.
-- Required dependencies.
-- Which ideas were marked as processed.
-- Any task or idea that could not be created or completed.
-- The failed command when a `kb` operation fails.
+* Every created task ID and title.
+* Required dependencies.
+* Which ideas were marked as processed.
+* Any task or idea that could not be created or completed.
+* The failed command when a `kb` operation fails.
 
 Do not report an idea as processed unless `kb idea done "<idea-id>"` succeeds.
 
 </output_contract>
+
