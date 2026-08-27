@@ -6,9 +6,8 @@ model: haiku
 
 # Commit
 
-* Single-line messages (no body)
+* Single-line messages with no body or AI references
 * Pre-commit hook fails → fix and retry. Never bypass
-* No AI references in messages
 * Never push
 
 ## Workflow
@@ -24,7 +23,7 @@ model: haiku
 
 * Start the summary with Add, Fix, Update, Remove, Refactor, Improve, or Style
 * Imperative mood, max 50 chars, no periods
-* Explain WHY not HOW
+* Describe what the commit accomplishes, not its implementation details
 
 **Feature branch:** extract ticket ID (`[LETTERS]-[NUMBER]`) from branch name
 
