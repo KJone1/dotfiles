@@ -5,8 +5,8 @@ argument-hint: ticket-id
 model: haiku
 ---
 
-# Steps to create a branch
+Create a branch for the given ticket:
 
-1. Run and analyze output of: `git checkout master && git pull && git diff && git status`
-2. Generate description from changed files
-3. `git checkout -b INPE-{ticket-id}-{description}`
+1. Run `git checkout master && git pull && git diff && git status` and analyze the output.
+2. Generate a short description from the changed files.
+3. Run `git checkout -b INPE-{ticket-id}-{description}`.
