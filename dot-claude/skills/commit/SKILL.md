@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Guide on how to create a commit. This skill should always be used when user want to create a new git commit.
+description: Create a Git commit when the user asks.
 model: haiku
 ---
 
@@ -22,11 +22,11 @@ model: haiku
 
 ## Message Rules
 
-* Action verb: Add / Fix / Update / Remove / Refactor / Improve / Style
+* Start the summary with Add, Fix, Update, Remove, Refactor, Improve, or Style
 * Imperative mood, max 50 chars, no periods
 * Explain WHY not HOW
 
 **Feature branch:** extract ticket ID (`[LETTERS]-[NUMBER]`) from branch name
 
-* First commit (`git rev-list --count HEAD ^main` = 0): `TICKET: <natural summary from branch name>`
+* First commit (`git rev-list --count HEAD ^master` = 0): `TICKET: <natural summary from branch name>`
 * Subsequent: `TICKET: update`
