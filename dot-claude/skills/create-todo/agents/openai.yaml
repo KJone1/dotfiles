@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Todo Plan"
+  short_description: "Create structured micro-task plans"
+  default_prompt: "Use $create-todo to break this task into a structured micro-task plan"
