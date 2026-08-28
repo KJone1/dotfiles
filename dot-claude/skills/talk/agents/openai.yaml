@@ -1,0 +1,4 @@
+interface:
+  display_name: "Talk"
+  short_description: "Discuss questions without implementation"
+  default_prompt: "Use $talk to discuss this topic and resolve open questions without implementing changes"
