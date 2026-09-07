@@ -52,6 +52,7 @@
       "Bash(gemini *)",
       "Bash(just *)",
       "Bash(kb *)",
+      "Bash(wt *)",
       "Bash(krr *)",
       "Bash(acli jira workitem view *)",
       "mcp__grafana-prod",
@@ -84,6 +85,8 @@
   "alwaysThinkingEnabled": true,
   "awaySummaryEnabled": false,
   "showClearContextOnPlanAccept": true,
+  "tui": "fullscreen",
   "prefersReducedMotion": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "xhigh"
 }
