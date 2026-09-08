@@ -16,7 +16,7 @@ model: haiku
 2. Split changes into the smallest practical standalone commits. Keep related changes together and unrelated changes separate. Do not modify files or use complex Git surgery solely to split commits.
 3. `git add <files>` for one well-scoped change.
 4. `git diff --staged` → understand the changes
-5. `git branch --show-current` → main/master: plain message | other: feature branch message
+5. `git branch --show-current` → main/master: regular message | other: feature branch message
 6. `git commit -m "<message>"`, then repeat for remaining standalone changes.
 
 ## Message Rules
