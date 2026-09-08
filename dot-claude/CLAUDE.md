@@ -32,4 +32,3 @@
   > Note: All cli flags should come after the subcommnad to not interfere with tool allow list patterns\
   > good example: `kubectl get pods -n app`\
   > bad example: `kubectl -n app get pods`
-
