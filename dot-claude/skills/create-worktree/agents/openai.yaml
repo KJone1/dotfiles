@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Git Worktree"
+  short_description: "Create a ticket-based Git worktree"
+  default_prompt: "Use $create-worktree to create a Git worktree"
