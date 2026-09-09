@@ -1,9 +1,7 @@
 ---
 name: pr
-description: Guide on how to open a PR (Pull Request) on GitHub. This skill should always be used when user want to open a new PR.
+description: This skill should always be used when user want to open a new PR (Pull Request) on GitHub.
 ---
-
-# PR Creation Guide
 
 This skill shows how to create PRs using the `gh` CLI according to user satisfaction.
 
@@ -24,8 +22,7 @@ Resolve `{jira_ticket_url}` from user memory or infer it from context (git remot
 1. Construct the title (`{ticket_id}: {description}`) and body.
 2. Run `gh pr create` with the title and body.
 
-### Example
-
+<example>
 ```bash
 gh pr create --title "PROJ-123: Add MaxUnavailable override for Argo Rollouts" --body "Set \`maxUnavailable\` to 25% for Argo Rollouts blue-green deployments.
 
@@ -33,6 +30,7 @@ Jira Ticket: [#PROJ-123](https://example.atlassian.net/browse/PROJ-123)"
 ```
 
 The URL in the example is illustrative. Use the actual Jira base URL resolved at runtime.
+</example>
 
 ## Rules
 
