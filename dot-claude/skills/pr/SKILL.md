@@ -1,13 +1,13 @@
 ---
 name: pr
-description: This skill should always be used when user want to open a new PR (Pull Request) on GitHub.
+description: This skill should always be used when user asks to open a new pr (Pull Request) on GitHub
 ---
 
 This skill shows how to create PRs using the `gh` CLI according to user satisfaction.
 
 ## PR Body Structure
 
-The PR body must start directly with the rationale, followed by the "Affected stuff" section and the Jira ticket reference:
+The PR body must start directly with the rationale, followed by the Jira ticket reference:
 
 ```markdown
 [Rationale/Problem being solved]
@@ -37,4 +37,4 @@ The URL in the example is illustrative. Use the actual Jira base URL resolved at
 1. **One sentence max**: The body is one sentence. Not a paragraph. Not bullets. One sentence.
 2. **No context, no explanation**: Do not explain what the technology is, how it works, or why it matters in general. Just state what changed.
 3. **No filler**: Never use "In this PR...", "This change aims to...", "This wires...", "This adds support for...", or similar lead-ins. Start with the action directly.
-4. **Commit-message tone**: Write like a commit message - tight, specific, lowercase ok. "Update X to Y" or "Set X for Y" is the target length and tone.
+4. **Commit-message tone**: Write like a commit message: tight, specific, lowercase ok. "Update X to Y" or "Set X for Y" is the target length and tone.

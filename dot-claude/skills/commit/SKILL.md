@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Create a Git commit when the user asks.
+description: Create a Git commit when the user asks to commit
 model: haiku
 ---
 
