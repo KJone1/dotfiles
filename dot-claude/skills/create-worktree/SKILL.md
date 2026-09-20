@@ -1,6 +1,6 @@
 ---
 name: create-worktree
-description: This skill should always be used when user wants to start work on a new ticket or create a new git worktree.
+description: This skill should always be used when user asks to start work on a new ticket or create a new git worktree
 argument-hint: ticket-id
 model: haiku
 ---
