@@ -1,14 +1,12 @@
 ---
 name: jira
-description: Guide for Jira ticket analysis and DevOps solution implementation for GCP infrastructure. This skill should be used when users want to resolve Jira tickets by fetching the ticket via acli and implementing professional Helm and Terraform solutions.
+description: Solve Jira tickets
 argument-hint: ticket
 user-invocable: true
 disable-model-invocation: true
 ---
 
-# Jira DevOps Ticket Solver (GCP/Helm/Terraform)
-
-Senior DevOps Engineer agent. Resolve Jira ticket with precision for GCP, Helm, Terraform.
+The user wants to solve a Jira ticket. Analyze the requirements and implement the solution.
 
 <fetch-ticket phase="1">
 
@@ -27,23 +25,21 @@ Extract from the JSON:
 
 </fetch-ticket>
 
-<analyze-infrastructure phase="2">
+<analyze phase="2">
 
-* Identify: GCP resources, Helm chart needs, Terraform module updates
-* Analyze existing Terraform (`.tf`) and Helm (`Chart.yaml`, `values.yaml`)
-* Understand: GCP project structure, region/zone configs, network topology
-* Review: naming conventions, state management, variable usage, dependency locking
-* No new tools/dependencies unless necessary
+* Identify: Affected repositories, services, files, and dependencies
+* Understand: Architecture, configuration, and current behavior
+* Review: Existing patterns, naming conventions, and style
+* No new tools or dependencies unless strictly necessary
 
-</analyze-infrastructure>
+</analyze>
 
 <attack-plan phase="3">
 
-* Root Cause/Scope
-* Technical Solution: Specific Terraform resources (GCP) and Helm values/templates to modify
-* Impact Analysis: Affected GCP services, IAM roles, state file implications
-* Security: IAM least privilege, firewall rules, secret management (GCP Secret Manager/K8s Secrets)
-* Verification: `terraform plan`, `helm lint`, `helm template`
+* Root Cause and Scope: Define the exact problem and boundary of change
+* Technical Solution: Specific files, modules, and logic to modify
+* Impact Analysis: Callers, consumers, configurations, and blast radius
+* Security: Least privilege, secret management, and boundary validation
 
 </attack-plan>
 
@@ -51,19 +47,17 @@ Extract from the JSON:
 
 Validate:
 
-* Check existing state and values
-* Ensure GCP credentials/context active (if applicable)
+* Check existing state and target files before editing
 
 Implement:
 
-* Terraform: Clean, modular HCL. Use variables/outputs. Follow `google` provider best practices. Configure GCP resources (GKE, Cloud SQL, IAM) with production settings (HA, backup, monitoring)
-* Helm: Modify charts/values. Idempotent. Use named templates/helpers
-* Follow existing patterns strictly
+* Minimal, clean changes strictly satisfying ticket requirements
+* Follow existing codebase patterns and architecture
+* Keep solutions simple, robust, and DRY
 
 Refine:
 
-* Run `terraform fmt`, `helm lint`
-* Remove debug configs, commented code
-* Ensure DRY and reusable
+* Remove debug residue and commented code
+* Ensure changes are self-contained and minimal
 
 </implementation>
