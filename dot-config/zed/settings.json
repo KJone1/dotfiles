@@ -1,4 +1,5 @@
 {
+  "line_ending": "enforce_lf",
   "git": {
     "file_diff": {
       "show_full_file": false
@@ -133,7 +134,8 @@
     ".git",
     ".vscode",
     ".venv",
-    "node_modules"
+    "node_modules",
+    "*.egg-info"
   ],
   "file_types": {
     "Helm": [
