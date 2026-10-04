@@ -12,6 +12,7 @@
     "pr": "",
     "sessionUrl": false
   },
+  "includeGitInstructions": false,
   "permissions": {
     "allow": [
       "Bash(diff *)",
