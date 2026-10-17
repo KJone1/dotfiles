@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}}</title>
+  <style>
+    :root {
+      --color-canvas: #f8fafc;
+      --color-surface: #ffffff;
+      --color-hairline: #e2e8f0;
+      --color-hairline-soft: #f1f5f9;
+      --color-ink: #0f172a;
+      --color-body: #334155;
+      --color-muted: #64748b;
+      --color-primary: #2563eb;
+      --color-primary-hover: #1d4ed8;
+      --color-success: #10b981;
+      --color-success-bg: #ecfdf5;
+      --color-warning: #f59e0b;
+      --color-warning-bg: #fffbeb;
+      --color-error: #ef4444;
+      --color-error-bg: #fef2f2;
+
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--color-canvas);
+      color: var(--color-body);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 64px;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-hairline);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      color: var(--color-ink);
+    }
+
+    /* Layout */
+    .container {
+      width: 94%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 0 80px;
+    }
+
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    /* Section Cards (works on <section> and <details>) */
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--radius-lg);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    summary.section-summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      cursor: pointer;
+      user-select: none;
+      background: var(--color-surface);
+    }
+
+    summary.section-summary::-webkit-details-marker { display: none; }
+
+    .summary-left { display: flex; align-items: center; gap: 14px; }
+    .summary-right { display: flex; align-items: center; gap: 10px; }
+
+    .chevron-box {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      background: var(--color-hairline-soft);
+      color: var(--color-ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    details[open] > summary .chevron-box {
+      transform: rotate(90deg);
+      background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+      color: var(--color-primary);
+    }
+
+    .section-title {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: var(--color-ink);
+    }
+
+    .section-body {
+      padding: 24px;
+      border-top: 1px solid var(--color-hairline-soft);
+    }
+
+    /* Core Primitives */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12.5px;
+      font-weight: 600;
+      background: var(--color-hairline-soft);
+      color: var(--color-muted);
+    }
+
+    .badge-primary { background: color-mix(in srgb, var(--color-primary) 12%, transparent); color: var(--color-primary); }
+    .badge-success { background: var(--color-success-bg); color: #047857; }
+    .badge-warning { background: var(--color-warning-bg); color: #b45309; }
+    .badge-error { background: var(--color-error-bg); color: #b91c1c; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 16px 0;
+      font-size: 15px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-hairline);
+      border-right: 1px solid var(--color-hairline);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th:last-child, td:last-child { border-right: none; }
+    tr:last-child td { border-bottom: none; }
+
+    th {
+      background: var(--color-hairline-soft);
+      font-weight: 600;
+      color: var(--color-ink);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    tr:hover td { background: rgba(248, 250, 252, 0.8); }
+
+    /* Typography & Code */
+    h2, h3, h4 { color: var(--color-ink); margin: 16px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin-bottom: 6px; }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      background: var(--color-hairline-soft);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: var(--color-ink);
+    }
+
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      margin: 12px 0;
+      line-height: 1.5;
+    }
+
+    pre code { background: none; color: inherit; padding: 0; }
+
+    /* Callouts */
+    .callout {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--color-primary);
+      background: color-mix(in srgb, var(--color-primary) 6%, #ffffff);
+      margin: 12px 0;
+    }
+
+    .callout-success { border-color: var(--color-success); background: var(--color-success-bg); color: #065f46; }
+    .callout-warning { border-color: var(--color-warning); background: var(--color-warning-bg); color: #92400e; }
+    .callout-error   { border-color: var(--color-error);   background: var(--color-error-bg);   color: #991b1b; }
+  </style>
+</head>
+<body>
+
+  <header class="top-nav">
+    <h1 class="page-title" id="doc-title">{{TITLE}}</h1>
+  </header>
+
+  <main class="container" id="content-root">
+    <details class="section-card" open>
+      <summary class="section-summary">
+        <div class="summary-left">
+          <span class="chevron-box" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </span>
+          <span class="section-title">Section Title</span>
+        </div>
+      </summary>
+      <div class="section-body">
+        <!-- Section content -->
+      </div>
+    </details>
+  </main>
+</body>
+</html>
