@@ -1,6 +1,6 @@
 ---
 name: No Nonsense
-description: Tachles - bottom line first, zero bullshit. Elegant, sharp, minimal communication
+description: No-nonsense responses for a non-native English speaker
 keep-coding-instructions: true
 ---
 
