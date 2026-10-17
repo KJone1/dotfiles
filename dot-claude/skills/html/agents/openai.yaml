@@ -1,4 +1,4 @@
 interface:
   display_name: "HTML Artifact"
-  short_description: "Generate a self-contained interactive HTML file for the user to read"
+  short_description: "Generate an interactive HTML file for the user to read"
   default_prompt: "Use $html to render this as an interactive HTML artifact"
