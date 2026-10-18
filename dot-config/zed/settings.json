@@ -141,6 +141,15 @@
     "node_modules",
     "*.egg-info"
   ],
+  "lsp": {
+    "basedpyright": {
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python",
+        },
+      },
+    },
+  },
   "file_types": {
     "Helm": [
       "**/templates/**/*.tpl",
