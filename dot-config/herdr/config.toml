@@ -1,0 +1,80 @@
+onboarding = false
+
+[ui]
+status_indicators = "symbols"
+
+[ui.sidebar.agents]
+row_gap = 0
+rows = [
+  [
+    { token = "state_text", rules = [
+      { starts_with = "blocked", fg = "#FF5D62", bold = true },
+      { starts_with = "working", fg = "#E6C384" },
+      { starts_with = "done", fg = "#98BB6C", bold = true },
+      { starts_with = "idle", hide = true },
+      { starts_with = "unknown", dim = true },
+    ] },
+    "machine",
+    "workspace",
+    "terminal_title_stripped",
+    "tab",
+  ],
+  ["agent"],
+]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+  [
+    { token = "state_text", rules = [
+      { starts_with = "blocked", fg = "#FF5D62", bold = true },
+      { starts_with = "working", fg = "#E6C384" },
+      { starts_with = "done", fg = "#98BB6C", bold = true },
+      { starts_with = "idle", hide = true },
+      { starts_with = "unknown", dim = true },
+    ] },
+    { token = "machine", fg = "#FFA066" },
+    { token = "workspace", fg = "#FFA066", bold = true },
+    { token = "terminal_title_stripped", fg = "#FFA066" },
+    { token = "tab", fg = "#FFA066" },
+  ],
+]
+codex = [
+  [
+    { token = "state_text", rules = [
+      { starts_with = "blocked", fg = "#FF5D62", bold = true },
+      { starts_with = "working", fg = "#E6C384" },
+      { starts_with = "done", fg = "#98BB6C", bold = true },
+      { starts_with = "idle", hide = true },
+      { starts_with = "unknown", dim = true },
+    ] },
+    { token = "machine", fg = "#957FB8" },
+    { token = "workspace", fg = "#957FB8", bold = true },
+    { token = "terminal_title_stripped", fg = "#957FB8" },
+    { token = "tab", fg = "#957FB8" },
+  ],
+]
+gemini = [
+  [
+    { token = "state_text", rules = [
+      { starts_with = "blocked", fg = "#FF5D62", bold = true },
+      { starts_with = "working", fg = "#E6C384" },
+      { starts_with = "done", fg = "#98BB6C", bold = true },
+      { starts_with = "idle", hide = true },
+      { starts_with = "unknown", dim = true },
+    ] },
+    { token = "machine", fg = "#7E9CD8" },
+    { token = "workspace", fg = "#7E9CD8", bold = true },
+    { token = "terminal_title_stripped", fg = "#7E9CD8" },
+    { token = "tab", fg = "#7E9CD8" },
+  ],
+]
+
+[theme]
+name = "kanagawa"
+auto_switch = false
+
+[ui.sound]
+enabled = false
+
+[ui.toast]
+delivery = "system"
