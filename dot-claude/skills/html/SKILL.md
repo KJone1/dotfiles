@@ -3,7 +3,6 @@ name: html
 description: Generate an interactive HTML file for the user to read
 argument-hint: what to render
 user-invocable: true
-disable-model-invocation: true
 ---
 
 The user wants to create an HTML artifact from this conversation.
