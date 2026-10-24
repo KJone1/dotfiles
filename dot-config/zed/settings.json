@@ -28,6 +28,10 @@
     "active_language_button": true,
   },
   "project_panel": {
+    "hide_root": true,
+    "sticky_scroll": false,
+    "folder_indicator": "icon",
+    "entry_spacing": "comfortable",
     "button": true,
     "dock": "right",
   },
