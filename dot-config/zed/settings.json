@@ -179,6 +179,7 @@
   "theme": "Zedokai Light (Filter Sun)",
   "theme_overrides": {
     "Zedokai Light (Filter Sun)": {
+      "text.muted": "#58585a",
       "created": "#669f59ff",
       "modified": "#a48819ff",
       "deleted": "#d36151ff",
