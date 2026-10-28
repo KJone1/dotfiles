@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}}</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-size='52' text-anchor='middle'%3E{{ICON}}%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/monokai-sublime.min.css">
   <style>
     :root {
       --color-canvas: #f8efe7;
@@ -29,8 +30,8 @@
       --color-info: #2473b6;
       --color-info-bg: color-mix(in srgb, #2473b6 10%, #fdf7f3);
       --color-row-hover: #2c232e0c;
-      --color-pre-bg: #ece5df;
-      --color-pre-fg: #2c232e;
+      --color-pre-bg: #2c232e;
+      --color-pre-fg: #fdf7f3;
 
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -216,7 +217,10 @@
       line-height: 1.5;
     }
 
-    pre code { background: none; color: inherit; padding: 0; }
+    pre code, pre code.hljs { background: none; color: inherit; padding: 0; }
+    .diff-add, .diff-del { display: block; margin: 0 -16px; padding: 0 16px; }
+    .diff-add { background: color-mix(in srgb, var(--color-success) 22%, transparent); color: #8be2a8; }
+    .diff-del { background: color-mix(in srgb, var(--color-error) 22%, transparent); color: #f5a3ab; }
 
     /* Callouts */
     .callout {
@@ -245,8 +249,10 @@
     </section>
   </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   <script>
     (() => {
+      if (window.hljs) document.querySelectorAll('pre code:not(:has(.diff-add, .diff-del))').forEach(el => hljs.highlightElement(el));
       const panels = [...document.querySelectorAll('.tab-panel')];
       const sw = document.getElementById('switcher');
       const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
