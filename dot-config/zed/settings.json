@@ -180,9 +180,9 @@
   },
   "ui_font_size": 16,
   "buffer_font_size": 16.0,
-  "theme": "Zedokai Light (Filter Sun)",
+  "theme": "Zedokai Light",
   "theme_overrides": {
-    "Zedokai Light (Filter Sun)": {
+    "Zedokai Light": {
       "text.muted": "#58585a",
       "created": "#669f59ff",
       "modified": "#a48819ff",
