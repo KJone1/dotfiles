@@ -8,30 +8,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/monokai-sublime.min.css">
   <style>
     :root {
-      --color-canvas: #f8efe7;
-      --color-surface: #fdf7f3;
-      --color-hairline: #ccc5bf;
-      --color-hairline-soft: #ece5df;
-      --color-ink: #2c232e;
-      --color-body: #72696d;
-      --color-muted: #92898a;
-      --color-primary: #b16803;
-      --color-primary-hover: #8f5402;
-      --color-success: #27a657;
-      --color-success-bg: color-mix(in srgb, #27a657 10%, #fdf7f3);
-      --color-success-fg: #669f59;
+      --color-canvas: #faf4f2;
+      --color-surface: #fefaf9;
+      --color-hairline: #d2cdcb;
+      --color-hairline-soft: #f2edeb;
+      --color-ink: #29242a;
+      --color-body: #58585a;
+      --color-muted: #918c8e;
+      --color-primary: #cc7a0a;
+      --color-primary-hover: #a86208;
+      --color-success: #269d69;
+      --color-success-bg: color-mix(in srgb, #269d69 15%, #fefaf9);
+      --color-success-fg: #1d8a58;
       --color-warning: #d3b020;
-      --color-warning-bg: color-mix(in srgb, #d3b020 12%, #fdf7f3);
-      --color-warning-fg: #a48819;
-      --color-warning-text: color-mix(in srgb, #a48819 55%, #2c232e);
-      --color-error: #e06c76;
-      --color-error-bg: color-mix(in srgb, #e06c76 10%, #fdf7f3);
-      --color-error-fg: #d36151;
-      --color-info: #2473b6;
-      --color-info-bg: color-mix(in srgb, #2473b6 10%, #fdf7f3);
-      --color-row-hover: #2c232e0c;
+      --color-warning-bg: color-mix(in srgb, #d3b020 15%, #fefaf9);
+      --color-warning-fg: #a67700;
+      --color-warning-text: color-mix(in srgb, #a67700 55%, #29242a);
+      --color-error: #e14775;
+      --color-error-bg: color-mix(in srgb, #e14775 15%, #fefaf9);
+      --color-error-fg: #d23c68;
+      --color-info: #1c8ca8;
+      --color-info-bg: color-mix(in srgb, #1c8ca8 15%, #fefaf9);
+      --color-row-hover: #29242a0c;
       --color-pre-bg: #2c232e;
-      --color-pre-fg: #fdf7f3;
+      --color-pre-fg: #fcfcfa;
 
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -41,8 +41,8 @@
       --radius-lg: 12px;
       --radius-pill: 9999px;
 
-      --shadow-sm: 0 1px 2px rgba(44, 35, 46, 0.05);
-      --shadow-card: 0 4px 12px rgba(44, 35, 46, 0.05);
+      --shadow-sm: 0 1px 2px rgba(41, 36, 42, 0.05);
+      --shadow-card: 0 4px 12px rgba(41, 36, 42, 0.05);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -107,7 +107,7 @@
     .sw-menu {
       position: absolute; top: 46px; left: 44px; width: 420px; max-height: 70vh; overflow-y: auto; z-index: 50;
       background: var(--color-surface); border: 1px solid var(--color-hairline); border-radius: var(--radius-lg);
-      box-shadow: 0 12px 32px rgba(44, 35, 46, 0.14); padding: 6px;
+      box-shadow: 0 12px 32px rgba(41, 36, 42, 0.14); padding: 6px;
     }
     .sw-menu[hidden] { display: none; }
     .sw-item {
@@ -151,7 +151,7 @@
       color: var(--color-muted);
     }
 
-    .badge-primary { background: color-mix(in srgb, var(--color-primary) 12%, transparent); color: var(--color-primary); }
+    .badge-primary { background: color-mix(in srgb, var(--color-primary) 14%, transparent); color: var(--color-primary); }
     .badge-success { background: var(--color-success-bg); color: var(--color-success-fg); }
     .badge-warning { background: var(--color-warning-bg); color: var(--color-warning-fg); }
     .badge-error { background: var(--color-error-bg); color: var(--color-error-fg); }
@@ -219,8 +219,8 @@
 
     pre code, pre code.hljs { background: none; color: inherit; padding: 0; }
     .diff-add, .diff-del { display: block; margin: 0 -16px; padding: 0 16px; }
-    .diff-add { background: color-mix(in srgb, var(--color-success) 22%, transparent); color: #8be2a8; }
-    .diff-del { background: color-mix(in srgb, var(--color-error) 22%, transparent); color: #f5a3ab; }
+    .diff-add { background: color-mix(in srgb, var(--color-success) 22%, transparent); color: #a9dc76; }
+    .diff-del { background: color-mix(in srgb, var(--color-error) 22%, transparent); color: #ff6188; }
 
     /* Callouts */
     .callout {
