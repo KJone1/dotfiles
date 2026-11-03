@@ -8,4 +8,6 @@ model: haiku
 Create a worktree for the given ticket:
 
 1. Run `git fetch origin master`.
-2. Run `wt switch --create INPE-{ticket-id} --base origin/master`.
+2. Run `acli jira workitem view {ticket-id} --fields summary,description` to show the title and description.
+3. Generate a short description from the ticket title and the changes made earlier in the session.
+4. Run `wt switch --create {ticket-id}-{description} --base origin/master`, with `{description}` in kebab-case.

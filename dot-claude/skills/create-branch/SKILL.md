@@ -7,6 +7,7 @@ model: haiku
 
 Create a branch for the given ticket:
 
-1. Run `git checkout master && git pull && git diff && git status` and analyze the output.
-2. Generate a short description from the changed files.
-3. Run `git checkout -b INPE-{ticket-id}-{description}`.
+1. Run `acli jira workitem view {ticket-id} --fields summary,description` to show the title and description.
+2. Run `git checkout master && git pull && git diff && git status` and analyze the output.
+3. Generate a short description from the ticket title and the changes made earlier in the session.
+4. Run `git checkout -b {ticket-id}-{description}`.
