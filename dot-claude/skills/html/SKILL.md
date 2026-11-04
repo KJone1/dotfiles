@@ -12,10 +12,11 @@ Everything on the page is written in plain words about what things mean, not low
 
 You have complete freedom to create, use, or import any HTML components, CSS, JavaScript, or assets you think best present the idea to the user.
 
-The user reads cards and diagrams better than tables, so you use fewer tables and less plain text; tables stay fine when nothing else fits. Use a click-to-open pop-up on a card or diagram only when extra detail would clutter the view.
+The user reads visuals better than tables, so you use fewer tables and less plain text. Use a click-to-open pop-up on a card or diagram only when extra detail would clutter the view.
 
-* Tasks: an interactive checklist the user can tick, with the state kept across reloads.
-* Ordered steps: a stepper with a short label per step that opens its detail below when clicked.
+Keep each topic small and targeted, in its own section.
+
+Make components on the page interactive and reactive. The user should understand the idea by playing and exploring, not by reading about it.
 
 <workflow>
 1. Run `cp ~/.claude/skills/html/resources/template.html ~/plans/<slug>.html`.
