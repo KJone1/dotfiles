@@ -1,4 +1,0 @@
-interface:
-  display_name: "Kanban Review"
-  short_description: "Review and close verified kanban tasks"
-  default_prompt: "Use $kb-review to review selected kanban tasks"
