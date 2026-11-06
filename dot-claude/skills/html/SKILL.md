@@ -14,12 +14,14 @@ You have complete freedom to create, use, or import any HTML components, CSS, Ja
 
 The user reads visuals better than tables, so you use fewer tables and less plain text. Use a click-to-open pop-up on a card or diagram only when extra detail would clutter the view.
 
-Keep each topic small and targeted, in its own section.
+The page holds only the idea itself. Do not add callouts, notes, or disclaimers: they take the user's attention away from the idea. If something matters, make it part of the content, or say it in chat.
+
+Keep each topic small and targeted, in its own section, so it is digestible on its own.
 
 Make components on the page interactive and reactive. The user should understand the idea by playing and exploring, not by reading about it.
 
 <workflow>
 1. Run `cp ~/.claude/skills/html/resources/template.html ~/plans/<slug>.html`.
 2. Update `~/plans/<slug>.html` in place with your content. Put each topic to its scoped tab.
-3. Run `open ~/plans/<slug>.html` and reply with only the file path and a one-line summary.
+3. Run `open ~/plans/<slug>.html` only when you create the file. Reply with only the file path and a one-line summary.
 </workflow>
