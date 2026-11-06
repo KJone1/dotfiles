@@ -56,7 +56,6 @@
       "Bash(fastmcp *)",
       "Bash(gemini *)",
       "Bash(just *)",
-      "Bash(kb *)",
       "Bash(wt *)",
       "Bash(krr *)",
       "Bash(acli jira workitem view *)",
@@ -75,7 +74,7 @@
       "Read(./config/credentials.json)",
       "Read(./build)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "model": "opusplan",
   "statusLine": {
@@ -85,13 +84,18 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true
   },
-  "outputStyle": "No Nonsense",
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "awaySummaryEnabled": false,
+  "promptSuggestionEnabled": false,
   "showClearContextOnPlanAccept": true,
   "tui": "fullscreen",
   "prefersReducedMotion": true,
-  "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "xhigh"
+  "skipDangerousModePermissionPrompt": true
 }
