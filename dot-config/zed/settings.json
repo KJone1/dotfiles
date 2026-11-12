@@ -8,6 +8,10 @@
   "buffer_line_height": "comfortable",
   "line_ending": "enforce_lf",
   "git": {
+    "auto_fetch": {
+      "interval_secs": 60,
+      "enabled": true
+    },
     "hunk_style": "staged_hollow",
     "show_stage_restore_buttons": true,
     "file_diff": {
