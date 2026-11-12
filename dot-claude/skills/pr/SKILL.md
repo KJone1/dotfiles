@@ -38,3 +38,4 @@ The URL in the example is illustrative. Use the actual Jira base URL resolved at
 2. **No context, no explanation**: Do not explain what the technology is, how it works, or why it matters in general. No unaffected/out-of-scope callouts. Just state what changed.
 3. **No filler**: Never use "In this PR...", "This change aims to...", "This wires...", "This adds support for...", or similar lead-ins. Start with the action directly.
 4. **Commit-message tone**: Write like a commit message: tight, specific, lowercase ok. "Update X to Y" or "Set X for Y" is the target length and tone.
+5. **Repo template**: If the repo has its own PR template or structure, follow it. The rules above apply to everything you write in it.
