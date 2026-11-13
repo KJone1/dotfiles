@@ -1,6 +1,6 @@
 ---
 name: html
-description: Generate an interactive HTML file for the user to read
+description: This skill should always be used when user asks to generate an HTML artifact
 argument-hint: what to render
 user-invocable: true
 ---

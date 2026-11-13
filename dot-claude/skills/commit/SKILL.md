@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Create a Git commit when the user asks to commit
+description: This skill should always be used when user asks to commit
 model: haiku
 ---
 
